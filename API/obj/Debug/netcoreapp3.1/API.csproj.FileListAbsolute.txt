@@ -43,3 +43,11 @@
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/client/package-lock.json
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/client/package.json
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/client/public/manifest.json
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/Antlr3.Runtime.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/Iesi.Collections.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/NHibernate.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/Remotion.Linq.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/Remotion.Linq.EagerFetching.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/System.Configuration.ConfigurationManager.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/System.Security.Cryptography.ProtectedData.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
