@@ -1,0 +1,9 @@
+/Users/reid/Desktop/Projects/Stock-Trader/CORE/bin/Debug/netstandard2.0/CORE.deps.json
+/Users/reid/Desktop/Projects/Stock-Trader/CORE/bin/Debug/netstandard2.0/CORE.dll
+/Users/reid/Desktop/Projects/Stock-Trader/CORE/bin/Debug/netstandard2.0/CORE.pdb
+/Users/reid/Desktop/Projects/Stock-Trader/CORE/obj/Debug/netstandard2.0/CORE.csprojAssemblyReference.cache
+/Users/reid/Desktop/Projects/Stock-Trader/CORE/obj/Debug/netstandard2.0/CORE.AssemblyInfoInputs.cache
+/Users/reid/Desktop/Projects/Stock-Trader/CORE/obj/Debug/netstandard2.0/CORE.AssemblyInfo.cs
+/Users/reid/Desktop/Projects/Stock-Trader/CORE/obj/Debug/netstandard2.0/CORE.csproj.CoreCompileInputs.cache
+/Users/reid/Desktop/Projects/Stock-Trader/CORE/obj/Debug/netstandard2.0/CORE.dll
+/Users/reid/Desktop/Projects/Stock-Trader/CORE/obj/Debug/netstandard2.0/CORE.pdb
