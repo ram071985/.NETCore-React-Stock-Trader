@@ -11,13 +11,13 @@ class LandingPage extends Component {
     render(){
         return(
             <div>
-            <div className="container-fluid">
-                <div className="row h-100 ">
-                    <div className="col-lg h-100 left-col">
+            <div className="container-fluid min-vh-100 d-flex flex-column">
+                <div className="row flex-grow-1">
+                    <div className="col-lg left-col">
                         <h3>Yo</h3>
 
                     </div>
-                    <div className="col-lg h-100 right-col">
+                    <div className="col-lg right-col">
                         <h3>yo                           
                         </h3>
                     </div>
