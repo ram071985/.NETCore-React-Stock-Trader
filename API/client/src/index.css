@@ -12,9 +12,22 @@ body {
 }
 
 .left-col {
- background-color: white;
+
+margin-top: 30%;
+
 }
 
 .right-col {
-  background-color: black !important;
+  margin-top: 30%;
+
  }
+
+ .landing-row {
+  background-image: linear-gradient(120deg, white 70%, #22313F  calc(70% + 2px));
+ }
+
+ .splash-image {
+   width: 350px;
+ }
+
+
