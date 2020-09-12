@@ -5,6 +5,25 @@ body {
   font-size: 16px;
 }
 
+body {
+  height: 100vh;
+  margin: 0;
+  background: rgb(245, 245, 245) !important;
+  
+}
+
+body:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width:600px;
+  background: rgb(76, 187, 48);
+  transform: skew(-32deg);
+  transform-origin:bottom;
+}
+
 .container {
   height: 100%;
   width: 100%;
@@ -22,12 +41,10 @@ margin-top: 30%;
 
  }
 
- .landing-row {
-  background-image: linear-gradient(120deg, white 70%, #22313F  calc(70% + 2px));
- }
+ img.splash-image {
+   width: 500px;
 
- .splash-image {
-   width: 350px;
+   
  }
 
 
