@@ -6,9 +6,8 @@ body {
 }
 
 body {
-  height: 100vh;
   margin: 0;
-  background: rgb(238, 238, 238) !important;
+  background: linear-gradient(to top, #000000 0%, #292929 50%) !important;
   
 }
 
@@ -32,12 +31,12 @@ body:before {
 
 .left-col {
 
-margin-top: 30%;
+margin-top: 25%;
 
 }
 
 .right-col {
-  margin-top: 30%;
+  margin-top: 25%;
 
  }
 
@@ -46,7 +45,9 @@ margin-top: 30%;
  }
 
  .welcome-text {
-  opacity: 0.8;
+  opacity: 0.9;
+  color: white;
+  font-size: 3rem;
  }
 
  .topia-color {
@@ -55,10 +56,12 @@ margin-top: 30%;
 
  .description-text {
    padding-right: 100px;
+   color: white;
  }
 
  .second-description-text {
    color: rgb(76, 187, 48);
+   font-size: 2rem;
  }
  
 
