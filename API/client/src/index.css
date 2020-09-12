@@ -8,7 +8,7 @@ body {
 body {
   height: 100vh;
   margin: 0;
-  background: rgb(245, 245, 245) !important;
+  background: rgb(238, 238, 238) !important;
   
 }
 
@@ -43,8 +43,23 @@ margin-top: 30%;
 
  img.splash-image {
    width: 500px;
-
-   
  }
+
+ .welcome-text {
+  opacity: 0.8;
+ }
+
+ .topia-color {
+  color: rgb(76, 187, 48);
+ }
+
+ .description-text {
+   padding-right: 100px;
+ }
+
+ .second-description-text {
+   color: rgb(76, 187, 48);
+ }
+ 
 
 
