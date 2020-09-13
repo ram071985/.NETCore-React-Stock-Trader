@@ -17,7 +17,7 @@ class LandingPage extends Component {
                     <div className="col-lg d-block mx-auto left-col">
                         <h1 className="text-left welcome-text">Welcome to Trade<span className="topia-color">Topia</span></h1>
                         <h3 className="text-left second-description-text">A make believe stock trading resource.</h3>
-                        <h4 className="text-left description-text">A fun and simple way to practice trading and selling from public companies, but with no strings attached.</h4>
+                        <h4 className="text-left description-text">A fun and simple way to practice trading and selling from public companies: with no strings attached.</h4>
                     </div>
                     <div className="col-lg d-block mx-auto right-col">
                       <img className="splash-image d-block mx-auto" src={SplashImage}/>

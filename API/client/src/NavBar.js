@@ -16,7 +16,7 @@ class NavBar extends Component {
         <div>
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand" href="#">
-              Navbar
+              TradeTopia
             </a>
             <button
               className="navbar-toggler"
