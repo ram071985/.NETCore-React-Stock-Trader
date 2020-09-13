@@ -5,23 +5,27 @@ body {
   font-size: 16px;
 }
 
-body {
+.landing-row {
   margin: 0;
-  background: linear-gradient(to top, #000000 0%, #200202 50%) !important;
-  
+  background: linear-gradient(to top, #000000 0%, #072002 50%) !important;
 }
 
-body:before {
+.landing-row:before {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
-  width:600px;
+  width: 566px;
   background: rgb(76, 187, 48);
   transform: skew(-32deg);
-  transform-origin:bottom;
+  transform-origin: bottom;
 }
+
+nav.navbar {
+  background-color: rgb(76, 187, 48) !important;
+}
+
 
 .container {
   height: 100%;
@@ -30,39 +34,46 @@ body:before {
 }
 
 .left-col {
-
-margin-top: 25%;
-
+  margin-top: 25%;
 }
 
 .right-col {
   margin-top: 25%;
+}
 
- }
+img.splash-image {
+  width: 500px;
+}
 
- img.splash-image {
-   width: 500px;
- }
-
- .welcome-text {
+.welcome-text {
   opacity: 0.9;
   color: white;
   font-size: 3rem;
- }
+}
 
- .topia-color {
+.topia-color {
   color: rgb(76, 187, 48);
- }
+}
 
- .description-text {
-   padding-right: 100px;
-   color: white;
- }
+.description-text {
+  padding-right: 100px;
+  color: white;
+}
 
- .second-description-text {
-   color: rgb(76, 187, 48);
-   font-size: 2rem;
- }
- 
+.second-description-text {
+  color: rgb(76, 187, 48);
+  font-size: 2rem;
+}
 
+.log-in-button-text {
+  color: rgb(228, 228, 228);
+  margin-right: 4px;
+}
 
+.account-button-text {
+  color: rgb(228, 228, 228);
+}
+
+.user-icon {
+  margin: 0px 8px 0px 0px;
+}
