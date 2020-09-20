@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import { User } from "react-feather";
+import LogIn from "./LogIn"
 
 class NavBar extends Component {
   render() {
@@ -108,7 +109,7 @@ class NavBar extends Component {
           </nav>
           <Switch>
             <Route path="/">
-              <LandingPage />
+              <LogIn />
             </Route>
           </Switch>
         </div>

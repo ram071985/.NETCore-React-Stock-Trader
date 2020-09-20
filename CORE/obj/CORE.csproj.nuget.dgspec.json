@@ -14,7 +14,7 @@
         "outputPath": "/Users/reid/Desktop/Projects/Stock-Trader/CORE/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/reid/.nuget/NuGet/NuGet.Config"
+          "/Users/reid/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -57,7 +57,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,23 +1,25 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/LandingPage.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Program.cs">
     <Files>
-      <File FileName="API/Program.cs" Line="4" Column="30" />
-      <File FileName="API/Startup.cs" Line="35" Column="10" />
-      <File FileName="API/client/LandingPage.js" Line="1" Column="42" />
-      <File FileName="API/client/src/index.js" Line="1" Column="1" />
-      <File FileName="API/client/public/index.html" Line="21" Column="1" />
+      <File FileName="API/Program.cs" Line="20" Column="44" />
+      <File FileName="API/Startup.cs" />
+      <File FileName="API/client/src/index.js" />
+      <File FileName="API/client/public/index.html" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
+              <Node name="Dependencies" expanded="True" />
               <Node name="client" expanded="True">
                 <Node name="public" expanded="True" />
-                <Node name="src" expanded="True">
-                  <Node name="LandingPage.js" selected="True" />
-                </Node>
+                <Node name="src" expanded="True" />
               </Node>
+              <Node name="Program.cs" selected="True" />
+            </Node>
+            <Node name="CORE" expanded="True">
+              <Node name="Dependencies" expanded="True" />
             </Node>
           </Node>
         </State>
