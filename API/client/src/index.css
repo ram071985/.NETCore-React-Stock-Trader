@@ -5,6 +5,7 @@ body {
   height: 100%;
   margin: 0px;
   font-size: 16px;
+  font-family: 'Roboto', sans-serif !important;
 }
 
 .landing-row {
@@ -102,4 +103,21 @@ img.splash-image {
 }
 
 label.label-text {
+}
+
+button {
+
+}
+
+button.log-in-button {
+  border-radius: 0rem;
+  background-color: rgb(76, 187, 48);
+  border-color: grey;
+  border: 1px solid transparent;
+  padding: 2px 2px;
+}
+
+button.log-in-button:hover {
+  background-color: #1aac3c;
+  border: 1px solid transparent;
 }

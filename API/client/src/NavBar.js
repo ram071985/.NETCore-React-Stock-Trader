@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import LandingPage from "./LandingPage";
 import { User } from "react-feather";
+import SignUp from "./SignUp";
 import LogIn from "./LogIn"
 
 class NavBar extends Component {
@@ -37,9 +38,9 @@ class NavBar extends Component {
             >
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/">
                     Home <span className="sr-only">(current)</span>
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
@@ -86,7 +87,7 @@ class NavBar extends Component {
                 </li>
               </ul>
               <form className="form-inline my-2 my-lg-0">
-                <button
+              <Link to="/log-in"><button
                   className="btn btn-outline-success mr-2 my-2 my-sm-0"
                   type="submit"
                 >
@@ -97,19 +98,25 @@ class NavBar extends Component {
                     height="15"
                   />
                   <span className="log-in-button-text">Log in</span>
-                </button>
-                <button
+                </button></Link>
+                <Link to="/sign-up"><button
                   className="btn btn-outline-success mr-3 my-2 my-sm-0"
                   type="submit"
                 >
                   <span className="account-button-text">Start an account</span>
-                </button>
+                </button></Link>
               </form>
             </div>
           </nav>
           <Switch>
-            <Route path="/">
+            <Route path="/log-in">
               <LogIn />
+            </Route>
+            <Route path="/sign-up">
+              <SignUp />
+            </Route>
+            <Route path="/">
+              <LandingPage />
             </Route>
           </Switch>
         </div>
