@@ -1,8 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+
 html,
 body {
   height: 100%;
   margin: 0px;
   font-size: 16px;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+.landing-row {
+  margin: 0;
+  background: linear-gradient(to top, #000000 0%, #072002 50%) !important;
+}
+
+.landing-row:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 566px;
+  background: rgb(76, 187, 48);
+  transform: skew(-32deg);
+  transform-origin: bottom;
+}
+
+nav.navbar {
+  background-color: rgb(76, 187, 48) !important;
+  font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -12,9 +37,89 @@ body {
 }
 
 .left-col {
- background-color: white;
+  margin-top: 25%;
 }
 
 .right-col {
-  background-color: black !important;
- }
+  margin-top: 25%;
+}
+
+img.splash-image {
+  width: 500px;
+}
+
+.welcome-text {
+  opacity: 0.9;
+  color: white;
+  font-size: 3rem;
+}
+
+.topia-color {
+  color: rgb(76, 187, 48);
+}
+
+.description-text {
+  padding-right: 100px;
+  color: white;
+}
+
+.second-description-text {
+  color: rgb(76, 187, 48);
+  font-size: 2rem;
+}
+
+.log-in-button-text {
+  color: rgb(228, 228, 228);
+  margin-right: 4px;
+}
+
+.account-button-text {
+  color: rgb(228, 228, 228);
+}
+
+.user-icon {
+  margin: 0px 8px 2px 0px;
+}
+
+.log-in-text {
+  font-family: 'Roboto', sans-serif;
+}
+
+.input-col {
+}
+
+.log-in-header {
+  margin-top: 60px;
+}
+
+.key-icon {
+  height: 45px;
+  width: 45px;
+  color: rgb(76, 187, 48);
+}
+
+.form-control.username-input {
+  border-radius: 0rem;
+}
+
+label.label-text {
+}
+
+button {
+
+}
+
+button.log-in-button {
+  border-radius: 0rem;
+  background-color: rgb(76, 187, 48);
+  border-color: grey;
+  border: 1px solid transparent;
+  padding: 2px 2px;
+}
+
+button.log-in-button:hover {
+  background-color: #1aac3c;
+  border: 1px solid transparent;
+}
+
+
