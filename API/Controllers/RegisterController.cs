@@ -10,6 +10,10 @@ namespace API.Controllers
     public class RegisterContoller : ContollerBase
     {
         [HttpPost]
-        public
+        public UserModel PostNewUser([FromBody] UserModel user)
+        {
+            var userModel = new UserModel();
+            var session = 
+        }
     }
 }
