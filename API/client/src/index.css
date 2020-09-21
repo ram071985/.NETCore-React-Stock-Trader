@@ -19,9 +19,9 @@ body {
   top: 0;
   bottom: 0;
   right: 0;
-  width: 566px;
+  width: 900px;
   background: rgb(76, 187, 48);
-  transform: skew(-32deg);
+  transform: skew(-100deg);
   transform-origin: bottom;
 }
 
