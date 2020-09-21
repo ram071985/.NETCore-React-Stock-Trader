@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AR47i3ylrtWo9MFd5dCwvrQ0ZM7CZ3cREpaipJWMh9Maas+57cRUr1buD/DGPqxIIum4Un4Ffhrf7xP0eUwUoQ==",
+  "dgSpecHash": "Pli0RYs3R6XMGuoggC322Lwb/p+Tb4uoMKtIC/smGr3DL3FGOIcnhut1gSHxQXgcfv56VqQ0mZVoxrIPNZ4riA==",
   "success": true,
   "projectFilePath": "/Users/reid/Desktop/Projects/Stock-Trader/API/API.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,7 @@
     "/Users/reid/.nuget/packages/microsoft.netcore.targets/1.1.0/microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/newtonsoft.json/12.0.2/newtonsoft.json.12.0.2.nupkg.sha512",
     "/Users/reid/.nuget/packages/nhibernate/5.3.2/nhibernate.5.3.2.nupkg.sha512",
+    "/Users/reid/.nuget/packages/npgsql/4.1.4/npgsql.4.1.4.nupkg.sha512",
     "/Users/reid/.nuget/packages/remotion.linq/2.2.0/remotion.linq.2.2.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/remotion.linq.eagerfetching/2.2.0/remotion.linq.eagerfetching.2.2.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/system.collections/4.3.0/system.collections.4.3.0.nupkg.sha512",
@@ -48,6 +49,7 @@
     "/Users/reid/.nuget/packages/system.reflection.typeextensions/4.1.0/system.reflection.typeextensions.4.1.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/system.resources.resourcemanager/4.3.0/system.resources.resourcemanager.4.3.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/system.runtime/4.3.0/system.runtime.4.3.0.nupkg.sha512",
+    "/Users/reid/.nuget/packages/system.runtime.compilerservices.unsafe/4.6.0/system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/system.runtime.extensions/4.1.0/system.runtime.extensions.4.1.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/system.runtime.serialization.formatters/4.3.0/system.runtime.serialization.formatters.4.3.0.nupkg.sha512",
     "/Users/reid/.nuget/packages/system.runtime.serialization.primitives/4.3.0/system.runtime.serialization.primitives.4.3.0.nupkg.sha512",

@@ -14,7 +14,7 @@
         "outputPath": "/Users/reid/Desktop/Projects/Stock-Trader/CORE/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/reid/.nuget/NuGet/NuGet.Config"
+          "/Users/reid/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -36,6 +36,10 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
@@ -45,6 +49,10 @@
             "NHibernate": {
               "target": "Package",
               "version": "[5.3.2, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[4.1.4, )"
             }
           },
           "imports": [
@@ -57,7 +65,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.402/RuntimeIdentifierGraph.json"
         }
       }
     }
