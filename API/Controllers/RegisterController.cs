@@ -18,7 +18,7 @@ namespace API.Controllers
 
             config.DataBaseIntegration(x =>
             {
-                x.ConnectionString = "Host=localhost;Database=postgres;Username=postgres;Password=postgres;";
+                x.ConnectionString = "Host=otto.db.elephantsql.com;Database=aemtrcbd;Username=aemtrcbd;Password=yzAmcOsG2OPU0E5e2LNS9JoG_KzZcgWw;";
                 x.Dialect<PostgreSQLDialect>();
             });
 

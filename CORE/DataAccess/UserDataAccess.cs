@@ -6,8 +6,4 @@ namespace CORE.DataAccess
 
     }
 
-    public class UserDataAccess : IUserDataAccess
-    {
-        public User AddUser()
-    }
 }
