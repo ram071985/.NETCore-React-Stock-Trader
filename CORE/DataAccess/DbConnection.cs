@@ -31,8 +31,6 @@ namespace Core.DataAccess
             conn.Open();
             return conn;
         }
-    }
-
-        
+    }       
 }
 

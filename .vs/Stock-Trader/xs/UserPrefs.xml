@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/UserModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/DataAccess/UserDataAccess.cs">
     <Files>
       <File FileName="API/Program.cs" Line="4" Column="30" />
       <File FileName="API/Startup.cs" />
@@ -8,8 +8,9 @@
       <File FileName="CORE/DataAccess/DbConnection.cs" />
       <File FileName="API/appsettings.Development.json" />
       <File FileName="API/Controllers/RegisterController.cs" Line="16" Column="27" />
-      <File FileName="CORE/Entities/Users.cs" Line="1" Column="1" />
-      <File FileName="API/UserModel.cs" Line="1" Column="1" />
+      <File FileName="CORE/Entities/Users.cs" Line="12" Column="2" />
+      <File FileName="API/UserModel.cs" Line="2" Column="14" />
+      <File FileName="CORE/DataAccess/UserDataAccess.cs" Line="6" Column="7" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,10 +23,11 @@
               </Node>
               <Node name="Controllers" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
-              <Node name="UserModel.cs" selected="True" />
             </Node>
             <Node name="CORE" expanded="True">
-              <Node name="DataAccess" expanded="True" />
+              <Node name="DataAccess" expanded="True">
+                <Node name="UserDataAccess.cs" selected="True" />
+              </Node>
               <Node name="Entities" expanded="True" />
             </Node>
           </Node>
