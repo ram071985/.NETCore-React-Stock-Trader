@@ -1,4 +1,5 @@
 using System.Reflection;
+using API;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using NHibernate.Cfg;
@@ -12,7 +13,7 @@ namespace API.Controllers
     public class RegisterContoller : ControllerBase
     {
         [HttpPost]
-        public void PostNewUser([FromBody] UserModel user)
+        public void PostNewUser([FromBody] User user)
         {
             var config = new Configuration();
 
@@ -28,7 +29,13 @@ namespace API.Controllers
 
             using(var session = sessionFactory.OpenSession())
             {
-                var userModel = new UserModel();
+                var userModel = new User
+                {
+
+                }
+
+
+
 
                 session.Save(userModel);
             }
