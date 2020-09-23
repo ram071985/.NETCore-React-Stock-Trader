@@ -1,7 +1,7 @@
 ﻿using System;
 namespace CORE.Entities
 {
-    public class Users
+    public class User
     {
         public int Id { get; set; }
         public string Username { get; set; }

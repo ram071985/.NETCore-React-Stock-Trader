@@ -2,7 +2,7 @@
 <hibernate-mapping xmlns = "urn:nhibernate-mapping-2.2"
     assembly = "API" namespace = "API">
     
-    <class name="API.User" table="users">
+    <class name="UserModel" table="users">
         <id name="ID" generator="increment">    
             <column name="id"></column>
         </id>

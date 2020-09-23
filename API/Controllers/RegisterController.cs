@@ -1,5 +1,6 @@
 using System.Reflection;
-using API;
+using System;
+using CORE.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using NHibernate.Cfg;
@@ -10,7 +11,7 @@ namespace API.Controllers
     [ApiController]
     [Route("api/register")]
 
-    public class RegisterContoller : ControllerBase
+    public class RegisterController : ControllerBase
     {
         [HttpPost]
         public void PostNewUser([FromBody] User user)
@@ -29,15 +30,15 @@ namespace API.Controllers
 
             using(var session = sessionFactory.OpenSession())
             {
-                var userModel = new User
+                var userModel = new UserModel();
+
+                var userData = new User
                 {
+                    Username = userModel.Username,
+                    Password = userModel.Password
+                };
 
-                }
-
-
-
-
-                session.Save(userModel);
+                session.Save(userData);
             }
 
             

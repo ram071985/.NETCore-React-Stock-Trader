@@ -4,11 +4,12 @@
       <File FileName="API/Startup.cs" Line="1" Column="1" />
       <File FileName="API/client/src/index.js" />
       <File FileName="API/client/public/index.html" />
-      <File FileName="CORE/Entities/Users.cs" />
+      <File FileName="CORE/Entities/Users.cs" Line="1" Column="1" />
       <File FileName="CORE/DataAccess/UserDataAccess.cs" />
       <File FileName="API/client/src/LogIn.js" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="21" Column="14" />
+      <File FileName="API/Controllers/RegisterController.cs" Line="33" Column="29" />
       <File FileName="API/User.hbm.xml" />
+      <File FileName="API/User.cs" Line="4" Column="22" />
       <File FileName="CORE/DataAccess/DbConnection.cs" Line="33" Column="10" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
     </Files>
