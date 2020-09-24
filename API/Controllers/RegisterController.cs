@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 using CORE.Services;
+using API;
 
 namespace API.Controllers
 {
@@ -32,7 +33,7 @@ namespace API.Controllers
             {
                 Id = session.Id,
                 UserId = sessionModel.UserId
-            }
+            };
         }
 
 

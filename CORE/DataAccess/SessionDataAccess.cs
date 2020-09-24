@@ -6,14 +6,23 @@ using NHibernate.Dialect;
 
 namespace CORE.DataAccess
 {
-    public interface IUserDataAccess
-    {
-        public User AddUser(int id, string username, string password);
-    }
 
-    public class UserDataAccess : IUserDataAccess
+    public interface ISessionDataAccess
     {
-        public User AddUser(int id, string username, string password)
+        public Session CreateSession(int id, int userId, DateTime lastActiveAt);
+    }
+    public class SessionDataAccess : ISessionDataAccess
+    {
+        private IUserDataAccess _userDataAccess;
+
+
+
+        public SessionDataAccess(IUserDataAccess userDataAccess)
+        {
+            _userDataAccess = userDataAccess;
+        }
+
+        public Session CreateSession(int id, int userId, DateTime lastActiveAt)
         {
             var config = new Configuration();
 
@@ -31,23 +40,22 @@ namespace CORE.DataAccess
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var userObject = new User();
-                    var userData = new User
+                    var sessionEntity = new Session();
+                    var sessionData = new Session
                     {
-                        Id = userObject.Id,
-                        Username = userObject.Username,
-                        Password = userObject.Password
+                        Id = sessionEntity.Id
 
                     };
 
-                    session.Save(userData);
+                    session.Save(sessionData);
                     transaction.Commit();
 
-                    return userData;
+                    return sessionData;
                 }
-                
+
             }
         }
     }
-
 }
+
+
