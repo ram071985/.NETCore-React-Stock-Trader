@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
+using CORE.Services;
 
 namespace API.Controllers
 {
@@ -13,37 +14,27 @@ namespace API.Controllers
 
     public class RegisterController : ControllerBase
     {
-        [HttpPost]
-        public void PostNewUser([FromBody] User user)
+
+        private ICreateNewUserService _createNewUserService;
+
+        public RegisterController(IConfiguration configuration, ICreateNewUserService createNewUserService) 
         {
-
-            var config = new Configuration();
-
-            config.DataBaseIntegration(x =>
-            {
-                x.ConnectionString = "Host=otto.db.elephantsql.com;Database=aemtrcbd;Username=aemtrcbd;Password=yzAmcOsG2OPU0E5e2LNS9JoG_KzZcgWw;";
-                x.Dialect<PostgreSQLDialect>();
-            });
-
-            config.AddAssembly(Assembly.GetExecutingAssembly());
-
-            var sessionFactory = config.BuildSessionFactory();
-
-             using (var session = sessionFactory.OpenSession())
-            {
-                using (var transaction = session.BeginTransaction())
-                {
-                    var userData = new User
-                    {
-                        Username = user.Username,
-                        Password = user.Password
-
-                    };
-
-                    session.Save(userData);
-                    transaction.Commit();
-                }              
-             }                       
+            _createNewUserService = createNewUserService;
         }
+
+        [HttpPost]
+        public SessionModel PostNewUser([FromBody] UserModel user)
+        {
+            var sessionModel = new SessionModel();
+            var session = _createNewUserService.PostNewUser(user.Id, sessionModel.UserId, user.Username, user.Password, user.CreatedDate, user.LastActiveAt);
+
+            return new SessionModel
+            {
+                Id = session.Id,
+                UserId = sessionModel.UserId
+            }
+        }
+
+
     }
 }
