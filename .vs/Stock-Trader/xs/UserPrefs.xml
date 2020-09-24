@@ -1,16 +1,17 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/RegisterController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Entities/Session.cs">
     <Files>
       <File FileName="API/Startup.cs" Line="1" Column="1" />
       <File FileName="API/client/src/index.js" />
       <File FileName="API/client/public/index.html" />
-      <File FileName="CORE/Entities/Users.cs" Line="1" Column="1" />
       <File FileName="CORE/DataAccess/UserDataAccess.cs" />
       <File FileName="API/client/src/LogIn.js" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="33" Column="29" />
-      <File FileName="API/User.hbm.xml" />
-      <File FileName="API/User.cs" Line="4" Column="22" />
-      <File FileName="CORE/DataAccess/DbConnection.cs" Line="33" Column="10" NotebookId="1" />
+      <File FileName="API/Controllers/RegisterController.cs" Line="40" Column="1" />
+      <File FileName="API/User.hbm.xml" Line="9" Column="35" />
+      <File FileName="CORE/Entities/User.cs" Line="10" Column="24" />
+      <File FileName="API/UserModel.cs" Line="6" Column="16" />
+      <File FileName="CORE/Entities/Session.cs" Line="6" Column="9" />
+      <File FileName="CORE/DataAccess/DbConnection.cs" Line="16" Column="1" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
     </Files>
     <Pads>
@@ -18,12 +19,13 @@
         <State name="__root__">
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="RegisterController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="CORE" expanded="True">
-              <Node name="Entities" expanded="True" />
+              <Node name="DataAccess" expanded="True" />
+              <Node name="Entities" expanded="True">
+                <Node name="Session.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -34,7 +36,9 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/RegisterController.cs" relfile="API/Controllers/RegisterController.cs" line="35" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

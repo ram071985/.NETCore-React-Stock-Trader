@@ -16,6 +16,7 @@ namespace API.Controllers
         [HttpPost]
         public void PostNewUser([FromBody] User user)
         {
+
             var config = new Configuration();
 
             config.DataBaseIntegration(x =>
@@ -28,22 +29,21 @@ namespace API.Controllers
 
             var sessionFactory = config.BuildSessionFactory();
 
-            using(var session = sessionFactory.OpenSession())
+             using (var session = sessionFactory.OpenSession())
             {
-                var userModel = new UserModel();
-
-                var userData = new User
+                using (var transaction = session.BeginTransaction())
                 {
-                    Username = userModel.Username,
-                    Password = userModel.Password
-                };
+                    var userData = new User
+                    {
+                        Username = user.Username,
+                        Password = user.Password
 
-                session.Save(userData);
-            }
+                    };
 
-            
-
-            
+                    session.Save(userData);
+                    transaction.Commit();
+                }              
+             }                       
         }
     }
 }

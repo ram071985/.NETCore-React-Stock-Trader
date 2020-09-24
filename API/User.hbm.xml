@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <hibernate-mapping xmlns = "urn:nhibernate-mapping-2.2"
-    assembly = "API" namespace = "API">
+    assembly = "CORE" namespace = "CORE.Entities">
     
-    <class name="UserModel" table="users">
-        <id name="ID" generator="increment">    
+    <class name="User" table="users">
+        <id name="Id" generator="increment">    
             <column name="id"></column>
         </id>
         <property name="Username">
