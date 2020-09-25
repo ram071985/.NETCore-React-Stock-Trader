@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using CORE.Entities;
+using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 
@@ -9,13 +10,11 @@ namespace CORE.DataAccess
 
     public interface ISessionDataAccess
     {
-        public Session CreateSession(int id, int userId, DateTime lastActiveAt);
+        Session CreateSession(int id, int userId, DateTime lastActiveAt);
     }
     public class SessionDataAccess : ISessionDataAccess
     {
         private IUserDataAccess _userDataAccess;
-
-
 
         public SessionDataAccess(IUserDataAccess userDataAccess)
         {
@@ -43,12 +42,14 @@ namespace CORE.DataAccess
                     var sessionEntity = new Session();
                     var sessionData = new Session
                     {
-                        Id = sessionEntity.Id
+                        Id = id
 
                     };
 
                     session.Save(sessionData);
                     transaction.Commit();
+
+                    var sessionId = session.Get<Session>(sessionEntity.UserId);
 
                     return sessionData;
                 }

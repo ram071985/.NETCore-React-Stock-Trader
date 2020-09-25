@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CORE.DataAccess;
+using CORE.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,11 +32,15 @@ namespace API
             services.AddSpaStaticFiles(config =>
             {
                 config.RootPath = "client/build";
-            }
-                );
+            });
+
+            services.AddScoped<ICreateNewUserService, CreateNewUserService>();
+            services.AddScoped<IUserDataAccess, UserDataAccess>();
+            services.AddScoped<ISessionDataAccess, SessionDataAccess>();
+
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

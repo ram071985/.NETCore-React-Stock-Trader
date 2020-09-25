@@ -8,7 +8,7 @@ namespace CORE.DataAccess
 {
     public interface IUserDataAccess
     {
-        public User AddUser(int id, string username, string password);
+        User AddUser(int id, string username, string password);
     }
 
     public class UserDataAccess : IUserDataAccess

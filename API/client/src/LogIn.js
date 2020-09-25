@@ -27,7 +27,7 @@ class LogIn extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    //this.logInUser();
+    this.logInUser();
   };
 
   logInUser = () => {
