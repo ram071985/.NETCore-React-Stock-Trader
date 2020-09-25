@@ -36,10 +36,13 @@ class LogIn extends Component {
         username: this.state.existingUsername,
         password: this.state.existingPassword,
       })
-        .then((res) => {
-            localStorage.setItem("session_id", res.data.id);
-            localStorage.setItem("user_id", res.data.userId);
-        })
+      .then((res) => {
+        localStorage.setItem("session_id", res.data.id);
+        localStorage.setItem("user_id", res.data.userId);
+        this.setState({
+          toChatRoom: true,
+        });
+      })
       .catch((err) => {
         if (err.response.data.title === "empty username") {
           this.setState({
@@ -69,7 +72,13 @@ class LogIn extends Component {
     if (this.state.logInErrorMessage === "") {
       return true;
     }
-  }
+  };
+
+  redirectUser = () => {
+    if (this.state.toChatRoom === true) {
+      return <Redirect to="/" />;
+    }
+  };
 
   render() {
     console.log(this.state.existingPassword);

@@ -12,5 +12,5 @@
            <property name="CreatedDate">
             <column name="created_date"></column>
         </property>
-    </class>    
+    </class>   
 </hibernate-mapping>
