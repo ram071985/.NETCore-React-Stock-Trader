@@ -11,9 +11,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="User.hbm.xml" />
+    <None Remove="session.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="User.hbm.xml" />
+    <EmbeddedResource Include="session.hbm.xml" />
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>

@@ -2,21 +2,15 @@
 <hibernate-mapping xmlns = "urn:nhibernate-mapping-2.2"
     assembly = "CORE" namespace = "CORE.Entities">
     
-    <class name="User" table="users">
+    <class name="Session" table="sessions">
         <id name="Id" generator="increment">    
             <column name="id"></column>
         </id>
-        <property name="Username">
-            <column name="username"></column>
-        </property>
-        <property name="Password">
-            <column name="password"></column>
-        </property>
+        <property name="UserId">
+            <column name="user_id"></column>
+        </property>   
            <property name="CreatedDate">
             <column name="created_date"></column>
-        </property>
-           <property name="LastActiveAt">
-            <column name="last_active_at"></column>
         </property>
     </class>    
 </hibernate-mapping>
