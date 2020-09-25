@@ -1,18 +1,19 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/session.hbm.xml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/SignUp.js">
     <Files>
       <File FileName="API/Startup.cs" Line="37" Column="79" />
       <File FileName="API/client/src/index.js" />
       <File FileName="API/client/public/index.html" />
-      <File FileName="API/client/src/LogIn.js" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="24" Column="1" />
+      <File FileName="API/client/src/LogIn.js" Line="30" Column="22" />
+      <File FileName="API/Controllers/RegisterController.cs" Line="52" Column="1" />
       <File FileName="API/User.hbm.xml" Line="20" Column="20" />
-      <File FileName="CORE/Entities/User.cs" />
+      <File FileName="CORE/Entities/User.cs" Line="11" Column="6" />
       <File FileName="API/UserModel.cs" />
       <File FileName="API/SessionModel.cs" />
-      <File FileName="API/session.hbm.xml" Line="5" Column="20" />
+      <File FileName="API/session.hbm.xml" Line="16" Column="21" />
+      <File FileName="API/client/src/SignUp.js" Line="1" Column="1" />
       <File FileName="CORE/DataAccess/UserDataAccess.cs" Line="43" Column="1" NotebookId="1" />
-      <File FileName="CORE/DataAccess/SessionDataAccess.cs" NotebookId="1" />
+      <File FileName="CORE/DataAccess/SessionDataAccess.cs" Line="45" Column="32" NotebookId="1" />
       <File FileName="CORE/DataAccess/DbConnection.cs" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
     </Files>
@@ -22,10 +23,11 @@
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
               <Node name="client" expanded="True">
-                <Node name="src" expanded="True" />
+                <Node name="src" expanded="True">
+                  <Node name="SignUp.js" selected="True" />
+                </Node>
               </Node>
               <Node name="Controllers" expanded="True" />
-              <Node name="session.hbm.xml" selected="True" />
             </Node>
             <Node name="CORE" expanded="True">
               <Node name="DataAccess" expanded="True" />
@@ -41,9 +43,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/DataAccess/UserDataAccess.cs" relfile="CORE/DataAccess/UserDataAccess.cs" line="34" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

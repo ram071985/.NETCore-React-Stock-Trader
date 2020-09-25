@@ -1,11 +1,65 @@
 import React, { Component } from "react";
 import { BarChart } from "react-feather";
+import axios from "axios";
 
 class SignUp extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      newUsername: "",
+      newPassword: "",
+      existingUsername: "",
+      existingPassword: "",
+      errorMessage: "",
+      logInErrorMessage: "",
+      toChatRoom: false,
+    };
   }
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+      errorMessage: "",
+      logInErrorMessage: "",
+    });
+  };
+
+  handleNewUserSubmit = (e) => {
+    e.preventDefault();
+    this.postNewUser();
+  };
+
+
+  postNewUser = () => {
+    axios
+      .post("/api/register", {
+        username: this.state.newUsername,
+        password: this.state.newPassword,
+      })
+      .then((res) => {
+        localStorage.setItem("session_id", res.data.id);
+        localStorage.setItem("user_id", res.data.userId);
+      })
+      .catch((err) => {
+        if (err.response.data.title === "empty username") {
+          this.setState({
+            errorMessage: "Please choose a username.",
+          });
+        }
+        if (err.response.data.title === "empty password") {
+          this.setState({
+            errorMessage: "Please choose a password.",
+          });
+        }
+        if (err.response.data.title === "redundant username") {
+          this.setState({
+            errorMessage:
+              "The username you chose is already taken.  Please try another entry.",
+          });
+        }
+      });
+  };
 
   render() {
     return (
@@ -16,16 +70,17 @@ class SignUp extends Component {
         </header>
         <div className="row justify-content-center">
           <div className="col-5 input-col">
-            <form>
+            <form onSubmit={this.handleNewUserSubmit}>
               <div class="form-group">
                 <label className="label-text" for="">
                   Choose Username
                 </label>
                 <input
-                  type="email"
+                  type="input"
                   className="form-control username-input"
-                  id="exampleFormControlInput1"
                   placeholder=""
+                  name="newUsername"
+                  onChange={this.handleChange}
                 />
               </div>
               <div class="form-group">
@@ -33,16 +88,17 @@ class SignUp extends Component {
                   Choose Password
                 </label>
                 <input
-                  type="email"
+                  type="password"
                   className="form-control username-input"
-                  id="exampleFormControlInput1"
                   placeholder=""
+                  name="newPassword"
+                  onChange={this.handleChange}
                 />
               </div>
-            </form>
-            <button type="button" className="btn btn-primary btn-lg mt-4 btn-block log-in-button">
+              <button type="submit" className="btn btn-primary btn-lg mt-4 btn-block log-in-button">
               Start trading now!
             </button>
+            </form>
           </div>
         </div>
       </div>
