@@ -14,17 +14,6 @@ namespace CORE.Services
 
     public class CreateNewUserService : ICreateNewUserService
     {
-        private ISessionDataAccess _sessionDataAccess;
-        private IUserDataAccess _userDataAccess;
-
-
-        public CreateNewUserService(ISessionDataAccess sessionDataAccess, IUserDataAccess userDataAccess)
-        {
-            _sessionDataAccess = sessionDataAccess;
-            _userDataAccess = userDataAccess;
-        }
-
- 
 
         public User CreateNewUser(string username, string password)
         {
@@ -44,7 +33,7 @@ namespace CORE.Services
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var userData = new User
+                    var user = new User
                     {
                         Username = username,
                         Password = password,
@@ -52,10 +41,10 @@ namespace CORE.Services
                         LastActiveAt = DateTime.Now
                     };
 
-                    session.Save(userData);
+                    session.Save(user);
                     transaction.Commit();
 
-                    return userData;
+                    return user;
                 }
 
             }

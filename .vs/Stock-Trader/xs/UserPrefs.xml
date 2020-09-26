@@ -1,25 +1,26 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/CreateSessionService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/.gitignore">
     <Files>
-      <File FileName="API/Controllers/RegisterController.cs" Line="20" Column="1" IsPinned="True" />
-      <File FileName="API/Startup.cs" Line="37" Column="79" />
+      <File FileName="API/Startup.cs" Line="38" Column="79" />
       <File FileName="API/client/src/index.js" />
       <File FileName="API/client/public/index.html" />
-      <File FileName="API/client/src/LogIn.js" Line="30" Column="22" />
-      <File FileName="API/User.hbm.xml" Line="10" Column="46" />
+      <File FileName="API/client/src/LogIn.js" />
+      <File FileName="API/User.hbm.xml" />
       <File FileName="CORE/Entities/User.cs" Line="11" Column="6" />
       <File FileName="API/UserModel.cs" Line="6" Column="1" />
       <File FileName="API/SessionModel.cs" Line="4" Column="30" />
       <File FileName="API/session.hbm.xml" Line="12" Column="40" />
-      <File FileName="API/client/src/SignUp.js" Line="73" Column="27" />
-      <File FileName="API/Controllers/AuthorzationController.cs" Line="63" Column="22" />
-      <File FileName="CORE/Services/CreateSessionService.cs" Line="11" Column="1" />
+      <File FileName="API/client/src/SignUp.js" />
+      <File FileName="API/Controllers/AuthorzationController.cs" />
+      <File FileName="API/Controllers/RegisterController.cs" Line="59" Column="1" />
+      <File FileName="API/client/.gitignore" Line="24" Column="16" />
+      <File FileName="CORE/Services/CreateSessionService.cs" Line="38" Column="42" NotebookId="1" />
+      <File FileName="CORE/services/CreateNewUserService.cs" Line="47" Column="33" NotebookId="1" />
       <File FileName="CORE/DataAccess/UserDataAccess.cs" Line="18" Column="11" NotebookId="1" />
-      <File FileName="CORE/DataAccess/SessionDataAccess.cs" Line="45" Column="32" NotebookId="1" />
+      <File FileName="CORE/DataAccess/SessionDataAccess.cs" NotebookId="1" />
       <File FileName="CORE/DataAccess/DbConnection.cs" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
-      <File FileName="CORE/services/AuthorizeUserService.cs" Line="27" Column="11" NotebookId="1" />
-      <File FileName="CORE/services/CreateNewUserService.cs" Line="12" Column="62" NotebookId="1" />
+      <File FileName="CORE/services/AuthorizeUserService.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,15 +29,14 @@
             <Node name="API" expanded="True">
               <Node name="client" expanded="True">
                 <Node name="src" expanded="True" />
+                <Node name=".gitignore" selected="True" />
               </Node>
               <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="CORE" expanded="True">
               <Node name="DataAccess" expanded="True" />
               <Node name="Entities" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="CreateSessionService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -49,6 +49,8 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/AuthorzationController.cs" relfile="API/Controllers/AuthorzationController.cs" line="47" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/RegisterController.cs" relfile="API/Controllers/RegisterController.cs" line="55" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/RegisterController.cs" relfile="API/Controllers/RegisterController.cs" line="49" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

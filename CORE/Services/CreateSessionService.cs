@@ -9,24 +9,12 @@ namespace CORE.Services
 {
     public interface ICreateSessionService
     {
-        User CreateNewSession(string username, string password);
+        Session CreateNewSession(int userId);
     }
 
-    public class CreateSessionService : ICreateNewUserService
+    public class CreateSessionService : ICreateSessionService
     {
-        private ISessionDataAccess _sessionDataAccess;
-        private IUserDataAccess _userDataAccess;
-
-
-        public CreateSessionService(ISessionDataAccess sessionDataAccess, IUserDataAccess userDataAccess)
-        {
-            _sessionDataAccess = sessionDataAccess;
-            _userDataAccess = userDataAccess;
-        }
-
-
-
-        public User CreateNewUser(string username, string password)
+        public Session CreateNewSession(int userId)
         {
             var config = new Configuration();
 
@@ -44,18 +32,18 @@ namespace CORE.Services
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var userData = new User
+                    var user = new User();
+                    var sessionData = new Session
                     {
-                        Username = username,
-                        Password = password,
+                        UserId = user.Id,
                         CreatedDate = DateTime.Now,
-                        LastActiveAt = DateTime.Now
+                       
                     };
 
-                    session.Save(userData);
+                    session.Save(sessionData);
                     transaction.Commit();
 
-                    return userData;
+                    return sessionData;
                 }
 
             }

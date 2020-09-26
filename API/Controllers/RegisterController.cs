@@ -51,7 +51,11 @@ namespace API.Controllers
                         userInputModel.Password
                         );
 
-                    var session = _createSessionService.CreateNewSession();
+
+                    var sessionObject = new SessionModel();
+                    var session = _createSessionService.CreateNewSession(
+                        sessionObject.UserId
+                        );
 
 
                     return new SessionModel

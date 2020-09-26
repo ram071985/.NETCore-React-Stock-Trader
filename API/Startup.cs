@@ -35,8 +35,7 @@ namespace API
             });
 
             services.AddScoped<ICreateNewUserService, CreateNewUserService>();
-            services.AddScoped<IUserDataAccess, UserDataAccess>();
-            services.AddScoped<ISessionDataAccess, SessionDataAccess>();
+            services.AddScoped<ICreateSessionService, CreateSessionService>();
 
         }
 
