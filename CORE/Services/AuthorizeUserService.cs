@@ -36,7 +36,7 @@ namespace CORE.Services
                         };
 
                         var query = session.CreateCriteria<User>()
-                           .Add(Expression.Like("Username", username))
+                           .Add(Restrictions.Like("Username", username))
                            .List<User>();
 
                         if (username == "")

@@ -13,7 +13,7 @@ namespace CORE.Services
 
     public class CreateSessionService : ICreateSessionService
     {
-        private IDbSessionService _dbSessionService;
+        private readonly IDbSessionService _dbSessionService;
 
         public CreateSessionService(IDbSessionService dbSessionService)
         {

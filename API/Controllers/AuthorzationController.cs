@@ -1,12 +1,6 @@
-﻿using System.Reflection;
-using System;
-using CORE.Entities;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using NHibernate.Cfg;
-using NHibernate.Dialect;
-using NHibernate.Criterion;
-using NHibernate;
+﻿using Microsoft.AspNetCore.Mvc;
+
+using CORE.Services;
 
 namespace API.Controllers
 {
@@ -15,54 +9,41 @@ namespace API.Controllers
 
     public class AuthorizationController : ControllerBase
     {
+        private IAuthorizeUserService _authorizeUserService;
+        private ICreateSessionService _createSessionService;
+
+        public AuthorizationController(IAuthorizeUserService authorizeUserService, ICreateSessionService createSessionService)
+        {
+            _authorizeUserService = authorizeUserService;
+            _createSessionService = createSessionService;
+        }
+
         [HttpPost]
-        public UserModel AuthorizeUser([FromBody] User user)
+        public SessionModel AuthorizeUser([FromBody] UserAuthInputModel userAuthInputModel)
         {
 
-            var config = new Configuration();
+            var user = _authorizeUserService.AuthorizeUser(
+                userAuthInputModel.Username,
+                userAuthInputModel.Password
+                );
 
-            config.DataBaseIntegration(x =>
+            var session = _createSessionService.CreateNewSession(
+                user.Id
+                );
+
+            return new SessionModel
             {
-                x.ConnectionString = "Host=otto.db.elephantsql.com;Database=aemtrcbd;Username=aemtrcbd;Password=yzAmcOsG2OPU0E5e2LNS9JoG_KzZcgWw;";
-                x.Dialect<PostgreSQLDialect>();
-            });
-
-            config.AddAssembly(Assembly.GetExecutingAssembly());
-
-            var sessionFactory = config.BuildSessionFactory();
-
-            using (var session = sessionFactory.OpenSession())
-            {
-                using (var transaction = session.BeginTransaction())
-                {
-
-
-
-                    var userData = new User
-                    {
-                        Username = user.Username,
-                        Password = user.Password
-                    };
-
-                    var query = session.CreateCriteria<User>()
-                           .Add(Expression.Like("Username", user.Username))
-                           .List<User>();
-
-
-
-                    transaction.Commit();
-
-                    return new UserModel
-                    {
-                       Username = query[0].Username,
-                       Password = query[0].Password
-                    };
-
-
-
-                }    
-
-            }
+                Id = session.Id,
+                UserId = session.UserId,
+                CreatedDate = session.CreatedDate
+            };            
         }
+    }
+    public class UserAuthInputModel
+    {
+        public string Username { get; set; }
+
+        public string Password { get; set; }
+
     }
 }
