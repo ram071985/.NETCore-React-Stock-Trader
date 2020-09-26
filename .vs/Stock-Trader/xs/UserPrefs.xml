@@ -2,21 +2,19 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/CreateSessionService.cs">
     <Files>
       <File FileName="API/Controllers/RegisterController.cs" Line="40" Column="10" IsPinned="True" />
-      <File FileName="API/Startup.cs" Line="38" Column="79" />
+      <File FileName="API/Startup.cs" />
       <File FileName="API/client/src/index.js" />
       <File FileName="API/client/public/index.html" />
       <File FileName="API/client/src/LogIn.js" />
-      <File FileName="API/User.hbm.xml" Line="3" Column="21" />
-      <File FileName="CORE/Entities/User.cs" Line="11" Column="6" />
-      <File FileName="API/UserModel.cs" Line="6" Column="1" />
-      <File FileName="API/SessionModel.cs" Line="4" Column="30" />
-      <File FileName="API/session.hbm.xml" Line="3" Column="21" />
+      <File FileName="CORE/Entities/User.cs" />
+      <File FileName="API/UserModel.cs" />
+      <File FileName="API/SessionModel.cs" />
       <File FileName="API/client/src/SignUp.js" />
       <File FileName="API/Controllers/AuthorzationController.cs" />
-      <File FileName="API/client/.gitignore" Line="30" Column="10" />
-      <File FileName="CORE/Services/DbSessionService.cs" Line="17" Column="35" />
+      <File FileName="API/client/.gitignore" />
+      <File FileName="CORE/Services/DbSessionService.cs" />
       <File FileName="CORE/Services/CreateSessionService.cs" Line="36" Column="1" NotebookId="1" />
-      <File FileName="CORE/services/CreateNewUserService.cs" Line="28" Column="1" NotebookId="1" />
+      <File FileName="CORE/services/CreateNewUserService.cs" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
       <File FileName="CORE/services/AuthorizeUserService.cs" NotebookId="1" />
     </Files>

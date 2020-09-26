@@ -22,19 +22,8 @@ namespace CORE.Services
 
         public Session CreateNewSession(int userId)
         {
-            var config = new Configuration();
 
-            config.DataBaseIntegration(x =>
-            {
-                x.ConnectionString = "Host=otto.db.elephantsql.com;Database=aemtrcbd;Username=aemtrcbd;Password=yzAmcOsG2OPU0E5e2LNS9JoG_KzZcgWw;";
-                x.Dialect<PostgreSQLDialect>();
-            });
-
-            config.AddAssembly(Assembly.GetExecutingAssembly());
-
-            var sessionFactory = config.BuildSessionFactory();
-
-            using (var session = sessionFactory.OpenSession())
+            using (var session = _dbSessionService.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {                

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
@@ -9,9 +8,9 @@ namespace CORE.Services
 
     public interface IDbSessionService
     {
-        ICreateSessionService OpenSession();
+        ISession OpenSession();
     }
-    public class DbSessionService
+    public class DbSessionService : IDbSessionService
     {
 
         private readonly ISessionFactory _sessionFactory;
@@ -28,7 +27,12 @@ namespace CORE.Services
 
             config.AddAssembly(Assembly.GetExecutingAssembly());
 
-            _sessionFactory = config.BuildSessionFactory();
+            _sessionFactory = config.BuildSessionFactory();           
+        }
+
+        public ISession OpenSession()
+        {
+            return _sessionFactory.OpenSession();
         }
     }
 }
