@@ -52,9 +52,9 @@ namespace API.Controllers
                         );
 
 
-                    var sessionObject = new SessionModel();
+                  
                     var session = _createSessionService.CreateNewSession(
-                        sessionObject.UserId
+                        user.Id
                         );
 
 

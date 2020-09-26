@@ -31,13 +31,11 @@ namespace CORE.Services
             using (var session = sessionFactory.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
-                {
-                    var user = new User();
+                {                
                     var sessionData = new Session
                     {
-                        UserId = user.Id,
-                        CreatedDate = DateTime.Now,
-                       
+                        UserId = userId,
+                        CreatedDate = DateTime.Now,                      
                     };
 
                     session.Save(sessionData);
