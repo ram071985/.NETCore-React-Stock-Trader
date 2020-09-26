@@ -1,8 +1,7 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/CreateSessionService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/AuthorizeUserService.cs">
     <Files>
-      <File FileName="API/Controllers/RegisterController.cs" Line="40" Column="10" IsPinned="True" />
-      <File FileName="API/Startup.cs" />
+      <File FileName="API/Startup.cs" Line="35" Column="1" />
       <File FileName="API/client/src/index.js" />
       <File FileName="API/client/public/index.html" />
       <File FileName="API/client/src/LogIn.js" />
@@ -10,13 +9,14 @@
       <File FileName="API/UserModel.cs" />
       <File FileName="API/SessionModel.cs" />
       <File FileName="API/client/src/SignUp.js" />
-      <File FileName="API/Controllers/AuthorzationController.cs" />
+      <File FileName="API/Controllers/RegisterController.cs" Line="30" Column="13" />
       <File FileName="API/client/.gitignore" />
-      <File FileName="CORE/Services/DbSessionService.cs" />
-      <File FileName="CORE/Services/CreateSessionService.cs" Line="36" Column="1" NotebookId="1" />
-      <File FileName="CORE/services/CreateNewUserService.cs" NotebookId="1" />
+      <File FileName="CORE/Services/DbSessionService.cs" Line="20" Column="46" />
+      <File FileName="CORE/Services/CreateSessionService.cs" Line="27" Column="14" />
+      <File FileName="CORE/services/AuthorizeUserService.cs" Line="25" Column="1" />
+      <File FileName="API/Controllers/AuthorzationController.cs" Line="25" Column="1" NotebookId="1" />
+      <File FileName="CORE/services/CreateNewUserService.cs" Line="25" Column="18" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
-      <File FileName="CORE/services/AuthorizeUserService.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -32,7 +32,7 @@
               <Node name="Entities" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True">
-                <Node name="CreateSessionService.cs" selected="True" />
+                <Node name="AuthorizeUserService.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -44,9 +44,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/AuthorzationController.cs" relfile="API/Controllers/AuthorzationController.cs" line="47" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

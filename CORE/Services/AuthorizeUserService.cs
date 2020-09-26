@@ -1,47 +1,59 @@
 ﻿using System;
-using CORE.DataAccess;
+using System.Transactions;
 using CORE.Entities;
+using NHibernate.Criterion;
 
 namespace CORE.Services
 {
     public interface IAuthorizeUserService
     {
-        Session GetSession(int id, int userId, string username, string password, DateTime createdDate, DateTime lastActiveAt);
+        User AuthorizeUser(string username, string password);
     }
 
     public class AuthorizeUserService : IAuthorizeUserService
     {
-        private ISessionDataAccess _sessionDataAccess;
-        private IUserDataAccess _userDataAccess;
+        private readonly IDbSessionService _dbSessionService;
 
 
-        public AuthorizeUserService(ISessionDataAccess sessionDataAccess, IUserDataAccess userDataAccess)
+
+        public AuthorizeUserService(IDbSessionService dbSessionService)
         {
-            _sessionDataAccess = sessionDataAccess;
-            _userDataAccess = userDataAccess;
+            _dbSessionService = dbSessionService;
         }
 
-        public Session GetSession(int id, int userId, string username, string password, DateTime createdDate, DateTime lastActiveAt)
-        {
-
-            if (username == "")
+            public User AuthorizeUser(string username, string password)
             {
-                throw new Exception("empty username");
-            }
 
-            if (password == "")
-            {
-                throw new Exception("empty password");
-            }
+                using (var session = _dbSessionService.OpenSession())
+                {
 
+                    using (var transaction = session.BeginTransaction())
+                    {
+                        var user = new User
+                        {
+                            Username = username,
+                            Password = password
+                        };
 
+                        var query = session.CreateCriteria<User>()
+                           .Add(Expression.Like("Username", username))
+                           .List<User>();
 
-            _userDataAccess.AddUser(id, username, password);
+                        if (username == "")
+                        {
+                            throw new Exception("empty username");
+                        }
 
-            return _sessionDataAccess.CreateSession(id, userId, lastActiveAt);
+                        if (password == "")
+                        {
+                            throw new Exception("empty password");
+                        }
 
+                        transaction.Commit();
+                        return user;
+                    }
+                }
+            }           
         }
     }
-
-
 }

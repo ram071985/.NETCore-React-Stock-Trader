@@ -19,7 +19,6 @@ namespace CORE.Services
 
         public User CreateNewUser(string username, string password)
         {
-
             using (var session = _dbSessionService.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
@@ -37,10 +36,7 @@ namespace CORE.Services
 
                     return user;
                 }
-
             }
         }
     }
-
-
 }
