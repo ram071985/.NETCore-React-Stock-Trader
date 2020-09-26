@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
+using CORE.Services;
 
 namespace API.Controllers
 {
@@ -13,8 +14,19 @@ namespace API.Controllers
 
     public class RegisterController : ControllerBase
     {
+
+        private ICreateNewUserService _createNewUserService;
+        private ICreateSessionService _createSessionService;
+
+
+        public RegisterController(ICreateNewUserService createNewUserService, ICreateSessionService createSessionService)
+        {
+            _createNewUserService = createNewUserService;
+            _createSessionService = createSessionService;
+        }
+
         [HttpPost]
-        public SessionModel PostNewUser([FromBody] User user)
+        public SessionModel PostNewUser([FromBody] UserInputModel userInputModel)
         {
 
             var config = new Configuration();
@@ -29,37 +41,36 @@ namespace API.Controllers
 
             var sessionFactory = config.BuildSessionFactory();
 
-             using (var session = sessionFactory.OpenSession())
+             using (var dataSession = sessionFactory.OpenSession())
             {
-                using (var transaction = session.BeginTransaction())
+                using (var transaction = dataSession.BeginTransaction())
                 {
-           
-                    var userData = new User
-                    {
-                        Username = user.Username,
-                        Password = user.Password
-                    };
 
-                    session.Save(userData);
+                    var user = _createNewUserService.CreateNewUser(
+                        userInputModel.Username,
+                        userInputModel.Password
+                        );
 
-                    var sessionData = new Session
-                    {
-                        UserId = userData.Id
-                    };
-
-                    session.Save(sessionData);
-
-                    transaction.Commit();
+                    var session = _createSessionService.CreateNewSession();
 
 
                     return new SessionModel
                     {
-                        Id = sessionData.Id,
-                        UserId = sessionData.UserId
+                        Id = session.Id,
+                        UserId = session.UserId,
+                        CreatedDate = session.CreatedDate
                     };
 
                 }              
              }                       
         }
+    }
+
+    public class UserInputModel
+    {
+        public string Username { get; set; }
+
+        public string Password { get; set; }
+
     }
 }

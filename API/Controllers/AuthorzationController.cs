@@ -54,7 +54,8 @@ namespace API.Controllers
 
                     return new UserModel
                     {
-                       Username = query[0].Username
+                       Username = query[0].Username,
+                       Password = query[0].Password
                     };
 
 
