@@ -13,6 +13,13 @@ namespace CORE.Services
 
     public class CreateSessionService : ICreateSessionService
     {
+        private IDbSessionService _dbSessionService;
+
+        public CreateSessionService(IDbSessionService dbSessionService)
+        {
+            _dbSessionService = dbSessionService;
+        }
+
         public Session CreateNewSession(int userId)
         {
             var config = new Configuration();
