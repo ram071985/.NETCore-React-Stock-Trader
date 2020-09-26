@@ -1,10 +1,4 @@
-using System.Reflection;
-using System;
-using CORE.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using NHibernate.Cfg;
-using NHibernate.Dialect;
 using CORE.Services;
 
 namespace API.Controllers
@@ -27,46 +21,22 @@ namespace API.Controllers
 
         [HttpPost]
         public SessionModel PostNewUser([FromBody] UserInputModel userInputModel)
-        {
-
-            var config = new Configuration();
-
-            config.DataBaseIntegration(x =>
-            {
-                x.ConnectionString = "Host=otto.db.elephantsql.com;Database=aemtrcbd;Username=aemtrcbd;Password=yzAmcOsG2OPU0E5e2LNS9JoG_KzZcgWw;";
-                x.Dialect<PostgreSQLDialect>();
-            });
-
-            config.AddAssembly(Assembly.GetExecutingAssembly());
-
-            var sessionFactory = config.BuildSessionFactory();
-
-             using (var dataSession = sessionFactory.OpenSession())
-            {
-                using (var transaction = dataSession.BeginTransaction())
-                {
-
-                    var user = _createNewUserService.CreateNewUser(
+        {                
+            var user = _createNewUserService.CreateNewUser(
                         userInputModel.Username,
                         userInputModel.Password
                         );
-
-
                   
-                    var session = _createSessionService.CreateNewSession(
+            var session = _createSessionService.CreateNewSession(
                         user.Id
                         );
 
-
-                    return new SessionModel
-                    {
-                        Id = session.Id,
-                        UserId = session.UserId,
-                        CreatedDate = session.CreatedDate
-                    };
-
-                }              
-             }                       
+             return new SessionModel
+                {
+                    Id = session.Id,
+                    UserId = session.UserId,
+                    CreatedDate = session.CreatedDate
+                };                     
         }
     }
 

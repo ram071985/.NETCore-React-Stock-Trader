@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using CORE.DataAccess;
 using CORE.Entities;
 using NHibernate.Cfg;
 using NHibernate.Dialect;

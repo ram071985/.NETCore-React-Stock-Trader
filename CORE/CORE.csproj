@@ -12,5 +12,14 @@
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Services\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Models\User.hbm.xml" />
+    <None Remove="Models\session.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Models\User.hbm.xml" />
+    <EmbeddedResource Include="Models\Session.hbm.xml" />
   </ItemGroup>
 </Project>
