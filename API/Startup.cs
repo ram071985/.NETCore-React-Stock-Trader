@@ -30,6 +30,7 @@ namespace API
             services.AddScoped<ICreateNewUserService, CreateNewUserService>();
             services.AddScoped<ICreateSessionService, CreateSessionService>();
             services.AddScoped<IDbSessionService, DbSessionService>();
+            services.AddScoped<IAuthorizeUserService, AuthorizeUserService>();
 
         }
 

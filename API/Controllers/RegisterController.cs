@@ -8,10 +8,8 @@ namespace API.Controllers
 
     public class RegisterController : ControllerBase
     {
-
         private ICreateNewUserService _createNewUserService;
         private ICreateSessionService _createSessionService;
-
 
         public RegisterController(ICreateNewUserService createNewUserService, ICreateSessionService createSessionService)
         {

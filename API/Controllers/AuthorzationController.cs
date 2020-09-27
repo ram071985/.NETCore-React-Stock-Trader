@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
 using CORE.Services;
 
 namespace API.Controllers
@@ -39,6 +38,7 @@ namespace API.Controllers
             };            
         }
     }
+
     public class UserAuthInputModel
     {
         public string Username { get; set; }

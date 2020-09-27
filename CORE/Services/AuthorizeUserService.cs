@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Transactions;
 using CORE.Entities;
 using NHibernate.Criterion;
 
@@ -14,8 +13,6 @@ namespace CORE.Services
     {
         private readonly IDbSessionService _dbSessionService;
 
-
-
         public AuthorizeUserService(IDbSessionService dbSessionService)
         {
             _dbSessionService = dbSessionService;
@@ -29,19 +26,10 @@ namespace CORE.Services
 
                     using (var transaction = session.BeginTransaction())
                     {
-                        var user = new User
-                        {
-                            Username = username,
-                            Password = password
-                        };
-
-                        var query = session.CreateCriteria<User>()
-                           .Add(Restrictions.Like("Username", username))
-                           .List<User>();
 
                         if (username == "")
                         {
-                            throw new Exception("empty username");
+                        throw new Exception("empty username");
                         }
 
                         if (password == "")
@@ -49,11 +37,26 @@ namespace CORE.Services
                             throw new Exception("empty password");
                         }
 
+                        var user = new User
+                            {
+                                Username = username,
+                                Password = password
+                            };
+
+                        var query = session.CreateCriteria<User>()
+                            .Add(Restrictions.Like("Username", username))
+                            .List<User>();
+
+                        if (password != user.Password)
+                        {
+                            throw new Exception("wrong credentials");
+                        }
+
                         transaction.Commit();
-                        return user;
+
+                        return query[0];
                     }
                 }
             }           
-        }
     }
 }
