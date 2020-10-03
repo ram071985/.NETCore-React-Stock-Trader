@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import LandingPage from "./Components/LandingPage";
+import UserPortal from "./Components/UserPortal";
 import LogIn from "./Components/LogIn";
 import SignUp from "./Components/SignUp";
 
@@ -14,7 +14,7 @@ ReactDOM.render(
     <Switch>
     <Route path="/sign-up" component={SignUp} />
       <Route path="/log-in" component={LogIn} />
-      <Route path="/" component={LandingPage}/>
+      <Route path="/" component={UserPortal}/>
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
