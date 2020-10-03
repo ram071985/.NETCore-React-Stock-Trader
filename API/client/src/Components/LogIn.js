@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Key } from "react-feather";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class LogIn extends Component {
   constructor() {
@@ -71,12 +72,6 @@ class LogIn extends Component {
   logInErrorText = () => {
     if (this.state.logInErrorMessage === "") {
       return true;
-    }
-  };
-
-  redirectUser = () => {
-    if (this.state.toChatRoom === true) {
-      return <Redirect to="/" />;
     }
   };
 

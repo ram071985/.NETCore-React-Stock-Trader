@@ -7,9 +7,8 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 import LandingPage from "./LandingPage";
-import { User } from "react-feather";
 import SignUp from "./SignUp";
-import LogIn from "./LogIn"
+import LogIn from "./LogIn";
 
 class NavBar extends Component {
   render() {
@@ -86,26 +85,7 @@ class NavBar extends Component {
                   </a>
                 </li>
               </ul>
-              <form className="form-inline my-2 my-lg-0">
-              <Link to="/log-in"><button
-                  className="btn btn-outline-success mr-2 my-2 my-sm-0"
-                  type="submit"
-                >
-                  <User
-                    className="ml-2 d-inline-block user-icon"
-                    color="white"
-                    width="15"
-                    height="15"
-                  />
-                  <span className="log-in-button-text">Log in</span>
-                </button></Link>
-                <Link to="/sign-up"><button
-                  className="btn btn-outline-success mr-3 my-2 my-sm-0"
-                  type="submit"
-                >
-                  <span className="account-button-text">Start an account</span>
-                </button></Link>
-              </form>
+       
             </div>
           </nav>
           <Switch>

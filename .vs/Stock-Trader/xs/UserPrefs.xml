@@ -9,13 +9,13 @@
       <File FileName="API/UserModel.cs" />
       <File FileName="API/SessionModel.cs" />
       <File FileName="API/client/src/SignUp.js" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="10" Column="6" />
+      <File FileName="API/Controllers/RegisterController.cs" />
       <File FileName="API/client/.gitignore" />
-      <File FileName="CORE/Services/DbSessionService.cs" Line="20" Column="46" />
-      <File FileName="CORE/Services/CreateSessionService.cs" Line="37" Column="1" />
+      <File FileName="CORE/Services/DbSessionService.cs" />
+      <File FileName="CORE/Services/CreateSessionService.cs" />
       <File FileName="API/Controllers/AuthorzationController.cs" Line="41" Column="1" NotebookId="1" />
-      <File FileName="CORE/services/AuthorizeUserService.cs" Line="1" Column="14" NotebookId="1" />
-      <File FileName="CORE/services/CreateNewUserService.cs" Line="25" Column="18" NotebookId="1" />
+      <File FileName="CORE/services/AuthorizeUserService.cs" NotebookId="1" />
+      <File FileName="CORE/services/CreateNewUserService.cs" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
     </Files>
     <Pads>

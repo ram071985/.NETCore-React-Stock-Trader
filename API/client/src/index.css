@@ -37,11 +37,11 @@ nav.navbar {
 }
 
 .left-col {
-  margin-top: 25%;
+  margin-top: 15%;
 }
 
 .right-col {
-  margin-top: 25%;
+  margin-top: 15%;
 }
 
 img.splash-image {
@@ -122,4 +122,6 @@ button.log-in-button:hover {
   border: 1px solid transparent;
 }
 
-
+.landing-page-buttons {
+  margin-left: 20px !important;
+}
