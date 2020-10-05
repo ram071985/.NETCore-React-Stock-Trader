@@ -27,6 +27,15 @@
           "lib/netstandard1.3/Iesi.Collections.dll": {}
         }
       },
+      "Json.Net/1.0.23": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Json.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Json.Net.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.0": {
         "type": "package",
         "dependencies": {
@@ -118,6 +127,15 @@
           "build/netstandard2.0/NETStandard.Library.targets": {}
         }
       },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "NHibernate/5.3.2": {
         "type": "package",
         "dependencies": {
@@ -192,6 +210,41 @@
         },
         "runtime": {
           "lib/netstandard1.0/Remotion.Linq.EagerFetching.dll": {}
+        }
+      },
+      "RestSharp/106.11.7": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/RestSharp.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RestSharp.dll": {}
+        }
+      },
+      "RestSharp.Newtonsoft.Json/1.5.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1",
+          "RestSharp": "106.5.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/RestSharp.Serializers.Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RestSharp.Serializers.Newtonsoft.Json.dll": {}
+        }
+      },
+      "RestSharp.Serializers.NewtonsoftJson/106.11.7": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "RestSharp": "106.11.7"
+        },
+        "compile": {
+          "lib/netstandard2.0/RestSharp.Serializers.NewtonsoftJson.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/RestSharp.Serializers.NewtonsoftJson.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -671,6 +724,18 @@
         "lib/netstandard1.3/Iesi.Collections.xml"
       ]
     },
+    "Json.Net/1.0.23": {
+      "sha512": "gokTwC3OVatrIFwQBaooj6EV3+08ryFIqdfR6RP4K61x5uSschPmKHl5XppvgdD/lmfY9IYZIoBt8V5Y0SU0nQ==",
+      "type": "package",
+      "path": "json.net/1.0.23",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "json.net.1.0.23.nupkg.sha512",
+        "json.net.nuspec",
+        "lib/netstandard2.0/Json.Net.dll"
+      ]
+    },
     "Microsoft.Bcl.AsyncInterfaces/1.1.0": {
       "sha512": "1Am6l4Vpn3/K32daEqZI+FFr96OlZkgwK2LcT3pZ2zWubR5zTPW3/FkO1Rat9kb7oQOa4rxgl9LJHc5tspCWfg==",
       "type": "package",
@@ -968,6 +1033,37 @@
         "netstandard.library.nuspec"
       ]
     },
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "NHibernate/5.3.2": {
       "sha512": "jvIKMjABzWWTtHAwsxhVefnoRLBMoBzbK51hUacXUz+Alb4tPtK3mPu+DIA8ei22zX74k58e3IqZjnNoyWi5nw==",
       "type": "package",
@@ -1063,6 +1159,51 @@
         "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.EagerFetching.xml",
         "remotion.linq.eagerfetching.2.2.0.nupkg.sha512",
         "remotion.linq.eagerfetching.nuspec"
+      ]
+    },
+    "RestSharp/106.11.7": {
+      "sha512": "NzndH096CTulvq+ihr7u1mBJ29oukdi9A8bypQJk+kaHxbRzTTrtgsEEQAb04ptTUZmQa7cgo7uF5z7NuEPX1Q==",
+      "type": "package",
+      "path": "restsharp/106.11.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/RestSharp.dll",
+        "lib/net452/RestSharp.xml",
+        "lib/netstandard2.0/RestSharp.dll",
+        "lib/netstandard2.0/RestSharp.xml",
+        "restsharp.106.11.7.nupkg.sha512",
+        "restsharp.nuspec",
+        "restsharp.png"
+      ]
+    },
+    "RestSharp.Newtonsoft.Json/1.5.1": {
+      "sha512": "vQaByN85aGazf45Xfseu+/8PmTuOyngqSXr+jILFYZxr51NARQ4WAyVruJAVzfpFkqXQ9aQtw2+yaygyGafjYg==",
+      "type": "package",
+      "path": "restsharp.newtonsoft.json/1.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/RestSharp.Serializers.Newtonsoft.Json.dll",
+        "lib/netstandard2.0/RestSharp.Serializers.Newtonsoft.Json.dll",
+        "restsharp.newtonsoft.json.1.5.1.nupkg.sha512",
+        "restsharp.newtonsoft.json.nuspec"
+      ]
+    },
+    "RestSharp.Serializers.NewtonsoftJson/106.11.7": {
+      "sha512": "fqJ64V5QkAWzIhYfh7pKTVjbikubsKbyHyeF9AZ4yBuQxZ3ioLZQl0xskneB7qhyoTRzCCGfeYUivvqcngQjYw==",
+      "type": "package",
+      "path": "restsharp.serializers.newtonsoftjson/106.11.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net452/RestSharp.Serializers.NewtonsoftJson.dll",
+        "lib/net452/RestSharp.Serializers.NewtonsoftJson.xml",
+        "lib/netstandard2.0/RestSharp.Serializers.NewtonsoftJson.dll",
+        "lib/netstandard2.0/RestSharp.Serializers.NewtonsoftJson.xml",
+        "restsharp.png",
+        "restsharp.serializers.newtonsoftjson.106.11.7.nupkg.sha512",
+        "restsharp.serializers.newtonsoftjson.nuspec"
       ]
     },
     "System.Buffers/4.5.0": {
@@ -2862,10 +3003,15 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
+      "Json.Net >= 1.0.23",
       "Microsoft.Extensions.Configuration >= 3.1.8",
       "NETStandard.Library >= 2.0.3",
       "NHibernate >= 5.3.2",
-      "Npgsql >= 4.1.4"
+      "Newtonsoft.Json >= 12.0.3",
+      "Npgsql >= 4.1.4",
+      "RestSharp >= 106.11.7",
+      "RestSharp.Newtonsoft.Json >= 1.5.1",
+      "RestSharp.Serializers.NewtonsoftJson >= 106.11.7"
     ]
   },
   "packageFolders": {
@@ -2881,7 +3027,7 @@
       "outputPath": "/Users/reid/Desktop/Projects/Stock-Trader/CORE/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/reid/.config/NuGet/NuGet.Config"
+        "/Users/reid/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
@@ -2903,6 +3049,10 @@
     "frameworks": {
       "netstandard2.0": {
         "dependencies": {
+          "Json.Net": {
+            "target": "Package",
+            "version": "[1.0.23, )"
+          },
           "Microsoft.Extensions.Configuration": {
             "target": "Package",
             "version": "[3.1.8, )"
@@ -2917,9 +3067,25 @@
             "target": "Package",
             "version": "[5.3.2, )"
           },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[12.0.3, )"
+          },
           "Npgsql": {
             "target": "Package",
             "version": "[4.1.4, )"
+          },
+          "RestSharp": {
+            "target": "Package",
+            "version": "[106.11.7, )"
+          },
+          "RestSharp.Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[1.5.1, )"
+          },
+          "RestSharp.Serializers.NewtonsoftJson": {
+            "target": "Package",
+            "version": "[106.11.7, )"
           }
         },
         "imports": [

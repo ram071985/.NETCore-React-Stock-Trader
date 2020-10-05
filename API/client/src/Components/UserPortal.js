@@ -1,10 +1,25 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class UserPortal extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      stocks: []
+    };
   }
+
+  getStocks = () => {
+    axios
+      .get("/api/stocks", {})
+      .then((res) => {
+        const allStocks = [...this.state.stocks];
+        this.setState({
+          stocks: this.state.stocks
+        });
+      })
+      .catch((err) => {});
+  };
 
   render() {
     return (
@@ -32,15 +47,11 @@ class UserPortal extends Component {
         </div>
         <div className="container d-inline-block holdings-container">
           <h5 className="heading-text">Current Holdings</h5>
-          <div className="h-100 row">
-            <div className="col"></div>
-          </div>
+          <h6 className="symbols-text">Symbols/Stock Names</h6>
         </div>
         <div className="container d-inline-block browse-container">
-        <h5 className="heading-text">Browse Stocks</h5>
-          <div className="h-100 row">
-            <div className="col"></div>
-          </div>
+          <h5 className="heading-text">Browse Stocks</h5>
+          <h6 className="symbols-text">Symbols/Stock Names</h6>
         </div>
       </div>
     );

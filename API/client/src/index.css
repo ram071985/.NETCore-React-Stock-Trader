@@ -172,6 +172,10 @@ button.log-in-button:hover {
   color: rgb(156, 156, 156);
 }
 
+.symbols-text {
+  color: rgb(156, 156, 156);
+}
+
 .name-text {
   font-size: 0.9rem;
   color: rgb(219, 219, 219);
@@ -184,8 +188,10 @@ margin-left: 50%;
 #holding-text {
   margin-left: 33%;
 
-  }
+}
 
-.users-col {
+/* Columns */
 
+.left-col {
+  
 }

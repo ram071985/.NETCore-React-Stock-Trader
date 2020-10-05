@@ -1,22 +1,23 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/AuthorzationController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/StockListModel.cs">
     <Files>
       <File FileName="API/Startup.cs" Line="33" Column="79" />
       <File FileName="API/client/src/index.js" />
       <File FileName="API/client/public/index.html" />
-      <File FileName="API/client/src/LogIn.js" />
       <File FileName="CORE/Entities/User.cs" />
       <File FileName="API/UserModel.cs" />
-      <File FileName="API/SessionModel.cs" />
-      <File FileName="API/client/src/SignUp.js" />
+      <File FileName="API/SessionModel.cs" Line="1" Column="1" />
       <File FileName="API/Controllers/RegisterController.cs" />
       <File FileName="API/client/.gitignore" />
       <File FileName="CORE/Services/DbSessionService.cs" />
-      <File FileName="CORE/Services/CreateSessionService.cs" />
+      <File FileName="CORE/Services/CreateSessionService.cs" Line="1" Column="1" />
+      <File FileName="API/StockListModel.cs" Line="6" Column="7" />
       <File FileName="API/Controllers/AuthorzationController.cs" Line="41" Column="1" NotebookId="1" />
       <File FileName="CORE/services/AuthorizeUserService.cs" NotebookId="1" />
       <File FileName="CORE/services/CreateNewUserService.cs" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
+      <File FileName="API/Controllers/StocksController.cs" Line="30" Column="6" NotebookId="1" />
+      <File FileName="CORE/Services/StockListService.cs" Line="16" Column="20" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,9 +27,8 @@
               <Node name="client" expanded="True">
                 <Node name="src" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="AuthorzationController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="StockListModel.cs" selected="True" />
             </Node>
             <Node name="CORE" expanded="True">
               <Node name="Entities" expanded="True" />
