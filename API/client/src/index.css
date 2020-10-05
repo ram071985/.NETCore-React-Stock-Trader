@@ -76,7 +76,7 @@ nav.navbar {
 .browse-container {
   margin: 40px 0px 0px 40px !important;
   width: 40% !important;
-  height: 70%;
+  height: 35%;
   border-radius: 0.4rem;
   background: rgb(15, 15, 15);
   padding: 10px;
@@ -194,4 +194,17 @@ margin-left: 50%;
 
 .left-col {
   
+}
+
+.company-text {
+color: white;
+}
+
+.share-text {
+  color: white;
+}
+
+.buy-button {
+  margin-left: 30px;
+
 }
