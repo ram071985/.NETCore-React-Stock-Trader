@@ -5,6 +5,8 @@ namespace API
 {
     public class StockListModel
     {
-        public List<string> Stocks { get; set; }
+        public string Exchange { get; set; }
+
+        public string Name { get; set; }
     }
 }

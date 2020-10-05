@@ -28,6 +28,7 @@
           "Microsoft.AspNetCore.SpaServices": "3.1.8",
           "Microsoft.AspNetCore.SpaServices.Extensions": "3.1.8",
           "NHibernate": "5.3.3",
+          "RestSharp": "106.11.7",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -332,10 +333,21 @@
           "lib/netstandard1.3/Iesi.Collections.dll": {}
         }
       },
+      "Json.Net/1.0.23": {
+        "runtime": {
+          "lib/netstandard2.0/Json.Net.dll": {
+            "assemblyVersion": "1.0.23.1",
+            "fileVersion": "1.0.23.1"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Json.Net.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.NodeServices/3.1.8": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Console": "3.1.8",
-          "Newtonsoft.Json": "12.0.2"
+          "Newtonsoft.Json": "12.0.3"
         },
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.AspNetCore.NodeServices.dll": {
@@ -642,11 +654,11 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Newtonsoft.Json/12.0.2": {
+      "Newtonsoft.Json/12.0.3": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
             "assemblyVersion": "12.0.0.0",
-            "fileVersion": "12.0.2.23222"
+            "fileVersion": "12.0.3.23909"
           }
         },
         "compile": {
@@ -727,6 +739,47 @@
         },
         "compile": {
           "lib/netstandard1.0/Remotion.Linq.EagerFetching.dll": {}
+        }
+      },
+      "RestSharp/106.11.7": {
+        "runtime": {
+          "lib/netstandard2.0/RestSharp.dll": {
+            "assemblyVersion": "106.11.7.0",
+            "fileVersion": "106.11.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/RestSharp.dll": {}
+        }
+      },
+      "RestSharp.Newtonsoft.Json/1.5.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "RestSharp": "106.11.7"
+        },
+        "runtime": {
+          "lib/netstandard2.0/RestSharp.Serializers.Newtonsoft.Json.dll": {
+            "assemblyVersion": "1.5.1.0",
+            "fileVersion": "1.5.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/RestSharp.Serializers.Newtonsoft.Json.dll": {}
+        }
+      },
+      "RestSharp.Serializers.NewtonsoftJson/106.11.7": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "RestSharp": "106.11.7"
+        },
+        "runtime": {
+          "lib/netstandard2.0/RestSharp.Serializers.NewtonsoftJson.dll": {
+            "assemblyVersion": "106.11.7.0",
+            "fileVersion": "106.11.7.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/RestSharp.Serializers.NewtonsoftJson.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
@@ -1398,9 +1451,14 @@
       },
       "CORE/1.0.0": {
         "dependencies": {
+          "Json.Net": "1.0.23",
           "Microsoft.Extensions.Configuration": "3.1.8",
           "NHibernate": "5.3.3",
-          "Npgsql": "4.1.4"
+          "Newtonsoft.Json": "12.0.3",
+          "Npgsql": "4.1.4",
+          "RestSharp": "106.11.7",
+          "RestSharp.Newtonsoft.Json": "1.5.1",
+          "RestSharp.Serializers.NewtonsoftJson": "106.11.7"
         },
         "runtime": {
           "CORE.dll": {}
@@ -3033,6 +3091,13 @@
       "path": "iesi.collections/4.0.4",
       "hashPath": "iesi.collections.4.0.4.nupkg.sha512"
     },
+    "Json.Net/1.0.23": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gokTwC3OVatrIFwQBaooj6EV3+08ryFIqdfR6RP4K61x5uSschPmKHl5XppvgdD/lmfY9IYZIoBt8V5Y0SU0nQ==",
+      "path": "json.net/1.0.23",
+      "hashPath": "json.net.1.0.23.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.NodeServices/3.1.8": {
       "type": "package",
       "serviceable": true,
@@ -3187,12 +3252,12 @@
       "path": "netstandard.library/1.6.1",
       "hashPath": "netstandard.library.1.6.1.nupkg.sha512"
     },
-    "Newtonsoft.Json/12.0.2": {
+    "Newtonsoft.Json/12.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
-      "path": "newtonsoft.json/12.0.2",
-      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
     },
     "NHibernate/5.3.3": {
       "type": "package",
@@ -3221,6 +3286,27 @@
       "sha512": "sha512-d6bkH5kROJPFsdvDy4yQved9I4ickamytPByPyuQcH9dk1ef4jciajo50vTQhheyOHeWOgLh97UvkiHV8QSgeQ==",
       "path": "remotion.linq.eagerfetching/2.2.0",
       "hashPath": "remotion.linq.eagerfetching.2.2.0.nupkg.sha512"
+    },
+    "RestSharp/106.11.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NzndH096CTulvq+ihr7u1mBJ29oukdi9A8bypQJk+kaHxbRzTTrtgsEEQAb04ptTUZmQa7cgo7uF5z7NuEPX1Q==",
+      "path": "restsharp/106.11.7",
+      "hashPath": "restsharp.106.11.7.nupkg.sha512"
+    },
+    "RestSharp.Newtonsoft.Json/1.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vQaByN85aGazf45Xfseu+/8PmTuOyngqSXr+jILFYZxr51NARQ4WAyVruJAVzfpFkqXQ9aQtw2+yaygyGafjYg==",
+      "path": "restsharp.newtonsoft.json/1.5.1",
+      "hashPath": "restsharp.newtonsoft.json.1.5.1.nupkg.sha512"
+    },
+    "RestSharp.Serializers.NewtonsoftJson/106.11.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fqJ64V5QkAWzIhYfh7pKTVjbikubsKbyHyeF9AZ4yBuQxZ3ioLZQl0xskneB7qhyoTRzCCGfeYUivvqcngQjYw==",
+      "path": "restsharp.serializers.newtonsoftjson/106.11.7",
+      "hashPath": "restsharp.serializers.newtonsoftjson.106.11.7.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",

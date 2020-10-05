@@ -5,17 +5,19 @@ class UserPortal extends Component {
   constructor() {
     super();
     this.state = {
-      stocks: []
+      stocks: [],
+      exchange: ""
     };
   }
-
-  getStocks = () => {
+  
+  getStock = () => {
     axios
-      .get("/api/stocks", {})
+      .get("/api/stocks/exchanges/" + this.state.exchange, {})
       .then((res) => {
+        console.log(res.data.iexBidPrice);
         const allStocks = [...this.state.stocks];
         this.setState({
-          stocks: this.state.stocks
+          stocks: res.data
         });
       })
       .catch((err) => {});

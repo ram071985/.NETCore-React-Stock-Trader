@@ -52,3 +52,7 @@
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/System.Security.Cryptography.ProtectedData.dll
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/Npgsql.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/Json.Net.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/RestSharp.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/RestSharp.Serializers.Newtonsoft.Json.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/RestSharp.Serializers.NewtonsoftJson.dll

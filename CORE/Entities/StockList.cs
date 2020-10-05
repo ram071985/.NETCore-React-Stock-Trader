@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace API
 {
-    public class StockListModel
+    public class StockList
     {
-        public List<string> Stocks { get; set; }
+        public string Exchange { get; set; }
+
+        public string Name { get; set; }
     }
 }

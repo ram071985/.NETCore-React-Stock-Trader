@@ -2,6 +2,9 @@
 using CORE.Services;
 using System.Threading.Tasks;
 using RestSharp;
+using System.Net.Http;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace API.Controllers
 {
@@ -19,12 +22,14 @@ namespace API.Controllers
             _createSessionService = createSessionService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetStocks()
+        [HttpGet("exchanges/{exchange}")]
+        public string GetList(string exchange)
         {
-            var client = new RestClient("");
-            var request = new RestRequest(Method.GET);
-            IRestResponse response = await client.ExecuteAsync(request);
+            HttpClient http = new HttpClient();
+            var data = http.GetAsync("https://cloud.iexapis.com/stable/stock/" + exchange + "/quote?token=sk_6b25cd3525024af990dd9c79b83b72e7").Result.Content.ReadAsStringAsync().Result;
+            return data;
+         
+               
         }
      
     }
