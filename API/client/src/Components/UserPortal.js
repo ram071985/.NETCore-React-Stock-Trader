@@ -129,7 +129,7 @@ class UserPortal extends Component {
             <Button variant="success" className="buy-button" onClick={this.handleShow}>
               Buy shares
             </Button>
-            <Modal show={this.state.setShow} onHide={this.handleClose}>
+            <Modal classname="purchase-modal" show={this.state.setShow} onHide={this.handleClose}>
               <Modal.Header closeButton>
                 <Modal.Title>Modal heading</Modal.Title>
               </Modal.Header>

@@ -208,3 +208,7 @@ color: white;
   margin-left: 30px;
 
 }
+
+.modal-content{
+  margin-top: 300px !important;
+}
