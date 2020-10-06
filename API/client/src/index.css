@@ -209,6 +209,42 @@ color: white;
 
 }
 
+/* modal elements */
+
 .modal-content{
+  height: 250px;
+  width: 600px !important;
   margin-top: 300px !important;
+
+  border-radius: 0.4rem;
+}
+
+.modal-title {
+  color: black;
+}
+
+.modal-body {
+  height: 100%;
+  padding: 0 !important;
+}
+
+.modal-content.button {
+
+}
+
+.modal-total-text {
+
+  margin-left: 25% !important;
+}
+
+.share-number-text {
+  margin: 70px 10px 0px 20px !important;
+}
+
+select.form-control {
+  height: 40px !important;
+}
+
+form.select-form {
+  height: 30px !important;
 }

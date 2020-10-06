@@ -37,10 +37,8 @@ class UserPortal extends Component {
       setShow: false,
     });
   };
-  
-  addModal = () => {
 
-  };
+  addModal = () => {};
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -126,22 +124,55 @@ class UserPortal extends Component {
             <h5 className="d-inline-block share-text">
               ${this.state.sharePrice}
             </h5>
-            <Button variant="success" className="buy-button" onClick={this.handleShow}>
+            <Button
+              variant="success"
+              className="buy-button"
+              onClick={this.handleShow}
+            >
               Buy shares
             </Button>
-            <Modal classname="purchase-modal" show={this.state.setShow} onHide={this.handleClose}>
+            <Modal
+              classname="purchase-modal"
+              show={this.state.setShow}
+              onHide={this.handleClose}
+            >
               <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title className="modal-title">
+                  Confirm Purchase
+                </Modal.Title>
+                <h4 className="text-right mt-1 modal-total-text">Total: $</h4>
               </Modal.Header>
               <Modal.Body>
-                Woohoo, you're reading this text in a modal!
+                <h6 className="d-inline-block text-bottom share-number-text">Share quantity:</h6>
+                <form className="d-inline-block select-form">
+                  <div className="form-group">
+                    <select
+                      multiple
+                      class="form-control"
+                      id="exampleFormControlSelect2"
+                      
+                    >
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                      <option>6</option>
+                      <option>7</option>
+                      <option>8</option>
+                      <option>9</option>
+                      <option>10</option>
+                    </select>
+                  </div>
+                </form>
+                
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.handleClose}>
-                  Close
+                  Cancel
                 </Button>
-                <Button variant="primary" onClick={this.handleClose}>
-                  Save Changes
+                <Button variant="success" onClick={this.handleClose}>
+                  Confirm
                 </Button>
               </Modal.Footer>
             </Modal>
