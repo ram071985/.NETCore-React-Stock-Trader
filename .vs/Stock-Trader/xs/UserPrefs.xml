@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/AuthorzationController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/StocksController.cs">
     <Files>
       <File FileName="API/Startup.cs" Line="33" Column="79" />
       <File FileName="API/client/src/index.js" />
@@ -14,8 +14,8 @@
       <File FileName="API/Controllers/AuthorzationController.cs" Line="41" Column="1" NotebookId="1" />
       <File FileName="CORE/services/CreateNewUserService.cs" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
-      <File FileName="API/Controllers/StocksController.cs" Line="29" Column="130" NotebookId="1" />
-      <File FileName="CORE/Services/StockListService.cs" NotebookId="1" />
+      <File FileName="API/Controllers/StocksController.cs" Line="27" Column="1" NotebookId="1" />
+      <File FileName="CORE/Services/StockListService.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="CORE/Entities/StockList.cs" Line="10" Column="41" NotebookId="1" />
     </Files>
     <Pads>
@@ -29,7 +29,7 @@
                 </Node>
               </Node>
               <Node name="Controllers" expanded="True">
-                <Node name="AuthorzationController.cs" selected="True" />
+                <Node name="StocksController.cs" selected="True" />
               </Node>
             </Node>
             <Node name="CORE" expanded="True">
@@ -49,7 +49,9 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/StocksController.cs" relfile="API/Controllers/StocksController.cs" line="27" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

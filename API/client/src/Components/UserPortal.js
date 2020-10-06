@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 class UserPortal extends Component {
   constructor() {
@@ -11,7 +13,8 @@ class UserPortal extends Component {
       companyName: "Facebook Inc",
       sharePrice: 0,
       errorMessage: "",
-      returnedQuery: false
+      returnedQuery: false,
+      setShow: false,
     };
   }
 
@@ -23,11 +26,21 @@ class UserPortal extends Component {
     });
   };
 
-  addRow = () => {
-
+  handleShow = () => {
+    this.setState({
+      setShow: true,
+    });
   };
 
+  handleClose = () => {
+    this.setState({
+      setShow: false,
+    });
+  };
+  
+  addModal = () => {
 
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -42,14 +55,14 @@ class UserPortal extends Component {
         const allStocks = [...this.state.stocks];
         if (res === null) {
           this.setState({
-            returnedQuery: false
-          })
+            returnedQuery: false,
+          });
         }
         this.setState({
           symbol: res.data.symbol,
           companyName: res.data.companyName,
           sharePrice: res.data.iexRealtimePrice,
-          returnedQuery: false
+          returnedQuery: false,
         });
       })
       .catch((err) => {});
@@ -98,19 +111,40 @@ class UserPortal extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" className="btn btn-primary">
               Submit
             </button>
           </form>
-          <div style={
-            this.state.returnedQuery
-            ? { display: "none"}
-            : { display: "block" }
-          }
-            >
-              <p className="mt-4 company-text">{this.state.companyName}</p>
-              <h5 className="d-inline-block share-text">${this.state.sharePrice}</h5>
-              <button type="button" className="d-inline-block btn btn-success buy-button">By/Sell Shares</button>
+          <div
+            style={
+              this.state.returnedQuery
+                ? { display: "none" }
+                : { display: "block" }
+            }
+          >
+            <p className="mt-4 company-text">{this.state.companyName}</p>
+            <h5 className="d-inline-block share-text">
+              ${this.state.sharePrice}
+            </h5>
+            <Button variant="success" className="buy-button" onClick={this.handleShow}>
+              Buy shares
+            </Button>
+            <Modal show={this.state.setShow} onHide={this.handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Modal heading</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Woohoo, you're reading this text in a modal!
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={this.handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={this.handleClose}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </div>
         </div>
       </div>
