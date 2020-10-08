@@ -41,7 +41,7 @@ class LogIn extends Component {
         localStorage.setItem("session_id", res.data.id);
         localStorage.setItem("user_id", res.data.userId);
         this.setState({
-          toChatRoom: true,
+          toUserPortal: true,
         });
       })
       .catch((err) => {
@@ -76,7 +76,11 @@ class LogIn extends Component {
   };
 
   render() {
-    console.log(this.state.existingPassword);
+    console.log(this.state.toUserPortal);
+
+    if (this.state.toUserPortal === true)
+      return <Redirect to="/user-portal"/>
+
     return (
       <div className="container-fluid log-in-container">
         <header className="text-center log-in-header">
@@ -111,7 +115,7 @@ class LogIn extends Component {
                 />
               </div>
               <button
-                type="button"
+                type="submit"
                 className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
               >
                 Log in

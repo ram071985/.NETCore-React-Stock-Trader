@@ -211,11 +211,10 @@ color: white;
 
 /* modal elements */
 
-.modal-content{
+.modal-content {
   height: 250px;
   width: 600px !important;
   margin-top: 300px !important;
-
   border-radius: 0.4rem;
 }
 
@@ -242,7 +241,8 @@ color: white;
 }
 
 select.form-control {
-  height: 40px !important;
+  margin-top: 10px;
+  height: 30px !important;
 }
 
 form.select-form {

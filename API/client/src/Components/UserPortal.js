@@ -143,7 +143,7 @@ class UserPortal extends Component {
                 <h4 className="text-right mt-1 modal-total-text">Total: $</h4>
               </Modal.Header>
               <Modal.Body>
-                <h6 className="d-inline-block text-bottom share-number-text">Share quantity:</h6>
+                <h6 className="mb-4 d-inline-block text-bottom share-number-text">Share quantity:</h6>
                 <form className="d-inline-block select-form">
                   <div className="form-group">
                     <select
@@ -165,7 +165,7 @@ class UserPortal extends Component {
                     </select>
                   </div>
                 </form>
-                
+
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.handleClose}>

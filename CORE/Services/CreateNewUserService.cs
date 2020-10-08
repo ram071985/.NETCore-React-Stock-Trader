@@ -1,5 +1,6 @@
 ﻿using System;
 using CORE.Entities;
+using NHibernate.Criterion;
 
 namespace CORE.Services
 {
@@ -23,6 +24,19 @@ namespace CORE.Services
             {
                 using (var transaction = session.BeginTransaction())
                 {
+
+                    if (username == "")
+                    {
+                        throw new Exception("empty username");
+                    }
+
+                    if (password == "")
+                    {
+                        throw new Exception("empty password");
+                    }
+
+                    
+
                     var user = new User
                     {
                         Username = username,
@@ -30,6 +44,15 @@ namespace CORE.Services
                         CreatedDate = DateTime.Now,
                         LastActiveAt = DateTime.Now
                     };
+
+                    var query = session.CreateCriteria<User>()
+                        .Add(Restrictions.Like("Username", username))
+                        .List<User>();
+
+                    if (user.Username == username)
+                    {
+                        throw new Exception("username already exists");
+                    }
 
                     session.Save(user);
                     transaction.Commit();

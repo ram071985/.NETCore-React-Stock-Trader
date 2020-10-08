@@ -52,6 +52,8 @@ namespace CORE.Services
                             throw new Exception("wrong credentials");
                         }
 
+
+
                         transaction.Commit();
 
                         return query[0];
