@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BarChart } from "react-feather";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class SignUp extends Component {
   constructor() {
@@ -12,7 +13,7 @@ class SignUp extends Component {
       existingPassword: "",
       errorMessage: "",
       logInErrorMessage: "",
-      toChatRoom: false,
+      toUserPortal: false,
     };
   }
 
@@ -40,6 +41,9 @@ class SignUp extends Component {
       .then((res) => {
         localStorage.setItem("session_id", res.data.id);
         localStorage.setItem("user_id", res.data.userId);
+        this.setState({
+          toUserPortal: true,
+        });
       })
       .catch((err) => {
         if (err.response.data.title === "empty username") {
@@ -62,6 +66,11 @@ class SignUp extends Component {
   };
 
   render() {
+
+    if (this.state.toUserPortal === true)
+    return <Redirect to="/user-portal"/>
+
+
     return (
       <div className="container-fluid log-in-container">
         <header className="text-center log-in-header">
