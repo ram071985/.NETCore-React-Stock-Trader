@@ -17,14 +17,16 @@
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Services\" />
-    <Folder Include="Models\" />
+    <Folder Include="Mapping\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\User.hbm.xml" />
     <None Remove="Models\session.hbm.xml" />
+    <None Remove="Mapping\Wallet.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Models\User.hbm.xml" />
-    <EmbeddedResource Include="Models\Session.hbm.xml" />
+    <EmbeddedResource Include="Mapping\User.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Session.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Wallet.hbm.xml" />
   </ItemGroup>
 </Project>

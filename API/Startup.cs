@@ -31,6 +31,7 @@ namespace API
             services.AddScoped<ICreateSessionService, CreateSessionService>();
             services.AddScoped<IDbSessionService, DbSessionService>();
             services.AddScoped<IAuthorizeUserService, AuthorizeUserService>();
+            services.AddScoped<ICreateWalletService, CreateWalletService>();
 
         }
 

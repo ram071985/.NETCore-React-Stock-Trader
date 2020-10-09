@@ -5,6 +5,7 @@ using RestSharp;
 using System.Net.Http;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 
 namespace API.Controllers
 {
@@ -13,20 +14,19 @@ namespace API.Controllers
 
     public class StocksController : ControllerBase
     {
-        private ICreateNewUserService _createNewUserService;
-        private ICreateSessionService _createSessionService;
+       
+        private string _token;
 
-        public StocksController(ICreateNewUserService createNewUserService, ICreateSessionService createSessionService)
+        public StocksController(IConfiguration configuration)
         {
-            _createNewUserService = createNewUserService;
-            _createSessionService = createSessionService;
+            _token = configuration["IexConnection:Token"];
         }
 
         [HttpGet("exchanges/{exchange}")]
         public string GetList(string exchange)
         {
             HttpClient http = new HttpClient();
-            var data = http.GetAsync("https://cloud.iexapis.com/stable/stock/" + exchange + "/quote?token=sk_6b25cd3525024af990dd9c79b83b72e7").Result.Content.ReadAsStringAsync().Result;
+            var data = http.GetAsync("https://cloud.iexapis.com/stable/stock/" + exchange + "/quote?token=" + _token).Result.Content.ReadAsStringAsync().Result;
             return data;
          
                
