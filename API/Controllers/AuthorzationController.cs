@@ -33,7 +33,7 @@ namespace API.Controllers
 
             var getUserId = _createWalletService.GetUserId(user.Id);
 
-            if (getUserId != null)
+            if (getUserId == null)
             {
                 var wallet = _createWalletService.InsertFirstDeposit(
                   user.Id

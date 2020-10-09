@@ -10,11 +10,13 @@ namespace API.Controllers
     {
         private ICreateNewUserService _createNewUserService;
         private ICreateSessionService _createSessionService;
+        public ICreateWalletService _createWalletService;
 
-        public RegisterController(ICreateNewUserService createNewUserService, ICreateSessionService createSessionService)
+        public RegisterController(ICreateNewUserService createNewUserService, ICreateSessionService createSessionService, ICreateWalletService createWalletService)
         {
             _createNewUserService = createNewUserService;
             _createSessionService = createSessionService;
+            _createWalletService = createWalletService;
         }
 
         [HttpPost]
@@ -27,9 +29,14 @@ namespace API.Controllers
                   
             var session = _createSessionService.CreateNewSession(
                         user.Id
-                        );
+                        );           
 
-             return new SessionModel
+                var wallet = _createWalletService.InsertFirstDeposit(
+                  user.Id
+                  );
+       
+
+            return new SessionModel
                 {
                     Id = session.Id,
                     UserId = session.UserId,

@@ -1,5 +1,6 @@
 ﻿using System;
 using CORE.Entities;
+using NHibernate;
 using NHibernate.Criterion;
 
 namespace CORE.Services
@@ -45,13 +46,13 @@ namespace CORE.Services
                         LastActiveAt = DateTime.Now
                     };
 
-                    var query = session.CreateCriteria<User>()
-                        .Add(Restrictions.Like("Username", username))
-                        .List<User>();
+                    ICriteria c = session.CreateCriteria<User>();
+                    c.Add(Restrictions.Eq("Username", username));                   
+               
 
-                    if (user.Username == username)
+                    if(c.UniqueResult<User>() != null)
                     {
-                        throw new Exception("username already exists");
+                        throw new Exception("username exists");
                     }
 
                     session.Save(user);

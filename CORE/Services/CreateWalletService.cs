@@ -7,7 +7,7 @@ namespace CORE.Services
     public interface ICreateWalletService
     {
         Wallet InsertFirstDeposit(int userId);
-        User GetUserId(int id);
+        Wallet GetUserId(int id);
     }
 
     public class CreateWalletService : ICreateWalletService
@@ -19,24 +19,24 @@ namespace CORE.Services
             _dbSessionService = dbSessionService;
         }
 
-        public User GetUserId(int id)
+        public Wallet GetUserId(int userId)
         {
             using (var session = _dbSessionService.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var user = new User
+                    var walletData = new Wallet();
+                    var wallet = new Wallet
                     {
-                        Id = id
+                        UserId = userId
                     };
 
-                    var query = session.CreateCriteria<User>()
-                            .Add(Restrictions.Like("Id", id))
-                            .List<User>();
+                    var query = session.CreateCriteria<Wallet>()
+                            .Add(Restrictions.Like("UserId", userId));
 
                     transaction.Commit();
 
-                    return query[0];
+                    return (Wallet)query;
                 }
             }
         }
@@ -55,9 +55,6 @@ namespace CORE.Services
                         Balance = 20000
                     };
 
-                    var query = session.CreateCriteria<Wallet>()
-                            .Add(Restrictions.Like("UserId", userId))
-                            .List<Wallet>();
 
                     session.Save(wallet);
                     transaction.Commit();
