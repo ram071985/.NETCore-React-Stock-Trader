@@ -22,6 +22,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddSpaStaticFiles(config =>
             {
                 config.RootPath = "client/build";
@@ -32,6 +33,7 @@ namespace API
             services.AddScoped<IDbSessionService, DbSessionService>();
             services.AddScoped<IAuthorizeUserService, AuthorizeUserService>();
             services.AddScoped<ICreateWalletService, CreateWalletService>();
+            services.AddScoped<IGetUserInfoService, GetUserInfoService>();
 
         }
 

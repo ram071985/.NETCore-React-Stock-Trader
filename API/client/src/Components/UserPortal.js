@@ -8,14 +8,24 @@ class UserPortal extends Component {
     super();
     this.state = {
       stocks: [],
+      username: "",
+      wallet: 0,
+      holdings: 0,
       exchange: "",
       symbol: "",
       companyName: "Facebook Inc",
       sharePrice: 0,
+      userId: 0,
       errorMessage: "",
       returnedQuery: false,
       setShow: false,
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+    })
+    this.getUserInfo();
   }
 
   handleChange = (event) => {
@@ -38,7 +48,20 @@ class UserPortal extends Component {
     });
   };
 
-  addModal = () => {};
+  getUserInfo = () => {
+    let parseId = parseInt(localStorage.getItem("user_id"));
+    axios.post("/api/update-portal", {
+      userId: parseId
+    })
+    .then((res) => {
+      console.log(res);
+      this.setState({
+        username: "",
+        wallet: 0,
+        holdings: 0
+      });
+    })
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -67,6 +90,8 @@ class UserPortal extends Component {
   };
 
   render() {
+
+    console.log(this.state.userId);
     return (
       <div className="container-fluid main-container">
         <div className="container user-container">

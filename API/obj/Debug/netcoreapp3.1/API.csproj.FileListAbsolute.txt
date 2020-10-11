@@ -56,3 +56,6 @@
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/RestSharp.dll
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/RestSharp.Serializers.Newtonsoft.Json.dll
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/RestSharp.Serializers.NewtonsoftJson.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.JsonPatch.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/Newtonsoft.Json.Bson.dll

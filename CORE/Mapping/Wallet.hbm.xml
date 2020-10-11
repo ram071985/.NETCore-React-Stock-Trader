@@ -8,8 +8,8 @@
         </id>
         <property name="UserId">
             <column name="user_id"></column>
-        </property>   
-           <property name="Balance">
+        </property>  
+        <property name="Balance">
             <column name="balance"></column>
         </property>
     </class>   

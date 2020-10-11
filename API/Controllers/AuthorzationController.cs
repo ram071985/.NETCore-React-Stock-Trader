@@ -10,7 +10,7 @@ namespace API.Controllers
     {
         private IAuthorizeUserService _authorizeUserService;
         private ICreateSessionService _createSessionService;
-        public ICreateWalletService _createWalletService;
+        private ICreateWalletService _createWalletService;
 
         public AuthorizationController(IAuthorizeUserService authorizeUserService, ICreateSessionService createSessionService, ICreateWalletService createWalletService)
         {

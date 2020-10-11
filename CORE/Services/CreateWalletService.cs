@@ -1,5 +1,6 @@
 ﻿using System;
 using CORE.Entities;
+using NHibernate;
 using NHibernate.Criterion;
 
 namespace CORE.Services
@@ -31,12 +32,13 @@ namespace CORE.Services
                         UserId = userId
                     };
 
-                    var query = session.CreateCriteria<Wallet>()
-                            .Add(Restrictions.Like("UserId", userId));
-
+                    ICriteria c = session.CreateCriteria<Wallet>();
+                    c.Add(Restrictions.Eq("UserId", userId));
+                 
+                    var result = c.UniqueResult<Wallet>();
                     transaction.Commit();
 
-                    return (Wallet)query;
+                    return result;
                 }
             }
         }
