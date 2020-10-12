@@ -25,7 +25,8 @@ namespace API.Controllers
             return new WalletModel
             {     
                 Balance = userData.Balance,
-                Username = userData.Username
+                Username = userData.Username,
+                Holdings = userData.Holdings
             };
         }
     }

@@ -59,7 +59,7 @@ nav.navbar {
   border-radius: 0.4rem;
   background: rgb(15, 15, 15);
   height: 20%;
-  width: 350px !important;
+  width: 160px !important;
   padding: 10px;
   margin: 40px 0px 0px 40px !important;
 }
@@ -170,6 +170,7 @@ button.log-in-button:hover {
 .titles-text {
   font-size: 0.8rem;
   color: rgb(156, 156, 156);
+  margin-left: 0 !important;
 }
 
 .symbols-text {
@@ -179,6 +180,8 @@ button.log-in-button:hover {
 .name-text {
   font-size: 0.9rem;
   color: rgb(219, 219, 219);
+  width: 75px;
+  margin: 0 !important;
 }
 
 #holdings {

@@ -54,7 +54,8 @@ namespace CORE.Services
                     {
                         UserId = userId,
                         Balance = 20000,
-                        Username = username
+                        Username = username,
+                        Holdings = 30000,
                     };
 
 

@@ -28,8 +28,7 @@ namespace CORE.Services
                 using (var transaction = session.BeginTransaction())
                 {                 
                     var result = session.QueryOver<Wallet>()
-                        .Where(w => w.UserId == userId)
-                        
+                        .Where(w => w.UserId == userId)                      
                         .List<Wallet>();                
 
                     transaction.Commit();

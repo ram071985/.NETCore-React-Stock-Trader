@@ -15,5 +15,8 @@
            <property name="Username">
             <column name="username"></column>
         </property>
+            <property name="Holdings">
+            <column name="holdings"></column>
+        </property>
     </class>   
 </hibernate-mapping>

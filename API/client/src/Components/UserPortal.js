@@ -10,6 +10,7 @@ class UserPortal extends Component {
       stocks: [],
       username: "",
       wallet: 0,
+      balance: 0,
       holdings: 0,
       exchange: "",
       symbol: "",
@@ -23,8 +24,7 @@ class UserPortal extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-    })
+    this.setState({});
     this.getUserInfo();
   }
 
@@ -50,18 +50,19 @@ class UserPortal extends Component {
 
   getUserInfo = () => {
     let parseId = parseInt(localStorage.getItem("user_id"));
-    axios.post("/api/update-portal", {
-      userId: parseId
-    })
-    .then((res) => {
-      console.log(res);
-      this.setState({
-        username: "",
-        wallet: 0,
-        holdings: 0
+    axios
+      .post("/api/update-portal", {
+        userId: parseId,
+      })
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          username: res.data.username,
+          wallet: res.data.balance,
+          holdings: res.data.holdings,
+        });
       });
-    })
-  }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -90,8 +91,7 @@ class UserPortal extends Component {
   };
 
   render() {
-
-    console.log(this.state.userId);
+    console.log(this.state.balance);
     return (
       <div className="container-fluid main-container">
         <div className="container user-container">
@@ -99,19 +99,20 @@ class UserPortal extends Component {
             <h6 className="ml-3 heading-text">User Information</h6>
             <div className="col-12">
               <h6 className="d-inline-block mb-1 titles-text">Name</h6>
+              <h6 className="d-block mb-1 name-text">{this.state.username}</h6>
               <h6 id="holdings" className="d-inline-block mb-1 titles-text">
                 Holdings
               </h6>
-              <h6 className="d-inline-block mb-1 name-text">Reid Muchow</h6>
-              <h6 id="holding-text" className="d-inline-block mb-1 name-text">
-                $0.00
+              <h6 id="holding-text" className="d-block mb-1 name-text">
+                ${this.state.holdings}
               </h6>
+           
             </div>
             <div className="col-5">
               <h6 id="wallet" className="d-inline-block mb-1 titles-text">
                 Wallet
               </h6>
-              <h6 className="name-text">$20,000.00</h6>
+              <h6 className="name-text">${this.state.wallet}</h6>
             </div>
           </div>
         </div>
@@ -168,14 +169,15 @@ class UserPortal extends Component {
                 <h4 className="text-right mt-1 modal-total-text">Total: $</h4>
               </Modal.Header>
               <Modal.Body>
-                <h6 className="mb-4 d-inline-block text-bottom share-number-text">Share quantity:</h6>
+                <h6 className="mb-4 d-inline-block text-bottom share-number-text">
+                  Share quantity:
+                </h6>
                 <form className="d-inline-block select-form">
                   <div className="form-group">
                     <select
                       multiple
                       class="form-control"
                       id="exampleFormControlSelect2"
-                      
                     >
                       <option>1</option>
                       <option>2</option>
@@ -190,7 +192,6 @@ class UserPortal extends Component {
                     </select>
                   </div>
                 </form>
-
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={this.handleClose}>
