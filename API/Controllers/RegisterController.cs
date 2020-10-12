@@ -32,7 +32,7 @@ namespace API.Controllers
                         );           
 
                 var wallet = _createWalletService.InsertFirstDeposit(
-                  user.Id
+                  user.Id, user.Username
                   );
        
 

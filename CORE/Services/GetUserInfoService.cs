@@ -1,7 +1,9 @@
-﻿using CORE.Entities;
+﻿using System.Collections.Generic;
+using CORE.Entities;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
+using NHibernate.Mapping;
 
 namespace CORE.Services
 {
@@ -21,34 +23,20 @@ namespace CORE.Services
 
         public Wallet GetUserInfo(int userId)
         {
-
             using (var session = _dbSessionService.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
-                {
-
-                    Wallet walletAlias = null;
-                    User userAlias = null;
-                    List<Wallet> result = session.QueryOver<User>()
-                        .JoinAlias(x => x.Id, () => userAlias)
-                        .SelectList(list => list
-                        .Select(x => x.Username).WithAlias(() => userAlias.Username)
-                        .Select(x => x.)
-                   
-                    var userQuery = session.QueryOver<Wallet>()
-                    .Select(w => w.Balance)
-                    .Where(w => w.UserId == userId)
-                    .List<Wallet>();
-
+                {                 
+                    var result = session.QueryOver<Wallet>()
+                        .Where(w => w.UserId == userId)
+                        
+                        .List<Wallet>();                
 
                     transaction.Commit();
 
-                    return (Wallet)userQuery;
+                    return result[0];
                 }
-
             }
         }
     }
-
-
 }

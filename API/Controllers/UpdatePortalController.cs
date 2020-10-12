@@ -23,11 +23,10 @@ namespace API.Controllers
             var userData = _getUserInfoService.GetUserInfo(walletModel.UserId);
 
             return new WalletModel
-            {
-                Id = userData.Id,        
+            {     
                 Balance = userData.Balance,
+                Username = userData.Username
             };
         }
-
     }
 }

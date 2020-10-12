@@ -7,7 +7,7 @@ namespace CORE.Services
 {
     public interface ICreateWalletService
     {
-        Wallet InsertFirstDeposit(int userId);
+        Wallet InsertFirstDeposit(int userId, string username);
         Wallet GetUserId(int id);
     }
 
@@ -26,7 +26,6 @@ namespace CORE.Services
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var walletData = new Wallet();
                     var wallet = new Wallet
                     {
                         UserId = userId
@@ -43,7 +42,7 @@ namespace CORE.Services
             }
         }
 
-        public Wallet InsertFirstDeposit(int userId)
+        public Wallet InsertFirstDeposit(int userId, string username)
         {
 
             using (var session = _dbSessionService.OpenSession())
@@ -54,7 +53,8 @@ namespace CORE.Services
                     var wallet = new Wallet
                     {
                         UserId = userId,
-                        Balance = 20000
+                        Balance = 20000,
+                        Username = username
                     };
 
 

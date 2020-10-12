@@ -35,8 +35,8 @@ namespace API.Controllers
 
             if (getUserId == null)
             {
-                var wallet = _createWalletService.InsertFirstDeposit(
-                  user.Id
+                var wallet = _createWalletService.InsertFirstDeposit(user.Id, user.Username
+                  
                   );
             }
 
