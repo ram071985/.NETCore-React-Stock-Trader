@@ -36,6 +36,13 @@ class UserPortal extends Component {
     });
   };
 
+  handleCompanyList = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
   handleShow = () => {
     this.setState({
       setShow: true,
