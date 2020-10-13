@@ -1,27 +1,27 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/GetUserInfoService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/UpdatePortalController.cs">
     <Files>
       <File FileName="CORE/Services/DbSessionService.cs" Line="30" Column="1" />
-      <File FileName="API/Controllers/AuthorzationController.cs" Line="45" Column="33" />
-      <File FileName="API/Controllers/UserController.cs" Line="1" Column="1" />
-      <File FileName="API/client/src/App.js" Line="1" Column="1" />
-      <File FileName="CORE/Entities/Wallet.cs" Line="11" Column="2" />
+      <File FileName="API/Controllers/AuthorzationController.cs" />
+      <File FileName="API/Controllers/UserController.cs" />
+      <File FileName="API/client/src/App.js" />
+      <File FileName="CORE/Entities/Wallet.cs" />
       <File FileName="CORE/Services/AuthorizeUserService.cs" />
-      <File FileName="CORE/Mapping/Wallet.hbm.xml" Line="15" Column="38" />
-      <File FileName="API/Controllers/UpdatePortalController.cs" Line="28" Column="44" />
-      <File FileName="CORE/Services/GetUserInfoService.cs" Line="33" Column="47" NotebookId="1" />
-      <File FileName="CORE/Services/CreateWalletService.cs" Line="35" Column="62" NotebookId="1" />
-      <File FileName="CORE/Services/CreateSessionService.cs" Line="10" Column="6" NotebookId="1" />
-      <File FileName="CORE/services/CreateNewUserService.cs" Line="49" Column="20" NotebookId="1" />
+      <File FileName="CORE/Mapping/Wallet.hbm.xml" />
+      <File FileName="API/Controllers/UpdatePortalController.cs" Line="29" Column="45" />
+      <File FileName="CORE/Services/GetUserInfoService.cs" Line="37" Column="18" NotebookId="1" />
+      <File FileName="CORE/Services/CreateWalletService.cs" NotebookId="1" />
+      <File FileName="CORE/Services/CreateSessionService.cs" NotebookId="1" />
+      <File FileName="CORE/services/CreateNewUserService.cs" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
       <File FileName="API/Controllers/StocksController.cs" NotebookId="1" />
       <File FileName="CORE/Services/StockListService.cs" NotebookId="1" />
       <File FileName="CORE/Entities/StockList.cs" NotebookId="1" />
-      <File FileName="API/WalletModel.cs" Line="9" Column="8" NotebookId="1" />
+      <File FileName="API/WalletModel.cs" NotebookId="1" />
       <File FileName="API/TransactionModel.cs" NotebookId="1" />
       <File FileName="CORE/Mapping/Session.hbm.xml" NotebookId="1" />
-      <File FileName="API/Startup.cs" Line="36" Column="8" NotebookId="1" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="35" Column="41" NotebookId="1" />
+      <File FileName="API/Startup.cs" NotebookId="1" />
+      <File FileName="API/Controllers/RegisterController.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -34,7 +34,9 @@
                   <Node name="Components" expanded="True" />
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="UpdatePortalController.cs" selected="True" />
+              </Node>
             </Node>
             <Node name="CORE" expanded="True">
               <Node name="Dependencies" expanded="True">
@@ -42,9 +44,7 @@
               </Node>
               <Node name="Entities" expanded="True" />
               <Node name="Mapping" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="GetUserInfoService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -55,7 +55,10 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/CreateWalletService.cs" relfile="CORE/Services/CreateWalletService.cs" line="53" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/CreateWalletService.cs" relfile="CORE/Services/CreateWalletService.cs" line="65" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

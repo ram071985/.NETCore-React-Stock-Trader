@@ -31,7 +31,17 @@ namespace API.Controllers
          
                
         }
-     
+
+        [HttpGet("all")]
+        public string GetAllStocks(string exchange)
+        {
+            HttpClient http = new HttpClient();
+            var data = http.GetAsync("https://cloud.iexapis.com/stable/ref-data/symbols/" + "?token=" + _token).Result.Content.ReadAsStringAsync().Result;
+            return data;
+
+
+        }
+
     }
 
     

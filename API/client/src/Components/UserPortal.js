@@ -26,6 +26,7 @@ class UserPortal extends Component {
   componentDidMount() {
     this.setState({});
     this.getUserInfo();
+    this.getStock();
   }
 
   handleChange = (event) => {
@@ -78,27 +79,21 @@ class UserPortal extends Component {
 
   getStock = () => {
     axios
-      .get("/api/stocks/exchanges/" + this.state.exchange, {})
+      .get("/api/stocks/all", {})
       .then((res) => {
-        console.log(res.data.iexRealtimePrice);
-        const allStocks = [...this.state.stocks];
-        if (res === null) {
-          this.setState({
-            returnedQuery: false,
-          });
-        }
-        this.setState({
-          symbol: res.data.symbol,
-          companyName: res.data.companyName,
-          sharePrice: res.data.iexRealtimePrice,
-          returnedQuery: false,
+        console.log(res.data);      
+        this.setState({  
+          stocks: res.data    
         });
       })
       .catch((err) => {});
   };
 
   render() {
-    console.log(this.state.balance);
+    const stocks = this.state.stocks.map((stock, index) => (
+      <option key={index} value={stock.name}/>
+    ));
+
     return (
       <div className="container-fluid main-container">
         <div className="container user-container">
@@ -132,15 +127,16 @@ class UserPortal extends Component {
           <h6 className="symbols-text">Search by exchange name</h6>
           <form onSubmit={this.handleSubmit}>
             <div class="form-group">
-              <label for="exampleInputEmail1">\</label>
               <input
                 type="input"
+                list="data"
                 name="exchange"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 onChange={this.handleChange}
               />
+              <datalist id="data">{stocks}</datalist>
             </div>
             <button type="submit" className="btn btn-primary">
               Submit
