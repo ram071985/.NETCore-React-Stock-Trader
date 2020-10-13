@@ -215,7 +215,7 @@ color: white;
 /* modal elements */
 
 .modal-content {
-  height: 250px;
+  height: 420px;
   width: 600px !important;
   margin-top: 300px !important;
   border-radius: 0.4rem;
@@ -250,4 +250,19 @@ select.form-control {
 
 form.select-form {
   height: 30px !important;
+}
+
+.action-input {
+  width: 30% !important;
+  margin-top: 30px !important;
+  margin-left: 30px !important;
+
+}
+
+.action-label {
+
+}
+
+select.action-control {
+  height: 40px !important;
 }

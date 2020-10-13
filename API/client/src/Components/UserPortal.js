@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import InputGroup from "react-bootstrap/InputGroup";
+import Dropdown from "react-bootstrap/Dropdown";
+import FormControl from "react-bootstrap/FormControl";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Form from "react-bootstrap/Form";
 
 class UserPortal extends Component {
   constructor() {
@@ -40,7 +45,7 @@ class UserPortal extends Component {
   handleCompanyList = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -81,9 +86,9 @@ class UserPortal extends Component {
     axios
       .get("/api/stocks/all", {})
       .then((res) => {
-        console.log(res.data);      
-        this.setState({  
-          stocks: res.data    
+        console.log(res.data);
+        this.setState({
+          stocks: res.data,
         });
       })
       .catch((err) => {});
@@ -91,7 +96,7 @@ class UserPortal extends Component {
 
   render() {
     const stocks = this.state.stocks.map((stock, index) => (
-      <option key={index} value={stock.name}/>
+      <option key={index} value={stock.name} />
     ));
 
     return (
@@ -108,7 +113,6 @@ class UserPortal extends Component {
               <h6 id="holding-text" className="d-block mb-1 name-text">
                 ${this.state.holdings}
               </h6>
-           
             </div>
             <div className="col-5">
               <h6 id="wallet" className="d-inline-block mb-1 titles-text">
@@ -165,45 +169,15 @@ class UserPortal extends Component {
               show={this.state.setShow}
               onHide={this.handleClose}
             >
-              <Modal.Header closeButton>
-                <Modal.Title className="modal-title">
-                  Confirm Purchase
-                </Modal.Title>
-                <h4 className="text-right mt-1 modal-total-text">Total: $</h4>
-              </Modal.Header>
-              <Modal.Body>
-                <h6 className="mb-4 d-inline-block text-bottom share-number-text">
-                  Share quantity:
-                </h6>
-                <form className="d-inline-block select-form">
-                  <div className="form-group">
-                    <select
-                      multiple
-                      class="form-control"
-                      id="exampleFormControlSelect2"
-                    >
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10</option>
-                    </select>
-                  </div>
-                </form>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={this.handleClose}>
-                  Cancel
-                </Button>
-                <Button variant="success" onClick={this.handleClose}>
-                  Confirm
-                </Button>
-              </Modal.Footer>
+              <div>
+                <Form.Group className="action-input" controlId="exampleForm.ControlSelect1">
+                  <Form.Label className="mb-0">Action</Form.Label>
+                  <Form.Control className="mt-0 action-control" as="select">
+                    <option>Buy</option>
+                    <option>Sell</option>
+                  </Form.Control>
+                </Form.Group>
+              </div>
             </Modal>
           </div>
         </div>
