@@ -31,7 +31,7 @@ class UserPortal extends Component {
   componentDidMount() {
     this.setState({});
     this.getUserInfo();
-    this.getStock();
+    //this.getStock();
   }
 
   handleChange = (event) => {
@@ -169,14 +169,26 @@ class UserPortal extends Component {
               show={this.state.setShow}
               onHide={this.handleClose}
             >
-              <div>
-                <Form.Group className="action-input" controlId="exampleForm.ControlSelect1">
-                  <Form.Label className="mb-0">Action</Form.Label>
-                  <Form.Control className="mt-0 action-control" as="select">
-                    <option>Buy</option>
-                    <option>Sell</option>
-                  </Form.Control>
-                </Form.Group>
+              <div className="container">
+                <h6 className="ml-1 mt-5 mb-0">Action</h6>
+                <InputGroup className="action-input">
+                  <FormControl
+                    aria-describedby="basic-addon2"
+                    className="d-block"
+                  />
+
+                  <DropdownButton
+                    as={InputGroup.Append}
+                    variant="outline-secondary"
+                    id="input-group-dropdown-2"
+                  >
+                    <Dropdown.Item href="#">Action</Dropdown.Item>
+                    <Dropdown.Item href="#">Another action</Dropdown.Item>
+                    <Dropdown.Item href="#">Something else here</Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item href="#">Separated link</Dropdown.Item>
+                  </DropdownButton>
+                </InputGroup>
               </div>
             </Modal>
           </div>

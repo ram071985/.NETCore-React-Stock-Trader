@@ -1,22 +1,22 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/StocksController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/CreateSessionService.cs">
     <Files>
       <File FileName="CORE/Services/DbSessionService.cs" Line="30" Column="1" />
-      <File FileName="API/Controllers/AuthorzationController.cs" Line="45" Column="33" />
+      <File FileName="API/Controllers/AuthorzationController.cs" />
       <File FileName="API/Controllers/UserController.cs" />
       <File FileName="API/client/src/App.js" />
       <File FileName="CORE/Entities/Wallet.cs" />
-      <File FileName="CORE/Services/AuthorizeUserService.cs" Line="27" Column="21" />
+      <File FileName="CORE/Services/AuthorizeUserService.cs" />
       <File FileName="CORE/Mapping/Wallet.hbm.xml" />
-      <File FileName="API/Controllers/UpdatePortalController.cs" Line="29" Column="45" />
+      <File FileName="API/Controllers/UpdatePortalController.cs" />
       <File FileName="CORE/Services/GetUserInfoService.cs" Line="37" Column="18" NotebookId="1" />
       <File FileName="CORE/Services/CreateWalletService.cs" NotebookId="1" />
-      <File FileName="CORE/Services/CreateSessionService.cs" NotebookId="1" />
+      <File FileName="CORE/Services/CreateSessionService.cs" Line="37" Column="1" NotebookId="1" />
       <File FileName="CORE/services/CreateNewUserService.cs" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
       <File FileName="API/Controllers/StocksController.cs" Line="35" Column="22" NotebookId="1" />
-      <File FileName="CORE/Services/StockListService.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="CORE/Entities/StockList.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="CORE/Services/StockListService.cs" NotebookId="1" />
+      <File FileName="CORE/Entities/StockList.cs" NotebookId="1" />
       <File FileName="API/WalletModel.cs" NotebookId="1" />
       <File FileName="API/TransactionModel.cs" NotebookId="1" />
       <File FileName="CORE/Mapping/Session.hbm.xml" NotebookId="1" />
@@ -34,9 +34,7 @@
                   <Node name="Components" expanded="True" />
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="StocksController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="CORE" expanded="True">
               <Node name="Dependencies" expanded="True">
@@ -44,7 +42,9 @@
               </Node>
               <Node name="Entities" expanded="True" />
               <Node name="Mapping" expanded="True" />
-              <Node name="Services" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="CreateSessionService.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
