@@ -253,8 +253,11 @@ form.select-form {
 }
 
 .action-input {
-  width: 30% !important;
+  width: 50% !important;
+}
 
+.share-input {
+  width: 50% !important;
 }
 
 .action-label {
@@ -263,4 +266,12 @@ form.select-form {
 
 select.action-control {
   height: 40px !important;
+}
+
+svg.plus-square {
+  display: block !important;
+}
+
+svg.minus-square {
+  display: block !important;
 }

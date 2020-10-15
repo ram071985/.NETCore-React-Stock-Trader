@@ -14,7 +14,7 @@
       <File FileName="CORE/Services/CreateSessionService.cs" Line="37" Column="1" NotebookId="1" />
       <File FileName="CORE/services/CreateNewUserService.cs" NotebookId="1" />
       <File FileName="API/appsettings.Development.json" NotebookId="1" />
-      <File FileName="API/Controllers/StocksController.cs" Line="35" Column="22" NotebookId="1" />
+      <File FileName="API/Controllers/StocksController.cs" NotebookId="1" />
       <File FileName="CORE/Services/StockListService.cs" NotebookId="1" />
       <File FileName="CORE/Entities/StockList.cs" NotebookId="1" />
       <File FileName="API/WalletModel.cs" NotebookId="1" />

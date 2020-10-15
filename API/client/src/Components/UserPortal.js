@@ -7,6 +7,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import FormControl from "react-bootstrap/FormControl";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Form from "react-bootstrap/Form";
+import { PlusSquare, MinusSquare } from "react-feather";
 
 class UserPortal extends Component {
   constructor() {
@@ -170,25 +171,56 @@ class UserPortal extends Component {
               onHide={this.handleClose}
             >
               <div className="container">
-                <h6 className="ml-1 mt-5 mb-0">Action</h6>
-                <InputGroup className="action-input">
-                  <FormControl
-                    aria-describedby="basic-addon2"
-                    className="d-block"
-                  />
-
-                  <DropdownButton
-                    as={InputGroup.Append}
-                    variant="outline-secondary"
-                    id="input-group-dropdown-2"
-                  >
-                    <Dropdown.Item href="#">Action</Dropdown.Item>
-                    <Dropdown.Item href="#">Another action</Dropdown.Item>
-                    <Dropdown.Item href="#">Something else here</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item href="#">Separated link</Dropdown.Item>
-                  </DropdownButton>
-                </InputGroup>
+                <div className="mt-5 d-inline row">
+                  <div className="mb-5 d-inline-block col-7">
+                    <h6 className="ml-1">Action</h6>
+                    <Form>
+                      <InputGroup className="action-input">
+                        <FormControl
+                          aria-describedby="basic-addon2"
+                          className="d-inline-block"
+                        />
+                        <DropdownButton
+                          as={InputGroup.Append}
+                          variant="outline-secondary"
+                          id="input-group-dropdown-2"
+                        >
+                          <Dropdown.Item href="#">Buy</Dropdown.Item>
+                          <Dropdown.Item href="#">Sell</Dropdown.Item>
+                        </DropdownButton>
+                      </InputGroup>
+                    </Form>
+                  </div>
+                  <div className="mt-5 d-inline-block col-5">
+                    <Form className="">
+                      <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control
+                          className=""
+                          type="email"
+                          placeholder="Enter email"
+                        />
+                        <Form.Text className="text-muted">
+                          We'll never share your email with anyone else.
+                        </Form.Text>
+                      </Form.Group>
+                    </Form>
+                  </div>
+                </div>
+                <div className="d-block row">
+                  <div className="d-inline col-8">
+                    <h6 className="ml-1 mt-5 mb-0">Share Quantity</h6>
+                    <InputGroup className="share-input">
+                      <FormControl
+                        aria-describedby="basic-addon2"
+                        className=""
+                      />
+                      <PlusSquare className="plus-square" />
+                      <MinusSquare className="minus-square" />
+                    </InputGroup>
+                  </div>
+                  <div className="col"></div>
+                </div>
               </div>
             </Modal>
           </div>
