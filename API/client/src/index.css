@@ -275,3 +275,12 @@ svg.plus-square {
 svg.minus-square {
   display: block !important;
 }
+
+.div-inline {
+  display: inline-block;
+}
+
+.transaction-col {
+  width: 20% !important;
+}
+
