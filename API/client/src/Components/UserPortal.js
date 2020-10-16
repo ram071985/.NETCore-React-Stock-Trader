@@ -172,44 +172,41 @@ class UserPortal extends Component {
               show={this.state.setShow}
               onHide={this.handleClose}
             >
-              <Form inline>
-                <Form.Row className="w-100">
-                  <Col lg={7} className="transaction-col">
-                    <InputGroup inline>
-                      <FormControl
-                        placeholder="Recipient's username"
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2"
-                        className="w-50"
-                      />
+              <Form.Row>
+                <Form.Group as={Col} controlId="formGridState">
+                  <Form.Label className="ml-5 mb-0 mt-5">Action</Form.Label>
+                  <Form.Control
+                    as="select"
+                    defaultValue="Choose..."
+                    className="ml-5 mt-0 modal-input w-50"
+                  >
+                    <option>Buy</option>
+                    <option>Sell</option>
+                  </Form.Control>
+                </Form.Group>
 
-                      <DropdownButton
-                        inline
-                        as={InputGroup.Append}
-                        variant="outline-secondary"
-                        id="input-group-dropdown-2"
-                        className="drop-button"
-                      >
-                        <Dropdown.Item href="#">Action</Dropdown.Item>
-                        <Dropdown.Item href="#">Another action</Dropdown.Item>
-                        <Dropdown.Item href="#">
-                          Something else here
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item href="#">Separated link</Dropdown.Item>
-                      </DropdownButton>
-                    </InputGroup>
-                  </Col>
-                  <Col className="d-inline">
-                    <Form.Group controlId="exampleForm.ControlInput1">
-                      <Form.Control
-                        type="email"
-                        placeholder="name@example.com"
-                      />
-                    </Form.Group>
-                  </Col>
-                </Form.Row>
-              </Form>
+                <Form.Group as={Col} controlId="formGridZip">
+                  <Form.Label className="mt-5 mb-0">
+                    Search by company symbol
+                  </Form.Label>
+                  <Form.Control type="input" className="w-75 modal-input" />
+                </Form.Group>
+              </Form.Row>
+              <Form.Row autocomplete="off">
+                <Form.Group as={Col} controlId="formGridZip" className="quanity-col">
+                  <Form.Label className="ml-5 mt-3 mb-0">
+                    Share quantity
+                  </Form.Label>
+                  <Form.Control type="number" min="1" className="w-50 ml-5 d-inline-block modal-input" />
+                </Form.Group>
+                <Form.Group as={Col} controlId="formGridZip">
+                  <Form.Label className="ml-1 mt-3 mb-0">Total</Form.Label>
+                  <Form.Control type="text" className="w-50 ml-1 modal-input" />
+                </Form.Group>
+              </Form.Row>
+              <br />
+              <hr />
+              <h6 className="text-center">Your Order is not complete yet. Review and confirm your order in the next step.</h6>
             </Modal>
           </div>
         </div>

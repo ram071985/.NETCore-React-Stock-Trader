@@ -34,6 +34,8 @@ namespace API
             services.AddScoped<IAuthorizeUserService, AuthorizeUserService>();
             services.AddScoped<ICreateWalletService, CreateWalletService>();
             services.AddScoped<IGetUserInfoService, GetUserInfoService>();
+            services.AddScoped<IBuyStockService, BuyStockService>();
+            services.AddScoped<ISellStockService, SellStockService>();
 
         }
 

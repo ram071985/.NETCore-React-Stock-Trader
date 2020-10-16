@@ -243,29 +243,8 @@ color: white;
   margin: 70px 10px 0px 20px !important;
 }
 
-select.form-control {
-  margin-top: 10px;
-  height: 30px !important;
-}
-
-form.select-form {
-  height: 30px !important;
-}
-
-.action-input {
-  width: 50% !important;
-}
-
 .share-input {
   width: 50% !important;
-}
-
-.action-label {
-
-}
-
-select.action-control {
-  height: 40px !important;
 }
 
 svg.plus-square {
@@ -284,3 +263,10 @@ svg.minus-square {
   width: 20% !important;
 }
 
+hr {
+  width: 500px;
+}
+
+.modal-input {
+  border-radius: 0rem !important;
+}
