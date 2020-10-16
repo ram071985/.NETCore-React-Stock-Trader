@@ -24,12 +24,14 @@ namespace CORE.Services
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var walletObject = new Wallet
-                    {
-                        
-                    };
+                 
 
                     Wallet wallet = session.Get<Wallet>(userId);
+
+                    var walletObject = new Wallet
+                    {
+                        Balance = wallet.Balance - balance
+                    };
 
                     return wallet;
                 }

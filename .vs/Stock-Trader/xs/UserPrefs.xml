@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/TransactionController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/BuyStockService.cs">
     <Files>
       <File FileName="CORE/Services/DbSessionService.cs" Line="30" Column="1" />
       <File FileName="API/Controllers/AuthorzationController.cs" Line="32" Column="19" />
@@ -12,14 +12,14 @@
       <File FileName="CORE/Services/CreateWalletService.cs" Line="1" Column="1" />
       <File FileName="API/TransactionModel.cs" Line="1" Column="1" />
       <File FileName="CORE/services/CreateNewUserService.cs" Line="27" Column="18" />
-      <File FileName="API/Controllers/TransactionController.cs" Line="19" Column="1" />
+      <File FileName="API/Controllers/TransactionController.cs" Line="28" Column="41" />
       <File FileName="CORE/Services/GetUserInfoService.cs" Line="32" Column="45" NotebookId="1" />
       <File FileName="CORE/Services/CreateSessionService.cs" Line="37" Column="1" NotebookId="1" />
       <File FileName="CORE/Mapping/Session.hbm.xml" NotebookId="1" />
       <File FileName="API/Startup.cs" Line="38" Column="71" NotebookId="1" />
       <File FileName="API/Controllers/RegisterController.cs" NotebookId="1" />
       <File FileName="CORE/Services/SellStockService.cs" Line="25" Column="10" NotebookId="1" />
-      <File FileName="CORE/Services/BuyStockService.cs" Line="14" Column="60" NotebookId="1" />
+      <File FileName="CORE/Services/BuyStockService.cs" Line="14" Column="32" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -32,9 +32,7 @@
                   <Node name="Components" expanded="True" />
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="TransactionController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="appsettings.json" expanded="True" />
             </Node>
             <Node name="CORE" expanded="True">
@@ -43,7 +41,9 @@
               </Node>
               <Node name="Entities" expanded="True" />
               <Node name="Mapping" expanded="True" />
-              <Node name="Services" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="BuyStockService.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -57,6 +57,7 @@
     <BreakpointStore>
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/CreateWalletService.cs" relfile="CORE/Services/CreateWalletService.cs" line="53" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/CreateWalletService.cs" relfile="CORE/Services/CreateWalletService.cs" line="65" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/BuyStockService.cs" relfile="CORE/Services/BuyStockService.cs" line="36" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
