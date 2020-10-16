@@ -6,7 +6,7 @@ namespace CORE.Services
 {
     public interface IBuyStockService
     {
-        void UpdateWallet(int userId, int balance);
+        Wallet UpdateWallet(int userId, decimal balance);
     }
 
     public class BuyStockService : IBuyStockService
@@ -18,16 +18,20 @@ namespace CORE.Services
             _dbSessionService = dbSessionService;
         }
 
-        public void UpdateWallet(int userId, int balance)
+        public Wallet UpdateWallet(int userId, decimal balance)
         {
             using (var session = _dbSessionService.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var wallet = new Wallet
+                    var walletObject = new Wallet
                     {
-
+                        
                     };
+
+                    Wallet wallet = session.Get<Wallet>(userId);
+
+                    return wallet;
                 }
             }
         }

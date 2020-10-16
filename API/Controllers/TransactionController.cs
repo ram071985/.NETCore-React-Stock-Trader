@@ -9,20 +9,24 @@ namespace API.Controllers
     public class TransactionController : ControllerBase
     {
         private IAuthorizeUserService _authorizeUserService;
-        private ICreateSessionService _createSessionService;
-        private ICreateWalletService _createWalletService;
+        private IBuyStockService _buyStockService;
 
-        public TransactionController(IAuthorizeUserService authorizeUserService, ICreateSessionService createSessionService, ICreateWalletService createWalletService)
+        public TransactionController(IAuthorizeUserService authorizeUserService, IBuyStockService buyStockService)
         {
             _authorizeUserService = authorizeUserService;
-            _createSessionService = createSessionService;
-            _createWalletService = createWalletService;
+            _buyStockService = buyStockService;
         }
 
         [HttpPost("buy")]
-        public void WithdrawalTransaction([FromBody] UserAuthInputModel userAuthInputModel)
+        public WalletModel WithdrawalTransaction([FromBody] WalletModel walletModel)
         {
-           
+            var update = _buyStockService.UpdateWallet(walletModel.UserId, walletModel.Balance);
+
+            return new WalletModel
+            {
+                UserId = update.UserId,
+                Balance = update.Balance
+            };
         }
 
         [HttpPost("sell")]
