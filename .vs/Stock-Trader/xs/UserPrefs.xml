@@ -1,24 +1,24 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/BuyStockService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/StocksController.cs">
     <Files>
       <File FileName="CORE/Services/DbSessionService.cs" Line="30" Column="1" />
-      <File FileName="API/Controllers/AuthorzationController.cs" Line="32" Column="19" />
+      <File FileName="API/Controllers/AuthorzationController.cs" />
       <File FileName="API/client/src/App.js" />
       <File FileName="CORE/Entities/Wallet.cs" />
-      <File FileName="CORE/Services/AuthorizeUserService.cs" Line="1" Column="1" />
+      <File FileName="CORE/Services/AuthorizeUserService.cs" />
       <File FileName="CORE/Mapping/Wallet.hbm.xml" />
-      <File FileName="API/Controllers/UpdatePortalController.cs" Line="26" Column="17" />
+      <File FileName="API/Controllers/UpdatePortalController.cs" />
       <File FileName="API/Controllers/StocksController.cs" Line="1" Column="1" />
-      <File FileName="CORE/Services/CreateWalletService.cs" Line="1" Column="1" />
-      <File FileName="API/TransactionModel.cs" Line="1" Column="1" />
-      <File FileName="CORE/services/CreateNewUserService.cs" Line="27" Column="18" />
-      <File FileName="API/Controllers/TransactionController.cs" Line="28" Column="41" />
+      <File FileName="CORE/Services/CreateWalletService.cs" />
+      <File FileName="API/TransactionModel.cs" />
+      <File FileName="CORE/services/CreateNewUserService.cs" />
+      <File FileName="API/Controllers/TransactionController.cs" />
       <File FileName="CORE/Services/GetUserInfoService.cs" Line="32" Column="45" NotebookId="1" />
-      <File FileName="CORE/Services/CreateSessionService.cs" Line="37" Column="1" NotebookId="1" />
+      <File FileName="CORE/Services/CreateSessionService.cs" NotebookId="1" />
       <File FileName="CORE/Mapping/Session.hbm.xml" NotebookId="1" />
-      <File FileName="API/Startup.cs" Line="38" Column="71" NotebookId="1" />
+      <File FileName="API/Startup.cs" NotebookId="1" />
       <File FileName="API/Controllers/RegisterController.cs" NotebookId="1" />
-      <File FileName="CORE/Services/SellStockService.cs" Line="25" Column="10" NotebookId="1" />
+      <File FileName="CORE/Services/SellStockService.cs" NotebookId="1" />
       <File FileName="CORE/Services/BuyStockService.cs" Line="14" Column="32" NotebookId="1" />
     </Files>
     <Pads>
@@ -32,7 +32,9 @@
                   <Node name="Components" expanded="True" />
                 </Node>
               </Node>
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="StocksController.cs" selected="True" />
+              </Node>
               <Node name="appsettings.json" expanded="True" />
             </Node>
             <Node name="CORE" expanded="True">
@@ -41,9 +43,7 @@
               </Node>
               <Node name="Entities" expanded="True" />
               <Node name="Mapping" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="BuyStockService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>
