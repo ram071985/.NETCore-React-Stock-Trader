@@ -213,7 +213,7 @@ color: white;
 /* modal elements */
 
 .modal-content {
-  height: 420px;
+  height: 455px;
   width: 600px !important;
   margin-top: 300px !important;
   border-radius: 0.4rem;
@@ -280,3 +280,8 @@ hr {
   border-radius: 0 !important;
   margin-top: 12px;
 }
+
+.company-text {
+  color: #1aac3c;
+}
+

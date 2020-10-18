@@ -14,35 +14,42 @@ class ModalComponent extends Component {
       quantity: 0,
       price: 0,
       exchange: [],
+      company: "",
       error: "",
     };
   }
 
   handleChange = (event) => {
+    let returnInterval;
     const { name, value } = event.target;
     this.setState({
       [name]: value,
     });
-    let resultInterval = setInterval(() => {
+    returnInterval = setInterval(() => {
       this.getExchange();
+      if (returnInterval !== null) {
+        clearInterval(returnInterval);
+      }
+      return returnInterval;
     }, 2000);
-    if (this.state.exchange !== null) {
-      console.log(this.state.symbol)
-      return clearInterval(resultInterval);    
-    }
-      return resultInterval;
+  };
+
+  handleQuantityChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
   };
 
   getExchange = () => {
     axios
       .get("/api/stocks/exchanges/" + this.state.symbol, {})
       .then((res) => {
-        
-        const allStocks = [...this.state.stocks];
         this.setState({
-          exchange: [...res.data],
+          exchange: res.data,
+          company: res.data.companyName,
+          price: res.data.latestPrice,
         });
-        console.log(this.state.exchange);
       })
       .catch((err) => {
         // if(err.response.data.title === "null exchange") {
@@ -54,7 +61,13 @@ class ModalComponent extends Component {
   };
 
   render() {
-    console.log(this.state.symbol);
+    console.log(this.state.quantity);
+
+    const formatter = new Intl.NumberFormat("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
     return (
       <div>
         <Modal
@@ -86,6 +99,7 @@ class ModalComponent extends Component {
                 className="w-75 modal-input"
                 onChange={this.handleChange}
               />
+              <h6 className="ml-1 mt-1 company-text">{this.state.company}</h6>
             </Form.Group>
           </Form.Row>
           <Form.Row autocomplete="off">
@@ -99,11 +113,22 @@ class ModalComponent extends Component {
                 type="number"
                 min="1"
                 className="w-50 ml-5 d-inline-block modal-input"
+                name="quantity"
+                onChange={this.handleQuantityChange}
               />
             </Form.Group>
             <Form.Group as={Col} controlId="formGridZip">
               <Form.Label className="ml-1 mt-3 mb-0">Total</Form.Label>
-              <Form.Control type="text" className="w-50 ml-1 modal-input" />
+              <Form.Control
+                type="text"
+                name="price"
+                value={
+                  "$" +
+                  formatter.format(this.state.quantity * this.state.price)
+                }
+                className="w-50 ml-1 modal-input"
+                readOnly
+              />
             </Form.Group>
           </Form.Row>
           <br />

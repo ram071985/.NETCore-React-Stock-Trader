@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/StocksController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/.gitignore">
     <Files>
       <File FileName="CORE/Services/DbSessionService.cs" Line="30" Column="1" />
       <File FileName="API/Controllers/AuthorzationController.cs" />
@@ -13,13 +13,15 @@
       <File FileName="API/TransactionModel.cs" />
       <File FileName="CORE/services/CreateNewUserService.cs" />
       <File FileName="API/Controllers/TransactionController.cs" />
+      <File FileName="API/client/.gitignore" Line="15" Column="10" />
+      <File FileName="API/.gitignore" Line="1" Column="49" />
       <File FileName="CORE/Services/GetUserInfoService.cs" Line="32" Column="45" NotebookId="1" />
       <File FileName="CORE/Services/CreateSessionService.cs" NotebookId="1" />
       <File FileName="CORE/Mapping/Session.hbm.xml" NotebookId="1" />
       <File FileName="API/Startup.cs" NotebookId="1" />
       <File FileName="API/Controllers/RegisterController.cs" NotebookId="1" />
       <File FileName="CORE/Services/SellStockService.cs" NotebookId="1" />
-      <File FileName="CORE/Services/BuyStockService.cs" Line="14" Column="32" NotebookId="1" />
+      <File FileName="CORE/Services/BuyStockService.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -27,23 +29,9 @@
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
               <Node name="client" expanded="True">
-                <Node name="public" expanded="True" />
-                <Node name="src" expanded="True">
-                  <Node name="Components" expanded="True" />
-                </Node>
+                <Node name="src" expanded="True" />
               </Node>
-              <Node name="Controllers" expanded="True">
-                <Node name="StocksController.cs" selected="True" />
-              </Node>
-              <Node name="appsettings.json" expanded="True" />
-            </Node>
-            <Node name="CORE" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
-              <Node name="Entities" expanded="True" />
-              <Node name="Mapping" expanded="True" />
-              <Node name="Services" expanded="True" />
+              <Node name=".gitignore" selected="True" />
             </Node>
           </Node>
         </State>

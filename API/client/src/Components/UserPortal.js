@@ -33,7 +33,7 @@ class UserPortal extends Component {
 
   componentDidMount() {
     this.setState({});
-    this.getUserInfo();
+    //this.getUserInfo();
     //this.getStock();
   }
 

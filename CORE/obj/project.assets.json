@@ -3027,7 +3027,7 @@
       "outputPath": "/Users/reid/Desktop/Projects/Stock-Trader/CORE/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/reid/.config/NuGet/NuGet.Config"
+        "/Users/reid/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
