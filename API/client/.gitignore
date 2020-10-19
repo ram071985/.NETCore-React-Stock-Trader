@@ -18,8 +18,8 @@ build
 .env.test.local
 .env.production.local
 images
-obj
-obj
+/obj
+./CORE/obj
 
 npm-debug.log*
 yarn-debug.log*
