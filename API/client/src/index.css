@@ -65,9 +65,9 @@ nav.navbar {
 }
 
 .holdings-container {
-  margin: 40px 0px 0px 40px !important;
-  width: 90% !important;
-  height: 60%;
+  margin: 0px 0px 0px 40px !important;
+  width: 475px !important;
+  height: 20%;
   border-radius: 0.4rem;
   background: rgb(15, 15, 15);
   padding: 10px;

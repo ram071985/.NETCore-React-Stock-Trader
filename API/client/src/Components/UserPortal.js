@@ -10,6 +10,7 @@ import InputGroup from "react-bootstrap/Form";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { PlusSquare, MinusSquare } from "react-feather";
 import ModalComponent from "./ModalComponent";
+import ConfirmOrderModal from "./ConfirmOrderModal";
 
 class UserPortal extends Component {
   constructor() {
@@ -104,7 +105,7 @@ class UserPortal extends Component {
 
     return (
       <div className="container-fluid main-container">
-        <div className="container user-container">
+        <div className="d-inline-block container user-container">
           <div className="d-block row">
             <h4 className="d-inline-block ml-3 mr-5 heading-text">
               User Information
@@ -117,6 +118,10 @@ class UserPortal extends Component {
               Buy/Sell Stocks
             </Button>{" "}
             <ModalComponent
+              show={this.state.setShow}
+              onHide={this.handleClose}
+            />
+            <ConfirmOrderModal
               show={this.state.setShow}
               onHide={this.handleClose}
             />
@@ -140,6 +145,17 @@ class UserPortal extends Component {
         </div>
         <div className="container d-inline-block holdings-container">
           <h4 className="heading-text">Current Holdings</h4>
+          <p className="mt-4 company-text">{this.state.companyName}</p>
+          <h5 className="d-inline-block share-text">
+            ${this.state.sharePrice}
+          </h5>
+          <Button
+            variant="success"
+            className="buy-button"
+            onClick={this.handleShow}
+          >
+            Sell shares
+          </Button>
         </div>
       </div>
     );

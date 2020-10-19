@@ -17,7 +17,7 @@ namespace API.Controllers
             _buyStockService = buyStockService;
         }
 
-        [HttpPost("buy")]
+        [HttpPut("buy")]
         public WalletModel WithdrawalTransaction([FromBody] WalletModel walletModel)
         {
             var update = _buyStockService.UpdateWallet(walletModel.UserId, walletModel.Balance);
@@ -26,6 +26,17 @@ namespace API.Controllers
             {
                 UserId = update.UserId,
                 Balance = update.Balance
+            };
+        }
+
+        [HttpPost("buy")]
+        public TransactionModel AddTransactionRecord([FromBody] TransactionModel transactionModel)
+        {
+            var transaction = _buyStockService.AddWithdrawal(transactionModel.UserId, transactionModel.Exchange, transactionModel.Withdrawal, transactionModel.Quantity);
+
+            return new TransactionModel
+            {
+                Withdrawal = transaction.Withdrawal
             };
         }
 

@@ -60,6 +60,29 @@ class ModalComponent extends Component {
       });
   };
 
+  putStockPurchase = () => {
+    let parseUserId = parseInt(localStorage.getItem("user_id"));
+    axios
+      .put("/api/transaction/buy", {
+        userId: parseUserId,
+        balance: this.state.price,
+      })
+      .then((res) => {})
+      .catch((err) => {});
+  };
+
+  postNewTransaction = () => {
+    let parseUserId = parseInt(localStorage.getItem("user_id"));
+    axios.post("/api/transaction/buy", {
+      userId: parseUserId,
+      withdrawal: this.state.price,
+      quantity: this.state.quantity,
+      exchange: this.state.symbol
+    })
+    .then((res) => {})
+    .catch((err) => {});
+  };
+
   render() {
     console.log(this.state.quantity);
 
@@ -123,8 +146,7 @@ class ModalComponent extends Component {
                 type="text"
                 name="price"
                 value={
-                  "$" +
-                  formatter.format(this.state.quantity * this.state.price)
+                  "$" + formatter.format(this.state.quantity * this.state.price)
                 }
                 className="w-50 ml-1 modal-input"
                 readOnly
@@ -140,6 +162,7 @@ class ModalComponent extends Component {
           <Button
             className="d-inline-block mx-auto review-button"
             variant="secondary"
+            onClick={this.putStockPurchase + this.postNewTransaction}
           >
             Review Order
           </Button>{" "}

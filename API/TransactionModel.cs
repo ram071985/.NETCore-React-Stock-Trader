@@ -8,6 +8,7 @@ namespace API
         public virtual string Exchange { get; set; }
         public virtual decimal Deposit { get; set; }
         public virtual decimal Withdrawal { get; set; }
-        public virtual decimal Balance { get; set; }
+        public virtual int Quantity { get; set; }
+        public virtual DateTime CreatedDate { get; set; }
     }
 }
