@@ -1,27 +1,35 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/BuyStockService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/StocksController.cs">
     <Files>
-      <File FileName="API/TransactionModel.cs" Line="11" Column="50" />
-      <File FileName="CORE/Entities/Transaction.cs" Line="16" Column="1" />
-      <File FileName="API/Controllers/TransactionController.cs" Line="34" Column="1" />
-      <File FileName="CORE/Services/BuyStockService.cs" Line="57" Column="1" />
-      <File FileName="CORE/Services/CreateWalletService.cs" Line="58" Column="37" />
-      <File FileName="CORE/Entities/Wallet.cs" Line="1" Column="1" />
-      <File FileName="CORE/Mapping/Transaction.hbm.xml" Line="24" Column="38" />
+      <File FileName="CORE/Services/CreateSessionService.cs" />
+      <File FileName="API/Controllers/UserController.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/UpdatePortalController.cs" Line="41" Column="15" />
+      <File FileName="API/Controllers/StocksController.cs" Line="1" Column="1" />
+      <File FileName="API/TransactionModel.cs" Line="6" Column="5" NotebookId="1" />
+      <File FileName="CORE/Entities/Transaction.cs" NotebookId="1" />
+      <File FileName="API/Controllers/TransactionController.cs" NotebookId="1" />
+      <File FileName="CORE/Services/CreateWalletService.cs" NotebookId="1" />
+      <File FileName="CORE/Entities/Wallet.cs" NotebookId="1" />
+      <File FileName="CORE/Mapping/Transaction.hbm.xml" Line="1" Column="1" NotebookId="1" />
+      <File FileName="API/StockModel.cs" Line="6" Column="4" NotebookId="1" />
+      <File FileName="CORE/Entities/Stock.cs" Line="13" Column="1" NotebookId="1" />
+      <File FileName="CORE/Mapping/Stock.hbm.xml" Line="22" Column="21" NotebookId="1" />
+      <File FileName="CORE/Services/BuyStockService.cs" Line="63" Column="10" NotebookId="1" />
+      <File FileName="CORE/Services/GetUserInfoService.cs" Line="48" Column="62" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="StocksController.cs" selected="True" />
+              </Node>
             </Node>
             <Node name="CORE" expanded="True">
               <Node name="Entities" expanded="True" />
               <Node name="Mapping" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="BuyStockService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -35,6 +43,8 @@
     <BreakpointStore>
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/BuyStockService.cs" relfile="CORE/Services/BuyStockService.cs" line="42" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/TransactionController.cs" relfile="API/Controllers/TransactionController.cs" line="33" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/UpdatePortalController.cs" relfile="API/Controllers/UpdatePortalController.cs" line="34" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/GetUserInfoService.cs" relfile="CORE/Services/GetUserInfoService.cs" line="43" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

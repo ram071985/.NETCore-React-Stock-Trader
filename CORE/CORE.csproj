@@ -24,11 +24,13 @@
     <None Remove="Models\session.hbm.xml" />
     <None Remove="Mapping\Wallet.xml" />
     <None Remove="Mapping\Transaction.hbm.xml" />
+    <None Remove="Mapping\Stock.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\User.hbm.xml" />
     <EmbeddedResource Include="Mapping\Session.hbm.xml" />
     <EmbeddedResource Include="Mapping\Wallet.hbm.xml" />
     <EmbeddedResource Include="Mapping\Transaction.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Stock.hbm.xml" />
   </ItemGroup>
 </Project>

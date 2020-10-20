@@ -49,7 +49,8 @@ namespace CORE.Services
                         UserId = userId,
                         Exchange = exchange,
                         Withdrawal = withdrawal,
-                        Quantity = quantity
+                        Quantity = quantity,
+                        CreatedDate = DateTime.Now
                     };
 
                     session.Save(transactionObject);

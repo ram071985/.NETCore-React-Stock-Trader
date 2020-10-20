@@ -10,6 +10,7 @@ namespace CORE.Services
     public interface IGetUserInfoService
     {
         Wallet GetUserInfo(int userId);
+        Stock GetStocks(int userId);
     }
 
     public class GetUserInfoService : IGetUserInfoService
@@ -34,6 +35,20 @@ namespace CORE.Services
                     transaction.Commit();
 
                     return result[0];
+                }
+            }
+        }
+
+        public Stock GetStocks(int userId)
+        {
+            using (var session = _dbSessionService.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    Stock stock = session.Get<Stock>(userId);
+                    transaction.Commit();
+
+                    return stock;
                 }
             }
         }
