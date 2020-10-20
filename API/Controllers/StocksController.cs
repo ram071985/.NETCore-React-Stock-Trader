@@ -27,9 +27,7 @@ namespace API.Controllers
         {
             HttpClient http = new HttpClient();
             var data = http.GetAsync("https://cloud.iexapis.com/stable/stock/" + exchange + "/quote?token=" + _token).Result.Content.ReadAsStringAsync().Result;
-            return data;
-         
-               
+            return data;              
         }
 
         [HttpGet("all")]

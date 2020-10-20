@@ -16,6 +16,7 @@ class UserPortal extends Component {
   constructor() {
     super();
     this.state = {
+      sampleStock: [],
       stocks: [],
       username: "",
       wallet: 0,
@@ -86,36 +87,52 @@ class UserPortal extends Component {
     this.getStock();
   };
 
-  getDatabaseStocks = () => {
+  getDatabaseStocks = async () => {
     let parseUserId = parseInt(localStorage.getItem("user_id"));
-    axios
-      .post("/api/update-portal/stocks", {
-        userId: parseUserId,
-      })
-      .then((res) => {
-        console.log(res.data);
-        this.setState({
-          stocks: res.data,
-        });
-        console.log(this.state.stocks);
-      })
-      .catch((err) => {});
+    const stocksResponse = await axios.post("/api/update-portal/stocks", {
+      userId: parseUserId,
+    });
+    const symbolArray = [];
+    for (const item of stocksResponse.data) {
+      const newResult = await axios.get("/api/stocks/exchanges/" + item.symbol);
+      symbolArray.push(newResult);
+    }
+    for ()
+    this.setState({
+      sampleStock: symbolArray,
+    });
+    console.log(stocksResponse.data);
+  };
+
+  getUpdatedPrices = () => {
+    let parseUserId = parseInt(localStorage.getItem("user_id"));
+    const prices = [];
+    for (const symbol of this.state.stocks) {
+      axios.post("api/stocks/exchanges/", {});
+    }
   };
 
   render() {
+    console.log(this.state.sampleStock);
+    const formatter = new Intl.NumberFormat("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
     const holdings = this.state.stocks.map((stock, index) => (
       <div key={index}>
         <p className="mt-4 company-text">{stock.company}</p>
-          <h5 className="d-inline-block share-text">
-            ${stock.quantity}
-          </h5>
-          <Button
-            variant="success"
-            className="buy-button"
-            onClick={this.handleShow}
-          >
-            Sell shares
-          </Button>
+        <h5>
+          Shares <span>{stock.quantity}</span>
+        </h5>
+        <h5 className="d-inline-block share-text">${stock.quantity}</h5>
+        <Button
+          variant="success"
+          className="buy-button"
+          onClick={this.handleShow}
+        >
+          Sell shares
+        </Button>
       </div>
     ));
 

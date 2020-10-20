@@ -40,7 +40,7 @@ namespace API.Controllers
         {
             var stocks = _getUserInfoService.GetUserStocks(stockModel.UserId);
             var stockModels = stocks.Select(stock => new StockModel
-            { Quantity = stock.Quantity, Company = stock.Company
+            { Quantity = stock.Quantity, Company = stock.Company, Symbol = stock.Symbol
             });
             return stockModels.ToList();
         }
