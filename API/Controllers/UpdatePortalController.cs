@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using CORE.Entities;
 using System.Net.Http;
 using Microsoft.Extensions.Configuration;
+using System.Linq;
 
 namespace API.Controllers
 {
@@ -35,14 +36,13 @@ namespace API.Controllers
         }
 
         [HttpPost("stocks")]
-        public StockModel GetStocks([FromBody] StockModel stockModel)
+        public List<StockModel> GetStocks([FromBody] StockModel stockModel)
         {
-            var stocks = _getUserInfoService.GetStocks(stockModel.UserId);
-            return new StockModel
-            {
-                Quantity = stocks.Quantity,
-                Company = stocks.Company
-            };
+            var stocks = _getUserInfoService.GetUserStocks(stockModel.UserId);
+            var stockModels = stocks.Select(stock => new StockModel
+            { Quantity = stock.Quantity, Company = stock.Company
+            });
+            return stockModels.ToList();
         }
     }
 }

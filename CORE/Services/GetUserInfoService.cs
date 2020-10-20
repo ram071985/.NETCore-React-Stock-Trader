@@ -10,7 +10,7 @@ namespace CORE.Services
     public interface IGetUserInfoService
     {
         Wallet GetUserInfo(int userId);
-        Stock GetStocks(int userId);
+        List<Stock> GetUserStocks(int userId);
     }
 
     public class GetUserInfoService : IGetUserInfoService
@@ -39,16 +39,23 @@ namespace CORE.Services
             }
         }
 
-        public Stock GetStocks(int userId)
+        public List<Stock> GetUserStocks(int userId)
         {
             using (var session = _dbSessionService.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Stock stock = session.Get<Stock>(userId);
+                  
+
+                    var result = session.QueryOver<Stock>()
+                       .Where(w => w.UserId == userId)
+                       .List<Stock>();
+
                     transaction.Commit();
 
-                    return stock;
+            
+
+                    return (List<Stock>)result;
                 }
             }
         }

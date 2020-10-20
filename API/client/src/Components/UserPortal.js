@@ -86,13 +86,18 @@ class UserPortal extends Component {
     this.getStock();
   };
 
-  getStock = () => {
+  getDatabaseStocks = () => {
+    let parseUserId = parseInt(localStorage.getItem("user_id"));
     axios
-      .get("/api/stocks/all", {})
+      .post("/api/update-portal/stocks", {
+        userId: parseUserId,
+      })
       .then((res) => {
         console.log(res.data);
-        this.setState({
-          stocks: res.data,
+        this.setState((prevState) => {
+          return {
+            stocks: [...prevState.stocks]
+          };
         });
       })
       .catch((err) => {});
