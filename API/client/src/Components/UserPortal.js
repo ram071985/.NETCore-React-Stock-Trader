@@ -35,7 +35,7 @@ class UserPortal extends Component {
   componentDidMount() {
     this.setState({});
     //this.getUserInfo();
-    //this.getStock();
+    this.getDatabaseStocks();
   }
 
   handleChange = (event) => {
@@ -94,18 +94,29 @@ class UserPortal extends Component {
       })
       .then((res) => {
         console.log(res.data);
-        this.setState((prevState) => {
-          return {
-            stocks: [...prevState.stocks]
-          };
+        this.setState({
+          stocks: res.data,
         });
+        console.log(this.state.stocks);
       })
       .catch((err) => {});
   };
 
   render() {
-    const stocks = this.state.stocks.map((stock, index) => (
-      <option key={index} value={stock.name} />
+    const holdings = this.state.stocks.map((stock, index) => (
+      <div key={index}>
+        <p className="mt-4 company-text">{stock.company}</p>
+          <h5 className="d-inline-block share-text">
+            ${stock.quantity}
+          </h5>
+          <Button
+            variant="success"
+            className="buy-button"
+            onClick={this.handleShow}
+          >
+            Sell shares
+          </Button>
+      </div>
     ));
 
     return (
@@ -148,19 +159,9 @@ class UserPortal extends Component {
             </div>
           </div>
         </div>
-        <div className="container d-inline-block holdings-container">
+        <div className="container-fluid d-inline-block holdings-container">
           <h4 className="heading-text">Current Holdings</h4>
-          <p className="mt-4 company-text">{this.state.companyName}</p>
-          <h5 className="d-inline-block share-text">
-            ${this.state.sharePrice}
-          </h5>
-          <Button
-            variant="success"
-            className="buy-button"
-            onClick={this.handleShow}
-          >
-            Sell shares
-          </Button>
+          {holdings}
         </div>
       </div>
     );
