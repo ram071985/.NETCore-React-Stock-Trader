@@ -17,6 +17,7 @@ class UserPortal extends Component {
     super();
     this.state = {
       sampleStock: [],
+      priceResults: [],
       stocks: [],
       username: "",
       wallet: 0,
@@ -92,16 +93,19 @@ class UserPortal extends Component {
     const stocksResponse = await axios.post("/api/update-portal/stocks", {
       userId: parseUserId,
     });
-    const symbolArray = [];
-    for (const item of stocksResponse.data) {
-      const newResult = await axios.get("/api/stocks/exchanges/" + item.symbol);
-      symbolArray.push(newResult);
-    }
-    for ()
+    let symbolArray = [];
+    let obj = {};
+    console.log(stocksResponse);
     this.setState({
-      sampleStock: symbolArray,
-    });
-    console.log(stocksResponse.data);
+      stocks: stocksResponse.data
+    })
+    for (const item of stocksResponse.data) {
+      //const newResult = await axios.get("/api/stocks/exchanges/" + item.symbol);
+      symbolArray.push(obj);
+      
+      //const symbolResponse = newResult.map(symbol => ({...symbol, symbol: symbol.}))
+    }
+    this.addKeyValuePair();
   };
 
   getUpdatedPrices = () => {
@@ -112,8 +116,17 @@ class UserPortal extends Component {
     }
   };
 
+  addKeyValuePair = (stock) => {
+    let result = this.state.stocks.map(function (stock) {
+      let o = Object.assign({}, stock);
+      o.symbol = newResult.data.lastestPrice;
+      return o;
+      
+    });
+  };
+
   render() {
-    console.log(this.state.sampleStock);
+    console.log(this.state.stocks);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
