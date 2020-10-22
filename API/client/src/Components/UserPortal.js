@@ -93,19 +93,24 @@ class UserPortal extends Component {
     const stocksResponse = await axios.post("/api/update-portal/stocks", {
       userId: parseUserId,
     });
-    let symbolArray = [];
-    let obj = {};
-    console.log(stocksResponse);
+
     this.setState({
-      stocks: stocksResponse.data
-    })
+      stocks: stocksResponse.data,
+    });
     for (const item of stocksResponse.data) {
-      //const newResult = await axios.get("/api/stocks/exchanges/" + item.symbol);
-      symbolArray.push(obj);
-      
-      //const symbolResponse = newResult.map(symbol => ({...symbol, symbol: symbol.}))
+      const newResult = await axios.get("/api/stocks/exchanges/" + item.symbol);
+      const obj = { ["current"]: newResult.data.latestPrice };
+      this.state.sampleStock.push(obj);
     }
-    this.addKeyValuePair();
+
+    const addPrices = this.state.stocks.map((price,index) => {
+      return {...price, current: this.state.sampleStock[index].current}
+    })
+    this.setState({
+      stocks: addPrices
+    })
+    console.log(this.state.sampleStock)
+
   };
 
   getUpdatedPrices = () => {
@@ -114,15 +119,6 @@ class UserPortal extends Component {
     for (const symbol of this.state.stocks) {
       axios.post("api/stocks/exchanges/", {});
     }
-  };
-
-  addKeyValuePair = (stock) => {
-    let result = this.state.stocks.map(function (stock) {
-      let o = Object.assign({}, stock);
-      o.symbol = newResult.data.lastestPrice;
-      return o;
-      
-    });
   };
 
   render() {

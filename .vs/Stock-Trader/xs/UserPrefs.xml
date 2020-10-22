@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/UpdatePortalController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/StocksController.cs">
     <Files>
       <File FileName="API/Controllers/UpdatePortalController.cs" Line="45" Column="41" />
       <File FileName="API/Controllers/StocksController.cs" Line="30" Column="25" />
@@ -7,12 +7,12 @@
       <File FileName="CORE/Entities/Transaction.cs" NotebookId="1" />
       <File FileName="API/Controllers/TransactionController.cs" NotebookId="1" />
       <File FileName="CORE/Entities/Wallet.cs" NotebookId="1" />
-      <File FileName="CORE/Mapping/Transaction.hbm.xml" Line="1" Column="1" NotebookId="1" />
-      <File FileName="API/StockModel.cs" Line="6" Column="1" NotebookId="1" />
-      <File FileName="CORE/Entities/Stock.cs" Line="13" Column="2" NotebookId="1" />
-      <File FileName="CORE/Mapping/Stock.hbm.xml" Line="25" Column="21" NotebookId="1" />
-      <File FileName="CORE/Services/BuyStockService.cs" Line="63" Column="10" NotebookId="1" />
-      <File FileName="CORE/Services/GetUserInfoService.cs" Line="43" Column="1" NotebookId="1" />
+      <File FileName="CORE/Mapping/Transaction.hbm.xml" NotebookId="1" />
+      <File FileName="API/StockModel.cs" NotebookId="1" />
+      <File FileName="CORE/Entities/Stock.cs" NotebookId="1" />
+      <File FileName="CORE/Mapping/Stock.hbm.xml" NotebookId="1" />
+      <File FileName="CORE/Services/BuyStockService.cs" NotebookId="1" />
+      <File FileName="CORE/Services/GetUserInfoService.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,7 +20,7 @@
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
               <Node name="Controllers" expanded="True">
-                <Node name="UpdatePortalController.cs" selected="True" />
+                <Node name="StocksController.cs" selected="True" />
               </Node>
             </Node>
             <Node name="CORE" expanded="True">
