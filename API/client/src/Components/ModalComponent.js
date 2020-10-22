@@ -4,11 +4,13 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import ConfirmOrderModal from "./ConfirmOrderModal";
 
 class ModalComponent extends Component {
   constructor() {
     super();
     this.state = {
+      setShow: false,
       action: "Buy",
       symbol: "",
       quantity: 0,
@@ -60,31 +62,20 @@ class ModalComponent extends Component {
       });
   };
 
-  putStockPurchase = () => {
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
-    axios
-      .put("/api/transaction/buy", {
-        userId: parseUserId,
-        balance: this.state.price,
-      })
-      .then((res) => {})
-      .catch((err) => {});
+  handleShow = () => {
+    this.setState({
+      setShow: true,
+    });
   };
 
-  postNewTransaction = () => {
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
-    axios.post("/api/transaction/buy", {
-      userId: parseUserId,
-      withdrawal: this.state.price,
-      quantity: this.state.quantity,
-      exchange: this.state.symbol
-    })
-    .then((res) => {})
-    .catch((err) => {});
+  handleClose = () => {
+    this.setState({
+      setShow: false,
+    });
   };
 
   render() {
-    console.log(this.state.quantity);
+    console.log(this.state.company);
 
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
@@ -162,10 +153,19 @@ class ModalComponent extends Component {
           <Button
             className="d-inline-block mx-auto review-button"
             variant="secondary"
-            onClick={this.putStockPurchase + this.postNewTransaction}
+            onClick={this.handleShow}
           >
             Review Order
           </Button>{" "}
+          <ConfirmOrderModal
+            show={this.state.setShow}
+            onHide={this.handleClose}
+            company={this.state.company}
+            quantity={this.state.quantity}
+            price={formatter.format(this.state.quantity * this.state.price)}
+            symbol={this.state.symbol}
+
+          />
           <Button
             onClick={this.props.onHide}
             className="d-inline-block mx-auto cancel-button"

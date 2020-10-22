@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/StocksController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/TransactionController.cs">
     <Files>
       <File FileName="API/Controllers/UpdatePortalController.cs" Line="45" Column="41" />
-      <File FileName="API/Controllers/StocksController.cs" Line="30" Column="25" />
+      <File FileName="API/Controllers/StocksController.cs" />
+      <File FileName="API/Controllers/TransactionController.cs" Line="34" Column="1" />
       <File FileName="API/TransactionModel.cs" Line="6" Column="5" NotebookId="1" />
       <File FileName="CORE/Entities/Transaction.cs" NotebookId="1" />
-      <File FileName="API/Controllers/TransactionController.cs" NotebookId="1" />
       <File FileName="CORE/Entities/Wallet.cs" NotebookId="1" />
       <File FileName="CORE/Mapping/Transaction.hbm.xml" NotebookId="1" />
       <File FileName="API/StockModel.cs" NotebookId="1" />
@@ -20,7 +20,7 @@
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
               <Node name="Controllers" expanded="True">
-                <Node name="StocksController.cs" selected="True" />
+                <Node name="TransactionController.cs" selected="True" />
               </Node>
             </Node>
             <Node name="CORE" expanded="True">
@@ -38,8 +38,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/BuyStockService.cs" relfile="CORE/Services/BuyStockService.cs" line="42" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/TransactionController.cs" relfile="API/Controllers/TransactionController.cs" line="33" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/BuyStockService.cs" relfile="CORE/Services/BuyStockService.cs" line="41" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

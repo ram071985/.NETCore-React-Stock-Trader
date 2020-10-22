@@ -12,6 +12,7 @@ import { PlusSquare, MinusSquare } from "react-feather";
 import ModalComponent from "./ModalComponent";
 import ConfirmOrderModal from "./ConfirmOrderModal";
 
+
 class UserPortal extends Component {
   constructor() {
     super();
@@ -103,14 +104,13 @@ class UserPortal extends Component {
       this.state.sampleStock.push(obj);
     }
 
-    const addPrices = this.state.stocks.map((price,index) => {
-      return {...price, current: this.state.sampleStock[index].current}
-    })
+    const addPrices = this.state.stocks.map((price, index) => {
+      return { ...price, current: this.state.sampleStock[index].current };
+    });
     this.setState({
-      stocks: addPrices
-    })
-    console.log(this.state.sampleStock)
-
+      stocks: addPrices,
+    });
+    console.log(this.state.sampleStock);
   };
 
   getUpdatedPrices = () => {
@@ -134,7 +134,7 @@ class UserPortal extends Component {
         <h5>
           Shares <span>{stock.quantity}</span>
         </h5>
-        <h5 className="d-inline-block share-text">${stock.quantity}</h5>
+        <h5 className="d-inline-block share-text">${formatter.format(stock.current * stock.quantity)}</h5>
         <Button
           variant="success"
           className="buy-button"
@@ -160,13 +160,9 @@ class UserPortal extends Component {
               Buy/Sell Stocks
             </Button>{" "}
             <ModalComponent
-              show={this.state.setShow}
-              onHide={this.handleClose}
-            />
-            <ConfirmOrderModal
-              show={this.state.setShow}
-              onHide={this.handleClose}
-            />
+            show={this.state.setShow}
+            onHide={this.handleClose}
+          />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>
               <h6 className="d-block mb-4 name-text">{this.state.username}</h6>
