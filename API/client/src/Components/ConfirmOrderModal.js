@@ -86,7 +86,7 @@ class ConfirmOrderModal extends Component {
             Total<span className="confirm-span">${this.props.price}</span>
           </h5>
           <Button
-            className="mt-4 d-inline-block mx-auto"            
+            className="mt-4 d-inline-block mx-auto"
             variant="secondary"
             onClick={this.postNewTransaction}
           >

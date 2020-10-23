@@ -12,11 +12,11 @@ import { PlusSquare, MinusSquare } from "react-feather";
 import ModalComponent from "./ModalComponent";
 import ConfirmOrderModal from "./ConfirmOrderModal";
 
-
 class UserPortal extends Component {
   constructor() {
     super();
     this.state = {
+      selectValue: "Buy",
       sampleStock: [],
       priceResults: [],
       stocks: [],
@@ -32,6 +32,7 @@ class UserPortal extends Component {
       errorMessage: "",
       returnedQuery: false,
       setShow: false,
+      isSell: false,
     };
   }
 
@@ -84,6 +85,13 @@ class UserPortal extends Component {
       });
   };
 
+  handleSellSubmit = () => {
+    this.setState({
+      isSell: true,
+    });
+    this.handleShow();
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.getStock();
@@ -122,7 +130,8 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.stocks);
+  
+    console.log(this.state.isSell);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -134,11 +143,13 @@ class UserPortal extends Component {
         <h5>
           Shares <span>{stock.quantity}</span>
         </h5>
-        <h5 className="d-inline-block share-text">${formatter.format(stock.current * stock.quantity)}</h5>
+        <h5 className="d-inline-block share-text">
+          ${formatter.format(stock.current * stock.quantity)}
+        </h5>
         <Button
           variant="success"
           className="buy-button"
-          onClick={this.handleShow}
+          onClick={this.handleSellSubmit}
         >
           Sell shares
         </Button>
@@ -160,9 +171,12 @@ class UserPortal extends Component {
               Buy/Sell Stocks
             </Button>{" "}
             <ModalComponent
-            show={this.state.setShow}
-            onHide={this.handleClose}
-          />
+              selectValue={this.state.selectValue}
+              action={this.state.action}
+              isSell={this.state.isSell}
+              show={this.state.setShow}
+              onHide={this.handleClose}
+            />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>
               <h6 className="d-block mb-4 name-text">{this.state.username}</h6>

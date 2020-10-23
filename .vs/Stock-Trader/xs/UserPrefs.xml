@@ -3,7 +3,7 @@
     <Files>
       <File FileName="API/Controllers/UpdatePortalController.cs" Line="45" Column="41" />
       <File FileName="API/Controllers/StocksController.cs" />
-      <File FileName="API/Controllers/TransactionController.cs" Line="34" Column="1" />
+      <File FileName="API/Controllers/TransactionController.cs" Line="35" Column="1" />
       <File FileName="API/TransactionModel.cs" Line="6" Column="5" NotebookId="1" />
       <File FileName="CORE/Entities/Transaction.cs" NotebookId="1" />
       <File FileName="CORE/Entities/Wallet.cs" NotebookId="1" />
@@ -11,7 +11,7 @@
       <File FileName="API/StockModel.cs" NotebookId="1" />
       <File FileName="CORE/Entities/Stock.cs" NotebookId="1" />
       <File FileName="CORE/Mapping/Stock.hbm.xml" NotebookId="1" />
-      <File FileName="CORE/Services/BuyStockService.cs" NotebookId="1" />
+      <File FileName="CORE/Services/BuyStockService.cs" Line="63" Column="1" NotebookId="1" />
       <File FileName="CORE/Services/GetUserInfoService.cs" NotebookId="1" />
     </Files>
     <Pads>

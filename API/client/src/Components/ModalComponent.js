@@ -11,7 +11,7 @@ class ModalComponent extends Component {
     super();
     this.state = {
       setShow: false,
-      action: "Buy",
+      selectValue: "Buy",
       symbol: "",
       quantity: 0,
       price: 0,
@@ -19,6 +19,11 @@ class ModalComponent extends Component {
       company: "",
       error: "",
     };
+  }
+
+  componentDidMount() {
+  
+    
   }
 
   handleChange = (event) => {
@@ -34,6 +39,14 @@ class ModalComponent extends Component {
       }
       return returnInterval;
     }, 2000);
+  };
+
+  handleSelectChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+      errorMessage: "",
+    });
   };
 
   handleQuantityChange = (event) => {
@@ -75,7 +88,7 @@ class ModalComponent extends Component {
   };
 
   render() {
-    console.log(this.state.company);
+    console.log(this.props.action);
 
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
@@ -96,10 +109,10 @@ class ModalComponent extends Component {
                 as="select"
                 className="ml-5 mt-0 modal-input w-50"
                 name="action"
-                onChange={this.handleChange}
+                onChange={this.handleSelectChange}
               >
-                <option>Buy</option>
-                <option>Sell</option>
+                <option value="Buy">Buy</option>
+                <option value="Sell">Sell</option>
               </Form.Control>
             </Form.Group>
 
@@ -164,7 +177,6 @@ class ModalComponent extends Component {
             quantity={this.state.quantity}
             price={formatter.format(this.state.quantity * this.state.price)}
             symbol={this.state.symbol}
-
           />
           <Button
             onClick={this.props.onHide}
