@@ -11,7 +11,6 @@ class ModalComponent extends Component {
     super();
     this.state = {
       setShow: false,
-      selectValue: "Buy",
       symbol: "",
       quantity: 0,
       price: 0,
@@ -22,8 +21,6 @@ class ModalComponent extends Component {
   }
 
   componentDidMount() {
-  
-    
   }
 
   handleChange = (event) => {
@@ -45,7 +42,7 @@ class ModalComponent extends Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
-      errorMessage: "",
+      error: "",
     });
   };
 
@@ -88,8 +85,6 @@ class ModalComponent extends Component {
   };
 
   render() {
-    console.log(this.props.action);
-
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -110,6 +105,7 @@ class ModalComponent extends Component {
                 className="ml-5 mt-0 modal-input w-50"
                 name="action"
                 onChange={this.handleSelectChange}
+                value={this.props.selectValue}
               >
                 <option value="Buy">Buy</option>
                 <option value="Sell">Sell</option>

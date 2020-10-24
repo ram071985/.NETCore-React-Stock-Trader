@@ -55,6 +55,17 @@ class ConfirmOrderModal extends Component {
         exchange: this.props.symbol,
       })
       .catch((err) => {});
+      this.addStockRecord();
+  };
+
+  addStockRecord = () => {
+    let parseUserId = parseInt(localStorage.getItem("user_id"));
+    axios.post("/api/transaction/add-stock", {
+      userId: parseUserId,
+      company: this.props.company,
+      symbol: this.props.symbol,
+      quantity: this.props.quantity
+    })
   };
 
   render() {
@@ -73,7 +84,10 @@ class ConfirmOrderModal extends Component {
           onHide={this.props.onHide}
         >
           <h2 className="mt-4 ml-5">Stock Purchase</h2>
-          <h6 className="ml-5">{this.props.company}</h6>
+          <h6 className="ml-5">
+            {this.props.company}
+            <span>({this.props.symbol})</span>
+          </h6>
           <h6 className="ml-5">QTY {this.props.quantity}</h6>
           <h6 className="ml-5">Price: ${this.props.price}</h6>
           <h2 className="mt-5 ml-5">Order Summary</h2>

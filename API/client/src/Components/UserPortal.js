@@ -41,6 +41,7 @@ class UserPortal extends Component {
     //this.getUserInfo();
     this.getDatabaseStocks();
   }
+  
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -57,11 +58,19 @@ class UserPortal extends Component {
     });
   };
 
+  handleBuySellShow = () => {
+    this.setState({
+      setShow: true,
+      selectValue: "Buy"
+    });
+  };
+
   handleShow = () => {
     this.setState({
       setShow: true,
     });
   };
+
 
   handleClose = () => {
     this.setState({
@@ -87,7 +96,7 @@ class UserPortal extends Component {
 
   handleSellSubmit = () => {
     this.setState({
-      isSell: true,
+      selectValue: "Sell"
     });
     this.handleShow();
   };
@@ -131,7 +140,7 @@ class UserPortal extends Component {
 
   render() {
   
-    console.log(this.state.isSell);
+    console.log(this.state.stocks);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -164,7 +173,7 @@ class UserPortal extends Component {
               User Information
             </h4>
             <Button
-              onClick={this.handleShow}
+              onClick={this.handleBuySellShow}
               className=""
               variant="outline-success"
             >

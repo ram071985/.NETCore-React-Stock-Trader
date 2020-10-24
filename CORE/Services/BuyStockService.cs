@@ -8,6 +8,7 @@ namespace CORE.Services
     {
         Wallet UpdateWallet(int userId, decimal balance);
         Transaction AddWithdrawal(int userId, string symbol, decimal withdrawal, int quantity);
+        Stock CreateStockRecord(int userId, string company, string symbol, int quantity);
     }
 
     public class BuyStockService : IBuyStockService
@@ -58,6 +59,44 @@ namespace CORE.Services
                     transaction.Commit();
 
                     return transactionObject;
+                }
+            }
+        }
+
+        public Stock CreateStockRecord(int userId, string company, string symbol, int quantity)
+        {
+            using (var session = _dbSessionService.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    Stock stock = session.Get<Stock>(company);
+
+                    if (stock != null)
+                    {
+                        stock.Quantity = stock.Quantity + quantity;
+
+                        session.SaveOrUpdate(stock);
+
+                        transaction.Commit();
+
+                        return stock;
+                    }
+
+                    var stockObject = new Stock
+                    {
+                        UserId = userId,
+                        Company = company,
+                        Symbol = symbol,
+                        Quantity = quantity,
+                        CreatedDate = DateTime.Now
+                    };
+
+                    session.Save(stockObject);
+
+                    transaction.Commit();
+
+                    return stockObject;
                 }
             }
         }

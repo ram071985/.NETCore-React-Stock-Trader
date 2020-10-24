@@ -40,6 +40,17 @@ namespace API.Controllers
             };
         }
 
+        [HttpPost("add-stock")]
+        public StockModel AddNewStock([FromBody] StockModel stockModel)
+        {
+            var record = _buyStockService.CreateStockRecord(stockModel.UserId, stockModel.Company, stockModel.Symbol, stockModel.Quantity);
+
+            return new StockModel
+            {
+                UserId = record.UserId
+            };
+        }
+
         [HttpPost("sell")]
         public void DepositTransaction([FromBody] UserAuthInputModel userAuthInputModel)
         {
