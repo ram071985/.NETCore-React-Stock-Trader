@@ -25,9 +25,7 @@ class ModalComponent extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      stocks: this.props.stocks,
-    });
+  
   }
 
   handleChange = (event) => {
@@ -121,7 +119,7 @@ class ModalComponent extends Component {
       maximumFractionDigits: 2,
     });
   
-    console.log(this.state.action);
+    console.log(this.state.stocks);
 
     return (
       <div>
@@ -152,7 +150,7 @@ class ModalComponent extends Component {
               {this.state.action !== "Sell" ? (
                 <SearchStockList onChange={this.handleChange} />
               ) : (
-                <PersistentStockList items={this.state.stocks}/>
+                <PersistentStockList onChange={this.handleSelectChange} stocks={this.props.stocks}/>
               )}
 
               <h6 className="ml-1 mt-1 company-text">{this.state.company}</h6>

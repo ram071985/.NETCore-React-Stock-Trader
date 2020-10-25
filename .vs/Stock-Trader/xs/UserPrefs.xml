@@ -1,32 +1,32 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/BuyStockService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/StocksController.cs">
     <Files>
       <File FileName="API/Controllers/UpdatePortalController.cs" Line="45" Column="41" />
-      <File FileName="API/Controllers/StocksController.cs" />
-      <File FileName="API/Controllers/TransactionController.cs" Line="35" Column="1" />
+      <File FileName="API/Controllers/StocksController.cs" Line="1" Column="1" />
+      <File FileName="API/Controllers/TransactionController.cs" />
       <File FileName="API/TransactionModel.cs" Line="6" Column="1" NotebookId="1" />
-      <File FileName="CORE/Entities/Transaction.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="CORE/Entities/Transaction.cs" NotebookId="1" />
       <File FileName="CORE/Entities/Wallet.cs" NotebookId="1" />
-      <File FileName="CORE/Mapping/Transaction.hbm.xml" Line="1" Column="1" NotebookId="1" />
-      <File FileName="API/StockModel.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="CORE/Entities/Stock.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="CORE/Services/BuyStockService.cs" Line="82" Column="54" NotebookId="1" />
-      <File FileName="CORE/Services/GetUserInfoService.cs" Line="33" Column="52" NotebookId="1" />
-      <File FileName="CORE/Services/AuthorizeUserService.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="CORE/Mapping/Transaction.hbm.xml" NotebookId="1" />
+      <File FileName="API/StockModel.cs" NotebookId="1" />
+      <File FileName="CORE/Entities/Stock.cs" NotebookId="1" />
+      <File FileName="CORE/Services/BuyStockService.cs" NotebookId="1" />
+      <File FileName="CORE/Services/GetUserInfoService.cs" NotebookId="1" />
+      <File FileName="CORE/Services/AuthorizeUserService.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="StocksController.cs" selected="True" />
+              </Node>
             </Node>
             <Node name="CORE" expanded="True">
               <Node name="Entities" expanded="True" />
               <Node name="Mapping" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="BuyStockService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>

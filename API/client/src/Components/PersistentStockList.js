@@ -4,23 +4,19 @@ import Form from "react-bootstrap/Form";
 class PersistentStockList extends Component {
   constructor() {
     super();
-    this.state = {
-      stocks: [],
-    };
+    this.state = {};
   }
 
   render() {
-    const stockList = this.props.items.map((stock, index) => (
-      <Form.Group controlId="exampleForm.ControlSelect1">
-        <Form.Label>Example select</Form.Label>
-        <Form.Control as="select"></Form.Control>
-        <option >
-          1
-        </option>
-      </Form.Group>
+    const stockList = this.props.stocks[0].map((stock, index) => (
+      <option key={index} value={stock.company}>{stock.company}</option>
     ));
-    console.log(this.state.stocks);
-    return <div>{stockList}</div>;
+    console.log(this.props.stocks)
+    return (
+      <div>
+        <select>{stockList}</select>
+      </div>
+    );
   }
 }
 

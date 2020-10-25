@@ -129,7 +129,12 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.stocks);
+    const stockList = this.state.stocks.map((stock, index) => (
+      <option key={index} value={stock.company}>{stock.company}</option>
+    ));
+
+    console.log(stockList);
+
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -153,6 +158,8 @@ class UserPortal extends Component {
         </Button>
       </div>
     ));
+
+    console.log(holdings);
 
     return (
       <div className="container-fluid main-container">
@@ -197,6 +204,8 @@ class UserPortal extends Component {
         <div className="container-fluid d-inline-block holdings-container">
           <h4 className="heading-text">Current Holdings</h4>
           {holdings}
+          <select>{stockList}</select>
+          
         </div>
       </div>
     );
