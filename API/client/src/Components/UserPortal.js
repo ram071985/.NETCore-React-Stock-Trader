@@ -129,12 +129,6 @@ class UserPortal extends Component {
   };
 
   render() {
-    const stockList = this.state.stocks.map((stock, index) => (
-      <option key={index} value={stock.company}>{stock.company}</option>
-    ));
-
-    console.log(stockList);
-
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -143,9 +137,9 @@ class UserPortal extends Component {
     const holdings = this.state.stocks.map((stock, index) => (
       <div key={index}>
         <p className="mt-4 company-text">{stock.company}</p>
-        <h5>
-          Shares <span>{stock.quantity}</span>
-        </h5>
+        <h6 className="shares-current">
+          Shares: <span>{stock.quantity}</span>
+        </h6>
         <h5 className="d-inline-block share-text">
           ${formatter.format(stock.current * stock.quantity)}
         </h5>
@@ -158,8 +152,6 @@ class UserPortal extends Component {
         </Button>
       </div>
     ));
-
-    console.log(holdings);
 
     return (
       <div className="container-fluid main-container">
@@ -204,8 +196,6 @@ class UserPortal extends Component {
         <div className="container-fluid d-inline-block holdings-container">
           <h4 className="heading-text">Current Holdings</h4>
           {holdings}
-          <select>{stockList}</select>
-          
         </div>
       </div>
     );
