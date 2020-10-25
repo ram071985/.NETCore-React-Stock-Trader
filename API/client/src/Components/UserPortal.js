@@ -174,7 +174,7 @@ class UserPortal extends Component {
               isSell={this.state.isSell}
               show={this.state.setShow}
               onHide={this.handleClose}
-              stocks={this.state.stocks}
+              stocks={[this.state.stocks]}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>

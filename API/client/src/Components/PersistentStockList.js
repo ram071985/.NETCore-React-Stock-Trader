@@ -1,29 +1,26 @@
 import React, { Component } from "react";
-import Form from "react-bootstrap/Form"
+import Form from "react-bootstrap/Form";
 
 class PersistentStockList extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      stocks: [],
+    };
   }
 
   render() {
-    const stocks = this.props.stocks.map((stock, index) => (
-      <div key={index}>
-        <option>{stock.company}</option>
-      </div>
+    const stockList = this.props.items.map((stock, index) => (
+      <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form.Label>Example select</Form.Label>
+        <Form.Control as="select"></Form.Control>
+        <option >
+          1
+        </option>
+      </Form.Group>
     ));
-  
-    return (
-      <div>
-        <Form.Group controlId="exampleForm.ControlSelect2">
-          <Form.Label>Example multiple select</Form.Label>
-          <Form.Control as="select" multiple>
-            <option>{stocks}</option>
-          </Form.Control>
-        </Form.Group>
-      </div>
-    );
+    console.log(this.state.stocks);
+    return <div>{stockList}</div>;
   }
 }
 

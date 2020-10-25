@@ -120,7 +120,7 @@ class ModalComponent extends Component {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
-
+  
     console.log(this.state.action);
 
     return (
@@ -152,7 +152,7 @@ class ModalComponent extends Component {
               {this.state.action !== "Sell" ? (
                 <SearchStockList onChange={this.handleChange} />
               ) : (
-                <PersistentStockList stocks={this.state.stocks}/>
+                <PersistentStockList items={this.state.stocks}/>
               )}
 
               <h6 className="ml-1 mt-1 company-text">{this.state.company}</h6>
