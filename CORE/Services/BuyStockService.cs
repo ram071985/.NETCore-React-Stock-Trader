@@ -70,17 +70,20 @@ namespace CORE.Services
                 using (var transaction = session.BeginTransaction())
                 {
 
-                    Stock stock = session.Get<Stock>(company);
+                    var result = session.QueryOver<Stock>()
+                        .Where(s => s.UserId == userId)
+                        .Where(s => s.Symbol == symbol)
+                        .List<Stock>();
 
-                    if (stock != null)
+                    if (result != null)
                     {
-                        stock.Quantity = stock.Quantity + quantity;
+                        result[0].Quantity = result[0].Quantity + quantity;
 
-                        session.SaveOrUpdate(stock);
+                        session.SaveOrUpdate(result[0]);
 
                         transaction.Commit();
 
-                        return stock;
+                        return result[0];
                     }
 
                     var stockObject = new Stock

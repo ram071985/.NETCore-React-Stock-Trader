@@ -16,7 +16,6 @@ class UserPortal extends Component {
   constructor() {
     super();
     this.state = {
-      selectValue: "Buy",
       sampleStock: [],
       priceResults: [],
       stocks: [],
@@ -41,7 +40,6 @@ class UserPortal extends Component {
     //this.getUserInfo();
     this.getDatabaseStocks();
   }
-  
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -61,7 +59,7 @@ class UserPortal extends Component {
   handleBuySellShow = () => {
     this.setState({
       setShow: true,
-      selectValue: "Buy"
+      selectValue: "Buy",
     });
   };
 
@@ -70,7 +68,6 @@ class UserPortal extends Component {
       setShow: true,
     });
   };
-
 
   handleClose = () => {
     this.setState({
@@ -92,13 +89,6 @@ class UserPortal extends Component {
           holdings: res.data.holdings,
         });
       });
-  };
-
-  handleSellSubmit = () => {
-    this.setState({
-      selectValue: "Sell"
-    });
-    this.handleShow();
   };
 
   handleSubmit = (e) => {
@@ -139,7 +129,6 @@ class UserPortal extends Component {
   };
 
   render() {
-  
     console.log(this.state.stocks);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
@@ -173,7 +162,7 @@ class UserPortal extends Component {
               User Information
             </h4>
             <Button
-              onClick={this.handleBuySellShow}
+              onClick={this.handleShow}
               className=""
               variant="outline-success"
             >
@@ -185,6 +174,7 @@ class UserPortal extends Component {
               isSell={this.state.isSell}
               show={this.state.setShow}
               onHide={this.handleClose}
+              stocks={this.state.stocks}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>

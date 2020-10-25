@@ -5,11 +5,15 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import ConfirmOrderModal from "./ConfirmOrderModal";
+import SearchStockList from "./SearchStockList";
+import PersistentStockList from "./PersistentStockList";
 
 class ModalComponent extends Component {
   constructor() {
     super();
     this.state = {
+      stocks: [],
+      action: "",
       setShow: false,
       symbol: "",
       quantity: 0,
@@ -21,6 +25,9 @@ class ModalComponent extends Component {
   }
 
   componentDidMount() {
+    this.setState({
+      stocks: this.props.stocks,
+    });
   }
 
   handleChange = (event) => {
@@ -84,11 +91,37 @@ class ModalComponent extends Component {
     });
   };
 
+  searchStockList = () => {
+    return (
+      <div>
+        <Form.Control
+          type="input"
+          name="symbol"
+          className="w-75 modal-input"
+          onChange={this.handleChange}
+        />
+      </div>
+    );
+  };
+
+  persistentStockList = () => {
+    return <div></div>;
+  };
+
+  isBuyTrue = () => {
+    if ((this.state.action = "Buy")) {
+      return true;
+    }
+    return false;
+  };
+
   render() {
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
+
+    console.log(this.state.action);
 
     return (
       <div>
@@ -104,11 +137,10 @@ class ModalComponent extends Component {
                 as="select"
                 className="ml-5 mt-0 modal-input w-50"
                 name="action"
-                onChange={this.handleSelectChange}
-                value={this.props.selectValue}
+                onChange={this.handleChange}
               >
-                <option value="Buy">Buy</option>
-                <option value="Sell">Sell</option>
+                <option>Buy</option>
+                <option>Sell</option>
               </Form.Control>
             </Form.Group>
 
@@ -116,12 +148,13 @@ class ModalComponent extends Component {
               <Form.Label className="mt-5 mb-0">
                 Search by company symbol
               </Form.Label>
-              <Form.Control
-                type="input"
-                name="symbol"
-                className="w-75 modal-input"
-                onChange={this.handleChange}
-              />
+
+              {this.state.action !== "Sell" ? (
+                <SearchStockList onChange={this.handleChange} />
+              ) : (
+                <PersistentStockList stocks={this.state.stocks}/>
+              )}
+
               <h6 className="ml-1 mt-1 company-text">{this.state.company}</h6>
             </Form.Group>
           </Form.Row>
