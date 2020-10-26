@@ -1,16 +1,23 @@
+import Axios from "axios";
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
+import axios from "axios";
+import Col from "react-bootstrap/Col";
 
 class SellQuantity extends Component {
   constructor() {
     super();
     this.state = {
-        quantity: 0,
-        stockName: ""
+      quantity: 0,
+      stockName: "",
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.setState({
+      stockName: this.props.stocks[0].company,
+    });
+  }
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,6 +28,7 @@ class SellQuantity extends Component {
   };
 
   handleQuantityChange = (event) => {
+    this.getQuantityFromDatabase();
     const { name, value } = event.target;
     this.setState({
       [name]: value,
@@ -28,18 +36,22 @@ class SellQuantity extends Component {
   };
 
   getQuantityFromDatabase = () => {
-    
-  }
+    let parseUserId = parseInt(localStorage.getItem("user_id"));
+    axios
+      .post("/api/stocks/quantity", {
+        userId: parseUserId,
+        company: this.state.stockName,
+      })
+      .then((res) => {
+        this.setState({
+          quantity: res.data.quantity,
+        });
+        console.log(res.data);
+      });
+  };
 
   render() {
-    const stockList = this.props.stocks[0].map((stock, index) => (
-      <option key={index} value={stock.company}>
-        {stock.company} ({stock.quantity} shares)
-      </option>
-    ));
-    let i;
-    //for (i = 1; i * )
-
+ console.log(this.props.action)
     console.log(this.state.stockName);
 
     return (
@@ -50,6 +62,7 @@ class SellQuantity extends Component {
             <Form.Control
               type="number"
               min="1"
+              max={this.state.quantity}
               className="w-50 ml-5 d-inline-block modal-input"
               name="quantity"
               onChange={this.handleQuantityChange}

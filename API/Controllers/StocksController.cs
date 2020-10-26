@@ -38,11 +38,9 @@ namespace API.Controllers
             HttpClient http = new HttpClient();
             var data = http.GetAsync("https://cloud.iexapis.com/stable/ref-data/symbols/" + "?token=" + _token).Result.Content.ReadAsStringAsync().Result;
             return data;
-
-
         }
 
-        [HttpGet("quantity")]
+        [HttpPost("quantity")]
         public StockModel GetShareQuantity([FromBody] StockModel stockModel)
         {
             var quantityResult = _sellStockService.GetShareQuantity(stockModel.UserId, stockModel.Company);

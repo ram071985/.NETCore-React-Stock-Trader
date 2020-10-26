@@ -7,6 +7,7 @@ import axios from "axios";
 import ConfirmOrderModal from "./ConfirmOrderModal";
 import SearchStockList from "./SearchStockList";
 import PersistentStockList from "./PersistentStockList";
+import SellQuantity from "./SellQuantity";
 
 class ModalComponent extends Component {
   constructor() {
@@ -74,6 +75,7 @@ class ModalComponent extends Component {
         //     }
       });
   };
+  
 
   handleShow = () => {
     this.setState({
@@ -112,7 +114,7 @@ class ModalComponent extends Component {
   };
 
   render() {
-    console.log(this.state.company)
+    console.log(this.state.company);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -149,26 +151,12 @@ class ModalComponent extends Component {
                 <PersistentStockList
                   onChange={this.handleSelectChange}
                   stocks={this.props.stocks}
-                  
                 />
               )}
             </Form.Group>
           </Form.Row>
           <Form.Row autocomplete="off">
-            <Form.Group
-              as={Col}
-              controlId="formGridZip"
-              className="quanity-col"
-            >
-              <Form.Label className="ml-5 mt-3 mb-0">Share quantity</Form.Label>
-              <Form.Control
-                type="number"
-                min="1"
-                className="w-50 ml-5 d-inline-block modal-input"
-                name="quantity"
-                onChange={this.handleQuantityChange}
-              />
-            </Form.Group>
+           <SellQuantity stocks={this.props.stocks} action={this.state.action}/>
             <Form.Group as={Col} controlId="formGridZip">
               <Form.Label className="ml-1 mt-3 mb-0">Total</Form.Label>
               <Form.Control

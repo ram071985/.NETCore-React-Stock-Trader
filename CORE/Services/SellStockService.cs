@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CORE.Entities;
 using NHibernate.Criterion;
 
@@ -31,9 +32,7 @@ namespace CORE.Services
 
                     transaction.Commit();
 
-
-                    return (Stock)result;
-                        
+                    return result[0];                       
                 }       
             }
         }

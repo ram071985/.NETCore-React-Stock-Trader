@@ -11,7 +11,7 @@ class PersistentStockList extends Component {
 
   componentDidMount() {
     this.setState({
-      stockName: this.props.stocks[0][0].company 
+      stockName: this.props.stocks[0].company 
     })
   }
 
@@ -22,7 +22,7 @@ class PersistentStockList extends Component {
   };
 
   render() {
-    const stockList = this.props.stocks[0].map((stock, index) => (
+    const stockList = this.props.stocks.map((stock, index) => (
       <option key={index} value={stock.company}>
         {stock.company} ({stock.quantity} shares)
       </option>
