@@ -183,22 +183,20 @@ button.log-in-button:hover {
 }
 
 #holdings {
-margin-left: 50%;
+  margin-left: 50%;
 }
 
 #holding-text {
   margin-left: 33%;
-
 }
 
 /* Columns */
 
 .left-col {
-  
 }
 
 .company-text {
-color: white;
+  color: white;
 }
 
 .share-text {
@@ -207,7 +205,6 @@ color: white;
 
 .buy-button {
   margin-left: 30px;
-
 }
 
 /* modal elements */
@@ -229,11 +226,9 @@ color: white;
 }
 
 .modal-content.button {
-
 }
 
 .modal-total-text {
-
   margin-left: 25% !important;
 }
 
@@ -293,3 +288,14 @@ hr {
   color: rgb(197, 197, 197);
 }
 
+.current-label {
+  margin-top: 48px;
+  margin-bottom: 0;
+  display: block;
+}
+
+.stocks-select {
+  height: 38px;
+  border-radius: 0;
+  padding: 5px;
+}

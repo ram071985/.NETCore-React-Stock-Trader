@@ -24,9 +24,7 @@ class ModalComponent extends Component {
     };
   }
 
-  componentDidMount() {
-  
-  }
+  componentDidMount() {}
 
   handleChange = (event) => {
     let returnInterval;
@@ -114,12 +112,11 @@ class ModalComponent extends Component {
   };
 
   render() {
+    console.log(this.state.company)
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
-  
-    console.log(this.state.stocks);
 
     return (
       <div>
@@ -143,17 +140,18 @@ class ModalComponent extends Component {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label className="mt-5 mb-0">
-                Search by company symbol
-              </Form.Label>
-
               {this.state.action !== "Sell" ? (
-                <SearchStockList onChange={this.handleChange} />
+                <SearchStockList
+                  company={this.state.company}
+                  onChange={this.handleChange}
+                />
               ) : (
-                <PersistentStockList onChange={this.handleSelectChange} stocks={this.props.stocks}/>
+                <PersistentStockList
+                  onChange={this.handleSelectChange}
+                  stocks={this.props.stocks}
+                  
+                />
               )}
-
-              <h6 className="ml-1 mt-1 company-text">{this.state.company}</h6>
             </Form.Group>
           </Form.Row>
           <Form.Row autocomplete="off">
