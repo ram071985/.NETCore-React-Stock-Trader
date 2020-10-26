@@ -6,7 +6,7 @@ namespace CORE.Services
 {
     public interface ISellStockService
     {
-        void AuthorizeUser(string username, string password);
+        Stock GetShareQuantity(int userId, string company);
     }
 
     public class SellStockService : ISellStockService
@@ -18,10 +18,24 @@ namespace CORE.Services
             _dbSessionService = dbSessionService;
         }
 
-        public void AuthorizeUser(string username, string password)
+        public Stock GetShareQuantity(int userId, string company)
         {
+            using (var session = _dbSessionService.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    var result = session.QueryOver<Stock>()
+                        .Where(s => s.UserId == userId)
+                        .Where(s => s.Company == company)
+                        .List<Stock>();
 
-            
+                    transaction.Commit();
+
+
+                    return (Stock)result;
+                        
+                }       
+            }
         }
     }
 }

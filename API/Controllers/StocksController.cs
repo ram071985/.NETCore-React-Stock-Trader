@@ -16,10 +16,12 @@ namespace API.Controllers
     {
        
         private string _token;
+        private ISellStockService _sellStockService;
 
-        public StocksController(IConfiguration configuration)
+        public StocksController(IConfiguration configuration, ISellStockService sellStockService)
         {
             _token = configuration["IexConnection:Token"];
+            _sellStockService = sellStockService;
         }
 
         [HttpGet("exchanges/{exchange}")]
@@ -38,6 +40,17 @@ namespace API.Controllers
             return data;
 
 
+        }
+
+        [HttpGet("quantity")]
+        public StockModel GetShareQuantity([FromBody] StockModel stockModel)
+        {
+            var quantityResult = _sellStockService.GetShareQuantity(stockModel.UserId, stockModel.Company);
+
+            return new StockModel
+            {
+                Quantity = quantityResult.Quantity
+            };
         }
 
     }

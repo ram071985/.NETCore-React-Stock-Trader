@@ -69,7 +69,6 @@ namespace CORE.Services
             {
                 using (var transaction = session.BeginTransaction())
                 {
-
                     var result = session.QueryOver<Stock>()
                         .Where(s => s.UserId == userId)
                         .Where(s => s.Symbol == symbol)

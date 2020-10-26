@@ -9,27 +9,33 @@ class PersistentStockList extends Component {
     };
   }
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
+  componentDidMount() {
     this.setState({
-      [name]: value,
+      stockName: this.props.stocks[0][0].company 
+    })
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      stockName: event.target.value,
     });
   };
 
   render() {
     const stockList = this.props.stocks[0].map((stock, index) => (
       <option key={index} value={stock.company}>
-        {stock.company}
+        {stock.company} ({stock.quantity} shares)
       </option>
     ));
-    console.log(this.state.stockName);
-    this.props.stocks.includes();
+   
+console.log(this.state.stockName)
     return (
       <div>
         <Form>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label className="current-label">Current Holdings</Form.Label>
             <Form.Control
+              type="text"
               onChange={this.handleChange}
               name="stockName"
               as="select"
@@ -38,8 +44,6 @@ class PersistentStockList extends Component {
             </Form.Control>
           </Form.Group>
         </Form>
-
-        <h6 className="ml-1 company-text">Shares Owned: {}</h6>
       </div>
     );
   }
