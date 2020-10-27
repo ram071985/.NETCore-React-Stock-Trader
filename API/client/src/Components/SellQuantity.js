@@ -19,16 +19,7 @@ class SellQuantity extends Component {
     });
   }
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-      stockName: event.textContent,
-    });
-  };
-
   handleQuantityChange = (event) => {
-    this.getQuantityFromDatabase();
     const { name, value } = event.target;
     this.setState({
       [name]: value,
@@ -51,9 +42,9 @@ class SellQuantity extends Component {
   };
 
   render() {
- console.log(this.props.action)
-    console.log(this.state.stockName);
 
+    console.log(this.state.quantity);
+    console.log(this.state.stockName);
     return (
       <div>
         <Form>

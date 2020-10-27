@@ -28,6 +28,7 @@ class PersistentStockList extends Component {
       </option>
     ));
    
+   
 console.log(this.state.stockName)
     return (
       <div>

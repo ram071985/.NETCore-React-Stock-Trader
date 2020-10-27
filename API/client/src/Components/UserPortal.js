@@ -128,7 +128,14 @@ class UserPortal extends Component {
     }
   };
 
+  checkForCompany = () => {
+    return "Facebook, Inc"
+  }
+
   render() {
+
+    const filter = this.state.stocks.filter(name => name.company === "Facebook, Inc");
+    console.log(filter);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
