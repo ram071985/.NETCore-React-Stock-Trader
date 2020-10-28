@@ -19,6 +19,7 @@ class UserPortal extends Component {
       sampleStock: [],
       priceResults: [],
       stocks: [],
+      sellQuantity: 0,
       stockName: "",
       username: "",
       wallet: 0,
@@ -118,10 +119,13 @@ class UserPortal extends Component {
     this.setState({
       stocks: addPrices,
     });
-    console.log(this.state.stocks[0].company)
+    console.log(this.state.stocks[0].company);
     this.setState({
-      stockName: this.state.stocks[0].company
-    })
+      stockName: this.state.stocks[0].company,
+    });
+    this.getSellQuantity();
+
+    console.log(this.state.sellQuantity);
   };
 
   getUpdatedPrices = () => {
@@ -136,8 +140,29 @@ class UserPortal extends Component {
     return "Facebook, Inc";
   };
 
+  getSellQuantity = (index) => {
+ 
+      const filter = this.state.stocks.filter((name) => name.company === this.state.stockName)
+
+ 
+      console.log(filter)
+      this.setState({
+        sellQuantity: filter[0].quantity
+      })
+  
+  
+   // if (this.state.stockName === this.state.stocks[0].company) {
+  //    const filter = this.state.stocks.filter(
+      //  (name) => name.company === this.state.stockName
+     // );
+   
+     
+    //}
+   
+  };
+
   render() {
-   console.log(this.state.stockName)
+ 
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -184,6 +209,7 @@ class UserPortal extends Component {
               onHide={this.handleClose}
               stocks={this.state.stocks}
               stockName={this.state.stockname}
+              quantity={this.state.sellQuantity}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>

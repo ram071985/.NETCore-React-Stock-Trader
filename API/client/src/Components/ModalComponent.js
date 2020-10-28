@@ -8,6 +8,7 @@ import ConfirmOrderModal from "./ConfirmOrderModal";
 import SearchStockList from "./SearchStockList";
 import PersistentStockList from "./PersistentStockList";
 import SellQuantity from "./SellQuantity";
+import BuyQuantity from "./BuyQuantity";
 
 class ModalComponent extends Component {
   constructor() {
@@ -22,7 +23,6 @@ class ModalComponent extends Component {
       price: 0,
       exchange: [],
       company: "",
-      sellQuantity: 0,
       error: "",
     };
   }
@@ -32,7 +32,6 @@ class ModalComponent extends Component {
     // stockName: this.props.stocks[0].company,
     // });
     //this.getQuantity();
-    
   }
 
   handleChange = (event) => {
@@ -61,8 +60,10 @@ class ModalComponent extends Component {
   handleQuantityChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value,
+      [name]: parseInt(value),
     });
+
+    console.log(this.state.quantity);
   };
 
   getExchange = () => {
@@ -120,20 +121,8 @@ class ModalComponent extends Component {
     return false;
   };
 
-  getQuantity = (index) => {
-    if (this.props.stockName === this.props.stocks[index].company) {
-      const filter = this.props.stocks.filter(
-        (name) => name.company === this.state.stockName
-      );
-      this.setState({
-        sellQuantity: filter[0].quantity,
-      });
-      console.log(filter);
-    }
-  };
-
   render() {
-    console.log(this.props.stocks[0]);
+   console.log(this.props.quantity)
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -165,7 +154,6 @@ class ModalComponent extends Component {
                 <SearchStockList
                   company={this.state.company}
                   onChange={this.handleChange}
-                  
                 />
               ) : (
                 <PersistentStockList
@@ -176,12 +164,20 @@ class ModalComponent extends Component {
             </Form.Group>
           </Form.Row>
           <Form.Row autocomplete="off">
-            <SellQuantity
-              stocks={this.props.stocks}
-              action={this.state.action}
-              stockName={this.props.stockName}
-              sellQuantity={this.state.sellQuantity}
-            />
+            {this.state.action !== "Sell" ? (
+              <BuyQuantity
+                onChange={this.handleQuantityChange}
+                quantity={this.props.quantity}
+              />
+            ) : (
+              <SellQuantity
+                onChange={this.handleQuantityChange}
+                stocks={this.props.stocks}
+                action={this.state.action}
+                stockName={this.props.stockName}
+                quantity={this.props.quantity}
+              />
+            )}
             <Form.Group as={Col} controlId="formGridZip">
               <Form.Label className="ml-1 mt-3 mb-0">Total</Form.Label>
               <Form.Control

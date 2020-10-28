@@ -6,14 +6,14 @@ class PersistentStockList extends Component {
     super();
     this.state = {
       stockName: "",
-      quantity: 0
+      quantity: 0,
     };
   }
 
   componentDidMount() {
     this.setState({
-      stockName: this.props.stocks[0].company 
-    })
+      stockName: this.props.stocks[0].company,
+    });
   }
 
   handleChange = (event) => {
@@ -28,9 +28,8 @@ class PersistentStockList extends Component {
         {stock.company} ({stock.quantity} shares)
       </option>
     ));
-   
-   
-console.log(this.state.stockName)
+
+    console.log(this.state.stockName);
     return (
       <div>
         <Form>
