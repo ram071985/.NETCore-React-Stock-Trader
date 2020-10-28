@@ -9,10 +9,12 @@ import LandingPage from "./Components/LandingPage";
 import LogIn from "./Components/LogIn";
 import SignUp from "./Components/SignUp";
 import UserPortal from "./Components/UserPortal";
+import ConfirmOrderModal from "./Components/ConfirmOrderModal";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
+    <Route path="/confirm" render={(props) => <ConfirmOrderModal {...props}/>} />
     <Route path="/user-portal" component={UserPortal} />
     <Route path="/sign-up" component={SignUp} />
       <Route path="/log-in" component={LogIn} />

@@ -9,7 +9,6 @@ class ConfirmOrderModal extends Component {
   constructor() {
     super();
     this.state = {
-      action: "Buy",
       symbol: "",
       quantity: 0,
       price: 0,
@@ -17,6 +16,10 @@ class ConfirmOrderModal extends Component {
       company: "",
       error: "",
     };
+  }
+
+  componentDidMount(props) {
+    console.log(this.props.symbol)
   }
 
   handleChange = (event) => {
@@ -78,11 +81,7 @@ class ConfirmOrderModal extends Component {
 
     return (
       <div>
-        <Modal
-          className="purchase-modal"
-          show={this.props.show}
-          onHide={this.props.onHide}
-        >
+     
           <h2 className="mt-4 ml-5">Stock Purchase</h2>
           <h6 className="ml-5">
             {this.props.company}
@@ -106,7 +105,6 @@ class ConfirmOrderModal extends Component {
           >
             Confirm Purchase
           </Button>{" "}
-        </Modal>
       </div>
     );
   }

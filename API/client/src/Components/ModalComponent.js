@@ -9,6 +9,7 @@ import SearchStockList from "./SearchStockList";
 import PersistentStockList from "./PersistentStockList";
 import SellQuantity from "./SellQuantity";
 import BuyQuantity from "./BuyQuantity";
+import { Redirect } from "react-router-dom";
 
 class ModalComponent extends Component {
   constructor() {
@@ -23,6 +24,7 @@ class ModalComponent extends Component {
       price: 0,
       exchange: [],
       company: "",
+      isConfirm: false,
       error: "",
     };
   }
@@ -121,13 +123,32 @@ class ModalComponent extends Component {
     return false;
   };
 
+  confirmRedirect = () => {
+    this.setState({
+      isConfirm: true
+    })
+  };
+
   render() {
-   console.log(this.props.quantity)
+    console.log(this.props.quantity);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
 
+if (this.state.isConfirm) {
+  return <Redirect
+          to={{
+            pathname: "/confirm",
+            state: {
+              company: this.state.company,
+              quantity: this.state.quantity,
+              price: this.state.price,
+              symbol: this.state.symbol,
+            },
+          }}
+        />
+}
     return (
       <div>
         <Modal
@@ -200,18 +221,10 @@ class ModalComponent extends Component {
           <Button
             className="d-inline-block mx-auto review-button"
             variant="secondary"
-            onClick={this.handleShow}
+            onClick={this.confirmRedirect}
           >
             Review Order
           </Button>{" "}
-          <ConfirmOrderModal
-            show={this.state.setShow}
-            onHide={this.handleClose}
-            company={this.state.company}
-            quantity={this.state.quantity}
-            price={formatter.format(this.state.quantity * this.state.price)}
-            symbol={this.state.symbol}
-          />
           <Button
             onClick={this.props.onHide}
             className="d-inline-block mx-auto cancel-button"
