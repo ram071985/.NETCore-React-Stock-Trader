@@ -27,9 +27,10 @@ class PersistentStockList extends Component {
       <option key={index} value={stock.company}>
         {stock.company} ({stock.quantity} shares)
       </option>
+
     ));
 
-    console.log(this.state.stockName);
+    console.log(this.props.action);
     return (
       <div>
         <Form>

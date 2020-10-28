@@ -34,9 +34,12 @@ class ModalComponent extends Component {
     // stockName: this.props.stocks[0].company,
     // });
     //this.getQuantity();
+    this.setState({
+      action: "Buy",
+    });
   }
 
-  handleChange = (event) => {
+  handleQueryChange = (event) => {
     let returnInterval;
     const { name, value } = event.target;
     this.setState({
@@ -49,6 +52,13 @@ class ModalComponent extends Component {
       }
       return returnInterval;
     }, 2000);
+  };
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
   };
 
   handleSelectChange = (event) => {
@@ -95,6 +105,7 @@ class ModalComponent extends Component {
 
   handleClose = () => {
     this.setState({
+      action: "Buy",
       setShow: false,
     });
   };
@@ -125,19 +136,38 @@ class ModalComponent extends Component {
 
   confirmRedirect = () => {
     this.setState({
-      isConfirm: true
-    })
+      isConfirm: true,
+    });
   };
 
   render() {
-    console.log(this.props.quantity);
+    console.log(this.props.setAction);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
 
-if (this.state.isConfirm) {
-  return <Redirect
+    const stockInput = (
+      <div>
+        {" "}
+        {this.props.setAction === "Buy" && this.state.action !== "Sell" && this.state.action === "Buy" ? (
+          <SearchStockList
+            company={this.state.company}
+            onChange={this.handleQueryChange}
+          />
+        ) : (
+          <PersistentStockList
+            onChange={this.handleSelectChange}
+            stocks={this.props.stocks}
+            action={this.state.action}
+          />
+        )}
+      </div>
+    );
+
+    if (this.state.isConfirm) {
+      return (
+        <Redirect
           to={{
             pathname: "/confirm",
             state: {
@@ -148,7 +178,9 @@ if (this.state.isConfirm) {
             },
           }}
         />
-}
+      );
+    }
+
     return (
       <div>
         <Modal
@@ -171,17 +203,7 @@ if (this.state.isConfirm) {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridZip">
-              {this.state.action !== "Sell" ? (
-                <SearchStockList
-                  company={this.state.company}
-                  onChange={this.handleChange}
-                />
-              ) : (
-                <PersistentStockList
-                  onChange={this.handleSelectChange}
-                  stocks={this.props.stocks}
-                />
-              )}
+              {stockInput}
             </Form.Group>
           </Form.Row>
           <Form.Row autocomplete="off">

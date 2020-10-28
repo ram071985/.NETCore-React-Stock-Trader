@@ -18,6 +18,7 @@ class UserPortal extends Component {
     this.state = {
       sampleStock: [],
       priceResults: [],
+      action: "",
       stocks: [],
       sellQuantity: 0,
       stockName: "",
@@ -38,9 +39,12 @@ class UserPortal extends Component {
   }
 
   componentDidMount() {
-    this.setState({});
+    this.setState({
+      action: "Buy"
+    });
     //this.getUserInfo();
     this.getDatabaseStocks();
+
   }
 
   handleChange = (event) => {
@@ -68,6 +72,7 @@ class UserPortal extends Component {
   handleShow = () => {
     this.setState({
       setShow: true,
+      action: "Buy"
     });
   };
 
@@ -125,7 +130,7 @@ class UserPortal extends Component {
     });
     this.getSellQuantity();
 
-    console.log(this.state.sellQuantity);
+
   };
 
   getUpdatedPrices = () => {
@@ -141,28 +146,16 @@ class UserPortal extends Component {
   };
 
   getSellQuantity = (index) => {
- 
-      const filter = this.state.stocks.filter((name) => name.company === this.state.stockName)
+    const filter = this.state.stocks.filter(
+      (name) => name.company === this.state.stockName
+    );
 
- 
-      console.log(filter)
-      this.setState({
-        sellQuantity: filter[0].quantity
-      })
-  
-  
-   // if (this.state.stockName === this.state.stocks[0].company) {
-  //    const filter = this.state.stocks.filter(
-      //  (name) => name.company === this.state.stockName
-     // );
-   
-     
-    //}
-   
+    this.setState({
+      sellQuantity: filter[0].quantity,
+    });
   };
 
   render() {
- 
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -203,7 +196,7 @@ class UserPortal extends Component {
             </Button>{" "}
             <ModalComponent
               selectValue={this.state.selectValue}
-              action={this.state.action}
+              setAction={this.state.action}
               isSell={this.state.isSell}
               show={this.state.setShow}
               onHide={this.handleClose}
