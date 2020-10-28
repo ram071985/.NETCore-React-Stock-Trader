@@ -13,6 +13,7 @@ class ModalComponent extends Component {
   constructor() {
     super();
     this.state = {
+      stockName: "",
       stocks: [],
       action: "",
       setShow: false,
@@ -21,11 +22,18 @@ class ModalComponent extends Component {
       price: 0,
       exchange: [],
       company: "",
+      sellQuantity: 0,
       error: "",
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    // this.setState({
+    // stockName: this.props.stocks[0].company,
+    // });
+    //this.getQuantity();
+    
+  }
 
   handleChange = (event) => {
     let returnInterval;
@@ -75,7 +83,6 @@ class ModalComponent extends Component {
         //     }
       });
   };
-  
 
   handleShow = () => {
     this.setState({
@@ -113,8 +120,20 @@ class ModalComponent extends Component {
     return false;
   };
 
+  getQuantity = (index) => {
+    if (this.props.stockName === this.props.stocks[index].company) {
+      const filter = this.props.stocks.filter(
+        (name) => name.company === this.state.stockName
+      );
+      this.setState({
+        sellQuantity: filter[0].quantity,
+      });
+      console.log(filter);
+    }
+  };
+
   render() {
-    console.log(this.state.company);
+    console.log(this.props.stocks[0]);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -146,6 +165,7 @@ class ModalComponent extends Component {
                 <SearchStockList
                   company={this.state.company}
                   onChange={this.handleChange}
+                  
                 />
               ) : (
                 <PersistentStockList
@@ -156,7 +176,12 @@ class ModalComponent extends Component {
             </Form.Group>
           </Form.Row>
           <Form.Row autocomplete="off">
-           <SellQuantity stocks={this.props.stocks} action={this.state.action}/>
+            <SellQuantity
+              stocks={this.props.stocks}
+              action={this.state.action}
+              stockName={this.props.stockName}
+              sellQuantity={this.state.sellQuantity}
+            />
             <Form.Group as={Col} controlId="formGridZip">
               <Form.Label className="ml-1 mt-3 mb-0">Total</Form.Label>
               <Form.Control

@@ -6,6 +6,7 @@ class PersistentStockList extends Component {
     super();
     this.state = {
       stockName: "",
+      quantity: 0
     };
   }
 

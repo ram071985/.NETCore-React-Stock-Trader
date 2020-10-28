@@ -8,16 +8,15 @@ class SellQuantity extends Component {
   constructor() {
     super();
     this.state = {
-      quantity: 0,
-      stockName: "",
     };
   }
 
   componentDidMount() {
-    this.setState({
-      stockName: this.props.stocks[0].company,
-    });
+  
+
   }
+
+
 
   handleQuantityChange = (event) => {
     const { name, value } = event.target;
@@ -26,25 +25,8 @@ class SellQuantity extends Component {
     });
   };
 
-  getQuantityFromDatabase = () => {
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
-    axios
-      .post("/api/stocks/quantity", {
-        userId: parseUserId,
-        company: this.state.stockName,
-      })
-      .then((res) => {
-        this.setState({
-          quantity: res.data.quantity,
-        });
-        console.log(res.data);
-      });
-  };
-
   render() {
-
-    console.log(this.state.quantity);
-    console.log(this.state.stockName);
+    console.log(this.props.quantity);
     return (
       <div>
         <Form>
@@ -53,7 +35,7 @@ class SellQuantity extends Component {
             <Form.Control
               type="number"
               min="1"
-              max={this.state.quantity}
+              max={this.props.sellQuantity}
               className="w-50 ml-5 d-inline-block modal-input"
               name="quantity"
               onChange={this.handleQuantityChange}

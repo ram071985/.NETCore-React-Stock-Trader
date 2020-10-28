@@ -19,6 +19,7 @@ class UserPortal extends Component {
       sampleStock: [],
       priceResults: [],
       stocks: [],
+      stockName: "",
       username: "",
       wallet: 0,
       balance: 0,
@@ -117,7 +118,10 @@ class UserPortal extends Component {
     this.setState({
       stocks: addPrices,
     });
-    console.log(this.state.sampleStock);
+    console.log(this.state.stocks[0].company)
+    this.setState({
+      stockName: this.state.stocks[0].company
+    })
   };
 
   getUpdatedPrices = () => {
@@ -129,13 +133,11 @@ class UserPortal extends Component {
   };
 
   checkForCompany = () => {
-    return "Facebook, Inc"
-  }
+    return "Facebook, Inc";
+  };
 
   render() {
-
-    const filter = this.state.stocks.filter(name => name.company === "Facebook, Inc");
-    console.log(filter);
+   console.log(this.state.stockName)
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -181,6 +183,7 @@ class UserPortal extends Component {
               show={this.state.setShow}
               onHide={this.handleClose}
               stocks={this.state.stocks}
+              stockName={this.state.stockname}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>
