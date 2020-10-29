@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class ConfirmOrderModal extends Component {
   constructor() {
@@ -15,11 +16,12 @@ class ConfirmOrderModal extends Component {
       exchange: [],
       company: "",
       error: "",
+      cancel: false
     };
   }
 
   componentDidMount(props) {
-    console.log(this.props.symbol)
+    console.log(this.props.symbol);
   }
 
   handleChange = (event) => {
@@ -36,6 +38,12 @@ class ConfirmOrderModal extends Component {
       [name]: value,
     });
   };
+
+  handleClose =() => {
+    this.setState({
+      cancel: true
+    })
+  }
 
   putStockPurchase = () => {
     let parseUserId = parseInt(localStorage.getItem("user_id"));
@@ -58,7 +66,7 @@ class ConfirmOrderModal extends Component {
         exchange: this.props.symbol,
       })
       .catch((err) => {});
-      this.addStockRecord();
+    this.addStockRecord();
   };
 
   addStockRecord = () => {
@@ -67,43 +75,60 @@ class ConfirmOrderModal extends Component {
       userId: parseUserId,
       company: this.props.company,
       symbol: this.props.symbol,
-      quantity: this.props.quantity
-    })
+      quantity: this.props.quantity,
+    });
   };
 
   render() {
-    console.log(this.props.price);
+    console.log(this.props.location.state.price);
 
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
 
+    if (this.state.cancel) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/user-portal",
+          }}
+        />
+      );
+    }
+
     return (
       <div>
-     
-          <h2 className="mt-4 ml-5">Stock Purchase</h2>
-          <h6 className="ml-5">
-            {this.props.company}
-            <span>({this.props.symbol})</span>
-          </h6>
-          <h6 className="ml-5">QTY {this.props.quantity}</h6>
-          <h6 className="ml-5">Price: ${this.props.price}</h6>
-          <h2 className="mt-5 ml-5">Order Summary</h2>
-          <h6></h6>
-          <h6 className="mt-2 ml-5">
-            Subtotal<span className="confirm-span">${this.props.price}</span>
-          </h6>
-          <hr></hr>
-          <h5 className="ml-5">
-            Total<span className="confirm-span">${this.props.price}</span>
-          </h5>
-          <Button
-            className="mt-4 d-inline-block mx-auto"
-            variant="secondary"
-            onClick={this.postNewTransaction}
+        <h2 className="mt-4 ml-5">{}</h2>
+        <h6 className="ml-5">
+          {this.props.location.state.company}
+          <span>({this.props.location.state.symbol})</span>
+        </h6>
+        <h6 className="ml-5">QTY {this.props.location.state.quantity}</h6>
+        <h6 className="ml-5">Price: ${this.props.location.state.price}</h6>
+        <h2 className="mt-5 ml-5">Order Summary</h2>
+        <h6></h6>
+        <h6 className="mt-2 ml-5">
+          Subtotal<span className="confirm-span">${this.props.location.state.price}</span>
+        </h6>
+        <hr></hr>
+        <h5 className="ml-5">
+          Total<span className="confirm-span">${this.props.location.state.price}</span>
+        </h5>
+        <Button
+          className="mt-4 d-inline-block mx-auto"
+          variant="secondary"
+          onClick={this.postNewTransaction}
+        >
+          Confirm Purchase
+        </Button>{" "}
+        <Button
+            onClick={this.props.onHide}
+            className="d-inline-block mx-auto cancel-button"
+            variant="danger"
+            onClick={this.handleClose}
           >
-            Confirm Purchase
+            Cancel Order
           </Button>{" "}
       </div>
     );

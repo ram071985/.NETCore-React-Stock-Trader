@@ -36,13 +36,11 @@ class UserPortal extends Component {
       returnedQuery: false,
       setShow: false,
       isSell: false,
+      sellSubmit: false
     };
   }
 
   componentDidMount() {
-    this.setState({
-      action: "Buy",
-    });
     //this.getUserInfo();
     this.getDatabaseStocks();
   }
@@ -62,16 +60,32 @@ class UserPortal extends Component {
     });
   };
 
+  handleBuySellChange = (event) => {
+    console.log(event.target.value)
+    this.setState({
+      action: event.target.value
+    });
+
+
+  }
+
   handleBuySellShow = () => {
     this.setState({
       setShow: true,
     });
   };
 
+  handleSellSubmit = () => {
+    this.setState({
+      action: "Sell",
+      setShow: true,
+      sellSubmit: true
+    });
+  };
+
   handleShow = () => {
     this.setState({
       setShow: true,
-      setSell: false,
       action: "Buy",
     });
   };
@@ -155,6 +169,7 @@ class UserPortal extends Component {
   };
 
   render() {
+    console.log(this.state.action)
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -178,7 +193,7 @@ class UserPortal extends Component {
         </Button>
       </div>
     ));
-console.log(this.state.setShow)
+console.log(this.state.action)
     return (
       <div className="container-fluid main-container">
         <div className="d-inline-block container user-container">
@@ -194,7 +209,6 @@ console.log(this.state.setShow)
               Buy/Sell Stocks
             </Button>{" "}
             <ModalComponent
-              setShow={this.state.setShow}
               setSell={this.state.setSell}
               selectValue={this.state.selectValue}
               setAction={this.state.action}
@@ -204,6 +218,8 @@ console.log(this.state.setShow)
               stocks={this.state.stocks}
               stockName={this.state.stockname}
               quantity={this.state.sellQuantity}
+              handleChange={this.handleBuySellChange}
+              sellSubmit={this.state.sellSubmit}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>

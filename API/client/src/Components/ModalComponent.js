@@ -4,9 +4,6 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import ConfirmOrderModal from "./ConfirmOrderModal";
-import SearchStockList from "./SearchStockList";
-import PersistentStockList from "./PersistentStockList";
 import SellQuantity from "./SellQuantity";
 import BuyQuantity from "./BuyQuantity";
 import { Redirect } from "react-router-dom";
@@ -17,13 +14,14 @@ class ModalComponent extends Component {
     this.state = {
       stockName: "",
       stocks: [],
-      action: "Buy",
+      action: "",
       setShow: false,
       symbol: "",
       quantity: 0,
       price: 0,
       exchange: [],
       company: "",
+      orderHeader: "",
       isConfirm: false,
       error: "",
     };
@@ -34,9 +32,6 @@ class ModalComponent extends Component {
     // stockName: this.props.stocks[0].company,
     // });
     //this.getQuantity();
-    this.setState({
-      action: "Buy",
-    }, () => console.log(this.state.action));
   }
 
   handleQueryChange = (event) => {
@@ -52,12 +47,6 @@ class ModalComponent extends Component {
       }
       return returnInterval;
     }, 2000);
-  };
-
-  handleChange = (event) => {
-    this.setState({
-      action: event.target.value
-    });
   };
 
   handleSelectChange = (event) => {
@@ -96,19 +85,6 @@ class ModalComponent extends Component {
       });
   };
 
-  handleShow = () => {
-    this.setState({
-      setShow: true,
-    });
-  };
-
-  handleClose = () => {
-    this.setState({
-      action: "Buy",
-      setShow: false,
-    });
-  };
-
   searchStockList = () => {
     return (
       <div>
@@ -144,20 +120,12 @@ class ModalComponent extends Component {
       <option key={index} value={stock.company}>
         {stock.company} ({stock.quantity} shares)
       </option>
+    ));
 
-    ))
-    console.log(this.state.action);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
-
-    const stockInput = (
-      <div>
-        {" "}
-
-      </div>
-    );
 
     if (this.state.isConfirm) {
       return (
@@ -174,8 +142,9 @@ class ModalComponent extends Component {
         />
       );
     }
-console.log(this.state.action)
-console.log(this.props.setSell)
+
+    console.log(this.state.price)
+
     return (
       <div>
         <Modal
@@ -190,7 +159,7 @@ console.log(this.props.setSell)
                 as="select"
                 className="ml-5 mt-0 modal-input w-50"
                 name="action"
-                onChange={this.handleChange}
+                onChange={this.props.handleChange}
               >
                 <option>Buy</option>
                 <option>Sell</option>
@@ -198,31 +167,42 @@ console.log(this.props.setSell)
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridZip">
-              {this.props.setShow === false && this.state.action === "Buy"? ( <Form>
-           <Form.Label className="mt-5 mb-0">Search by company symbol</Form.Label>
-        <Form.Control
-          type="input"
-          name="symbol"
-          className="w-75 modal-input"
-          onChange={this.props.onChange}
-        />
-        <h6 className="ml-1 mt-1 company-text">{this.state.company}</h6> </Form> ): ( <Form>
-        <Form.Group controlId="exampleForm.ControlSelect1">
-          <Form.Label className="current-label">Current Holdings</Form.Label>
-          <Form.Control
-            type="text"
-            onChange={this.handleChange}
-            name="stockName"
-            as="select"
-          >
-            {stockList}
-          </Form.Control>
-        </Form.Group>
-      </Form>)}
+              {this.props.setAction == "Buy" ? (
+                <Form>
+                  <Form.Label className="mt-5 mb-0">
+                    Search by company symbol
+                  </Form.Label>
+                  <Form.Control
+                    type="input"
+                    name="symbol"
+                    className="w-75 modal-input"
+                    onChange={this.handleQueryChange}
+                  />
+                  <h6 className="ml-1 mt-1 company-text">
+                    {this.state.company}
+                  </h6>{" "}
+                </Form>
+              ) : (
+                <Form>
+                  <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label className="current-label">
+                      Current Holdings
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      onChange={this.handleChange}
+                      name="stockName"
+                      as="select"
+                    >
+                      {stockList}
+                    </Form.Control>
+                  </Form.Group>
+                </Form>
+              )}
             </Form.Group>
           </Form.Row>
           <Form.Row autocomplete="off">
-            {this.state.action !== "Sell" ? (
+            {this.props.setAction === "Buy" && this.state.sellSubmit !== true ? (
               <BuyQuantity
                 onChange={this.handleQuantityChange}
                 quantity={this.props.quantity}

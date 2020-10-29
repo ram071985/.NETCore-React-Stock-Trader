@@ -12,7 +12,7 @@
       <File FileName="CORE/Mapping/Transaction.hbm.xml" NotebookId="1" />
       <File FileName="API/StockModel.cs" NotebookId="1" />
       <File FileName="CORE/Entities/Stock.cs" NotebookId="1" />
-      <File FileName="CORE/Services/SellStockService.cs" Line="35" Column="1" NotebookId="1" />
+      <File FileName="CORE/Services/SellStockService.cs" NotebookId="1" />
       <File FileName="CORE/Services/GetUserInfoService.cs" NotebookId="1" />
       <File FileName="CORE/Services/DbSessionService.cs" Line="30" Column="1" NotebookId="1" />
     </Files>
