@@ -31,12 +31,13 @@ class UserPortal extends Component {
       symbol: "",
       companyName: "Facebook Inc",
       sharePrice: 0,
+      companyValue: "",
       userId: 0,
       errorMessage: "",
       returnedQuery: false,
       setShow: false,
       isSell: false,
-      sellSubmit: false,
+      sellSubmit: false
     };
   }
 
@@ -170,10 +171,6 @@ class UserPortal extends Component {
   };
 
   renderHoldings = (stock, index) => {
-    const formatter = new Intl.NumberFormat("en-US", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
     return (
       <div key={index}>
         <p className="mt-4 company-text">{stock.company}</p>
@@ -186,15 +183,29 @@ class UserPortal extends Component {
         <Button
           variant="success"
           className="buy-button"
-          onClick={this.handleSellSubmit}
+          onClick={e => this.fooSubmit(index)}
         >
           Sell shares
         </Button>
       </div>
     );
+   
   };
 
+  fooSubmit = (index) => {
+    const array = index
+   
+   const filter = this.state.stocks.find(x => x.id === 1)
+   console.log(filter)
+    //this.setState({
+    //  companyValue: filter.company
+   // })
+   //return filter;
+   
+  }
+
   render() {
+    console.log(this.state.stocks)
     return (
       <div className="container-fluid main-container">
         <div className="d-inline-block container user-container">
@@ -222,6 +233,7 @@ class UserPortal extends Component {
               handleChange={this.handleBuySellChange}
               sellSubmit={this.state.sellSubmit}
               companyList={this.state.companyList}
+              renderHoldings={this.renderHoldings}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>

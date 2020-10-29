@@ -143,8 +143,6 @@ class ModalComponent extends Component {
       );
     }
 
-    console.log(this.state.price);
-
     return (
       <div>
         <Modal
