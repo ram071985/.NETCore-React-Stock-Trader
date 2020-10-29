@@ -143,7 +143,7 @@ class ModalComponent extends Component {
       );
     }
 
-    console.log(this.state.price)
+    console.log(this.state.price);
 
     return (
       <div>
@@ -155,19 +155,31 @@ class ModalComponent extends Component {
           <Form.Row>
             <Form.Group as={Col} controlId="formGridState">
               <Form.Label className="ml-5 mb-0 mt-5">Action</Form.Label>
-              <Form.Control
-                as="select"
-                className="ml-5 mt-0 modal-input w-50"
-                name="action"
-                onChange={this.props.handleChange}
-              >
-                <option>Buy</option>
-                <option>Sell</option>
-              </Form.Control>
+                {this.props.sellSubmit === false ? (
+                  <Form.Control
+                    as="select"
+                    className="ml-5 mt-0 modal-input w-50"
+                    name="action"
+                    onChange={this.props.handleChange}
+                  >
+                    <option>Buy</option>
+                    <option>Sell</option>{" "}
+                  </Form.Control>
+                ) : (
+                  <Form.Control
+                    as="select"
+                    className="ml-5 mt-0 modal-input w-50"
+                    name="action"
+                    onChange={this.props.handleChange}
+                  >
+                    <option>Sell</option>
+                    <option>Buy</option>{" "}
+                  </Form.Control>
+                )}
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridZip">
-              {this.props.setAction == "Buy" ? (
+              {this.props.setAction === "Buy" ? (
                 <Form>
                   <Form.Label className="mt-5 mb-0">
                     Search by company symbol
@@ -202,7 +214,8 @@ class ModalComponent extends Component {
             </Form.Group>
           </Form.Row>
           <Form.Row autocomplete="off">
-            {this.props.setAction === "Buy" && this.state.sellSubmit !== true ? (
+            {this.props.setAction === "Buy" &&
+            this.state.sellSubmit !== true ? (
               <BuyQuantity
                 onChange={this.handleQuantityChange}
                 quantity={this.props.quantity}

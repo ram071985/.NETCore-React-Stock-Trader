@@ -66,7 +66,6 @@ class UserPortal extends Component {
       action: event.target.value
     });
 
-
   }
 
   handleBuySellShow = () => {
@@ -220,6 +219,7 @@ console.log(this.state.action)
               quantity={this.state.sellQuantity}
               handleChange={this.handleBuySellChange}
               sellSubmit={this.state.sellSubmit}
+              companyList={this.state.companyList}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>
