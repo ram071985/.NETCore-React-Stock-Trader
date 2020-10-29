@@ -43,6 +43,7 @@ class UserPortal extends Component {
   componentDidMount() {
     //this.getUserInfo();
     this.getDatabaseStocks();
+    console.log(this.state.selectShow)
   }
 
   handleChange = (event) => {
@@ -86,6 +87,7 @@ class UserPortal extends Component {
     this.setState({
       setShow: true,
       action: "Buy",
+      sellSubmit: false
     });
   };
 
@@ -168,7 +170,7 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.action)
+ 
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
