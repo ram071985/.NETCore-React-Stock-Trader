@@ -36,15 +36,19 @@ class UserPortal extends Component {
       returnedQuery: false,
       setShow: false,
       isSell: false,
-      sellSubmit: false
+      sellSubmit: false,
     };
   }
 
   componentDidMount() {
     //this.getUserInfo();
     this.getDatabaseStocks();
-    console.log(this.state.selectShow)
   }
+
+  parseId = () => {
+    let parseUserId = parseInt(localStorage.getItem("user_id"));
+    return parseUserId;
+  };
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -62,12 +66,11 @@ class UserPortal extends Component {
   };
 
   handleBuySellChange = (event) => {
-    console.log(event.target.value)
+    console.log(event.target.value);
     this.setState({
-      action: event.target.value
+      action: event.target.value,
     });
-
-  }
+  };
 
   handleBuySellShow = () => {
     this.setState({
@@ -79,7 +82,7 @@ class UserPortal extends Component {
     this.setState({
       action: "Sell",
       setShow: true,
-      sellSubmit: true
+      sellSubmit: true,
     });
   };
 
@@ -87,7 +90,7 @@ class UserPortal extends Component {
     this.setState({
       setShow: true,
       action: "Buy",
-      sellSubmit: false
+      sellSubmit: false,
     });
   };
 
@@ -99,10 +102,9 @@ class UserPortal extends Component {
   };
 
   getUserInfo = () => {
-    let parseId = parseInt(localStorage.getItem("user_id"));
     axios
       .post("/api/update-portal", {
-        userId: parseId,
+        userId: this.parseId(),
       })
       .then((res) => {
         console.log(res.data);
@@ -120,9 +122,8 @@ class UserPortal extends Component {
   };
 
   getDatabaseStocks = async () => {
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
     const stocksResponse = await axios.post("/api/update-portal/stocks", {
-      userId: parseUserId,
+      userId: this.parseId(),
     });
 
     this.setState({
@@ -140,19 +141,10 @@ class UserPortal extends Component {
     this.setState({
       stocks: addPrices,
     });
-    console.log(this.state.stocks[0].company);
     this.setState({
       stockName: this.state.stocks[0].company,
     });
     this.getSellQuantity();
-  };
-
-  getUpdatedPrices = () => {
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
-    const prices = [];
-    for (const symbol of this.state.stocks) {
-      axios.post("api/stocks/exchanges/", {});
-    }
   };
 
   checkForCompany = () => {
@@ -169,21 +161,27 @@ class UserPortal extends Component {
     });
   };
 
-  render() {
- 
+  decimalFormatter = () => {
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
+    return formatter;
+  };
 
-    const holdings = this.state.stocks.map((stock, index) => (
+  renderHoldings = (stock, index) => {
+    const formatter = new Intl.NumberFormat("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+    return (
       <div key={index}>
         <p className="mt-4 company-text">{stock.company}</p>
         <h6 className="shares-current">
           Shares: <span>{stock.quantity}</span>
         </h6>
         <h5 className="d-inline-block share-text">
-          ${formatter.format(stock.current * stock.quantity)}
+          ${this.decimalFormatter().format(stock.current * stock.quantity)}
         </h5>
         <Button
           variant="success"
@@ -193,8 +191,10 @@ class UserPortal extends Component {
           Sell shares
         </Button>
       </div>
-    ));
-console.log(this.state.action)
+    );
+  };
+
+  render() {
     return (
       <div className="container-fluid main-container">
         <div className="d-inline-block container user-container">
@@ -243,7 +243,7 @@ console.log(this.state.action)
         </div>
         <div className="container-fluid d-inline-block holdings-container">
           <h4 className="heading-text">Current Holdings</h4>
-          {holdings}
+          {this.state.stocks.map(this.renderHoldings)}
         </div>
       </div>
     );
