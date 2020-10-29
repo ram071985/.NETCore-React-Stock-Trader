@@ -17,7 +17,7 @@ class ModalComponent extends Component {
     this.state = {
       stockName: "",
       stocks: [],
-      action: "",
+      action: "Buy",
       setShow: false,
       symbol: "",
       quantity: 0,
@@ -36,7 +36,7 @@ class ModalComponent extends Component {
     //this.getQuantity();
     this.setState({
       action: "Buy",
-    });
+    }, () => console.log(this.state.action));
   }
 
   handleQueryChange = (event) => {
@@ -55,9 +55,8 @@ class ModalComponent extends Component {
   };
 
   handleChange = (event) => {
-    const { name, value } = event.target;
     this.setState({
-      [name]: value,
+      action: event.target.value
     });
   };
 
@@ -141,7 +140,13 @@ class ModalComponent extends Component {
   };
 
   render() {
-    console.log(this.props.setAction);
+    const stockList = this.props.stocks.map((stock, index) => (
+      <option key={index} value={stock.company}>
+        {stock.company} ({stock.quantity} shares)
+      </option>
+
+    ))
+    console.log(this.state.action);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -150,18 +155,7 @@ class ModalComponent extends Component {
     const stockInput = (
       <div>
         {" "}
-        {this.props.setAction === "Buy" && this.state.action !== "Sell" && this.state.action === "Buy" ? (
-          <SearchStockList
-            company={this.state.company}
-            onChange={this.handleQueryChange}
-          />
-        ) : (
-          <PersistentStockList
-            onChange={this.handleSelectChange}
-            stocks={this.props.stocks}
-            action={this.state.action}
-          />
-        )}
+
       </div>
     );
 
@@ -180,7 +174,8 @@ class ModalComponent extends Component {
         />
       );
     }
-
+console.log(this.state.action)
+console.log(this.props.setSell)
     return (
       <div>
         <Modal
@@ -203,7 +198,27 @@ class ModalComponent extends Component {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridZip">
-              {stockInput}
+              {this.props.setShow === false && this.state.action === "Buy"? ( <Form>
+           <Form.Label className="mt-5 mb-0">Search by company symbol</Form.Label>
+        <Form.Control
+          type="input"
+          name="symbol"
+          className="w-75 modal-input"
+          onChange={this.props.onChange}
+        />
+        <h6 className="ml-1 mt-1 company-text">{this.state.company}</h6> </Form> ): ( <Form>
+        <Form.Group controlId="exampleForm.ControlSelect1">
+          <Form.Label className="current-label">Current Holdings</Form.Label>
+          <Form.Control
+            type="text"
+            onChange={this.handleChange}
+            name="stockName"
+            as="select"
+          >
+            {stockList}
+          </Form.Control>
+        </Form.Group>
+      </Form>)}
             </Form.Group>
           </Form.Row>
           <Form.Row autocomplete="off">

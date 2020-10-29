@@ -19,6 +19,7 @@ class UserPortal extends Component {
       sampleStock: [],
       priceResults: [],
       action: "",
+      setSell: false,
       stocks: [],
       sellQuantity: 0,
       stockName: "",
@@ -40,11 +41,10 @@ class UserPortal extends Component {
 
   componentDidMount() {
     this.setState({
-      action: "Buy"
+      action: "Buy",
     });
     //this.getUserInfo();
     this.getDatabaseStocks();
-
   }
 
   handleChange = (event) => {
@@ -65,20 +65,21 @@ class UserPortal extends Component {
   handleBuySellShow = () => {
     this.setState({
       setShow: true,
-      selectValue: "Buy",
     });
   };
 
   handleShow = () => {
     this.setState({
       setShow: true,
-      action: "Buy"
+      setSell: false,
+      action: "Buy",
     });
   };
 
   handleClose = () => {
     this.setState({
       setShow: false,
+      setSell: true,
     });
   };
 
@@ -129,8 +130,6 @@ class UserPortal extends Component {
       stockName: this.state.stocks[0].company,
     });
     this.getSellQuantity();
-
-
   };
 
   getUpdatedPrices = () => {
@@ -179,7 +178,7 @@ class UserPortal extends Component {
         </Button>
       </div>
     ));
-
+console.log(this.state.setShow)
     return (
       <div className="container-fluid main-container">
         <div className="d-inline-block container user-container">
@@ -195,6 +194,8 @@ class UserPortal extends Component {
               Buy/Sell Stocks
             </Button>{" "}
             <ModalComponent
+              setShow={this.state.setShow}
+              setSell={this.state.setSell}
               selectValue={this.state.selectValue}
               setAction={this.state.action}
               isSell={this.state.isSell}
