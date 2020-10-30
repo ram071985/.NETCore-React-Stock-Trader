@@ -195,8 +195,8 @@ class UserPortal extends Component {
   fooSubmit = (index) => {
     const array = index
    
-   const filter = this.state.stocks.find(x => x.id === 1)
-   console.log(filter)
+   const filter = this.state.stocks.find(x => x.id === 0)
+   console.log(this.state.stocks[index])
     //this.setState({
     //  companyValue: filter.company
    // })
