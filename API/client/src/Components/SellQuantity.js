@@ -40,7 +40,7 @@ class SellQuantity extends Component {
               max={this.props.quantity}
               className="w-50 ml-5 d-inline-block modal-input"
               name="quantity"
-              onChange={this.props.onChange}
+              onChange={this.props.quantityChange}
             />
           </Form.Group>
         </Form>

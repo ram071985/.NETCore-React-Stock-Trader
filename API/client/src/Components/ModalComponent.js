@@ -19,6 +19,7 @@ class ModalComponent extends Component {
       setShow: false,
       symbol: "",
       quantity: 0,
+      newQuantity: 0,
       price: 0,
       exchange: [],
       company: "",
@@ -35,9 +36,14 @@ class ModalComponent extends Component {
     //this.getQuantity();
   }
 
-  handleChange = (index) => {
+  componentDidUpdate(index) {}
 
-  }
+  getFirstCompany = () => {
+    const dick = this.props.stocks.includes(this.state.holdingName);
+    console.log(dick);
+  };
+
+  handleChange = (index) => {};
 
   handleQueryChange = (event) => {
     let returnInterval;
@@ -62,15 +68,6 @@ class ModalComponent extends Component {
     });
   };
 
-  handleQuantityChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: parseInt(value),
-    });
-console.log(this.state.quantity)
-   
-  };
-
   getExchange = () => {
     axios
       .get("/api/stocks/exchanges/" + this.state.symbol, {})
@@ -90,14 +87,7 @@ console.log(this.state.quantity)
       });
   };
 
-  handleHoldings = (event, index) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
- console.log(this.state.stockName)
 
-  };
 
   searchStockList = () => {
     return (
@@ -130,7 +120,7 @@ console.log(this.state.quantity)
   };
 
   renderHoldings = (stock, index) => {
-    console.log(index)
+    console.log(index);
     return (
       <option key={index} value={stock.company}>
         {stock.company} ({stock.quantity} shares)
@@ -180,9 +170,7 @@ console.log(this.state.quantity)
                   className="w-75 modal-input"
                   onChange={this.handleQueryChange}
                 />
-                <h6 className="ml-1 mt-1 company-text">
-                  {this.state.company}
-                </h6>{" "}
+                <h6 className="ml-1 mt-1 company-text">{this.state.company}</h6>{" "}
               </Form>
             ) : (
               <Form>
@@ -192,7 +180,7 @@ console.log(this.state.quantity)
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    onChange={event => this.handleHoldings(event)}
+                    onChange={event => this.props.handleHoldings(event)}
                     name="stockName"
                     as="select"
                   >
@@ -204,15 +192,14 @@ console.log(this.state.quantity)
           </Form.Group>
         </Form.Row>
         <Form.Row autocomplete="off">
-          {this.props.setAction === "Buy" &&
-          this.state.sellSubmit !== true ? (
+          {this.props.setAction === "Buy" && this.state.sellSubmit !== true ? (
             <BuyQuantity
               onChange={this.handleQuantityChange}
               quantity={this.props.quantity}
             />
           ) : (
             <SellQuantity
-              onChange={this.handleQuantityChange}
+              onChange={this.props.quantityChange}
               stocks={this.props.stocks}
               action={this.state.action}
               stockName={this.props.stockName}
@@ -256,15 +243,13 @@ console.log(this.state.quantity)
           Cancel Order
         </Button>{" "}
       </Modal>
-    )
-  }
+    );
+  };
 
-  fooMap = () => {
-
-  }
+  fooMap = () => {};
 
   render() {
-    console.log(this.state.quantity);
+    console.log(this.state.holdingName);
     if (this.state.isConfirm) {
       return (
         <Redirect
@@ -281,13 +266,7 @@ console.log(this.state.quantity)
       );
     }
 
-    
-
-    return (
-     <div>
-       {this.renderModal()}
-     </div>
-    );
+    return <div>{this.renderModal()}</div>;
   }
 }
 

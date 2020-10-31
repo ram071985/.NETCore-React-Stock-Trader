@@ -19,6 +19,7 @@ class UserPortal extends Component {
       sampleStock: [],
       priceResults: [],
       holding: [],
+      holdingName: "",
       action: "",
       setSell: false,
       stocks: [],
@@ -60,16 +61,20 @@ class UserPortal extends Component {
     });
   };
 
-  renderHoldings = (stock, index) => {
-    console.log(index)
-    return (
-      <option key={index} value={stock.company}>
-        {stock.company} ({stock.quantity} shares)
-      </option>
-    );
+  handleHoldings = (event, index) => {
+    console.log(this.state.stocks);
+    this.setState({
+      holdingName: event.target.value,
+    });
   };
 
- 
+  handleQuantityChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: parseInt(value),
+    });
+    console.log(this.state.quantity);
+  };
 
   handleCompanyList = (event) => {
     const { name, value } = event.target;
@@ -162,10 +167,7 @@ class UserPortal extends Component {
     this.setState({
       stocks: addPrices,
     });
-    this.setState({
-      stockName: this.state.stocks[0].company,
-    });
-    this.getSellQuantity();
+    this.pooPoo();
   };
 
   getSellQuantity = () => {
@@ -219,7 +221,7 @@ class UserPortal extends Component {
   };
 
   renderModalHoldings = (stock, index) => {
-    console.log(index)
+    console.log(index);
     return (
       <option key={index} value={stock.company}>
         {stock.company} ({stock.quantity} shares)
@@ -227,9 +229,14 @@ class UserPortal extends Component {
     );
   };
 
+  pooPoo = (index) => {
+    const map = this.state.stocks.map((x) => x);
+    console.log(map);
+  };
+
   render() {
-    console.log(this.state.stockName);
-    console.log(this.state.sellQuantity);
+    console.log(this.state.holdingName);
+    console.log(this.state.holdingName);
     return (
       <div className="container-fluid main-container">
         <div className="d-inline-block container user-container">
@@ -261,6 +268,7 @@ class UserPortal extends Component {
               formatter={this.decimalFormatter}
               handleHoldings={this.handleHoldings}
               modalHoldings={this.renderModalHoldings}
+              quantityChange={this.handleQuantityChange}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>
