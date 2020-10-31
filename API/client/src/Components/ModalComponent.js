@@ -14,6 +14,7 @@ class ModalComponent extends Component {
     this.state = {
       stockName: "",
       stocks: [],
+      holdingSelect: [],
       action: "",
       setShow: false,
       symbol: "",
@@ -32,6 +33,10 @@ class ModalComponent extends Component {
     // stockName: this.props.stocks[0].company,
     // });
     //this.getQuantity();
+  }
+
+  handleChange = (index) => {
+
   }
 
   handleQueryChange = (event) => {
@@ -62,8 +67,8 @@ class ModalComponent extends Component {
     this.setState({
       [name]: parseInt(value),
     });
-
-    console.log(this.state.quantity);
+console.log(this.state.quantity)
+   
   };
 
   getExchange = () => {
@@ -83,6 +88,15 @@ class ModalComponent extends Component {
         //  })
         //     }
       });
+  };
+
+  handleHoldings = (event, index) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+ console.log(this.state.stockName)
+
   };
 
   searchStockList = () => {
@@ -115,18 +129,142 @@ class ModalComponent extends Component {
     });
   };
 
-  render() {
-    const stockList = this.props.stocks.map((stock, index) => (
+  renderHoldings = (stock, index) => {
+    console.log(index)
+    return (
       <option key={index} value={stock.company}>
         {stock.company} ({stock.quantity} shares)
       </option>
-    ));
+    );
+  };
 
-    const formatter = new Intl.NumberFormat("en-US", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
+  renderModal = () => {
+    return (
+      <Modal
+        classname="purchase-modal"
+        show={this.props.show}
+        onHide={this.props.onHide}
+      >
+        <Form.Row>
+          <Form.Group as={Col} controlId="formGridState">
+            <Form.Label className="ml-5 mb-0 mt-5">Action</Form.Label>
+            {this.props.sellSubmit === false ? (
+              <Form.Control
+                as="select"
+                className="ml-5 mt-0 modal-input w-50"
+                name="action"
+                onChange={this.props.handleChange}
+              >
+                <option>Buy</option>
+                <option>Sell</option>{" "}
+              </Form.Control>
+            ) : (
+              <Form.Control
+                as="select"
+                className="ml-5 mt-0 modal-input w-50"
+                name="action"
+                onChange={this.props.handleChange}
+              ></Form.Control>
+            )}
+          </Form.Group>
 
+          <Form.Group as={Col} controlId="formGridZip">
+            {this.props.setAction === "Buy" ? (
+              <Form>
+                <Form.Label className="mt-5 mb-0">
+                  Search by company symbol
+                </Form.Label>
+                <Form.Control
+                  type="input"
+                  name="symbol"
+                  className="w-75 modal-input"
+                  onChange={this.handleQueryChange}
+                />
+                <h6 className="ml-1 mt-1 company-text">
+                  {this.state.company}
+                </h6>{" "}
+              </Form>
+            ) : (
+              <Form>
+                <Form.Group controlId="exampleForm.ControlSelect1">
+                  <Form.Label className="current-label">
+                    Current Holdings
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={event => this.handleHoldings(event)}
+                    name="stockName"
+                    as="select"
+                  >
+                    {this.props.stocks.map(this.props.modalHoldings)}
+                  </Form.Control>
+                </Form.Group>
+              </Form>
+            )}
+          </Form.Group>
+        </Form.Row>
+        <Form.Row autocomplete="off">
+          {this.props.setAction === "Buy" &&
+          this.state.sellSubmit !== true ? (
+            <BuyQuantity
+              onChange={this.handleQuantityChange}
+              quantity={this.props.quantity}
+            />
+          ) : (
+            <SellQuantity
+              onChange={this.handleQuantityChange}
+              stocks={this.props.stocks}
+              action={this.state.action}
+              stockName={this.props.stockName}
+              quantity={this.props.quantity}
+            />
+          )}
+          <Form.Group as={Col} controlId="formGridZip">
+            <Form.Label className="ml-1 mt-3 mb-0">Total</Form.Label>
+            <Form.Control
+              type="text"
+              name="price"
+              value={
+                "$" +
+                this.props
+                  .formatter()
+                  .format(this.state.quantity * this.state.price)
+              }
+              className="w-50 ml-1 modal-input"
+              readOnly
+            />
+          </Form.Group>
+        </Form.Row>
+        <br />
+        <hr />
+        <h6 className="text-center">
+          Your Order is not complete yet. Review and confirm your order in the
+          next step.
+        </h6>
+        <Button
+          className="d-inline-block mx-auto review-button"
+          variant="secondary"
+          onClick={this.confirmRedirect}
+        >
+          Review Order
+        </Button>{" "}
+        <Button
+          onClick={this.props.onHide}
+          className="d-inline-block mx-auto cancel-button"
+          variant="danger"
+        >
+          Cancel Order
+        </Button>{" "}
+      </Modal>
+    )
+  }
+
+  fooMap = () => {
+
+  }
+
+  render() {
+    console.log(this.state.quantity);
     if (this.state.isConfirm) {
       return (
         <Redirect
@@ -143,125 +281,12 @@ class ModalComponent extends Component {
       );
     }
 
-    return (
-      <div>
-        <Modal
-          classname="purchase-modal"
-          show={this.props.show}
-          onHide={this.props.onHide}
-        >
-          <Form.Row>
-            <Form.Group as={Col} controlId="formGridState">
-              <Form.Label className="ml-5 mb-0 mt-5">Action</Form.Label>
-                {this.props.sellSubmit === false ? (
-                  <Form.Control
-                    as="select"
-                    className="ml-5 mt-0 modal-input w-50"
-                    name="action"
-                    onChange={this.props.handleChange}
-                  >
-                    <option>Buy</option>
-                    <option>Sell</option>{" "}
-                  </Form.Control>
-                ) : (
-                  <Form.Control
-                    as="select"
-                    className="ml-5 mt-0 modal-input w-50"
-                    name="action"
-                    onChange={this.props.handleChange}
-                  >
-                    <option>Sell</option>
-                    <option>Buy</option>{" "}
-                  </Form.Control>
-                )}
-            </Form.Group>
+    
 
-            <Form.Group as={Col} controlId="formGridZip">
-              {this.props.setAction === "Buy" ? (
-                <Form>
-                  <Form.Label className="mt-5 mb-0">
-                    Search by company symbol
-                  </Form.Label>
-                  <Form.Control
-                    type="input"
-                    name="symbol"
-                    className="w-75 modal-input"
-                    onChange={this.handleQueryChange}
-                  />
-                  <h6 className="ml-1 mt-1 company-text">
-                    {this.state.company}
-                  </h6>{" "}
-                </Form>
-              ) : (
-                <Form>
-                  <Form.Group controlId="exampleForm.ControlSelect1">
-                    <Form.Label className="current-label">
-                      Current Holdings
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      onChange={this.handleChange}
-                      name="stockName"
-                      as="select"
-                    >
-                      {stockList}
-                    </Form.Control>
-                  </Form.Group>
-                </Form>
-              )}
-            </Form.Group>
-          </Form.Row>
-          <Form.Row autocomplete="off">
-            {this.props.setAction === "Buy" &&
-            this.state.sellSubmit !== true ? (
-              <BuyQuantity
-                onChange={this.handleQuantityChange}
-                quantity={this.props.quantity}
-              />
-            ) : (
-              <SellQuantity
-                onChange={this.handleQuantityChange}
-                stocks={this.props.stocks}
-                action={this.state.action}
-                stockName={this.props.stockName}
-                quantity={this.props.quantity}
-              />
-            )}
-            <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label className="ml-1 mt-3 mb-0">Total</Form.Label>
-              <Form.Control
-                type="text"
-                name="price"
-                value={
-                  "$" + formatter.format(this.state.quantity * this.state.price)
-                }
-                className="w-50 ml-1 modal-input"
-                readOnly
-              />
-            </Form.Group>
-          </Form.Row>
-          <br />
-          <hr />
-          <h6 className="text-center">
-            Your Order is not complete yet. Review and confirm your order in the
-            next step.
-          </h6>
-          <Button
-            className="d-inline-block mx-auto review-button"
-            variant="secondary"
-            onClick={this.confirmRedirect}
-          >
-            Review Order
-          </Button>{" "}
-          <Button
-            onClick={this.props.onHide}
-            className="d-inline-block mx-auto cancel-button"
-            variant="danger"
-          >
-            Cancel Order
-          </Button>{" "}
-        </Modal>
-      </div>
+    return (
+     <div>
+       {this.renderModal()}
+     </div>
     );
   }
 }

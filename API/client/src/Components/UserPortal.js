@@ -18,10 +18,11 @@ class UserPortal extends Component {
     this.state = {
       sampleStock: [],
       priceResults: [],
+      holding: [],
       action: "",
       setSell: false,
       stocks: [],
-      sellQuantity: 0,
+      sellQuantity: 1,
       stockName: "",
       username: "",
       wallet: 0,
@@ -29,7 +30,7 @@ class UserPortal extends Component {
       holdings: 0,
       exchange: "",
       symbol: "",
-      companyName: "Facebook Inc",
+      companyName: "",
       sharePrice: 0,
       companyValue: "",
       userId: 0,
@@ -37,7 +38,7 @@ class UserPortal extends Component {
       returnedQuery: false,
       setShow: false,
       isSell: false,
-      sellSubmit: false
+      sellSubmit: false,
     };
   }
 
@@ -58,6 +59,17 @@ class UserPortal extends Component {
       errorMessage: "",
     });
   };
+
+  renderHoldings = (stock, index) => {
+    console.log(index)
+    return (
+      <option key={index} value={stock.company}>
+        {stock.company} ({stock.quantity} shares)
+      </option>
+    );
+  };
+
+ 
 
   handleCompanyList = (event) => {
     const { name, value } = event.target;
@@ -92,6 +104,14 @@ class UserPortal extends Component {
       setShow: true,
       action: "Buy",
       sellSubmit: false,
+    });
+  };
+
+  handleSellShow = () => {
+    this.setState({
+      setShow: true,
+      action: "Sell",
+      sellSubmit: true,
     });
   };
 
@@ -148,11 +168,7 @@ class UserPortal extends Component {
     this.getSellQuantity();
   };
 
-  checkForCompany = () => {
-    return "Facebook, Inc";
-  };
-
-  getSellQuantity = (index) => {
+  getSellQuantity = () => {
     const filter = this.state.stocks.filter(
       (name) => name.company === this.state.stockName
     );
@@ -183,29 +199,37 @@ class UserPortal extends Component {
         <Button
           variant="success"
           className="buy-button"
-          onClick={e => this.fooSubmit(index)}
+          onClick={(e) => this.fooSubmit(index)}
         >
           Sell shares
         </Button>
       </div>
     );
-   
   };
 
   fooSubmit = (index) => {
-    const array = index
-   
-   const filter = this.state.stocks.find(x => x.id === 0)
-   console.log(this.state.stocks[index])
+    this.setState({
+      holding: this.state.stocks[index],
+    });
+    this.handleSellShow();
     //this.setState({
     //  companyValue: filter.company
-   // })
-   //return filter;
-   
-  }
+    // })
+    //return filter;
+  };
+
+  renderModalHoldings = (stock, index) => {
+    console.log(index)
+    return (
+      <option key={index} value={stock.company}>
+        {stock.company} ({stock.quantity} shares)
+      </option>
+    );
+  };
 
   render() {
-    console.log(this.state.stocks)
+    console.log(this.state.stockName);
+    console.log(this.state.sellQuantity);
     return (
       <div className="container-fluid main-container">
         <div className="d-inline-block container user-container">
@@ -234,6 +258,9 @@ class UserPortal extends Component {
               sellSubmit={this.state.sellSubmit}
               companyList={this.state.companyList}
               renderHoldings={this.renderHoldings}
+              formatter={this.decimalFormatter}
+              handleHoldings={this.handleHoldings}
+              modalHoldings={this.renderModalHoldings}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>
