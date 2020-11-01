@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/DbSessionService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/StocksController.cs">
     <Files>
       <File FileName="API/Controllers/UpdatePortalController.cs" Line="31" Column="17" />
-      <File FileName="API/Controllers/StocksController.cs" />
+      <File FileName="API/Controllers/StocksController.cs" Line="1" Column="1" />
       <File FileName="API/Controllers/TransactionController.cs" />
       <File FileName="CORE/Services/BuyStockService.cs" />
       <File FileName="CORE/Services/AuthorizeUserService.cs" />
@@ -14,21 +14,21 @@
       <File FileName="CORE/Entities/Stock.cs" NotebookId="1" />
       <File FileName="CORE/Services/SellStockService.cs" NotebookId="1" />
       <File FileName="CORE/Services/GetUserInfoService.cs" NotebookId="1" />
-      <File FileName="CORE/Services/DbSessionService.cs" Line="30" Column="1" NotebookId="1" />
+      <File FileName="CORE/Services/DbSessionService.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="StocksController.cs" selected="True" />
+              </Node>
             </Node>
             <Node name="CORE" expanded="True">
               <Node name="Entities" expanded="True" />
               <Node name="Mapping" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="DbSessionService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>

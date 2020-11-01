@@ -62,10 +62,10 @@ class UserPortal extends Component {
   };
 
   handleHoldings = (event, index) => {
-    console.log(this.state.stocks);
-    this.setState({
-      holdingName: event.target.value,
-    });
+    console.log(event.target.value);
+    const result = this.state.stocks.filter(name => name.company === event.target.value);
+    console.log(result)
+  
   };
 
   handleQuantityChange = (event) => {
@@ -147,7 +147,7 @@ class UserPortal extends Component {
     this.getStock();
   };
 
-  getDatabaseStocks = async () => {
+  getDatabaseStocks = async (index) => {
     const stocksResponse = await axios.post("/api/update-portal/stocks", {
       userId: this.parseId(),
     });
@@ -162,6 +162,7 @@ class UserPortal extends Component {
     }
 
     const addPrices = this.state.stocks.map((price, index) => {
+      console.log(index)
       return { ...price, current: this.state.sampleStock[index].current };
     });
     this.setState({
@@ -230,12 +231,15 @@ class UserPortal extends Component {
   };
 
   pooPoo = (index) => {
-    const map = this.state.stocks.map((x) => x);
-    console.log(map);
+    const map = this.state.stocks.map((index) => {
+    console.log([index])
+    });
+  
+   
   };
 
   render() {
-    console.log(this.state.holdingName);
+    console.log(this.state.stocks);
     console.log(this.state.holdingName);
     return (
       <div className="container-fluid main-container">

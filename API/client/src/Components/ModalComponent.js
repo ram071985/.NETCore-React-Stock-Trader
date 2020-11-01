@@ -184,7 +184,7 @@ class ModalComponent extends Component {
                     name="stockName"
                     as="select"
                   >
-                    {this.props.stocks.map(this.props.modalHoldings)}
+                    {this.props.stocks.map(index => this.props.modalHoldings(index))}
                   </Form.Control>
                 </Form.Group>
               </Form>
