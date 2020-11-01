@@ -18,6 +18,7 @@ class UserPortal extends Component {
     this.state = {
       sampleStock: [],
       priceResults: [],
+      quantity: 0,
       holding: [],
       holdingName: "",
       action: "",
@@ -40,6 +41,8 @@ class UserPortal extends Component {
       setShow: false,
       isSell: false,
       sellSubmit: false,
+      sellInput: 1,
+      isHoldings: false
     };
   }
 
@@ -64,16 +67,17 @@ class UserPortal extends Component {
   handleHoldings = (event, index) => {
     console.log(event.target.value);
     const result = this.state.stocks.filter(name => name.company === event.target.value);
-    console.log(result)
-  
+    this.setState({
+      sellQuantity: result[0].quantity,
+      isHoldings: true
+    })
   };
 
   handleQuantityChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: parseInt(value),
+      [name]: this.state.sellQuantity,
     });
-    console.log(this.state.quantity);
   };
 
   handleCompanyList = (event) => {
@@ -84,7 +88,6 @@ class UserPortal extends Component {
   };
 
   handleBuySellChange = (event) => {
-    console.log(event.target.value);
     this.setState({
       action: event.target.value,
     });
@@ -124,6 +127,7 @@ class UserPortal extends Component {
     this.setState({
       setShow: false,
       setSell: true,
+      isSell: false
     });
   };
 
@@ -133,7 +137,6 @@ class UserPortal extends Component {
         userId: this.parseId(),
       })
       .then((res) => {
-        console.log(res.data);
         this.setState({
           username: res.data.username,
           wallet: res.data.balance,
@@ -162,13 +165,11 @@ class UserPortal extends Component {
     }
 
     const addPrices = this.state.stocks.map((price, index) => {
-      console.log(index)
       return { ...price, current: this.state.sampleStock[index].current };
     });
     this.setState({
       stocks: addPrices,
     });
-    this.pooPoo();
   };
 
   getSellQuantity = () => {
@@ -211,9 +212,13 @@ class UserPortal extends Component {
   };
 
   fooSubmit = (index) => {
+    console.log(index)
     this.setState({
       holding: this.state.stocks[index],
+      isSell: true,
+      sellQuantity: this.state.stocks[index].quantity
     });
+    console.log(this.state.stocks[index])
     this.handleSellShow();
     //this.setState({
     //  companyValue: filter.company
@@ -222,7 +227,6 @@ class UserPortal extends Component {
   };
 
   renderModalHoldings = (stock, index) => {
-    console.log(index);
     return (
       <option key={index} value={stock.company}>
         {stock.company} ({stock.quantity} shares)
@@ -230,16 +234,8 @@ class UserPortal extends Component {
     );
   };
 
-  pooPoo = (index) => {
-    const map = this.state.stocks.map((index) => {
-    console.log([index])
-    });
-  
-   
-  };
-
   render() {
-    console.log(this.state.stocks);
+    console.log(this.state.isSell);
     console.log(this.state.holdingName);
     return (
       <div className="container-fluid main-container">
@@ -273,6 +269,9 @@ class UserPortal extends Component {
               handleHoldings={this.handleHoldings}
               modalHoldings={this.renderModalHoldings}
               quantityChange={this.handleQuantityChange}
+              isHoldings={this.state.isHoldings}
+              sellInput={this.state.sellInput}
+              holding={this.state.holding}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>

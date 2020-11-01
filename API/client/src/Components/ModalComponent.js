@@ -136,7 +136,9 @@ class ModalComponent extends Component {
         onHide={this.props.onHide}
       >
         <Form.Row>
-          <Form.Group as={Col} controlId="formGridState">
+    <div className="ml-3 mt-5" style={{ display: (this.props.isSell ? 'block' : 'none')}}><h4 className="text-center ml-3">Sell {this.props.holding.company} shares</h4></div>
+          
+          <Form.Group style={{ display: (!this.props.isSell ? 'block' : 'none')}}as={Col} controlId="formGridState">
             <Form.Label className="ml-5 mb-0 mt-5">Action</Form.Label>
             {this.props.sellSubmit === false ? (
               <Form.Control
@@ -158,7 +160,7 @@ class ModalComponent extends Component {
             )}
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridZip">
+          <Form.Group style={{ display: (!this.props.isSell ? 'block' : 'none')}} as={Col} controlId="formGridZip">
             {this.props.setAction === "Buy" ? (
               <Form>
                 <Form.Label className="mt-5 mb-0">
@@ -204,6 +206,8 @@ class ModalComponent extends Component {
               action={this.state.action}
               stockName={this.props.stockName}
               quantity={this.props.quantity}
+              quantityChange={this.props.quantityChange}
+              sellIncrement={this.props.sellIncrement}
             />
           )}
           <Form.Group as={Col} controlId="formGridZip">
@@ -246,10 +250,7 @@ class ModalComponent extends Component {
     );
   };
 
-  fooMap = () => {};
-
   render() {
-    console.log(this.state.holdingName);
     if (this.state.isConfirm) {
       return (
         <Redirect

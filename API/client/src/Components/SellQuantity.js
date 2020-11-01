@@ -10,14 +10,7 @@ class SellQuantity extends Component {
   }
 
   componentDidMount() {
-    if (this.props.stockName === this.props.stocks[0].company) {
-      const filter = this.state.stocks.filter(
-        (name) => name.company === this.props.stockName
-      );
-      this.setState({
-        quantity: filter[0].quantity,
-      });
-    }
+
   }
 
   handleQuantityChange = (event) => {
@@ -29,6 +22,7 @@ class SellQuantity extends Component {
 
   render() {
     console.log(this.props.quantity);
+    console.log(this.props.isHoldings === true)
     return (
       <div>
         <Form>
@@ -37,6 +31,7 @@ class SellQuantity extends Component {
             <Form.Control
               type="number"
               min="1"
+              defaultValue=""
               max={this.props.quantity}
               className="w-50 ml-5 d-inline-block modal-input"
               name="quantity"
