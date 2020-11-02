@@ -106,7 +106,7 @@ class ConfirmOrderModal extends Component {
         <h2 className="mt-4 ml-5">{}</h2>
         <h6 className="ml-5">
           {this.props.location.state.company}
-          <span>({this.props.location.state.symbol})</span>
+          <span> ({this.props.location.state.symbol})</span>
         </h6>
         <h6 className="ml-5">
           Quantity{this.props.location.state.action === "Sell" ? " Sold" : ""}:{" "}

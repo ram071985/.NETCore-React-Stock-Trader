@@ -42,7 +42,9 @@ class UserPortal extends Component {
       returnedQuery: false,
       setShow: false,
       isSell: false,
+      isBuy: false,
       sellSubmit: false,
+      buySubmit: false,
       sellInput: 1,
       isHoldings: false,
     };
@@ -207,6 +209,7 @@ class UserPortal extends Component {
       setShow: false,
       setSell: true,
       isSell: false,
+      isBuy: false,
       price: 0,
       company: "",
     });
@@ -285,24 +288,48 @@ class UserPortal extends Component {
         <Button
           variant="success"
           className="buy-button"
-          onClick={(e) => this.fooSubmit(index)}
+          onClick={(e) => this.sellSubmit(index)}
         >
           Sell shares
+        </Button>
+        <Button
+          variant="success"
+          className="buy-button"
+          onClick={(e) => this.buySubmit(index)}
+        >
+          Buy shares
         </Button>
       </div>
     );
   };
 
-  fooSubmit = (index) => {
-    console.log(index);
+  sellSubmit = (index) => {
     this.setState({
       holding: this.state.stocks[index],
+      isBuy: false,
       isSell: true,
       sellQuantity: this.state.stocks[index].quantity,
-      price: this.state.stocks[index].current
+      price: this.state.stocks[index].current,
+      company: this.state.stocks[index].company,
+      symbol: this.state.stocks[index].symbol
     });
-    console.log(this.state.stocks[index]);
-    console.log(this.state.stocks[index].current);
+    this.handleSellShow();
+    //this.setState({
+    //  companyValue: filter.company
+    // })
+    //return filter;
+  };
+
+  buySubmit = (index) => {
+    this.setState({
+      holding: this.state.stocks[index],
+      isSell: false,
+      isBuy: true,
+      sellQuantity: this.state.stocks[index].quantity,
+      price: this.state.stocks[index].current,
+      company: this.state.stocks[index].company,
+      symbol: this.state.stocks[index].symbol
+    });
     this.handleSellShow();
     //this.setState({
     //  companyValue: filter.company
@@ -319,7 +346,7 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.symbol);
+    console.log(this.state.sellSubmit);
     console.log(this.state.price);
     return (
       <div className="container-fluid main-container">
@@ -340,6 +367,7 @@ class UserPortal extends Component {
               selectValue={this.state.selectValue}
               setAction={this.state.action}
               isSell={this.state.isSell}
+              isBuy={this.state.isBuy}
               show={this.state.setShow}
               onHide={this.handleClose}
               stocks={this.state.stocks}
