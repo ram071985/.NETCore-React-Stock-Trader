@@ -117,10 +117,13 @@ class UserPortal extends Component {
     const result = this.state.stocks.filter(
       (name) => name.company === event.target.value
     );
+    console.log(result)
     this.setState({
       sellQuantity: result[0].quantity,
       isHoldings: true,
-      price: result[0].current
+      price: result[0].current,
+      company: result[0].company,
+      symbol: result[0].symbol
     });
   };
 
@@ -163,7 +166,9 @@ class UserPortal extends Component {
     this.setState({
       action: event.target.value,
       sellQuantity: this.state.firstObject.quantity,
-      price: this.state.firstObject.current
+      price: this.state.firstObject.current,
+      company: this.state.firstObject.company,
+      symbol: this.state.firstObject.symbol
     });
   };
 
@@ -312,7 +317,7 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.action);
+    console.log(this.state.symbol);
     console.log(this.state.price);
     return (
       <div className="container-fluid main-container">
@@ -355,6 +360,7 @@ class UserPortal extends Component {
               handleQueryChange={this.handleQueryChange}
               company={this.state.company}
               price={this.state.price}
+              symbol={this.state.symbol}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>

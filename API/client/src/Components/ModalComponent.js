@@ -36,9 +36,7 @@ class ModalComponent extends Component {
     //this.getQuantity();
   }
 
-
   handleChange = (index) => {};
-
 
   handleSelectChange = (event) => {
     const { name, value } = event.target;
@@ -95,9 +93,20 @@ class ModalComponent extends Component {
         onHide={this.props.onHide}
       >
         <Form.Row>
-    <div className="ml-3 mt-5" style={{ display: (this.props.isSell ? 'block' : 'none')}}><h4 className="text-center ml-3">Sell {this.props.holding.company} shares</h4></div>
-          
-          <Form.Group style={{ display: (!this.props.isSell ? 'block' : 'none')}}as={Col} controlId="formGridState">
+          <div
+            className="ml-3 mt-5"
+            style={{ display: this.props.isSell ? "block" : "none" }}
+          >
+            <h4 className="text-center ml-3">
+              Sell {this.props.holding.company} shares
+            </h4>
+          </div>
+
+          <Form.Group
+            style={{ display: !this.props.isSell ? "block" : "none" }}
+            as={Col}
+            controlId="formGridState"
+          >
             <Form.Label className="ml-5 mb-0 mt-5">Action</Form.Label>
             {this.props.sellSubmit === false ? (
               <Form.Control
@@ -119,7 +128,11 @@ class ModalComponent extends Component {
             )}
           </Form.Group>
 
-          <Form.Group style={{ display: (!this.props.isSell ? 'block' : 'none')}} as={Col} controlId="formGridZip">
+          <Form.Group
+            style={{ display: !this.props.isSell ? "block" : "none" }}
+            as={Col}
+            controlId="formGridZip"
+          >
             {this.props.setAction === "Buy" ? (
               <Form>
                 <Form.Label className="mt-5 mb-0">
@@ -141,11 +154,13 @@ class ModalComponent extends Component {
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    onChange={event => this.props.handleHoldings(event)}
+                    onChange={(event) => this.props.handleHoldings(event)}
                     name="stockName"
                     as="select"
                   >
-                    {this.props.stocks.map(index => this.props.modalHoldings(index))}
+                    {this.props.stocks.map((index) =>
+                      this.props.modalHoldings(index)
+                    )}
                   </Form.Control>
                 </Form.Group>
               </Form>
@@ -210,20 +225,19 @@ class ModalComponent extends Component {
   };
 
   render() {
-    console.log(this.props.firstObject.current)
-    console.log(this.props.price)
+    console.log(this.props.firstObject.current);
+    console.log(this.props.price);
     if (this.state.isConfirm) {
       return (
         <Redirect
           to={{
             pathname: "/confirm",
             state: {
-              company: this.state.company,
+              company: this.props.company,
               quantity: this.props.dynamicQuantity,
-              price: this.state.price,
-              symbol: this.state.symbol,
-              action: this.props.setAction
-
+              price: this.props.price,
+              symbol: this.props.symbol,
+              action: this.props.setAction,
             },
           }}
         />
