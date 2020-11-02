@@ -44,7 +44,7 @@ class UserPortal extends Component {
       isSell: false,
       sellSubmit: false,
       sellInput: 1,
-      isHoldings: false
+      isHoldings: false,
     };
   }
 
@@ -53,9 +53,7 @@ class UserPortal extends Component {
     this.getDatabaseStocks();
   }
 
-
   getExchange = () => {
-
     axios
       .get("/api/stocks/exchanges/" + this.state.symbol, {})
       .then((res) => {
@@ -75,10 +73,7 @@ class UserPortal extends Component {
   };
 
   handleQueryChange = (event) => {
-    this.setState({
-      company: "",
-      price: 0
-    })
+    this.clearFields();
     let returnInterval;
     const { name, value } = event.target;
     this.setState({
@@ -95,15 +90,14 @@ class UserPortal extends Component {
 
   getQuantity = () => {
     this.setState({
-      firstObject: this.state.stocks[0]
-    })
+      firstObject: this.state.stocks[0],
+    });
     if (this.state.action === "Sell") {
       this.setState({
-        sellQuantity: this.state.firstObject.quantity
-        
-      })
+        sellQuantity: this.state.firstObject.quantity,
+      });
     }
-  }
+  };
 
   parseId = () => {
     let parseUserId = parseInt(localStorage.getItem("user_id"));
@@ -120,12 +114,14 @@ class UserPortal extends Component {
 
   handleHoldings = (event, index) => {
     console.log(event.target.value);
-    const result = this.state.stocks.filter(name => name.company === event.target.value);
-    console.log(result)
+    const result = this.state.stocks.filter(
+      (name) => name.company === event.target.value
+    );
     this.setState({
       sellQuantity: result[0].quantity,
-      isHoldings: true
-    })
+      isHoldings: true,
+      price: result[0].current
+    });
   };
 
   handleBuyQuantity = (event) => {
@@ -133,16 +129,16 @@ class UserPortal extends Component {
     this.setState({
       dynamicQuantity: parseInt(value),
     });
-  }
+  };
 
   handleQuantityChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: this.state.sellQuantity,
     });
-      this.setState({
-        dynamicQuantity: parseInt(value),
-      });
+    this.setState({
+      dynamicQuantity: parseInt(value),
+    });
   };
 
   handleCompanyList = (event) => {
@@ -152,10 +148,22 @@ class UserPortal extends Component {
     });
   };
 
+  clearFields = () => {
+    this.setState({
+      sellQuantity: 0,
+      price: 0,
+      company: "",
+      dynamicQuantity: 0,
+      company: "",
+    });
+  };
+
   handleBuySellChange = (event) => {
+    this.clearFields();
     this.setState({
       action: event.target.value,
-      sellQuantity: this.state.firstObject.quantity
+      sellQuantity: this.state.firstObject.quantity,
+      price: this.state.firstObject.current
     });
   };
 
@@ -195,8 +203,7 @@ class UserPortal extends Component {
       setSell: true,
       isSell: false,
       price: 0,
-      company: ""
-
+      company: "",
     });
   };
 
@@ -282,13 +289,13 @@ class UserPortal extends Component {
   };
 
   fooSubmit = (index) => {
-    console.log(index)
+    console.log(index);
     this.setState({
       holding: this.state.stocks[index],
       isSell: true,
-      sellQuantity: this.state.stocks[index].quantity
+      sellQuantity: this.state.stocks[index].quantity,
     });
-    console.log(this.state.stocks[index])
+    console.log(this.state.stocks[index]);
     this.handleSellShow();
     //this.setState({
     //  companyValue: filter.company
@@ -306,7 +313,7 @@ class UserPortal extends Component {
 
   render() {
     console.log(this.state.action);
-    console.log(this.state.dynamicQuantity);
+    console.log(this.state.price);
     return (
       <div className="container-fluid main-container">
         <div className="d-inline-block container user-container">

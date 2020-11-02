@@ -211,7 +211,7 @@ class ModalComponent extends Component {
 
   render() {
     console.log(this.props.firstObject.current)
-    console.log(this.state.price)
+    console.log(this.props.price)
     if (this.state.isConfirm) {
       return (
         <Redirect
