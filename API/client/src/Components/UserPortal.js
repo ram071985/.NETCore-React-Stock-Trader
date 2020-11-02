@@ -299,8 +299,10 @@ class UserPortal extends Component {
       holding: this.state.stocks[index],
       isSell: true,
       sellQuantity: this.state.stocks[index].quantity,
+      price: this.state.stocks[index].current
     });
     console.log(this.state.stocks[index]);
+    console.log(this.state.stocks[index].current);
     this.handleSellShow();
     //this.setState({
     //  companyValue: filter.company
