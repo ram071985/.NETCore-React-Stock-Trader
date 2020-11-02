@@ -43,7 +43,7 @@ namespace API.Controllers
         [HttpPost("quantity")]
         public StockModel GetShareQuantity([FromBody] StockModel stockModel)
         {
-            var quantityResult = _sellStockService.GetShareQuantity(stockModel.UserId, stockModel.Company);
+            var quantityResult = _sellStockService.CreateSaleRecord(stockModel.UserId, stockModel.Company, stockModel.Symbol, stockModel.Quantity);
 
             return new StockModel
             {

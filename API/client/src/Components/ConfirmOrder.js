@@ -44,14 +44,14 @@ class ConfirmOrder extends Component {
       axios
         .put("/api/transaction/buy", {
           userId: parseUserId,
-          balance: this.props.price,
+          balance: this.props.location.state.price,
         })
         .catch((err) => {});
     }
     axios
       .put("/api/transaction/sell", {
         userId: parseUserId,
-        balance: this.props.price,
+        balance: this.props.location.state.price,
       })
       .catch((err) => {});
   };
@@ -62,12 +62,12 @@ class ConfirmOrder extends Component {
     axios
       .post("/api/transaction/sell", {
         userId: parseUserId,
-        withdrawal: this.props.price,
-        quantity: this.props.quantity,
-        exchange: this.props.symbol,
+        withdrawal: this.props.location.state.price,
+        quantity: this.props.location.state.quantity,
+        exchange: this.props.location.state.symbol,
       })
       .catch((err) => {});
-    this.addStockRecord();
+    this.deleteStockRecord();
   };
 
   postNewWithdrawalTransaction = () => {
@@ -76,9 +76,9 @@ class ConfirmOrder extends Component {
     axios
       .post("/api/transaction/buy", {
         userId: parseUserId,
-        withdrawal: this.props.price,
-        quantity: this.props.quantity,
-        exchange: this.props.symbol,
+        withdrawal: this.props.location.state.price,
+        quantity: this.props.location.statequantity,
+        exchange: this.props.location.state.symbol,
       })
       .catch((err) => {});
     this.addStockRecord();
@@ -88,9 +88,19 @@ class ConfirmOrder extends Component {
     let parseUserId = parseInt(localStorage.getItem("user_id"));
     axios.post("/api/transaction/add-stock", {
       userId: parseUserId,
-      company: this.props.company,
-      symbol: this.props.symbol,
-      quantity: this.props.quantity,
+      company: this.props.location.state.company,
+      symbol: this.props.location.state.symbol,
+      quantity: this.props.location.state.quantity,
+    });
+  };
+
+  deleteStockRecord = () => {
+    let parseUserId = parseInt(localStorage.getItem("user_id"));
+    axios.post("/api/transaction/delete-stock", {
+      userId: parseUserId,
+      company: this.props.location.state.company,
+      symbol: this.props.location.state.symbol,
+      quantity: this.props.location.state.quantity,
     });
   };
 
@@ -103,7 +113,7 @@ class ConfirmOrder extends Component {
   };
 
   render() {
-    console.log(this.props.location.state.action);
+    console.log(this.props.location.state.isBuy);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -127,7 +137,7 @@ class ConfirmOrder extends Component {
           <span> ({this.props.location.state.symbol})</span>
         </h6>
         <h6 className="ml-5">
-          Quantity{this.props.location.state.action === "Sell" ? " Sold" : ""}:{" "}
+          Quantity{this.props.location.state.isSell === "Sell" ? " Sold" : ""}:{" "}
           {this.props.location.state.quantity}
         </h6>
         <h6 className="ml-5">Price: ${this.props.location.state.price}</h6>
@@ -158,7 +168,7 @@ class ConfirmOrder extends Component {
         <Button
           className="mt-4 d-inline-block mx-auto"
           variant="secondary"
-          onClick={this.postNewWithdrawalTransaction}
+          onClick={this.props.location.state.isBuy ? this.postNewWithdrawalTransaction : this.postNewDepositTransaction}
         >
           Confirm Purchase
         </Button>{" "}
