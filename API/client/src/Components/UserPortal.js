@@ -19,6 +19,7 @@ class UserPortal extends Component {
       sampleStock: [],
       priceResults: [],
       quantity: 0,
+      dynamicQuantity: 0,
       holding: [],
       firstObject: [],
       holdingName: "",
@@ -52,6 +53,46 @@ class UserPortal extends Component {
     this.getDatabaseStocks();
   }
 
+
+  getExchange = () => {
+
+    axios
+      .get("/api/stocks/exchanges/" + this.state.symbol, {})
+      .then((res) => {
+        this.setState({
+          exchange: res.data,
+          company: res.data.companyName,
+          price: res.data.latestPrice,
+        });
+      })
+      .catch((err) => {
+        // if(err.response.data.title === "null exchange") {
+        //  this.setState = ({
+        // error: "nullExchange"
+        //  })
+        //     }
+      });
+  };
+
+  handleQueryChange = (event) => {
+    this.setState({
+      company: "",
+      price: 0
+    })
+    let returnInterval;
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+    returnInterval = setInterval(() => {
+      this.getExchange();
+      if (returnInterval !== null) {
+        clearInterval(returnInterval);
+      }
+      return returnInterval;
+    }, 2000);
+  };
+
   getQuantity = () => {
     this.setState({
       firstObject: this.state.stocks[0]
@@ -59,6 +100,7 @@ class UserPortal extends Component {
     if (this.state.action === "Sell") {
       this.setState({
         sellQuantity: this.state.firstObject.quantity
+        
       })
     }
   }
@@ -79,17 +121,28 @@ class UserPortal extends Component {
   handleHoldings = (event, index) => {
     console.log(event.target.value);
     const result = this.state.stocks.filter(name => name.company === event.target.value);
+    console.log(result)
     this.setState({
       sellQuantity: result[0].quantity,
       isHoldings: true
     })
   };
 
+  handleBuyQuantity = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      dynamicQuantity: parseInt(value),
+    });
+  }
+
   handleQuantityChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: this.state.sellQuantity,
     });
+      this.setState({
+        dynamicQuantity: parseInt(value),
+      });
   };
 
   handleCompanyList = (event) => {
@@ -140,7 +193,10 @@ class UserPortal extends Component {
     this.setState({
       setShow: false,
       setSell: true,
-      isSell: false
+      isSell: false,
+      price: 0,
+      company: ""
+
     });
   };
 
@@ -250,7 +306,7 @@ class UserPortal extends Component {
 
   render() {
     console.log(this.state.action);
-    console.log(this.state.firstObject);
+    console.log(this.state.dynamicQuantity);
     return (
       <div className="container-fluid main-container">
         <div className="d-inline-block container user-container">
@@ -287,6 +343,11 @@ class UserPortal extends Component {
               sellInput={this.state.sellInput}
               holding={this.state.holding}
               firstObject={this.state.firstObject}
+              handleBuyQuantity={this.handleBuyQuantity}
+              dynamicQuantity={this.state.dynamicQuantity}
+              handleQueryChange={this.handleQueryChange}
+              company={this.state.company}
+              price={this.state.price}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>

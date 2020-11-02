@@ -39,20 +39,6 @@ class ModalComponent extends Component {
 
   handleChange = (index) => {};
 
-  handleQueryChange = (event) => {
-    let returnInterval;
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-    returnInterval = setInterval(() => {
-      this.getExchange();
-      if (returnInterval !== null) {
-        clearInterval(returnInterval);
-      }
-      return returnInterval;
-    }, 2000);
-  };
 
   handleSelectChange = (event) => {
     const { name, value } = event.target;
@@ -61,27 +47,6 @@ class ModalComponent extends Component {
       error: "",
     });
   };
-
-  getExchange = () => {
-    axios
-      .get("/api/stocks/exchanges/" + this.state.symbol, {})
-      .then((res) => {
-        this.setState({
-          exchange: res.data,
-          company: res.data.companyName,
-          price: res.data.latestPrice,
-        });
-      })
-      .catch((err) => {
-        // if(err.response.data.title === "null exchange") {
-        //  this.setState = ({
-        // error: "nullExchange"
-        //  })
-        //     }
-      });
-  };
-
-
 
   searchStockList = () => {
     return (
@@ -164,9 +129,9 @@ class ModalComponent extends Component {
                   type="input"
                   name="symbol"
                   className="w-75 modal-input"
-                  onChange={this.handleQueryChange}
+                  onChange={this.props.handleQueryChange}
                 />
-                <h6 className="ml-1 mt-1 company-text">{this.state.company}</h6>{" "}
+                <h6 className="ml-1 mt-1 company-text">{this.props.company}</h6>{" "}
               </Form>
             ) : (
               <Form>
@@ -187,10 +152,10 @@ class ModalComponent extends Component {
             )}
           </Form.Group>
         </Form.Row>
-        <Form.Row autocomplete="off">
+        <Form.Row>
           {this.props.setAction === "Buy" && this.state.sellSubmit !== true ? (
             <BuyQuantity
-              onChange={this.handleQuantityChange}
+              onChange={this.props.handleBuyQuantity}
               quantity={this.props.quantity}
             />
           ) : (
@@ -213,7 +178,7 @@ class ModalComponent extends Component {
                 "$" +
                 this.props
                   .formatter()
-                  .format(this.state.quantity * this.state.price)
+                  .format(this.props.dynamicQuantity * this.props.price)
               }
               className="w-50 ml-1 modal-input"
               readOnly
@@ -245,8 +210,8 @@ class ModalComponent extends Component {
   };
 
   render() {
-    console.log(this.props.firstObject)
-    console.log(this.props.quantity)
+    console.log(this.props.firstObject.current)
+    console.log(this.state.price)
     if (this.state.isConfirm) {
       return (
         <Redirect
@@ -254,9 +219,11 @@ class ModalComponent extends Component {
             pathname: "/confirm",
             state: {
               company: this.state.company,
-              quantity: this.state.quantity,
+              quantity: this.props.dynamicQuantity,
               price: this.state.price,
               symbol: this.state.symbol,
+              action: this.props.setAction
+
             },
           }}
         />

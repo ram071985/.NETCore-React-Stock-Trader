@@ -20,10 +20,6 @@ class ConfirmOrderModal extends Component {
     };
   }
 
-  componentDidMount(props) {
-    console.log(this.props.symbol);
-  }
-
   handleChange = (event) => {
     let returnInterval;
     const { name, value } = event.target;
@@ -80,7 +76,7 @@ class ConfirmOrderModal extends Component {
   };
 
   render() {
-    console.log(this.props.location.state.price);
+    console.log(this.props.location.state.quantity);
 
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
@@ -104,7 +100,7 @@ class ConfirmOrderModal extends Component {
           {this.props.location.state.company}
           <span>({this.props.location.state.symbol})</span>
         </h6>
-        <h6 className="ml-5">QTY {this.props.location.state.quantity}</h6>
+        <h6 className="ml-5">Quantity{this.props.location.state.action === "Sell" ? " Sold" : ""}: {this.props.location.state.quantity}</h6>
         <h6 className="ml-5">Price: ${this.props.location.state.price}</h6>
         <h2 className="mt-5 ml-5">Order Summary</h2>
         <h6></h6>
