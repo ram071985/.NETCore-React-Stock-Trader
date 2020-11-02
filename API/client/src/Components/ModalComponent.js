@@ -36,12 +36,6 @@ class ModalComponent extends Component {
     //this.getQuantity();
   }
 
-  componentDidUpdate(index) {}
-
-  getFirstCompany = () => {
-    const dick = this.props.stocks.includes(this.state.holdingName);
-    console.log(dick);
-  };
 
   handleChange = (index) => {};
 
@@ -251,6 +245,8 @@ class ModalComponent extends Component {
   };
 
   render() {
+    console.log(this.props.firstObject)
+    console.log(this.props.quantity)
     if (this.state.isConfirm) {
       return (
         <Redirect

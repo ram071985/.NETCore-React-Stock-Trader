@@ -20,6 +20,7 @@ class UserPortal extends Component {
       priceResults: [],
       quantity: 0,
       holding: [],
+      firstObject: [],
       holdingName: "",
       action: "",
       setSell: false,
@@ -49,6 +50,17 @@ class UserPortal extends Component {
   componentDidMount() {
     //this.getUserInfo();
     this.getDatabaseStocks();
+  }
+
+  getQuantity = () => {
+    this.setState({
+      firstObject: this.state.stocks[0]
+    })
+    if (this.state.action === "Sell") {
+      this.setState({
+        sellQuantity: this.state.firstObject.quantity
+      })
+    }
   }
 
   parseId = () => {
@@ -90,6 +102,7 @@ class UserPortal extends Component {
   handleBuySellChange = (event) => {
     this.setState({
       action: event.target.value,
+      sellQuantity: this.state.firstObject.quantity
     });
   };
 
@@ -170,6 +183,7 @@ class UserPortal extends Component {
     this.setState({
       stocks: addPrices,
     });
+    this.getQuantity();
   };
 
   getSellQuantity = () => {
@@ -235,8 +249,8 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.isSell);
-    console.log(this.state.holdingName);
+    console.log(this.state.action);
+    console.log(this.state.firstObject);
     return (
       <div className="container-fluid main-container">
         <div className="d-inline-block container user-container">
@@ -272,6 +286,7 @@ class UserPortal extends Component {
               isHoldings={this.state.isHoldings}
               sellInput={this.state.sellInput}
               holding={this.state.holding}
+              firstObject={this.state.firstObject}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>
