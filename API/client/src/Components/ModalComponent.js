@@ -29,15 +29,6 @@ class ModalComponent extends Component {
     };
   }
 
-  componentDidMount() {
-    // this.setState({
-    // stockName: this.props.stocks[0].company,
-    // });
-    //this.getQuantity();
-  }
-
-  handleChange = (index) => {};
-
   handleSelectChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -77,7 +68,6 @@ class ModalComponent extends Component {
   };
 
   renderHoldings = (stock, index) => {
-    console.log(index);
     return (
       <option key={index} value={stock.company}>
         {stock.company} ({stock.quantity} shares)
@@ -95,15 +85,21 @@ class ModalComponent extends Component {
         <Form.Row>
           <div
             className="ml-3 mt-5"
-            style={{ display: this.props.isSell || this.props.isBuy ? "block" : "none" }}
+            style={{
+              display: this.props.isSell || this.props.isBuy ? "block" : "none",
+            }}
           >
             <h4 className="text-center ml-3">
-              {!this.props.isBuy ? "Sell" : "Buy"} {this.props.holding.company} shares
+              {!this.props.isBuy ? "Sell" : "Buy"} {this.props.holding.company}{" "}
+              shares
             </h4>
           </div>
 
           <Form.Group
-            style={{ display: !this.props.isSell && !this.props.isBuy ? "block" : "none" }}
+            style={{
+              display:
+                !this.props.isSell && !this.props.isBuy ? "block" : "none",
+            }}
             as={Col}
             controlId="formGridState"
           >
@@ -129,7 +125,10 @@ class ModalComponent extends Component {
           </Form.Group>
 
           <Form.Group
-            style={{ display: !this.props.isSell && !this.props.isBuy ? "block" : "none" }}
+            style={{
+              display:
+                !this.props.isSell && !this.props.isBuy ? "block" : "none",
+            }}
             as={Col}
             controlId="formGridZip"
           >
@@ -225,8 +224,6 @@ class ModalComponent extends Component {
   };
 
   render() {
-    console.log(this.props.firstObject.current);
-    console.log(this.props.price);
     if (this.state.isConfirm) {
       return (
         <Redirect

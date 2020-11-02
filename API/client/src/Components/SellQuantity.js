@@ -21,8 +21,6 @@ class SellQuantity extends Component {
   };
 
   render() {
-    console.log(this.props.quantity);
-    console.log(this.props.isHoldings === true)
     return (
       <div>
         <Form>

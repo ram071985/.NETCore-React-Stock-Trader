@@ -1,16 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Dropdown from "react-bootstrap/Dropdown";
-import FormControl from "react-bootstrap/FormControl";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/Form";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import { PlusSquare, MinusSquare } from "react-feather";
 import ModalComponent from "./ModalComponent";
-import ConfirmOrderModal from "./ConfirmOrderModal";
 
 class UserPortal extends Component {
   constructor() {
@@ -65,13 +56,7 @@ class UserPortal extends Component {
           price: res.data.latestPrice,
         });
       })
-      .catch((err) => {
-        // if(err.response.data.title === "null exchange") {
-        //  this.setState = ({
-        // error: "nullExchange"
-        //  })
-        //     }
-      });
+      .catch((err) => {});
   };
 
   handleQueryChange = (event) => {
@@ -115,17 +100,15 @@ class UserPortal extends Component {
   };
 
   handleHoldings = (event, index) => {
-    console.log(event.target.value);
     const result = this.state.stocks.filter(
       (name) => name.company === event.target.value
     );
-    console.log(result)
     this.setState({
       sellQuantity: result[0].quantity,
       isHoldings: true,
       price: result[0].current,
       company: result[0].company,
-      symbol: result[0].symbol
+      symbol: result[0].symbol,
     });
   };
 
@@ -170,7 +153,7 @@ class UserPortal extends Component {
       sellQuantity: this.state.firstObject.quantity,
       price: this.state.firstObject.current,
       company: this.state.firstObject.company,
-      symbol: this.state.firstObject.symbol
+      symbol: this.state.firstObject.symbol,
     });
   };
 
@@ -205,6 +188,7 @@ class UserPortal extends Component {
   };
 
   handleClose = () => {
+    this.clearFields();
     this.setState({
       setShow: false,
       setSell: true,
@@ -311,13 +295,9 @@ class UserPortal extends Component {
       sellQuantity: this.state.stocks[index].quantity,
       price: this.state.stocks[index].current,
       company: this.state.stocks[index].company,
-      symbol: this.state.stocks[index].symbol
+      symbol: this.state.stocks[index].symbol,
     });
     this.handleSellShow();
-    //this.setState({
-    //  companyValue: filter.company
-    // })
-    //return filter;
   };
 
   buySubmit = (index) => {
@@ -328,13 +308,9 @@ class UserPortal extends Component {
       sellQuantity: this.state.stocks[index].quantity,
       price: this.state.stocks[index].current,
       company: this.state.stocks[index].company,
-      symbol: this.state.stocks[index].symbol
+      symbol: this.state.stocks[index].symbol,
     });
     this.handleSellShow();
-    //this.setState({
-    //  companyValue: filter.company
-    // })
-    //return filter;
   };
 
   renderModalHoldings = (stock, index) => {
@@ -346,8 +322,6 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.sellSubmit);
-    console.log(this.state.price);
     return (
       <div className="container-fluid main-container">
         <div className="d-inline-block container user-container">

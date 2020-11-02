@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import Modal from "react-bootstrap/Modal";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-class ConfirmOrderModal extends Component {
+class ConfirmOrder extends Component {
   constructor() {
     super();
     this.state = {
@@ -41,18 +38,40 @@ class ConfirmOrderModal extends Component {
     });
   };
 
-  putStockPurchase = () => {
+  putStockTransaction = () => {
     let parseUserId = parseInt(localStorage.getItem("user_id"));
+    if (this.props.location.state.isBuy) {
+      axios
+        .put("/api/transaction/buy", {
+          userId: parseUserId,
+          balance: this.props.price,
+        })
+        .catch((err) => {});
+    }
     axios
-      .put("/api/transaction/buy", {
+      .put("/api/transaction/sell", {
         userId: parseUserId,
         balance: this.props.price,
       })
       .catch((err) => {});
   };
 
-  postNewTransaction = () => {
-    this.putStockPurchase();
+  postNewDepositTransaction = () => {
+    this.putStockTransaction();
+    let parseUserId = parseInt(localStorage.getItem("user_id"));
+    axios
+      .post("/api/transaction/sell", {
+        userId: parseUserId,
+        withdrawal: this.props.price,
+        quantity: this.props.quantity,
+        exchange: this.props.symbol,
+      })
+      .catch((err) => {});
+    this.addStockRecord();
+  };
+
+  postNewWithdrawalTransaction = () => {
+    this.putStockTransaction();
     let parseUserId = parseInt(localStorage.getItem("user_id"));
     axios
       .post("/api/transaction/buy", {
@@ -84,8 +103,7 @@ class ConfirmOrderModal extends Component {
   };
 
   render() {
-    console.log(this.props.location.state.quantity);
-
+    console.log(this.props.location.state.action);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -140,7 +158,7 @@ class ConfirmOrderModal extends Component {
         <Button
           className="mt-4 d-inline-block mx-auto"
           variant="secondary"
-          onClick={this.postNewTransaction}
+          onClick={this.postNewWithdrawalTransaction}
         >
           Confirm Purchase
         </Button>{" "}
@@ -157,4 +175,4 @@ class ConfirmOrderModal extends Component {
   }
 }
 
-export default ConfirmOrderModal;
+export default ConfirmOrder;

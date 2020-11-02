@@ -6,9 +6,9 @@ namespace CORE.Services
 {
     public interface IBuyStockService
     {
-        Wallet UpdateWallet(int userId, decimal balance);
+        Wallet UpdateWalletPurchase(int userId, decimal balance);
         Transaction AddWithdrawal(int userId, string symbol, decimal withdrawal, int quantity);
-        Stock CreateStockRecord(int userId, string company, string symbol, int quantity);
+        Stock CreatePurchaseRecord(int userId, string company, string symbol, int quantity);
     }
 
     public class BuyStockService : IBuyStockService
@@ -20,7 +20,7 @@ namespace CORE.Services
             _dbSessionService = dbSessionService;
         }
 
-        public Wallet UpdateWallet(int userId, decimal balance)
+        public Wallet UpdateWalletPurchase(int userId, decimal balance)
         {
             using (var session = _dbSessionService.OpenSession())
             {
@@ -63,7 +63,7 @@ namespace CORE.Services
             }
         }
 
-        public Stock CreateStockRecord(int userId, string company, string symbol, int quantity)
+        public Stock CreatePurchaseRecord(int userId, string company, string symbol, int quantity)
         {
             using (var session = _dbSessionService.OpenSession())
             {
