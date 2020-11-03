@@ -16,31 +16,24 @@ class LandingPage extends Component {
     super();
     this.state = {
       toUserPortal: false,
+      logInClick: false,
+      signUpClick: false,
+      isLogIn: false,
+      isSignUp: false,
     };
   }
 
-  handleLogInClick = () => {
-    return (
-      <Router>
-        <Redirect
-          to={{
-            pathname: "/log-in",
-          }}
-        />
-      </Router>
-    );
-  };
+  handleClick = (e) => {
+    console.log(e.target.textContent);
+    if (e.target.textContent) {
+      return (
+        <Redirect />
+      )
+    }
 
-  handleSignUpClick = () => {
     return (
-      <Router>
-        <Redirect
-          to={{
-            pathname: "/sign-up",
-          }}
-        />
-      </Router>
-    );
+      <Redirect />
+    )
   };
 
   render() {
@@ -59,32 +52,26 @@ class LandingPage extends Component {
                 A fun and simple way to practice trading and selling from public
                 companies: with no strings attached.
               </h4>
-              <form className="form-inline my-2 my-lg-0">
-                <Link to="/log-in">
-                  <button
-                    className="btn btn-outline-success my-2 my-sm-0 landing-page-buttons"
-                    type="submit"
-                  >
-                    <User
-                      className="ml-2 d-inline-block user-icon"
-                      color="white"
-                      width="15"
-                      height="15"
-                    />
-                    <span className="log-in-button-text">Log in</span>
-                  </button>
-                </Link>
-                <Link to="/sign-up">
-                  <button
-                    className="btn btn-outline-success mr-3 my-2 my-sm-0 landing-page-buttons"
-                    type="submit"
-                  >
-                    <span className="account-button-text">
-                      Start an account
-                    </span>
-                  </button>
-                </Link>
-              </form>
+
+              <button
+                className="d-inline-block btn btn-outline-success my-2 my-sm-0 landing-page-buttons"
+                onClick={(e) => this.handleClick(e)}
+              >
+                <User
+                  className="ml-2 d-inline-block user-icon"
+                  color="white"
+                  width="15"
+                  height="15"
+                />
+                <span className="log-in-button-text">Log in</span>
+              </button>
+
+              <button
+                className="d-inline-block btn btn-outline-success mr-3 my-2 my-sm-0 landing-page-buttons"
+                onClick={(e) => this.handleClick(e)}
+              >
+                <span className="account-button-text">Start an account</span>
+              </button>
             </div>
             <div className="col-lg d-block mx-auto right-col">
               <img className="splash-image d-block mx-auto" src={SplashImage} />

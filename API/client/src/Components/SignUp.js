@@ -65,7 +65,7 @@ class SignUp extends Component {
   };
 
   render() {
-    console.log(this.state.toLogIn);
+    console.log(this.state.toLogIn === true);
     if (this.state.toLogIn === true) return <Redirect to="/log-in" />;
 
     return (
