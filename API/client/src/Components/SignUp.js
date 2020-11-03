@@ -13,7 +13,7 @@ class SignUp extends Component {
       existingPassword: "",
       errorMessage: "",
       logInErrorMessage: "",
-      toUserPortal: false,
+      tologIn: false,
     };
   }
 
@@ -31,7 +31,6 @@ class SignUp extends Component {
     this.postNewUser();
   };
 
-
   postNewUser = () => {
     axios
       .post("/api/register", {
@@ -42,7 +41,7 @@ class SignUp extends Component {
         localStorage.setItem("session_id", res.data.id);
         localStorage.setItem("user_id", res.data.userId);
         this.setState({
-          toUserPortal: true,
+          tologIn: true,
         });
       })
       .catch((err) => {
@@ -66,10 +65,8 @@ class SignUp extends Component {
   };
 
   render() {
-
-    if (this.state.toUserPortal === true)
-    return <Redirect to="/user-portal"/>
-
+    console.log(this.state.toLogIn);
+    if (this.state.toLogIn === true) return <Redirect to="/log-in" />;
 
     return (
       <div className="container-fluid log-in-container">
@@ -104,9 +101,12 @@ class SignUp extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <button type="submit" className="btn btn-primary btn-lg mt-4 btn-block log-in-button">
-              Start trading now!
-            </button>
+              <button
+                type="submit"
+                className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
+              >
+                Start trading now!
+              </button>
             </form>
           </div>
         </div>

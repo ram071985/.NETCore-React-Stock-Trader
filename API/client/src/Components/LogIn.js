@@ -76,10 +76,8 @@ class LogIn extends Component {
   };
 
   render() {
-    console.log(this.state.toUserPortal);
-
-    if (this.state.toUserPortal === true)
-      return <Redirect to="/user-portal"/>
+    console.log(this.state.toUserPortal)
+    if (this.state.toUserPortal === true) return <Redirect to="/" />;
 
     return (
       <div className="container-fluid log-in-container">

@@ -10,15 +10,17 @@ import LogIn from "./Components/LogIn";
 import SignUp from "./Components/SignUp";
 import UserPortal from "./Components/UserPortal";
 import ConfirmOrder from "./Components/ConfirmOrder";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
     <Route path="/confirm" render={(props) => <ConfirmOrder {...props}/>} />
-    <Route path="/user-portal" component={UserPortal} />
     <Route path="/sign-up" component={SignUp} />
-      <Route path="/log-in" component={LogIn} />
-      <Route path="/" component={LandingPage}/>
+<Route path="/log-in" render={(props) => <LogIn {...props} />} />
+      <Route path="/landing-page" component={LandingPage}/>
+      <ProtectedRoute exact={true} path="/" component={UserPortal} />
+      <ProtectedRoute component={UserPortal} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')

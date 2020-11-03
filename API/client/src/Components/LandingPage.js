@@ -44,17 +44,6 @@ class LandingPage extends Component {
   };
 
   render() {
-    let sessionId = localStorage.getItem("session_id");
-    if (sessionId !== null) {
-      return (
-          <Redirect
-            to={{
-              pathname: "/user-portal",
-            }}
-          />
-      );
-    }
-
     return (
       <div>
         <div className="container-fluid min-vh-100 d-flex flex-column">
