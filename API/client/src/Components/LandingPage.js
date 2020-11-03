@@ -20,23 +20,43 @@ class LandingPage extends Component {
       signUpClick: false,
       isLogIn: false,
       isSignUp: false,
+      authType: "",
     };
   }
 
   handleClick = (e) => {
     console.log(e.target.textContent);
-    if (e.target.textContent) {
-      return (
-        <Redirect />
-      )
-    }
-
-    return (
-      <Redirect />
-    )
+    this.setState({
+      authType: e.target.textContent,
+    });
   };
 
   render() {
+    if (this.state.authType === "Log in") {
+      return (
+        <Redirect
+          to={{
+            pathname: "/log-in",
+            state: {
+              isLogIn: this.state.isLogIn,
+            },
+          }}
+        />
+      );
+    }
+    if (this.state.authType === "Start an account") {
+      return (
+        <Redirect
+          to={{
+            pathname: "/sign-up",
+            state: {
+              isSignUp: this.state.isSignUp,
+            },
+          }}
+        />
+      );
+    }
+
     return (
       <div>
         <div className="container-fluid min-vh-100 d-flex flex-column">
