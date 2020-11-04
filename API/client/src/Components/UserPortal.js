@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import ModalComponent from "./ModalComponent";
 
 class UserPortal extends Component {
@@ -89,6 +90,11 @@ class UserPortal extends Component {
   parseId = () => {
     let parseUserId = parseInt(localStorage.getItem("user_id"));
     return parseUserId;
+  };
+
+  handleLogOut = (event) => {
+    let deleteId = localStorage.clear();
+    return deleteId;
   };
 
   handleChange = (event) => {
@@ -324,6 +330,16 @@ class UserPortal extends Component {
   render() {
     return (
       <div className="container-fluid main-container">
+        <Form onSubmit={(event) => this.handleLogOut(event)}>
+          <Button
+            type="submit"
+            variant="outline-success"
+            className="d-block ml-5"
+          >
+            Log out
+          </Button>
+        </Form>
+
         <div className="d-inline-block container user-container">
           <div className="d-block row">
             <h4 className="d-inline-block ml-3 mr-5 heading-text">

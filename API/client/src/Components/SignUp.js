@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BarChart } from "react-feather";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 
 class SignUp extends Component {
   constructor() {
@@ -13,7 +14,6 @@ class SignUp extends Component {
       existingPassword: "",
       errorMessage: "",
       logInErrorMessage: "",
-      tologIn: false,
     };
   }
 
@@ -40,9 +40,6 @@ class SignUp extends Component {
       .then((res) => {
         localStorage.setItem("session_id", res.data.id);
         localStorage.setItem("user_id", res.data.userId);
-        this.setState({
-          tologIn: true,
-        });
       })
       .catch((err) => {
         if (err.response.data.title === "empty username") {
@@ -66,7 +63,6 @@ class SignUp extends Component {
 
   render() {
     console.log(this.state.toLogIn === true);
-    if (this.state.toLogIn === true) return <Redirect to="/log-in" />;
 
     return (
       <div className="container-fluid log-in-container">
@@ -101,12 +97,15 @@ class SignUp extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
-              >
-                Start trading now!
-              </button>
+              <Form onSubmit={(e) => this.handleNewUserSubmit(e)}>
+                {" "}
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
+                >
+                  Start trading now!
+                </button>
+              </Form>
             </form>
           </div>
         </div>

@@ -7,8 +7,8 @@
       <File FileName="CORE/Services/AuthorizeUserService.cs" />
       <File FileName="CORE/Services/BuyStockService.cs" />
       <File FileName="API/Controllers/AuthorzationController.cs" />
-      <File FileName="API/Controllers/RegisterController.cs" />
-      <File FileName="CORE/Services/CreateNewUserService.cs" Line="55" Column="1" />
+      <File FileName="API/Controllers/RegisterController.cs" Line="28" Column="44" />
+      <File FileName="CORE/Services/CreateNewUserService.cs" Line="43" Column="30" />
       <File FileName="API/TransactionModel.cs" Line="6" Column="1" NotebookId="1" />
       <File FileName="CORE/Entities/Transaction.cs" NotebookId="1" />
       <File FileName="CORE/Entities/Wallet.cs" NotebookId="1" />
@@ -46,6 +46,8 @@
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/TransactionController.cs" relfile="API/Controllers/TransactionController.cs" line="35" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/SellStockService.cs" relfile="CORE/Services/SellStockService.cs" line="67" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/BuyStockService.cs" relfile="CORE/Services/BuyStockService.cs" line="66" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/CreateNewUserService.cs" relfile="CORE/Services/CreateNewUserService.cs" line="23" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/CreateNewUserService.cs" relfile="CORE/Services/CreateNewUserService.cs" line="41" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

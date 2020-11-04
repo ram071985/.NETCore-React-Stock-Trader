@@ -23,8 +23,10 @@ namespace API.Controllers
         public SessionModel PostNewUser([FromBody] UserInputModel userInputModel)
         {                
             var user = _createNewUserService.CreateNewUser(
+                        userInputModel.Id,
                         userInputModel.Username,
                         userInputModel.Password
+                        
                         );
                   
             var session = _createSessionService.CreateNewSession(
@@ -47,6 +49,8 @@ namespace API.Controllers
 
     public class UserInputModel
     {
+        public int Id { get; set; }
+
         public string Username { get; set; }
 
         public string Password { get; set; }

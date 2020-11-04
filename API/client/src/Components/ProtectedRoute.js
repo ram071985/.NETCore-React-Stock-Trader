@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import UserPortal from "./UserPortal"
 
 class ProtectedRoute extends Component {
   render() {
       const Component = this.props.component;
-      const isAuthenticated = localStorage.getItem("session-id");
+      const isAuthenticated = localStorage.getItem("session_id");
 
       return isAuthenticated !== null ? (
-          <UserPortal />
+          <Component />
       ) : (
           <Redirect to={{ pathname: "/landing-page" }}/>
       )

@@ -7,7 +7,7 @@ namespace CORE.Services
 {
     public interface ICreateNewUserService
     {
-        User CreateNewUser(string username, string password);
+        User CreateNewUser(int id, string username, string password);
     }
 
     public class CreateNewUserService : ICreateNewUserService
@@ -19,7 +19,7 @@ namespace CORE.Services
             _dbSessionService = dbSessionService;
         }
 
-        public User CreateNewUser(string username, string password)
+        public User CreateNewUser(int id, string username, string password)
         {
             using (var session = _dbSessionService.OpenSession())
             {
@@ -40,6 +40,7 @@ namespace CORE.Services
 
                     var user = new User
                     {
+                        Id = id,
                         Username = username,
                         Password = password,
                         CreatedDate = DateTime.Now,
