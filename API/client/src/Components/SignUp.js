@@ -14,6 +14,7 @@ class SignUp extends Component {
       existingPassword: "",
       errorMessage: "",
       logInErrorMessage: "",
+      toUserPortal: false,
     };
   }
 
@@ -40,6 +41,9 @@ class SignUp extends Component {
       .then((res) => {
         localStorage.setItem("session_id", res.data.id);
         localStorage.setItem("user_id", res.data.userId);
+        this.setState({
+          toUserPortal: true,
+        });
       })
       .catch((err) => {
         if (err.response.data.title === "empty username") {
@@ -62,7 +66,7 @@ class SignUp extends Component {
   };
 
   render() {
-    console.log(this.state.toLogIn === true);
+    if (this.state.toUserPortal === true) return <Redirect to="/" />;
 
     return (
       <div className="container-fluid log-in-container">
@@ -72,7 +76,7 @@ class SignUp extends Component {
         </header>
         <div className="row justify-content-center">
           <div className="col-5 input-col">
-            <form onSubmit={this.handleNewUserSubmit}>
+            <Form onSubmit={this.handleNewUserSubmit}>
               <div class="form-group">
                 <label className="label-text" for="">
                   Choose Username
@@ -96,17 +100,14 @@ class SignUp extends Component {
                   name="newPassword"
                   onChange={this.handleChange}
                 />
-              </div>
-              <Form onSubmit={(e) => this.handleNewUserSubmit(e)}>
-                {" "}
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
-                >
-                  Start trading now!
-                </button>
-              </Form>
-            </form>
+              </div>{" "}
+              <button
+                type="submit"
+                className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
+              >
+                Start trading now!
+              </button>
+            </Form>
           </div>
         </div>
       </div>

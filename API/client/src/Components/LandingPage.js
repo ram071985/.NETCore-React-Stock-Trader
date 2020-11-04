@@ -8,8 +8,6 @@ import {
   Redirect,
 } from "react-router-dom";
 import { User } from "react-feather";
-import SignUp from "./SignUp";
-import LogIn from "./LogIn";
 
 class LandingPage extends Component {
   constructor() {
@@ -26,9 +24,15 @@ class LandingPage extends Component {
 
   handleClick = (e) => {
     console.log(e.target.textContent);
+    if(e.target.textContent === "Start an account")
+    this.setState({
+      isSignUp: true,
+    });
+  
     this.setState({
       authType: e.target.textContent,
     });
+ 
   };
 
   render() {

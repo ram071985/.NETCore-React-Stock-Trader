@@ -7,7 +7,7 @@ namespace CORE.Services
 {
     public interface ICreateNewUserService
     {
-        User CreateNewUser(int id, string username, string password);
+        User CreateNewUser(string username, string password);
     }
 
     public class CreateNewUserService : ICreateNewUserService
@@ -19,7 +19,7 @@ namespace CORE.Services
             _dbSessionService = dbSessionService;
         }
 
-        public User CreateNewUser(int id, string username, string password)
+        public User CreateNewUser(string username, string password)
         {
             using (var session = _dbSessionService.OpenSession())
             {
@@ -36,27 +36,25 @@ namespace CORE.Services
                         throw new Exception("empty password");
                     }
 
-                    
+                    var result = session.QueryOver<User>()
+                       .Where(w => w.Username == username)
+                       .List<User>();
 
-                    var user = new User
-                    {
-                        Id = id,
-                        Username = username,
-                        Password = password,
-                        CreatedDate = DateTime.Now,
-                        LastActiveAt = DateTime.Now
-                    };
-
-                    ICriteria c = session.CreateCriteria<User>();
-                    c.Add(Restrictions.Eq("Username", username));                   
-               
-
-                    if(c.UniqueResult<User>() != null)
+                    if (result.Count != 0)
                     {
                         throw new Exception("username exists");
                     }
 
+                    var user = new User
+                    {
+                        Username = username,
+                        Password = password,
+                        CreatedDate = DateTime.Now,
+                        LastActiveAt = DateTime.Now
+                    };                                    
+                  
                     session.Save(user);
+
                     transaction.Commit();
 
                     return user;
