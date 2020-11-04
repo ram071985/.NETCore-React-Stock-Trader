@@ -43,7 +43,7 @@ class UserPortal extends Component {
   }
 
   componentDidMount() {
-    //this.getUserInfo();
+    this.getUserInfo();
     this.getDatabaseStocks();
   }
 
@@ -328,6 +328,7 @@ class UserPortal extends Component {
   };
 
   render() {
+    console.log(this.state.buySubmit)
     return (
       <div className="container-fluid main-container">
         <Form onSubmit={(event) => this.handleLogOut(event)}>

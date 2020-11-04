@@ -74,7 +74,7 @@ namespace CORE.Services
                         .Where(s => s.Symbol == symbol)
                         .List<Stock>();
 
-                    if (result != null)
+                    if (result.Count != 0)
                     {
                         result[0].Quantity = result[0].Quantity + quantity;
 

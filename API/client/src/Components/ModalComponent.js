@@ -61,7 +61,8 @@ class ModalComponent extends Component {
     return false;
   };
 
-  confirmRedirect = () => {
+  confirmRedirect = (e) => {
+    console.log(e.target.textContent)
     this.setState({
       isConfirm: true,
     });

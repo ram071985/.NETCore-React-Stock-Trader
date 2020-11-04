@@ -40,7 +40,7 @@ class ConfirmOrder extends Component {
 
   putStockTransaction = () => {
     let parseUserId = parseInt(localStorage.getItem("user_id"));
-    if (this.props.location.state.isBuy) {
+    if (this.props.location.state.action === "Buy") {
       axios
         .put("/api/transaction/buy", {
           userId: parseUserId,
@@ -113,7 +113,7 @@ class ConfirmOrder extends Component {
   };
 
   render() {
-    console.log(this.props.location.state.isBuy);
+    console.log(this.props.location.state.action);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -168,7 +168,7 @@ class ConfirmOrder extends Component {
         <Button
           className="mt-4 d-inline-block mx-auto"
           variant="secondary"
-          onClick={this.props.location.state.isBuy ? this.postNewWithdrawalTransaction : this.postNewDepositTransaction}
+          onClick={this.props.location.state.action === "Buy" ? this.postNewWithdrawalTransaction : this.postNewDepositTransaction}
         >
           Confirm Purchase
         </Button>{" "}
