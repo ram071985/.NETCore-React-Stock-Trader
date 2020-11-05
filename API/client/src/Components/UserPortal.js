@@ -382,6 +382,7 @@ class UserPortal extends Component {
               company={this.state.company}
               price={this.state.price}
               symbol={this.state.symbol}
+              holdings={this.state.holdings}
             />
             <div className="col-12">
               <h5 className="d-inline-block mb-2 titles-text">Name</h5>

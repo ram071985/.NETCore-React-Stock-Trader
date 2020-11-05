@@ -44,16 +44,21 @@ class ConfirmOrder extends Component {
       axios
         .put("/api/transaction/buy", {
           userId: parseUserId,
-          balance: this.props.location.state.price * this.props.location.state.quantity,
+          balance:
+            this.props.location.state.price *
+            this.props.location.state.quantity,
         })
         .catch((err) => {});
     }
+    if (this.props.location.state.action === "Sell") {
     axios
       .put("/api/transaction/sell", {
         userId: parseUserId,
-        balance: this.props.location.state.price * this.props.location.state.quantity,
+        balance:
+          this.props.location.state.price * this.props.location.state.quantity,
       })
       .catch((err) => {});
+    }
   };
 
   postNewDepositTransaction = () => {
@@ -62,7 +67,8 @@ class ConfirmOrder extends Component {
     axios
       .post("/api/transaction/sell", {
         userId: parseUserId,
-        deposit: this.props.location.state.price * this.props.location.state.quantity,
+        deposit:
+          this.props.location.state.price * this.props.location.state.quantity,
         quantity: this.props.location.state.quantity,
         exchange: this.props.location.state.symbol,
       })
@@ -76,7 +82,8 @@ class ConfirmOrder extends Component {
     axios
       .post("/api/transaction/buy", {
         userId: parseUserId,
-        withdrawal: this.props.location.state.price * this.props.location.state.quantity,
+        withdrawal:
+          this.props.location.state.price * this.props.location.state.quantity,
         quantity: this.props.location.state.quantity,
         exchange: this.props.location.state.symbol,
       })
@@ -168,7 +175,11 @@ class ConfirmOrder extends Component {
         <Button
           className="mt-4 d-inline-block mx-auto"
           variant="secondary"
-          onClick={this.props.location.state.action === "Buy" ? this.postNewWithdrawalTransaction : this.postNewDepositTransaction}
+          onClick={
+            this.props.location.state.action === "Buy"
+              ? this.postNewWithdrawalTransaction
+              : this.postNewDepositTransaction
+          }
         >
           Confirm Purchase
         </Button>{" "}

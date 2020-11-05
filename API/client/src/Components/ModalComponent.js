@@ -237,7 +237,8 @@ class ModalComponent extends Component {
               symbol: this.props.symbol,
               action: this.props.setAction,
               isBuy: this.props.isBuy,
-              isSell: this.props.isSell
+              isSell: this.props.isSell,
+              holdings: this.props.holdings
             },
           }}
         />

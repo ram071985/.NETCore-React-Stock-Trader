@@ -34,11 +34,8 @@ namespace CORE.Services
 
                     resultArray.Balance = resultArray.Balance - balance;
                     resultArray.Holdings = resultArray.Holdings + balance;
-                    
-
-
-             
-                   session.SaveOrUpdate(resultArray);
+                                 
+                    session.SaveOrUpdate(resultArray);
 
                     transaction.Commit();
 
