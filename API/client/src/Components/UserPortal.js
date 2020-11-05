@@ -394,14 +394,14 @@ class UserPortal extends Component {
                 Holdings
               </h5>
               <h6 id="holding-text" className="d-block mb-4 name-text">
-                ${this.state.holdings}
+                ${this.decimalFormatter().format(this.state.holdings)}
               </h6>
             </div>
             <div className="col-5">
               <h5 id="wallet" className="d-inline-block mb-2 titles-text">
                 Wallet
               </h5>
-              <h6 className="name-text mb-4">${this.state.wallet}</h6>
+              <h6 className="name-text mb-4">${this.decimalFormatter().format(this.state.wallet)}</h6>
             </div>
           </div>
         </div>
