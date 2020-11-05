@@ -8,7 +8,7 @@ namespace CORE.Services
     public interface ISellStockService
     {
         Wallet UpdateWalletSale(int userId, decimal balance);
-        Transaction AddDeposit(int userId, string exchange, decimal withdrawal, int quantity);
+        Transaction AddDeposit(int userId, string exchange, decimal deposit, int quantity);
         Stock CreateSaleRecord(int userId, string company, string symbol, int quantity);
     }
 
@@ -27,20 +27,23 @@ namespace CORE.Services
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    Wallet wallet = session.Get<Wallet>(userId);
-                    wallet.Balance = wallet.Balance + balance;
-                    wallet.Holdings = wallet.Holdings - balance;
+                    var result = session.QueryOver<Wallet>()
+                          .Where(w => w.UserId == userId)
+                          .List<Wallet>();
 
-                    session.SaveOrUpdate(wallet);
+                    result[0].Balance = result[0].Balance + balance;
+                    result[0].Holdings = result[0].Holdings - balance;
+
+                    session.SaveOrUpdate(result[0]);
 
                     transaction.Commit();
 
-                    return wallet;
+                    return result[0];
                 }
             }
         }
 
-        public Transaction AddDeposit(int userId, string exchange, decimal withdrawal, int quantity)
+        public Transaction AddDeposit(int userId, string exchange, decimal deposit, int quantity)
         {
             using (var session = _dbSessionService.OpenSession())
             {
@@ -50,7 +53,7 @@ namespace CORE.Services
                     {
                         UserId = userId,
                         Exchange = exchange,
-                        Withdrawal = withdrawal,
+                        Withdrawal = deposit,
                         Quantity = quantity,
                         CreatedDate = DateTime.Now
                     };

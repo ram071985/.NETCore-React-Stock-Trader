@@ -69,7 +69,7 @@ namespace API.Controllers
         [HttpPost("sell")]
         public TransactionModel DepositTransaction([FromBody] TransactionModel transactionModel)
         {
-            var transaction = _sellStockService.AddDeposit(transactionModel.UserId, transactionModel.Exchange, transactionModel.Withdrawal, transactionModel.Quantity);
+            var transaction = _sellStockService.AddDeposit(transactionModel.UserId, transactionModel.Exchange, transactionModel.Deposit, transactionModel.Quantity);
 
             return new TransactionModel
             {

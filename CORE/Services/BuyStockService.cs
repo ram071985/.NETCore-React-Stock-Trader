@@ -25,16 +25,24 @@ namespace CORE.Services
             using (var session = _dbSessionService.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
-                {                
-                    Wallet wallet = session.Get<Wallet>(userId);
-                    wallet.Balance = wallet.Balance - balance;
-                    wallet.Holdings = wallet.Holdings + balance;
+                {
+                    var result = session.QueryOver<Wallet>()
+                        .Where(w => w.UserId == userId)
+                        .List<Wallet>();
 
-                    session.SaveOrUpdate(wallet);
+                    var resultArray = result[0];
+
+                    resultArray.Balance = resultArray.Balance - balance;
+                    resultArray.Holdings = resultArray.Holdings + balance;
+                    
+
+
+             
+                   session.SaveOrUpdate(resultArray);
 
                     transaction.Commit();
 
-                    return wallet;
+                    return result[0];
                 }
             }
         }

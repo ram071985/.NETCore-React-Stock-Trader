@@ -44,14 +44,14 @@ class ConfirmOrder extends Component {
       axios
         .put("/api/transaction/buy", {
           userId: parseUserId,
-          balance: this.props.location.state.price,
+          balance: this.props.location.state.price * this.props.location.state.quantity,
         })
         .catch((err) => {});
     }
     axios
       .put("/api/transaction/sell", {
         userId: parseUserId,
-        balance: this.props.location.state.price,
+        balance: this.props.location.state.price * this.props.location.state.quantity,
       })
       .catch((err) => {});
   };
@@ -62,7 +62,7 @@ class ConfirmOrder extends Component {
     axios
       .post("/api/transaction/sell", {
         userId: parseUserId,
-        withdrawal: this.props.location.state.price,
+        deposit: this.props.location.state.price * this.props.location.state.quantity,
         quantity: this.props.location.state.quantity,
         exchange: this.props.location.state.symbol,
       })
@@ -76,8 +76,8 @@ class ConfirmOrder extends Component {
     axios
       .post("/api/transaction/buy", {
         userId: parseUserId,
-        withdrawal: this.props.location.state.price,
-        quantity: this.props.location.statequantity,
+        withdrawal: this.props.location.state.price * this.props.location.state.quantity,
+        quantity: this.props.location.state.quantity,
         exchange: this.props.location.state.symbol,
       })
       .catch((err) => {});
