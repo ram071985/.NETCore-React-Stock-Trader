@@ -168,7 +168,7 @@ class ModalComponent extends Component {
           </Form.Group>
         </Form.Row>
         <Form.Row>
-          {this.props.setAction === "Buy" && this.state.sellSubmit !== true ? (
+          {this.props.setAction === "Buy" || this.props.isBuy ? (
             <BuyQuantity
               onChange={this.props.handleBuyQuantity}
               quantity={this.props.quantity}

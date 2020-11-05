@@ -40,7 +40,7 @@ class ConfirmOrder extends Component {
 
   putStockTransaction = () => {
     let parseUserId = parseInt(localStorage.getItem("user_id"));
-    if (this.props.location.state.action === "Buy") {
+    if (this.props.location.state.action === "Buy" || this.props.location.state.isBuy) {
       axios
         .put("/api/transaction/buy", {
           userId: parseUserId,
@@ -50,7 +50,7 @@ class ConfirmOrder extends Component {
         })
         .catch((err) => {});
     }
-    if (this.props.location.state.action === "Sell") {
+    if (this.props.location.state.action === "Sell" || this.props.location.state.isSell) {
     axios
       .put("/api/transaction/sell", {
         userId: parseUserId,
@@ -120,6 +120,7 @@ class ConfirmOrder extends Component {
   };
 
   render() {
+    console.log(this.props.location.state.isBuy);
     console.log(this.props.location.state.action);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
@@ -144,7 +145,7 @@ class ConfirmOrder extends Component {
           <span> ({this.props.location.state.symbol})</span>
         </h6>
         <h6 className="ml-5">
-          Quantity{this.props.location.state.isSell === "Sell" ? " Sold" : ""}:{" "}
+          Quantity{this.props.location.state.isSell || this.props.location.state.action === "Sell" ? " Sold" : ""}:{" "}
           {this.props.location.state.quantity}
         </h6>
         <h6 className="ml-5">Price: ${this.props.location.state.price}</h6>

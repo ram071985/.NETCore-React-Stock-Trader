@@ -8,18 +8,6 @@ class SellQuantity extends Component {
     super();
     this.state = {};
   }
-
-  componentDidMount() {
-
-  }
-
-  handleQuantityChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  };
-
   render() {
     return (
       <div>

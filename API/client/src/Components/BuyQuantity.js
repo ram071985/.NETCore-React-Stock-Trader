@@ -10,28 +10,6 @@ class BuyQuantity extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-
-  }
-
-  getQuantity = () => {
-    if (this.props.stockName === this.props.stocks[0].company) {
-        const filter = this.state.stocks.filter(
-          (name) => name.company === this.props.stockName
-        );
-        this.setState({
-          quantity: filter[0].quantity,
-        });
-      }
-  }
-
-  handleQuantityChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  };
-
   render() {
     console.log(this.state.quantity);
     return (

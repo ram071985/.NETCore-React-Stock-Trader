@@ -298,6 +298,7 @@ class UserPortal extends Component {
       holding: this.state.stocks[index],
       isBuy: false,
       isSell: true,
+      action: "Sell",
       sellQuantity: this.state.stocks[index].quantity,
       price: this.state.stocks[index].current,
       company: this.state.stocks[index].company,
@@ -311,12 +312,13 @@ class UserPortal extends Component {
       holding: this.state.stocks[index],
       isSell: false,
       isBuy: true,
+      action: "Buy",
       sellQuantity: this.state.stocks[index].quantity,
       price: this.state.stocks[index].current,
       company: this.state.stocks[index].company,
       symbol: this.state.stocks[index].symbol,
     });
-    this.handleSellShow();
+    this.handleShow();
   };
 
   renderModalHoldings = (stock, index) => {
@@ -328,7 +330,8 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.buySubmit)
+    console.log(this.state.action)
+
     return (
       <div className="container-fluid main-container">
         <Form onSubmit={(event) => this.handleLogOut(event)}>
