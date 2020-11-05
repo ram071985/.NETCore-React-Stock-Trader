@@ -140,22 +140,22 @@ class ConfirmOrder extends Component {
     return (
       <div>
         <h2 className="mt-4 ml-5">{}</h2>
-        <h6 className="ml-5">
+        <h6 className="font-weight-normal text-center ml-5">
           {this.props.location.state.company}
-          <span> ({this.props.location.state.symbol})</span>
+          <span>(</span><span className="text-uppercase special-characters">{this.props.location.state.symbol}</span><span>)</span>
         </h6>
-        <h6 className="ml-5">
+        <h6 className="font-weight-normal text-center ml-5">
           Quantity{this.props.location.state.isSell || this.props.location.state.action === "Sell" ? " Sold" : ""}:{" "}
           {this.props.location.state.quantity}
         </h6>
-        <h6 className="ml-5">Price: ${this.props.location.state.price}</h6>
-        <h2 className="mt-5 ml-5">Order Summary</h2>
+        <h6 className="font-weight-normal text-center ml-5">Price: ${this.decimalFormatter().format(this.props.location.state.price)}</h6>
+        <h2 className="text-center mt-5 ml-5">Order Summary</h2>
         <h6></h6>
-        <h6 className="mt-2 ml-5">
-          Subtotal
-          <span className="confirm-span">
+        <h6 className="font-weight-bold text-center mt-2 ml-5">
+          Subtotal:
+          <span className="font-weight-normal text-center confirm-span">
             ${this.props.location.state.price} x{" "}
-            {this.props.location.state.quantity} (shares) = $
+            {this.props.location.state.quantity} (<span className="special-characters">shares</span>) = $
             {this.decimalFormatter().format(
               this.props.location.state.quantity *
                 this.props.location.state.price
@@ -163,9 +163,9 @@ class ConfirmOrder extends Component {
           </span>
         </h6>
         <hr></hr>
-        <h5 className="ml-5">
-          Total
-          <span className="confirm-span">
+        <h5 className="text-center ml-5">
+          Total:
+          <span className="font-weight-normal text-center confirm-span">
             $
             {this.decimalFormatter().format(
               this.props.location.state.quantity *
@@ -174,7 +174,7 @@ class ConfirmOrder extends Component {
           </span>
         </h5>
         <Button
-          className="mt-4 d-inline-block mx-auto"
+          className="mt-4 confirm-button"
           variant="secondary"
           onClick={
             this.props.location.state.action === "Buy"
@@ -182,7 +182,7 @@ class ConfirmOrder extends Component {
               : this.postNewDepositTransaction
           }
         >
-          Confirm Purchase
+          Confirm
         </Button>{" "}
         <Button
           onClick={this.props.onHide}
@@ -190,7 +190,7 @@ class ConfirmOrder extends Component {
           variant="danger"
           onClick={this.handleClose}
         >
-          Cancel Order
+          Cancel
         </Button>{" "}
       </div>
     );

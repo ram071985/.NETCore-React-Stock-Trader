@@ -59,14 +59,14 @@ nav.navbar {
   border-radius: 0.4rem;
   background: rgb(15, 15, 15);
   height: 30%;
-  width: 450px !important;
+  width: 90% !important;
   padding: 10px;
   margin: 20px 0px 0px 40px !important;
 }
 
 .holdings-container {
-  margin: 0px 0px 0px 40px !important;
-  width: 475px !important;
+  margin: 15px 0px 0px 40px !important;
+  width: 90% !important;
   border-radius: 0.4rem;
   background: rgb(15, 15, 15);
   padding: 10px;
@@ -203,8 +203,27 @@ button.log-in-button:hover {
   color: white;
 }
 
+.buy-sell-button {
+  padding: 4px 12px !important;
+  margin-left: 8px;
+  font-size: .9rem !important;
+}
+
+.sell-button {
+  padding: 4px 12px !important;
+  margin-left: 15px;
+  font-size: .9rem !important;
+}
+
 .buy-button {
-  margin-left: 30px;
+  padding: 4px 12px !important;
+  margin-left: 8px;
+  font-size: .9rem !important;
+}
+
+.log-out-button {
+  padding: 4px 12px !important;
+  font-size: .9rem !important; 
 }
 
 /* modal elements */
@@ -273,7 +292,7 @@ hr {
 .cancel-button {
   width: 30%;
   border-radius: 0 !important;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 
 .company-text {
@@ -281,11 +300,18 @@ hr {
 }
 
 .confirm-span {
-  margin-left: 30%;
+  margin-left: 10px;
+}
+
+.confirm-button {
+  width: 30%;
+  border-radius: 0 !important;
+  margin-left: 25% !important;
+  margin-right: 10px;
 }
 
 .shares-current {
-  color: rgb(197, 197, 197);
+  color: rgb(219, 219, 219);
 }
 
 .current-label {
@@ -298,4 +324,8 @@ hr {
   height: 38px;
   border-radius: 0;
   padding: 5px;
+}
+
+.special-characters {
+  color: #1aac3c;
 }

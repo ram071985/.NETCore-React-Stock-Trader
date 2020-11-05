@@ -276,18 +276,18 @@ class UserPortal extends Component {
           ${this.decimalFormatter().format(stock.current * stock.quantity)}
         </h5>
         <Button
-          variant="success"
-          className="buy-button"
+          variant="outline-success"
+          className="sell-button"
           onClick={(e) => this.sellSubmit(index)}
         >
-          Sell shares
+          <span className="font-weight-light">Sell shares</span>
         </Button>
         <Button
-          variant="success"
+          variant="outline-success"
           className="buy-button"
           onClick={(e) => this.buySubmit(index)}
         >
-          Buy shares
+          <span className="font-weight-light">Buy shares</span>
         </Button>
       </div>
     );
@@ -338,23 +338,23 @@ class UserPortal extends Component {
           <Button
             type="submit"
             variant="outline-success"
-            className="d-block ml-5"
+            className="d-block ml-5 log-out-button"
           >
             Log out
           </Button>
         </Form>
 
-        <div className="d-inline-block container user-container">
+        <div className="container-fluid d-block container user-container">
           <div className="d-block row">
-            <h4 className="d-inline-block ml-3 mr-5 heading-text">
+            <h4 className="d-inline-block ml-3 mr-3 heading-text">
               User Information
             </h4>
             <Button
               onClick={this.handleShow}
-              className=""
+              className="buy-sell-button"
               variant="outline-success"
             >
-              Buy/Sell Stocks
+              <span className="font-weight-light">Buy/Sell Stocks</span>
             </Button>{" "}
             <ModalComponent
               setSell={this.state.setSell}
@@ -405,7 +405,7 @@ class UserPortal extends Component {
             </div>
           </div>
         </div>
-        <div className="container-fluid d-inline-block holdings-container">
+        <div className="container-fluid d-block holdings-container">
           <h4 className="heading-text">Current Holdings</h4>
           {this.state.stocks.map(this.renderHoldings)}
         </div>
