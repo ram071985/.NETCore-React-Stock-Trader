@@ -352,11 +352,11 @@ class UserPortal extends Component {
             <Button
               onClick={this.handleShow}
               className="buy-sell-button"
-              variant="outline-success"
+              variant="success"
             >
               <span className="font-weight-light">Buy/Sell Stocks</span>
             </Button>{" "}
-            <hr style={{ borderTop: '1px solid white', width: '100%'}}/>
+            <hr style={{ borderTop: '1px solid #1aac3c', width: '100%'}}/>
             <ModalComponent
               setSell={this.state.setSell}
               selectValue={this.state.selectValue}
@@ -389,26 +389,26 @@ class UserPortal extends Component {
               holdings={this.state.holdings}
             />
             <div className="col-12">
-              <h5 className="font-weight-normal d-inline-block mb-2 titles-text">Name</h5>
+              <h6 className="font-weight-normal d-inline-block mb-1 titles-text">Name</h6>
               <h6 className="font-weight-light d-block mb-4 name-text">{this.state.username}</h6>
-              <h5 id="holdings" className="font-weight-normal d-inline-block mb-2 titles-text">
-                Holdings
-              </h5>
+              <h6 id="holdings" className="font-weight-normal d-inline-block mb-1 titles-text">
+                Holdings:
+              </h6>
               <h6 id="holding-text" className="font-weight-light d-block mb-4 name-text">
                 ${this.decimalFormatter().format(this.state.holdings)}
               </h6>
             </div>
             <div className="col-5">
-              <h5 id="wallet" className="font-weight-normal d-inline-block mb-2 titles-text">
+              <h6 id="wallet" className="font-weight-normal d-inline-block mb-1 titles-text">
                 Wallet
-              </h5>
+              </h6>
               <h6 className="font-weight-light name-text mb-4">${this.decimalFormatter().format(this.state.wallet)}</h6>
             </div>
           </div>
         </div>
         <div className="container-fluid d-block holdings-container">
           <h4 className="heading-text">Current Holdings</h4>
-          <hr style={{ borderTop: '1px solid white', width: '100%'}}/>
+          <hr style={{ borderTop: '1px solid #1aac3c', width: '100%'}}/>
           {this.state.stocks.map(this.renderHoldings)}
         </div>
       </div>

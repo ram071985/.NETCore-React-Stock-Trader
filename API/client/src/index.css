@@ -57,6 +57,7 @@ nav.navbar {
 
 .user-container {
   border-radius: 0.4rem;
+  border: solid 1px #1aac3c;;
   background: rgb(15, 15, 15);
   height: 33%;
   width: 90% !important;
@@ -70,6 +71,7 @@ nav.navbar {
   border-radius: 0.4rem;
   background: rgb(15, 15, 15);
   padding: 10px 0px 20px !important;
+  border: solid 1px #1aac3c;;
 }
 
 .browse-container {
@@ -164,7 +166,7 @@ button.log-in-button:hover {
 
 .heading-text {
   margin-left: 15px;
-  color: rgb(219, 219, 219);
+  color: rgb(196, 196, 196);
 }
 
 .titles-text {
