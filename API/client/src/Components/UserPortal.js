@@ -268,9 +268,9 @@ class UserPortal extends Component {
   renderHoldings = (stock, index) => {
     return (
       <div key={index}>
-        <p className="mt-4 company-text">{stock.company}</p>
+        <p className="mt-4 mb-0 company-text">{stock.company}</p>
         <h6 className="font-weight-normal shares-current">
-          Shares Owned:  <span className="mt-1 d-block" style={{ color: 'rgb(233, 233, 233)'}}>{stock.quantity}</span>
+          <span className="mt-1 d-block" style={{ color: 'rgb(233, 233, 233)'}}>{stock.quantity} shares</span>
         </h6>
         <h5 className="font-weight-light d-inline-block share-text">
           ${this.decimalFormatter().format(stock.current * stock.quantity)}
