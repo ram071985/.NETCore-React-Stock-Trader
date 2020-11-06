@@ -58,7 +58,7 @@ nav.navbar {
 .user-container {
   border-radius: 0.4rem;
   background: rgb(15, 15, 15);
-  height: 30%;
+  height: 33%;
   width: 90% !important;
   padding: 10px;
   margin: 20px 0px 0px 40px !important;
@@ -69,8 +69,7 @@ nav.navbar {
   width: 90% !important;
   border-radius: 0.4rem;
   background: rgb(15, 15, 15);
-  padding: 10px;
-  padding-bottom: 20px;
+  padding: 10px 0px 20px !important;
 }
 
 .browse-container {
@@ -164,6 +163,7 @@ button.log-in-button:hover {
 }
 
 .heading-text {
+  margin-left: 15px;
   color: rgb(219, 219, 219);
 }
 
@@ -177,7 +177,7 @@ button.log-in-button:hover {
 }
 
 .name-text {
-  color: rgb(219, 219, 219);
+  color: rgb(233, 233, 233);
   width: 75px;
   margin: 0 !important;
 }
@@ -197,10 +197,12 @@ button.log-in-button:hover {
 
 .company-text {
   color: white;
+  margin-left: 15px;
 }
 
 .share-text {
-  color: white;
+  color: rgb(233, 233, 233);
+  margin-left: 15px;
 }
 
 .buy-sell-button {
@@ -311,7 +313,8 @@ hr {
 }
 
 .shares-current {
-  color: rgb(219, 219, 219);
+  color: rgb(156, 156, 156);
+  margin-left: 15px;
 }
 
 .current-label {
