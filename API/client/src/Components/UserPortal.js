@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Spinner from "react-bootstrap/Spinner";
 import ModalComponent from "./ModalComponent";
+
 
 class UserPortal extends Component {
   constructor() {
@@ -12,6 +14,7 @@ class UserPortal extends Component {
       priceResults: [],
       quantity: 0,
       dynamicQuantity: 0,
+      price: 0,
       holding: [],
       firstObject: [],
       holdingName: "",
@@ -39,6 +42,8 @@ class UserPortal extends Component {
       buySubmit: false,
       sellInput: 1,
       isHoldings: false,
+      loading: false,
+      isSearching: false,
     };
   }
 
@@ -71,7 +76,13 @@ class UserPortal extends Component {
       this.getExchange();
       if (returnInterval !== null) {
         clearInterval(returnInterval);
+        this.setState({
+          isSearching: false,
+        });
       }
+      this.setState({
+        isSearching: true,
+      });
       return returnInterval;
     }, 2000);
   };
@@ -225,6 +236,9 @@ class UserPortal extends Component {
   };
 
   getDatabaseStocks = async (index) => {
+    this.setState({
+      loading: true,
+    });
     const stocksResponse = await axios.post("/api/update-portal/stocks", {
       userId: this.parseId(),
     });
@@ -245,6 +259,9 @@ class UserPortal extends Component {
       stocks: addPrices,
     });
     this.getQuantity();
+    this.setState({
+      loading: false,
+    });
   };
 
   getSellQuantity = () => {
@@ -254,6 +271,7 @@ class UserPortal extends Component {
 
     this.setState({
       sellQuantity: filter[0].quantity,
+      loading: false,
     });
   };
 
@@ -270,10 +288,20 @@ class UserPortal extends Component {
       <div key={index}>
         <p className="mt-4 mb-0 company-text">{stock.company}</p>
         <h6 className="font-weight-normal shares-current">
-          <span className="mt-1 d-block" style={{ color: 'rgb(233, 233, 233)'}}>{stock.quantity} shares</span>
+          <span
+            className="mt-1 d-block"
+            style={{ color: "rgb(233, 233, 233)" }}
+          >
+            {stock.quantity} shares
+          </span>
         </h6>
         <h5 className="font-weight-light d-inline-block share-text">
-          ${this.decimalFormatter().format(stock.current * stock.quantity)}
+          $
+          {this.state.loading ? (
+            <Spinner className="ml-2" variant="success" animation="border" />
+          ) : (
+            this.decimalFormatter().format(stock.current * stock.quantity)
+          )}
         </h5>
         <Button
           variant="outline-success"
@@ -330,7 +358,9 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.action)
+    console.log(this.state.isSearching);
+
+    const { loading } = this.state;
 
     return (
       <div className="container-fluid main-container">
@@ -356,7 +386,7 @@ class UserPortal extends Component {
             >
               <span className="font-weight-light">Buy/Sell Stocks</span>
             </Button>{" "}
-            <hr style={{ borderTop: '1px solid #1aac3c', width: '100%'}}/>
+            <hr style={{ borderTop: "1px solid #1aac3c", width: "100%" }} />
             <ModalComponent
               setSell={this.state.setSell}
               selectValue={this.state.selectValue}
@@ -387,28 +417,73 @@ class UserPortal extends Component {
               price={this.state.price}
               symbol={this.state.symbol}
               holdings={this.state.holdings}
+              isSearching={this.state.isSearching}
             />
             <div className="col-12">
-              <h6 className="font-weight-normal d-inline-block mb-1 titles-text">Name</h6>
-              <h6 className="font-weight-light d-block mb-4 name-text">{this.state.username}</h6>
-              <h6 id="holdings" className="font-weight-normal d-inline-block mb-1 titles-text">
+              <h6 className="font-weight-normal d-inline-block mb-1 titles-text">
+                Name
+              </h6>
+              <h6 className="font-weight-light d-block mb-4 name-text">
+                {loading ? (
+                  <Spinner
+                    className="ml-2"
+                    variant="success"
+                    animation="border"
+                    size="sm"
+                  />
+                ) : (
+                  this.state.username
+                )}
+              </h6>
+              <h6
+                id="holdings"
+                className="font-weight-normal d-inline-block mb-1 titles-text"
+              >
                 Holdings:
               </h6>
-              <h6 id="holding-text" className="font-weight-light d-block mb-4 name-text">
-                ${this.decimalFormatter().format(this.state.holdings)}
+              <h6
+                id="holding-text"
+                className="font-weight-light d-block mb-4 name-text"
+              >
+                $
+                {loading ? (
+                  <Spinner
+                    className="ml-2"
+                    variant="success"
+                    animation="border"
+                    size="sm"
+                  />
+                ) : (
+                  this.decimalFormatter().format(this.state.holdings)
+                )}
               </h6>
             </div>
             <div className="col-5">
-              <h6 id="wallet" className="font-weight-normal d-inline-block mb-1 titles-text">
+              <h6
+                id="wallet"
+                className="font-weight-normal d-inline-block mb-1 titles-text"
+              >
                 Wallet
               </h6>
-              <h6 className="font-weight-light name-text mb-4">${this.decimalFormatter().format(this.state.wallet)}</h6>
+              <h6 className="font-weight-light name-text mb-4">
+                $
+                {loading ? (
+                  <Spinner
+                    className="ml-2"
+                    variant="success"
+                    animation="border"
+                    size="sm"
+                  />
+                ) : (
+                  this.decimalFormatter().format(this.state.wallet)
+                )}
+              </h6>
             </div>
           </div>
         </div>
         <div className="container-fluid d-block holdings-container">
           <h4 className="heading-text">Current Holdings</h4>
-          <hr style={{ borderTop: '1px solid #1aac3c', width: '100%'}}/>
+          <hr style={{ borderTop: "1px solid #1aac3c", width: "100%" }} />
           {this.state.stocks.map(this.renderHoldings)}
         </div>
       </div>

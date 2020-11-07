@@ -7,6 +7,8 @@ import axios from "axios";
 import SellQuantity from "./SellQuantity";
 import BuyQuantity from "./BuyQuantity";
 import { Redirect } from "react-router-dom";
+import { CheckCircle } from "react-feather";
+import { XCircle } from "react-feather";
 
 class ModalComponent extends Component {
   constructor() {
@@ -62,7 +64,7 @@ class ModalComponent extends Component {
   };
 
   confirmRedirect = (e) => {
-    console.log(e.target.textContent)
+    console.log(e.target.textContent);
     this.setState({
       isConfirm: true,
     });
@@ -144,7 +146,10 @@ class ModalComponent extends Component {
                   className="w-75 modal-input"
                   onChange={this.props.handleQueryChange}
                 />
-                <h6 className="ml-1 mt-1 company-text">{this.props.company}</h6>{" "}
+                {this.props.isSearching ? <CheckCircle className="search-icon"/> : <XCircle className="x-icon"/>}
+                <h6 className="d-block ml-1 mt-1 company-text">
+                  {this.props.company}
+                </h6>{" "}
               </Form>
             ) : (
               <Form>
@@ -190,10 +195,12 @@ class ModalComponent extends Component {
               type="text"
               name="price"
               value={
-                "$" +
-                this.props
-                  .formatter()
-                  .format(this.props.dynamicQuantity * this.props.price)
+                undefined
+                  ? "$" + 0.0
+                  : "$" +
+                    this.props
+                      .formatter()
+                      .format(this.props.dynamicQuantity * this.props.price)
               }
               className="w-50 ml-1 modal-input"
               readOnly
@@ -225,6 +232,8 @@ class ModalComponent extends Component {
   };
 
   render() {
+    console.log(this.props.price);
+
     if (this.state.isConfirm) {
       return (
         <Redirect
@@ -238,13 +247,12 @@ class ModalComponent extends Component {
               action: this.props.setAction,
               isBuy: this.props.isBuy,
               isSell: this.props.isSell,
-              holdings: this.props.holdings
+              holdings: this.props.holdings,
             },
           }}
         />
       );
     }
-
     return <div>{this.renderModal()}</div>;
   }
 }

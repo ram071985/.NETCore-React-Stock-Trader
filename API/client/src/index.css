@@ -57,7 +57,7 @@ nav.navbar {
 
 .user-container {
   border-radius: 0.4rem;
-  border: solid 1px #1aac3c;;
+  border: solid 1px #1aac3c;
   background: rgb(15, 15, 15);
   height: 33%;
   width: 90% !important;
@@ -71,7 +71,7 @@ nav.navbar {
   border-radius: 0.4rem;
   background: rgb(15, 15, 15);
   padding: 10px 0px 20px !important;
-  border: solid 1px #1aac3c;;
+  border: solid 1px #1aac3c;
 }
 
 .browse-container {
@@ -210,24 +210,24 @@ button.log-in-button:hover {
 .buy-sell-button {
   padding: 4px 12px !important;
   margin-left: 8px;
-  font-size: .9rem !important;
+  font-size: 0.9rem !important;
 }
 
 .sell-button {
   padding: 4px 12px !important;
   margin-left: 15px;
-  font-size: .9rem !important;
+  font-size: 0.9rem !important;
 }
 
 .buy-button {
   padding: 4px 12px !important;
   margin-left: 8px;
-  font-size: .9rem !important;
+  font-size: 0.9rem !important;
 }
 
 .log-out-button {
   padding: 4px 12px !important;
-  font-size: .9rem !important; 
+  font-size: 0.9rem !important;
 }
 
 /* modal elements */
@@ -300,7 +300,11 @@ hr {
 }
 
 .company-text {
+  position: relative;
+  bottom: 35px;
+  right: 10px;
   color: #1aac3c;
+  padding: 10px;
 }
 
 .confirm-span {
@@ -333,4 +337,18 @@ hr {
 
 .special-characters {
   color: #1aac3c;
+}
+
+.search-icon {
+  position: relative;
+  left: 180px;
+  bottom: 32px;
+  color: #1aac3c;
+}
+
+.x-icon {
+  position: relative;
+  left: 180px;
+  bottom: 32px;
+  color: #a51e0d;
 }
