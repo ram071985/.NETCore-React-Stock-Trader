@@ -136,7 +136,7 @@ class ModalComponent extends Component {
             controlId="formGridZip"
           >
             {this.props.setAction === "Buy" ? (
-              <Form>
+              <Form className="search-form">
                 <Form.Label className="mt-5 mb-0">
                   Search by company symbol
                 </Form.Label>

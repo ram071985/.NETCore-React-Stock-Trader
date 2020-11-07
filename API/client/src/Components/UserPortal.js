@@ -285,8 +285,8 @@ class UserPortal extends Component {
 
   renderHoldings = (stock, index) => {
     return (
-      <div key={index}>
-        <p className="mt-4 mb-0 company-text">{stock.company}</p>
+      <div key={index} className="holdings-render">
+        <p className="mb-0 company-text">{stock.company}</p>
         <h6 className="font-weight-normal shares-current">
           <span
             className="mt-1 d-block"
@@ -423,7 +423,7 @@ class UserPortal extends Component {
               <h6 className="font-weight-normal d-inline-block mb-1 titles-text">
                 Name
               </h6>
-              <h6 className="font-weight-light d-block mb-4 name-text">
+              <h6 className="font-weight-light d-block mb-2 name-text">
                 {loading ? (
                   <Spinner
                     className="ml-2"
@@ -443,7 +443,7 @@ class UserPortal extends Component {
               </h6>
               <h6
                 id="holding-text"
-                className="font-weight-light d-block mb-4 name-text"
+                className="font-weight-light d-block mb-2 name-text"
               >
                 $
                 {loading ? (
@@ -465,7 +465,7 @@ class UserPortal extends Component {
               >
                 Wallet
               </h6>
-              <h6 className="font-weight-light name-text mb-4">
+              <h6 className="font-weight-light name-text mb-2">
                 $
                 {loading ? (
                   <Spinner

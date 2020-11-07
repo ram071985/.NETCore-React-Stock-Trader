@@ -59,7 +59,7 @@ nav.navbar {
   border-radius: 0.4rem;
   border: solid 1px #1aac3c;
   background: rgb(15, 15, 15);
-  height: 33%;
+  height: 28%;
   width: 90% !important;
   padding: 10px;
   margin: 20px 0px 0px 40px !important;
@@ -81,6 +81,10 @@ nav.navbar {
   border-radius: 0.4rem;
   background: rgb(15, 15, 15);
   padding: 10px;
+}
+
+.holdings-render {
+  
 }
 
 img.splash-image {
@@ -301,7 +305,6 @@ hr {
 
 .company-text {
   position: relative;
-  bottom: 35px;
   right: 10px;
   color: #1aac3c;
   padding: 10px;
@@ -351,4 +354,8 @@ hr {
   left: 180px;
   bottom: 32px;
   color: #a51e0d;
+}
+
+.search-form {
+  height: 100px;
 }
