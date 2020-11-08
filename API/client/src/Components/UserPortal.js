@@ -5,7 +5,6 @@ import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import ModalComponent from "./ModalComponent";
 
-
 class UserPortal extends Component {
   constructor() {
     super();
@@ -44,6 +43,7 @@ class UserPortal extends Component {
       isHoldings: false,
       loading: false,
       isSearching: false,
+      isSymbol: "",
     };
   }
 
@@ -61,12 +61,25 @@ class UserPortal extends Component {
           company: res.data.companyName,
           price: res.data.latestPrice,
         });
+        if (res.data === "Unknown symbol") {
+          this.setState({
+            isSymbol: "Unknown symbol",
+          });
+        } else {
+          this.setState({
+            isSymbol: "Known symbol",
+          });
+        }
       })
       .catch((err) => {});
   };
 
   handleQueryChange = (event) => {
     this.clearFields();
+    this.setState({
+      isSearching: true,
+    });
+
     let returnInterval;
     const { name, value } = event.target;
     this.setState({
@@ -80,11 +93,12 @@ class UserPortal extends Component {
           isSearching: false,
         });
       }
-      this.setState({
-        isSearching: true,
-      });
+
       return returnInterval;
     }, 2000);
+    this.setState({
+      isSearching: false,
+    });
   };
 
   getQuantity = () => {
@@ -160,6 +174,8 @@ class UserPortal extends Component {
       company: "",
       dynamicQuantity: 0,
       company: "",
+      isSymbol: false,
+      isSearching: false,
     });
   };
 
@@ -418,6 +434,7 @@ class UserPortal extends Component {
               symbol={this.state.symbol}
               holdings={this.state.holdings}
               isSearching={this.state.isSearching}
+              isSymbol={this.state.isSymbol}
             />
             <div className="col-12">
               <h6 className="font-weight-normal d-inline-block mb-1 titles-text">

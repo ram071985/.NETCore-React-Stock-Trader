@@ -146,7 +146,24 @@ class ModalComponent extends Component {
                   className="w-75 modal-input"
                   onChange={this.props.handleQueryChange}
                 />
-                {this.props.isSearching ? <CheckCircle className="search-icon"/> : <XCircle className="x-icon"/>}
+                <CheckCircle
+                  style={{
+                    display:
+                      !this.props.isSearching && this.props.isSymbol === "Known symbol"
+                        ? "block"
+                        : "none",
+                  }}
+                  className="search-icon"
+                />
+                <XCircle
+                  style={{
+                    display:
+                      !this.props.isSearching && this.props.isSymbol === "Unknown symbol"
+                        ? "block"
+                        : "none",
+                  }}
+                  className="x-icon"
+                />
                 <h6 className="d-block ml-1 mt-1 company-text">
                   {this.props.company}
                 </h6>{" "}
@@ -232,7 +249,7 @@ class ModalComponent extends Component {
   };
 
   render() {
-    console.log(this.props.price);
+    console.log(this.props.isSymbol);
 
     if (this.state.isConfirm) {
       return (
