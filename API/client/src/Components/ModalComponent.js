@@ -149,7 +149,8 @@ class ModalComponent extends Component {
                 <CheckCircle
                   style={{
                     display:
-                      !this.props.isSearching && this.props.isSymbol === "Known symbol"
+                      !this.props.isSearching &&
+                      this.props.isSymbol === "Known symbol"
                         ? "block"
                         : "none",
                   }}
@@ -158,13 +159,14 @@ class ModalComponent extends Component {
                 <XCircle
                   style={{
                     display:
-                      !this.props.isSearching && this.props.isSymbol === "Unknown symbol"
+                      !this.props.isSearching &&
+                      this.props.isSymbol === "Unknown symbol"
                         ? "block"
                         : "none",
                   }}
                   className="x-icon"
                 />
-                <h6 className="d-block ml-1 mt-1 company-text">
+                <h6 className="d-block ml-1 mt-1 result-text">
                   {this.props.company}
                 </h6>{" "}
               </Form>

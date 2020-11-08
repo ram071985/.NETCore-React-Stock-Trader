@@ -174,7 +174,7 @@ class UserPortal extends Component {
       company: "",
       dynamicQuantity: 0,
       company: "",
-      isSymbol: false,
+      isSymbol: "",
       isSearching: false,
     });
   };
@@ -188,6 +188,9 @@ class UserPortal extends Component {
       company: this.state.firstObject.company,
       symbol: this.state.firstObject.symbol,
     });
+    if ((this.state.action = "Buy")) {
+      this.setState({ company: "" });
+    }
   };
 
   handleBuySellShow = () => {
@@ -374,7 +377,7 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.isSearching);
+    console.log(this.state.action);
 
     const { loading } = this.state;
 

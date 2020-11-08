@@ -310,6 +310,12 @@ hr {
   padding: 10px;
 }
 
+.result-text {
+  position: relative;
+  bottom: 28px;
+  color: #1aac3c;
+}
+
 .confirm-span {
   margin-left: 10px;
 }
