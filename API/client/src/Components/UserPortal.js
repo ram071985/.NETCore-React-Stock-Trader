@@ -45,6 +45,7 @@ class UserPortal extends Component {
       isSearching: false,
       isSymbol: "",
       company: "",
+      showError: ""
     };
   }
 

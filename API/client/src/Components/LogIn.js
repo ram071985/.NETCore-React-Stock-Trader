@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Key } from "react-feather";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import Alert from "react-bootstrap/Alert"
 
 class LogIn extends Component {
   constructor() {
@@ -45,6 +46,7 @@ class LogIn extends Component {
         });
       })
       .catch((err) => {
+        console.log(err);
         if (err.response.data.title === "empty username") {
           this.setState({
             logInErrorMessage: "Please enter a username.",
@@ -76,7 +78,7 @@ class LogIn extends Component {
   };
 
   render() {
-    console.log(this.state.toUserPortal)
+    console.log(this.state.loginErrorMessage)
     if (this.state.toUserPortal === true) return <Redirect to="/" />;
 
     return (
@@ -120,6 +122,7 @@ class LogIn extends Component {
               </button>
             </form>
           </div>
+        <Alert />
         </div>
       </div>
     );
