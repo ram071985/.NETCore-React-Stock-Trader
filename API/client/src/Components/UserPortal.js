@@ -44,6 +44,7 @@ class UserPortal extends Component {
       loading: false,
       isSearching: false,
       isSymbol: "",
+      company: "",
     };
   }
 
@@ -173,7 +174,6 @@ class UserPortal extends Component {
       price: 0,
       company: "",
       dynamicQuantity: 0,
-      company: "",
       isSymbol: "",
       isSearching: false,
     });
@@ -188,8 +188,10 @@ class UserPortal extends Component {
       company: this.state.firstObject.company,
       symbol: this.state.firstObject.symbol,
     });
-    if ((this.state.action = "Buy")) {
-      this.setState({ company: "" });
+    if (event.target.value === "Buy") {
+      this.setState({
+        company: ""
+      })
     }
   };
 
@@ -407,6 +409,7 @@ class UserPortal extends Component {
             </Button>{" "}
             <hr style={{ borderTop: "1px solid #1aac3c", width: "100%" }} />
             <ModalComponent
+              action={this.state.action}
               setSell={this.state.setSell}
               selectValue={this.state.selectValue}
               setAction={this.state.action}
