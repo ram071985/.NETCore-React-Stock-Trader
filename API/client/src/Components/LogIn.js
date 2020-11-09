@@ -46,7 +46,7 @@ class LogIn extends Component {
         });
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response);
         if (err.response.data.title === "empty username") {
           this.setState({
             logInErrorMessage: "Please enter a username.",

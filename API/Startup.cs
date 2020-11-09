@@ -41,11 +41,9 @@ namespace API
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
+           
+            app.UseExceptionHandler("/error");
+         
             app.UseHttpsRedirection();
 
             app.UseRouting();
