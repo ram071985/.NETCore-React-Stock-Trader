@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CORE.Services;
+using System;
 
 namespace API.Controllers
 {
@@ -20,32 +21,39 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public SessionModel AuthorizeUser([FromBody] UserAuthInputModel userAuthInputModel)
+        public IActionResult AuthorizeUser([FromBody] UserAuthInputModel userAuthInputModel)
         {
-            var user = _authorizeUserService.AuthorizeUser(
-                userAuthInputModel.Username,
-                userAuthInputModel.Password
-                );
-
-            var session = _createSessionService.CreateNewSession(
-                user.Id
-                );
-
-            var getUserId = _createWalletService.GetUserId(user.Id);
-
-            if (getUserId == null)
+            try
             {
-                var wallet = _createWalletService.InsertFirstDeposit(user.Id, user.Username
-                  
-                  );
+                var user = _authorizeUserService.AuthorizeUser(
+                    userAuthInputModel.Username,
+                    userAuthInputModel.Password
+                    );
+
+                var session = _createSessionService.CreateNewSession(
+                    user.Id
+                    );
+
+                var getUserId = _createWalletService.GetUserId(user.Id);
+
+                if (getUserId == null)
+                {
+                    var wallet = _createWalletService.InsertFirstDeposit(user.Id, user.Username
+
+                      );
+                }
+
+                return Ok(new SessionModel
+                {
+                    Id = session.Id,
+                    UserId = session.UserId,
+                    CreatedDate = session.CreatedDate
+                });
             }
-
-            return new SessionModel
+            catch (Exception e)
             {
-                Id = session.Id,
-                UserId = session.UserId,
-                CreatedDate = session.CreatedDate
-            };            
+                return Problem(e.Message, statusCode: 500, title: "Something went wrong");
+            }
         }
 
     }

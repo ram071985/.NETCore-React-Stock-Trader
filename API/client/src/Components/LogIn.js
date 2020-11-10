@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Key } from "react-feather";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import Alert from "react-bootstrap/Alert"
+import Alert from "react-bootstrap/Alert";
 
 class LogIn extends Component {
   constructor() {
@@ -15,8 +15,16 @@ class LogIn extends Component {
       errorMessage: "",
       logInErrorMessage: "",
       toUserPortal: false,
+      setShow: false,
     };
   }
+
+  handleClose = () => {
+    this.setState({
+      setShow: false,
+      logInErrorMessage: "",
+    });
+  };
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -46,12 +54,14 @@ class LogIn extends Component {
         });
       })
       .catch((err) => {
-        console.log(err.response);
-        if (err.response.data.title === "empty username") {
+        console.log(err.response.data.detail === "empty username");
+        if (err.response.data.detail === "empty username") {
           this.setState({
             logInErrorMessage: "Please enter a username.",
+            setShow: true,
           });
         }
+        console.log(this.state.logInErrorMessage);
         if (err.response.data.title === "empty password") {
           this.setState({
             logInErrorMessage: "Please enter a password.",
@@ -78,9 +88,8 @@ class LogIn extends Component {
   };
 
   render() {
-    console.log(this.state.loginErrorMessage)
     if (this.state.toUserPortal === true) return <Redirect to="/" />;
-
+    const { logInErrorMessage } = this.state;
     return (
       <div className="container-fluid log-in-container">
         <header className="text-center log-in-header">
@@ -122,7 +131,20 @@ class LogIn extends Component {
               </button>
             </form>
           </div>
-        <Alert />
+          <div className="d-block container">
+            <Alert
+              style={{
+                display: logInErrorMessage !== "" ? "block" : "none",
+              }}
+              className="d-block"
+              variant="danger"
+              onClose={this.handleClose}
+              dismissible
+            >
+              <Alert.Heading>Whoops!</Alert.Heading>
+              <p>Please enter a username and try again.</p>
+            </Alert>
+          </div>
         </div>
       </div>
     );

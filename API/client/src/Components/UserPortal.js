@@ -45,7 +45,7 @@ class UserPortal extends Component {
       isSearching: false,
       isSymbol: "",
       company: "",
-      showError: ""
+      showError: "",
     };
   }
 
@@ -191,8 +191,8 @@ class UserPortal extends Component {
     });
     if (event.target.value === "Buy") {
       this.setState({
-        company: ""
-      })
+        company: "",
+      });
     }
   };
 

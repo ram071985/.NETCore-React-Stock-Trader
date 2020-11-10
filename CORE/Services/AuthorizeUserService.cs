@@ -29,7 +29,7 @@ namespace CORE.Services
 
                         if (username == "")
                         {
-                        throw new Exception("empty username");
+                            throw new Exception("empty username");
                         }
 
                         if (password == "")
