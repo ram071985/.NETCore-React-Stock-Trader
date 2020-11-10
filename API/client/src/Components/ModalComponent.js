@@ -52,10 +52,6 @@ class ModalComponent extends Component {
     );
   };
 
-  persistentStockList = () => {
-    return <div></div>;
-  };
-
   isBuyTrue = () => {
     if ((this.state.action = "Buy")) {
       return true;
@@ -115,7 +111,11 @@ class ModalComponent extends Component {
                 onChange={this.props.handleChange}
               >
                 <option>Buy</option>
-                <option>Sell</option>{" "}
+                {this.props.stocks.length === 0 ? (
+                  <option disabled>Sell</option>
+                ) : (
+                  <option>Sell</option>
+                )}
               </Form.Control>
             ) : (
               <Form.Control
@@ -177,7 +177,7 @@ class ModalComponent extends Component {
                     Current Holdings
                   </Form.Label>
                   <Form.Control
-                    type="text"
+                    type="hidden"
                     onChange={(event) => this.props.handleHoldings(event)}
                     name="stockName"
                     as="select"
@@ -251,8 +251,6 @@ class ModalComponent extends Component {
   };
 
   render() {
-    console.log(this.props.isSymbol);
-
     if (this.state.isConfirm) {
       return (
         <Redirect
@@ -273,7 +271,6 @@ class ModalComponent extends Component {
       );
     }
     const { action } = this.props;
-    console.log(action)
     return <div>{this.renderModal()}</div>;
   }
 }
