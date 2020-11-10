@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Key } from "react-feather";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import Alert from "react-bootstrap/Alert";
+import AlertComponent from "./AlertComponent";
 
 class LogIn extends Component {
   constructor() {
@@ -38,7 +38,7 @@ class LogIn extends Component {
       [name]: value,
       errorMessage: "",
       logInMessage: "",
-      logInErrorMessage: ""
+      logInErrorMessage: "",
     });
   };
 
@@ -117,22 +117,11 @@ class LogIn extends Component {
   renderAlert = () => {
     if (this.state.logInErrorMessage !== "") {
       return (
-        <div className="d-block container">
-          {this.handleShow}
-          <Alert
-            style={{
-              display: this.state.logInErrorMessage !== "" ? "block" : "none",
-            }}
-            show={this.state.setShow}
-            className="d-block"
-            variant="danger"
-            onClose={this.handleClose}
-            dismissible
-          >
-            <Alert.Heading>Whoops! You forgot something.</Alert.Heading>
-            <p>{this.state.logInErrorMessage}</p>
-          </Alert>
-        </div>
+        <AlertComponent
+          setShow={this.state.setShow}
+          handleClose={this.handleClose}
+          logInErrorMessage={this.state.logInErrorMessage}
+        />
       );
     }
   };

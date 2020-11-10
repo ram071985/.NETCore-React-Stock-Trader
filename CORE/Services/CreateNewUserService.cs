@@ -26,12 +26,17 @@ namespace CORE.Services
                 using (var transaction = session.BeginTransaction())
                 {
 
-                    if (username == "")
+                    if (username == "" && password == "")
+                    {
+                        throw new Exception("empty username and password");
+                    }
+
+                    if (username == "" && password != "")
                     {
                         throw new Exception("empty username");
                     }
 
-                    if (password == "")
+                    if (password == "" && username != "")
                     {
                         throw new Exception("empty password");
                     }
@@ -42,7 +47,7 @@ namespace CORE.Services
 
                     if (result.Count != 0)
                     {
-                        throw new Exception("username exists");
+                        throw new Exception("redundant username");
                     }
 
                     var user = new User

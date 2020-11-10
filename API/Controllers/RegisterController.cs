@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using CORE.Services;
+using System;
 
 namespace API.Controllers
 {
@@ -20,29 +21,36 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public SessionModel PostNewUser([FromBody] UserInputModel userInputModel)
-        {                
-            var user = _createNewUserService.CreateNewUser(
-                        userInputModel.Username,
-                        userInputModel.Password
-                        
-                        );
-                  
-            var session = _createSessionService.CreateNewSession(
-                        user.Id
-                        );           
+        public IActionResult PostNewUser([FromBody] UserInputModel userInputModel)
+        {
+            try
+            {
+                var user = _createNewUserService.CreateNewUser(
+                    userInputModel.Username,
+                    userInputModel.Password
+
+                    );
+
+                var session = _createSessionService.CreateNewSession(
+                    user.Id
+                    );
 
                 var wallet = _createWalletService.InsertFirstDeposit(
                   user.Id, user.Username
                   );
-       
 
-            return new SessionModel
+
+                return Ok(new SessionModel
                 {
                     Id = session.Id,
                     UserId = session.UserId,
                     CreatedDate = session.CreatedDate
-                };                     
+                });
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message, statusCode: 500, title: "Something went wrong");
+            }
         }
     }
 

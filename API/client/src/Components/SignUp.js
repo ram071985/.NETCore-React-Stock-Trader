@@ -3,6 +3,7 @@ import { BarChart } from "react-feather";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import Form from "react-bootstrap/Form";
+import AlertComponent from "./AlertComponent";
 
 class SignUp extends Component {
   constructor() {
@@ -15,8 +16,22 @@ class SignUp extends Component {
       errorMessage: "",
       logInErrorMessage: "",
       toUserPortal: false,
+      setShow: false,
     };
   }
+
+  handleClose = () => {
+    this.setState({
+      setShow: false,
+      logInErrorMessage: "",
+    });
+  };
+
+  handleShow = () => {
+    if (this.state.logInErrorMessage !== "") {
+      this.setState({ setShow: true });
+    }
+  };
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -46,23 +61,45 @@ class SignUp extends Component {
         });
       })
       .catch((err) => {
-        if (err.response.data.title === "empty username") {
+        if (err.response.data.detail === "empty username and password") {
           this.setState({
-            errorMessage: "Please choose a username.",
+            logInErrorMessage: "Please enter a username and password.",
+            setShow: true,
           });
         }
-        if (err.response.data.title === "empty password") {
+        console.log(this.state.logInErrorMessage)
+        if (err.response.data.detail === "empty username") {
           this.setState({
-            errorMessage: "Please choose a password.",
+            logInErrorMessage: "Please choose a username.",
+            setShow: true,
           });
         }
-        if (err.response.data.title === "redundant username") {
+        if (err.response.data.detail === "empty password") {
           this.setState({
-            errorMessage:
+            logInErrorMessage: "Please choose a password.",
+            setShow: true,
+          });
+        }
+        if (err.response.data.detail === "redundant username") {
+          this.setState({
+            logInErrorMessage:
               "The username you chose is already taken.  Please try another entry.",
+            setShow: true,
           });
         }
       });
+  };
+
+  renderAlert = () => {
+    if (this.state.logInErrorMessage !== "") {
+      return (
+        <AlertComponent
+          setShow={this.state.setShow}
+          handleClose={this.handleClose}
+          logInErrorMessage={this.state.logInErrorMessage}
+        />
+      );
+    }
   };
 
   render() {
@@ -109,6 +146,7 @@ class SignUp extends Component {
               </button>
             </Form>
           </div>
+          {this.renderAlert()}
         </div>
       </div>
     );
