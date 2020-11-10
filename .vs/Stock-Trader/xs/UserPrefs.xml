@@ -4,7 +4,7 @@
       <File FileName="API/Controllers/UpdatePortalController.cs" Line="31" Column="17" />
       <File FileName="API/Controllers/StocksController.cs" />
       <File FileName="API/Controllers/TransactionController.cs" />
-      <File FileName="CORE/Services/AuthorizeUserService.cs" Line="37" Column="1" />
+      <File FileName="CORE/Services/AuthorizeUserService.cs" Line="32" Column="29" />
       <File FileName="API/Controllers/AuthorzationController.cs" />
       <File FileName="API/Controllers/RegisterController.cs" />
       <File FileName="CORE/Services/CreateNewUserService.cs" />

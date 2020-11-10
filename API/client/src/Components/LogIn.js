@@ -19,6 +19,12 @@ class LogIn extends Component {
     };
   }
 
+  handleShow = () => {
+    if (this.state.logInErrorMessage !== "") {
+      this.setState({ setShow: true });
+    }
+  };
+
   handleClose = () => {
     this.setState({
       setShow: false,
@@ -32,6 +38,7 @@ class LogIn extends Component {
       [name]: value,
       errorMessage: "",
       logInMessage: "",
+      logInErrorMessage: ""
     });
   };
 
@@ -55,27 +62,47 @@ class LogIn extends Component {
       })
       .catch((err) => {
         console.log(err.response.data.detail === "empty username");
+
+        if (err.response.data.detail === "empty username and password") {
+          this.setState({
+            logInErrorMessage: "Please enter a username and password.",
+            setShow: true,
+          });
+        }
+
         if (err.response.data.detail === "empty username") {
           this.setState({
             logInErrorMessage: "Please enter a username.",
             setShow: true,
           });
         }
-        console.log(this.state.logInErrorMessage);
-        if (err.response.data.title === "empty password") {
+
+        if (err.response.data.detail === "empty password") {
           this.setState({
             logInErrorMessage: "Please enter a password.",
+            setShow: true,
           });
         }
-        if (err.response.data.title === "false username") {
+        console.log(this.state.logInErrorMessage);
+        if (err.response.data.detail === "false username") {
           this.setState({
             logInErrorMessage:
               "The username you chose is already taken. Please try another entry.",
+            setShow: true,
           });
         }
-        if (err.response.data.title === "wrong credentials") {
+
+        if (err.response.data.detail === "username doesn't exist") {
+          this.setState({
+            logInErrorMessage:
+              "This username does not exist. Please enter an existing username.",
+            setShow: true,
+          });
+        }
+        if (err.response.data.detail === "wrong credentials") {
           this.setState({
             logInErrorMessage: "Username or password combination is invalid.",
+            setShow: true,
           });
         }
       });
@@ -87,9 +114,32 @@ class LogIn extends Component {
     }
   };
 
+  renderAlert = () => {
+    if (this.state.logInErrorMessage !== "") {
+      return (
+        <div className="d-block container">
+          {this.handleShow}
+          <Alert
+            style={{
+              display: this.state.logInErrorMessage !== "" ? "block" : "none",
+            }}
+            show={this.state.setShow}
+            className="d-block"
+            variant="danger"
+            onClose={this.handleClose}
+            dismissible
+          >
+            <Alert.Heading>Whoops! You forgot something.</Alert.Heading>
+            <p>{this.state.logInErrorMessage}</p>
+          </Alert>
+        </div>
+      );
+    }
+  };
+
   render() {
     if (this.state.toUserPortal === true) return <Redirect to="/" />;
-    const { logInErrorMessage } = this.state;
+
     return (
       <div className="container-fluid log-in-container">
         <header className="text-center log-in-header">
@@ -131,20 +181,7 @@ class LogIn extends Component {
               </button>
             </form>
           </div>
-          <div className="d-block container">
-            <Alert
-              style={{
-                display: logInErrorMessage !== "" ? "block" : "none",
-              }}
-              className="d-block"
-              variant="danger"
-              onClose={this.handleClose}
-              dismissible
-            >
-              <Alert.Heading>Whoops!</Alert.Heading>
-              <p>Please enter a username and try again.</p>
-            </Alert>
-          </div>
+          {this.renderAlert()}
         </div>
       </div>
     );

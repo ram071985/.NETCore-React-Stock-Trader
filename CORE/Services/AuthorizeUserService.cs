@@ -27,12 +27,17 @@ namespace CORE.Services
                     using (var transaction = session.BeginTransaction())
                     {
 
-                        if (username == "")
+                        if (username == "" && password == "")
+                        {
+                            throw new Exception("empty username and password");
+                        }
+
+                        if (username == "" && password != "")
                         {
                             throw new Exception("empty username");
                         }
 
-                        if (password == "")
+                        if (password == "" && username != "")
                         {
                             throw new Exception("empty password");
                         }
@@ -47,12 +52,16 @@ namespace CORE.Services
                             .Add(Restrictions.Like("Username", username))
                             .List<User>();
 
-                        if (password != user.Password)
+                        if (query.Count == 0)
                         {
-                            throw new Exception("wrong credentials");
+                            throw new Exception("username doesn't exist");
                         }
 
 
+                        if (query[0].Password != password)
+                        {
+                            throw new Exception("wrong credentials");
+                        }
 
                         transaction.Commit();
 
