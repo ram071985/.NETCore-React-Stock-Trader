@@ -87,7 +87,9 @@ class ConfirmOrder extends Component {
         quantity: this.props.location.state.quantity,
         exchange: this.props.location.state.symbol,
       })
-      .catch((err) => {});
+      .catch((err) => {
+        
+      });
     this.addStockRecord();
   };
 

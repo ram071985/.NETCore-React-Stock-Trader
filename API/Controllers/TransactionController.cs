@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CORE.Services;
+using System;
 
 namespace API.Controllers
 {
@@ -20,15 +21,23 @@ namespace API.Controllers
         }
 
         [HttpPut("buy")]
-        public WalletModel WithdrawalTransaction([FromBody] WalletModel walletModel)
+        public IActionResult WithdrawalTransaction([FromBody] WalletModel walletModel)
         {
-            var update = _buyStockService.UpdateWalletPurchase(walletModel.UserId, walletModel.Balance);
 
-            return new WalletModel
+            try
             {
-                UserId = update.UserId,
-                Balance = update.Balance
-            };
+                var update = _buyStockService.UpdateWalletPurchase(walletModel.UserId, walletModel.Balance);
+
+                return Ok(new WalletModel
+                {
+                    UserId = update.UserId,
+                    Balance = update.Balance
+                });
+            }
+            catch (Exception e)
+            {
+                return Problem(e.Message, statusCode: 500, title: "Something went wrong");
+            }
         }
 
         [HttpPost("buy")]

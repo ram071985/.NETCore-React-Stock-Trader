@@ -32,6 +32,11 @@ namespace CORE.Services
 
                     var resultArray = result[0];
 
+                    if (resultArray.Balance - balance < 0)
+                    {
+                        throw new Exception("insufficient balance");
+                    }
+
                     resultArray.Balance = resultArray.Balance - balance;
                     resultArray.Holdings = resultArray.Holdings + balance;
                                  
