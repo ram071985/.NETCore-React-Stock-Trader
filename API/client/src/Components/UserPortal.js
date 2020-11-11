@@ -380,8 +380,6 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.stocks);
-
     const { loading } = this.state;
 
     return (
@@ -445,7 +443,8 @@ class UserPortal extends Component {
             />
             <div className="col-12">
               <h6 className="font-weight-normal d-inline-block mb-1 titles-text">
-                User              </h6>
+                User{" "}
+              </h6>
               <h6 className="font-weight-light d-block mb-2 name-text">
                 {loading ? (
                   <Spinner

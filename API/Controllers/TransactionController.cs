@@ -41,14 +41,21 @@ namespace API.Controllers
         }
 
         [HttpPost("buy")]
-        public TransactionModel AddTransactionRecord([FromBody] TransactionModel transactionModel)
+        public IActionResult AddTransactionRecord([FromBody] TransactionModel transactionModel)
         {
-            var transaction = _buyStockService.AddWithdrawal(transactionModel.UserId, transactionModel.Exchange, transactionModel.Withdrawal, transactionModel.Quantity);
-
-            return new TransactionModel
+            try
             {
-                Withdrawal = transaction.Withdrawal
-            };
+                var transaction = _buyStockService.AddWithdrawal(transactionModel.UserId, transactionModel.Exchange, transactionModel.Withdrawal, transactionModel.Quantity);
+
+                return Ok(new TransactionModel
+                {
+                    Withdrawal = transaction.Withdrawal
+                });
+            }
+            catch(Exception e)
+            {
+                return Problem(e.Message, statusCode: 500, title: "Something went wrong");
+            }
         }
 
         [HttpPost("add-stock")]

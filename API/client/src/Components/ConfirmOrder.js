@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import AlertComponent from "./AlertComponent";
 
 class ConfirmOrder extends Component {
   constructor() {
@@ -12,8 +13,9 @@ class ConfirmOrder extends Component {
       price: 0,
       exchange: [],
       company: "",
-      error: "",
+      errorMessage: "",
       cancel: false,
+      setShow: false,
     };
   }
 
@@ -32,15 +34,24 @@ class ConfirmOrder extends Component {
     });
   };
 
-  handleClose = () => {
+  handleClose = (e) => {
+    console.log(e.target.textContent);
+    if (e.target.textContent === "Cancel") {
+      this.setState({
+        cancel: true,
+      });
+    }
     this.setState({
-      cancel: true,
+      setShow: false,
     });
   };
 
   putStockTransaction = () => {
     let parseUserId = parseInt(localStorage.getItem("user_id"));
-    if (this.props.location.state.action === "Buy" || this.props.location.state.isBuy) {
+    if (
+      this.props.location.state.action === "Buy" ||
+      this.props.location.state.isBuy
+    ) {
       axios
         .put("/api/transaction/buy", {
           userId: parseUserId,
@@ -48,16 +59,28 @@ class ConfirmOrder extends Component {
             this.props.location.state.price *
             this.props.location.state.quantity,
         })
-        .catch((err) => {});
+        .catch((err) => {
+          if (err.response.data.detail === "insufficient balance") {
+            this.setState({
+              errorMessage:
+                "You have insufficient funds for this purpose. Please try another order.",
+              setShow: true,
+            });
+          }
+        });
     }
-    if (this.props.location.state.action === "Sell" || this.props.location.state.isSell) {
-    axios
-      .put("/api/transaction/sell", {
-        userId: parseUserId,
-        balance:
-          this.props.location.state.price * this.props.location.state.quantity,
-      })
-      .catch((err) => {});
+    if (
+      this.props.location.state.action === "Sell" ||
+      this.props.location.state.isSell
+    ) {
+      axios
+        .put("/api/transaction/sell", {
+          userId: parseUserId,
+          balance:
+            this.props.location.state.price *
+            this.props.location.state.quantity,
+        })
+        .catch((err) => {});
     }
   };
 
@@ -87,9 +110,7 @@ class ConfirmOrder extends Component {
         quantity: this.props.location.state.quantity,
         exchange: this.props.location.state.symbol,
       })
-      .catch((err) => {
-        
-      });
+      .catch((err) => {});
     this.addStockRecord();
   };
 
@@ -121,6 +142,18 @@ class ConfirmOrder extends Component {
     return formatter;
   };
 
+  renderAlert = () => {
+    if (this.state.errorMessage !== "") {
+      return (
+        <AlertComponent
+          setShow={this.state.setShow}
+          handleClose={(e) => this.handleClose(e)}
+          logInErrorMessage={this.state.errorMessage}
+        />
+      );
+    }
+  };
+
   render() {
     console.log(this.props.location.state.isBuy);
     console.log(this.props.location.state.action);
@@ -144,20 +177,32 @@ class ConfirmOrder extends Component {
         <h2 className="mt-4 ml-5">{}</h2>
         <h6 className="font-weight-normal text-center ml-5">
           {this.props.location.state.company}
-          <span>(</span><span className="text-uppercase special-characters">{this.props.location.state.symbol}</span><span>)</span>
+          <span>(</span>
+          <span className="text-uppercase special-characters">
+            {this.props.location.state.symbol}
+          </span>
+          <span>)</span>
         </h6>
         <h6 className="font-weight-normal text-center ml-5">
-          Quantity{this.props.location.state.isSell || this.props.location.state.action === "Sell" ? " Sold" : ""}:{" "}
-          {this.props.location.state.quantity}
+          Quantity
+          {this.props.location.state.isSell ||
+          this.props.location.state.action === "Sell"
+            ? " Sold"
+            : ""}
+          : {this.props.location.state.quantity}
         </h6>
-        <h6 className="font-weight-normal text-center ml-5">Price: ${this.decimalFormatter().format(this.props.location.state.price)}</h6>
+        <h6 className="font-weight-normal text-center ml-5">
+          Price: $
+          {this.decimalFormatter().format(this.props.location.state.price)}
+        </h6>
         <h2 className="text-center mt-5 ml-5">Order Summary</h2>
         <h6></h6>
         <h6 className="font-weight-bold text-center mt-2 ml-5">
           Subtotal:
           <span className="font-weight-normal text-center confirm-span">
             ${this.props.location.state.price} x{" "}
-            {this.props.location.state.quantity} (<span className="special-characters">shares</span>) = $
+            {this.props.location.state.quantity} (
+            <span className="special-characters">shares</span>) = $
             {this.decimalFormatter().format(
               this.props.location.state.quantity *
                 this.props.location.state.price
@@ -190,10 +235,11 @@ class ConfirmOrder extends Component {
           onClick={this.props.onHide}
           className="d-inline-block mx-auto cancel-button"
           variant="danger"
-          onClick={this.handleClose}
+          onClick={(e) => this.handleClose(e)}
         >
           Cancel
         </Button>{" "}
+        {this.renderAlert()}
       </div>
     );
   }
