@@ -16,6 +16,7 @@ class ConfirmOrder extends Component {
       errorMessage: "",
       cancel: false,
       setShow: false,
+      isError: false,
     };
   }
 
@@ -34,15 +35,15 @@ class ConfirmOrder extends Component {
     });
   };
 
-  handleClose = (e) => {
-    console.log(e.target.textContent);
-    if (e.target.textContent === "Cancel") {
-      this.setState({
-        cancel: true,
-      });
-    }
+  handleAlertClose = () => {
     this.setState({
       setShow: false,
+    });
+  };
+
+  handleClose = (e) => {
+    this.setState({
+      cancel: true,
     });
   };
 
@@ -59,7 +60,9 @@ class ConfirmOrder extends Component {
             this.props.location.state.price *
             this.props.location.state.quantity,
         })
+
         .catch((err) => {
+          console.log(err.response.data.detail);
           if (err.response.data.detail === "insufficient balance") {
             this.setState({
               errorMessage:
@@ -68,6 +71,7 @@ class ConfirmOrder extends Component {
             });
           }
         });
+      console.log(this.state.errorMessage);
     }
     if (
       this.props.location.state.action === "Sell" ||
@@ -111,17 +115,19 @@ class ConfirmOrder extends Component {
         exchange: this.props.location.state.symbol,
       })
       .catch((err) => {});
-    this.addStockRecord();
+
   };
 
   addStockRecord = () => {
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
-    axios.post("/api/transaction/add-stock", {
-      userId: parseUserId,
-      company: this.props.location.state.company,
-      symbol: this.props.location.state.symbol,
-      quantity: this.props.location.state.quantity,
-    });
+    if (!this.state.isError) {
+      let parseUserId = parseInt(localStorage.getItem("user_id"));
+      axios.post("/api/transaction/add-stock", {
+        userId: parseUserId,
+        company: this.props.location.state.company,
+        symbol: this.props.location.state.symbol,
+        quantity: this.props.location.state.quantity,
+      });
+    }
   };
 
   deleteStockRecord = () => {
@@ -147,7 +153,7 @@ class ConfirmOrder extends Component {
       return (
         <AlertComponent
           setShow={this.state.setShow}
-          handleClose={(e) => this.handleClose(e)}
+          handleClose={(e) => this.handleAlertClose(e)}
           logInErrorMessage={this.state.errorMessage}
         />
       );
@@ -155,8 +161,6 @@ class ConfirmOrder extends Component {
   };
 
   render() {
-    console.log(this.props.location.state.isBuy);
-    console.log(this.props.location.state.action);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -225,7 +229,7 @@ class ConfirmOrder extends Component {
           variant="secondary"
           onClick={
             this.props.location.state.action === "Buy"
-              ? this.postNewWithdrawalTransaction
+              ? this.postNewWithdrawalTransaction 
               : this.postNewDepositTransaction
           }
         >

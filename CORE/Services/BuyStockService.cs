@@ -17,7 +17,7 @@ namespace CORE.Services
 
         public BuyStockService(IDbSessionService dbSessionService)
         {
-            _dbSessionService = dbSessionService;
+            _dbSessionService = dbSessionService;        
         }
 
         public Wallet UpdateWalletPurchase(int userId, decimal balance)
@@ -75,6 +75,7 @@ namespace CORE.Services
 
         public Stock CreatePurchaseRecord(int userId, string company, string symbol, int quantity)
         {
+
             using (var session = _dbSessionService.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())

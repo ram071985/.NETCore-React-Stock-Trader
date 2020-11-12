@@ -1,14 +1,16 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/RegisterController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/CreateWalletService.cs">
     <Files>
       <File FileName="API/Controllers/UpdatePortalController.cs" Line="31" Column="17" />
       <File FileName="API/Controllers/StocksController.cs" />
       <File FileName="API/Controllers/TransactionController.cs" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="25" Column="12" />
-      <File FileName="CORE/Services/CreateNewUserService.cs" Line="31" Column="1" />
+      <File FileName="API/Controllers/RegisterController.cs" />
+      <File FileName="CORE/Services/CreateNewUserService.cs" />
       <File FileName="CORE/Entities/User.cs" />
       <File FileName="API/Program.cs" />
       <File FileName="API/Startup.cs" />
+      <File FileName="CORE/Services/CreateWalletService.cs" Line="56" Column="40" />
+      <File FileName="CORE/Entities/Wallet.cs" />
       <File FileName="API/TransactionModel.cs" Line="6" Column="1" NotebookId="1" />
       <File FileName="CORE/Entities/Transaction.cs" NotebookId="1" />
       <File FileName="CORE/Mapping/Transaction.hbm.xml" NotebookId="1" />
@@ -19,22 +21,22 @@
       <File FileName="CORE/Services/DbSessionService.cs" NotebookId="1" />
       <File FileName="CORE/Services/CreateSessionService.cs" NotebookId="1" />
       <File FileName="CORE/Services/BuyStockService.cs" NotebookId="1" />
-      <File FileName="CORE/Services/AuthorizeUserService.cs" Line="30" Column="1" NotebookId="1" />
-      <File FileName="API/Controllers/AuthorzationController.cs" Line="53" Column="1" NotebookId="1" />
+      <File FileName="CORE/Services/AuthorizeUserService.cs" NotebookId="1" />
+      <File FileName="API/Controllers/AuthorzationController.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="RegisterController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="CORE" expanded="True">
               <Node name="Entities" expanded="True" />
               <Node name="Mapping" expanded="True" />
-              <Node name="Services" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="CreateWalletService.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -46,10 +48,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/SellStockService.cs" relfile="CORE/Services/SellStockService.cs" line="46" column="1" />
-      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/SellStockService.cs" relfile="CORE/Services/SellStockService.cs" line="48" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/AuthorizeUserService.cs" relfile="CORE/Services/AuthorizeUserService.cs" line="51" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/AuthorizeUserService.cs" relfile="CORE/Services/AuthorizeUserService.cs" line="30" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/BuyStockService.cs" relfile="CORE/Services/BuyStockService.cs" line="24" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/TransactionController.cs" relfile="API/Controllers/TransactionController.cs" line="45" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/API/Controllers/TransactionController.cs" relfile="API/Controllers/TransactionController.cs" line="25" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

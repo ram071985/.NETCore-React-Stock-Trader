@@ -61,7 +61,7 @@ class UserPortal extends Component {
         this.setState({
           exchange: res.data,
           company: res.data.companyName,
-          price: res.data.latestPrice,
+          price: parseInt(res.data.latestPrice),
         });
         if (res.data === "Unknown symbol") {
           this.setState({
@@ -380,6 +380,7 @@ class UserPortal extends Component {
   };
 
   render() {
+    console.log(this.state.setShow)
     const { loading } = this.state;
 
     return (
@@ -440,6 +441,7 @@ class UserPortal extends Component {
               holdings={this.state.holdings}
               isSearching={this.state.isSearching}
               isSymbol={this.state.isSymbol}
+              wallet={this.state.wallet}
             />
             <div className="col-12">
               <h6 className="font-weight-normal d-inline-block mb-1 titles-text">

@@ -59,14 +59,23 @@ namespace API.Controllers
         }
 
         [HttpPost("add-stock")]
-        public StockModel AddNewStock([FromBody] StockModel stockModel)
+        public IActionResult AddNewStock([FromBody] StockModel stockModel)
         {
-            var record = _buyStockService.CreatePurchaseRecord(stockModel.UserId, stockModel.Company, stockModel.Symbol, stockModel.Quantity);
 
-            return new StockModel
+            try
             {
-                UserId = record.UserId
-            };
+                var record = _buyStockService.CreatePurchaseRecord(stockModel.UserId, stockModel.Company, stockModel.Symbol, stockModel.Quantity);
+
+                return Ok(new StockModel
+                {
+                    UserId = record.UserId
+                });
+            }
+
+            catch(Exception e)
+            {
+                return Problem(e.Message, statusCode: 500, title: "Something went wrong");
+            }
         }
 
         [HttpPut("sell")]
