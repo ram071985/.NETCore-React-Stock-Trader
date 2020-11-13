@@ -8,10 +8,23 @@ class ReviewAlert extends Component {
   }
 
   render() {
+      console.log(this.props.isClose)
     return (
-      <div className="d-block container">
-        <Alert show={this.props.show} onClose={this.props.onClose} style={{ display: this.props.wallet < parseFloat(this.props.price) * this.props.dynamicQuantity ? 'block' : 'none'}} variant="danger">
-          Insufficient funds. Check your wallet balance and try again.
+      <div className="d-block container review-container">
+        <Alert
+        className="review-alert"
+          show={this.props.setAlertShow}
+          onClose={this.props.handleClose}
+          style={{
+            display:
+              this.props.errorMessage !== ""
+                ? "block"
+                : "none",
+          }}
+          variant="danger"
+          dismissible
+        >
+          {this.props.errorMessage}
         </Alert>
       </div>
     );

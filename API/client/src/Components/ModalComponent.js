@@ -61,20 +61,7 @@ class ModalComponent extends Component {
     return false;
   };
 
-  confirmRedirect = (e) => {
-    if (
-      this.props.wallet <
-      parseFloat(this.props.price) * this.props.dynamicQuantity
-    ) {
-      this.setState({
-        setShow: true,
-      });
-    } else {
-      this.setState({
-        isConfirm: true,
-      });
-    }
-  };
+
 
   renderHoldings = (stock, index) => {
     return (
@@ -85,14 +72,14 @@ class ModalComponent extends Component {
   };
 
   renderAlert = () => {
-    if (this.state.setShow) {
+    if (this.props.setAlertShow) {
       return (
         <ReviewAlert
-          show={this.state.setShow}
-          onClose={(e) => this.handleAlertClose(e)}
-          logInErrorMessage={this.state.errorMessage}
+          handleClose={(e) => this.handleAlertClose(e)}
           wallet={this.props.wallet}
           price={this.props.price}
+          errorMessage={this.props.errorMessage}
+          setAlertShow={this.props.setAlertShow}
         />
       );
     }
@@ -101,6 +88,7 @@ class ModalComponent extends Component {
   handleAlertClose = () => {
     this.setState({
       setShow: false,
+      errorMessage: ""
     });
   };
 
@@ -120,6 +108,7 @@ class ModalComponent extends Component {
               isBuy: this.props.isBuy,
               isSell: this.props.isSell,
               holdings: this.props.holdings,
+              isClose: this.state.isClose
             },
           }}
         />
@@ -262,7 +251,7 @@ class ModalComponent extends Component {
                 sellIncrement={this.props.sellIncrement}
               />
             )}
-            <Form.Group as={Col} controlId="formGridZip">
+            <Form.Group className="mb-0" as={Col} controlId="formGridZip">
               <Form.Label className="ml-1 mt-3 mb-0">Total</Form.Label>
               <Form.Control
                 type="text"
@@ -279,9 +268,8 @@ class ModalComponent extends Component {
                 readOnly
               />
             </Form.Group>
-            {this.renderAlert}
+            {this.renderAlert()}
           </Form.Row>
-          <br />
           <hr />
           <h6 className="text-center">
             Your Order is not complete yet. Review and confirm your order in the
@@ -290,12 +278,12 @@ class ModalComponent extends Component {
           <Button
             className="d-inline-block mx-auto review-button"
             variant="secondary"
-            onClick={this.confirmRedirect}
+            onClick={this.props.confirmRedirect}
           >
             Review Order
           </Button>{" "}
           <Button
-            onClick={this.props.onHide}
+            onClick={(e) => this.props.onHide(e)}
             className="d-inline-block mx-auto cancel-button"
             variant="danger"
           >

@@ -46,6 +46,7 @@ class UserPortal extends Component {
       isSymbol: "",
       company: "",
       showError: "",
+      setAlertShow: false
     };
   }
 
@@ -80,6 +81,7 @@ class UserPortal extends Component {
     this.clearFields();
     this.setState({
       isSearching: true,
+
     });
 
     let returnInterval;
@@ -226,7 +228,8 @@ class UserPortal extends Component {
     });
   };
 
-  handleClose = () => {
+  handleClose = (e) => {
+    console.log(e.target.textContent)
     this.clearFields();
     this.setState({
       setShow: false,
@@ -235,6 +238,7 @@ class UserPortal extends Component {
       isBuy: false,
       price: 0,
       company: "",
+      errorMessage: ""
     });
   };
 
@@ -379,8 +383,25 @@ class UserPortal extends Component {
     );
   };
 
+  confirmRedirect = (e) => {
+    console.log("Click")
+    if (
+      this.state.wallet <
+      parseFloat(this.state.price) * this.state.dynamicQuantity
+    ) {
+      this.setState({
+        setAlertShow: true,
+        errorMessage: "Insufficient funds. please try another selection.",
+      });
+    } else {
+      this.setState({
+        isConfirm: true,
+      });
+    }
+  };
+
   render() {
-    console.log(this.state.setShow)
+    console.log(this.state.setAlertShow)
     const { loading } = this.state;
 
     return (
@@ -442,6 +463,11 @@ class UserPortal extends Component {
               isSearching={this.state.isSearching}
               isSymbol={this.state.isSymbol}
               wallet={this.state.wallet}
+              clearFields={this.clearFields}
+              isClose={this.state.isClose}
+              setAlertShow={this.state.setAlertShow}
+              errorMessage={this.state.errorMessage}
+              confirmRediect={this.confirmRedirect}
             />
             <div className="col-12">
               <h6 className="font-weight-normal d-inline-block mb-1 titles-text">

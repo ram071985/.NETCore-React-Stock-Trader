@@ -83,6 +83,10 @@ nav.navbar {
   padding: 10px;
 }
 
+div.review-container {
+  height: 15% !important;
+}
+
 .holdings-render {
   
 }
@@ -300,7 +304,7 @@ hr {
 .cancel-button {
   width: 30%;
   border-radius: 0 !important;
-  margin-top: 24px;
+  margin-top: 10px;
 }
 
 .company-text {
@@ -368,4 +372,14 @@ hr {
 
 .alert {
 margin: 15px 234px;
+}
+
+.review-alert {
+  margin: 0px 25px;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+button.close {
+  padding: 6px 20px !important;
 }
