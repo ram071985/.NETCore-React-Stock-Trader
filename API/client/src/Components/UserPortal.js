@@ -47,6 +47,7 @@ class UserPortal extends Component {
       company: "",
       showError: "",
       setAlertShow: false,
+      isConfirm: false
     };
   }
 
@@ -86,7 +87,8 @@ class UserPortal extends Component {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
-      errorMessage: ""
+      errorMessage: "",
+      dynamicQuantity: 0
     });
     returnInterval = setInterval(() => {
       this.getExchange();
@@ -465,6 +467,7 @@ class UserPortal extends Component {
               setAlertShow={this.state.setAlertShow}
               errorMessage={this.state.errorMessage}
               confirmRedirect={this.confirmRedirect}
+              isConfirm={this.state.isConfirm}
             />
             <div className="col-12">
               <h6 className="font-weight-normal d-inline-block mb-1 titles-text">

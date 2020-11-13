@@ -27,7 +27,6 @@ class ModalComponent extends Component {
       exchange: [],
       company: "",
       orderHeader: "",
-      isConfirm: false,
       errorMessage: "",
       setShow: false,
     };
@@ -72,7 +71,7 @@ class ModalComponent extends Component {
   };
 
   renderAlert = () => {
-    if (this.props.setAlertShow) {
+    if (this.props.errorMessage !== "") {
       return (
         <ReviewAlert
           handleClose={this.handleAlertClose}
@@ -95,7 +94,7 @@ class ModalComponent extends Component {
 
   render() {
     console.log(this.state.setShow);
-    if (this.state.isConfirm) {
+    if (this.props.isConfirm) {
       return (
         <Redirect
           to={{
