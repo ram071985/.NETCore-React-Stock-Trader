@@ -22,7 +22,6 @@ class ReviewAlert extends Component {
                 : "none",
           }}
           variant="danger"
-          dismissible
         >
           {this.props.errorMessage}
         </Alert>

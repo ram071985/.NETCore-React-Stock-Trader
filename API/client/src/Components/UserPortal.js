@@ -46,7 +46,7 @@ class UserPortal extends Component {
       isSymbol: "",
       company: "",
       showError: "",
-      setAlertShow: false
+      setAlertShow: false,
     };
   }
 
@@ -81,13 +81,12 @@ class UserPortal extends Component {
     this.clearFields();
     this.setState({
       isSearching: true,
-
     });
-
     let returnInterval;
     const { name, value } = event.target;
     this.setState({
       [name]: value,
+      errorMessage: ""
     });
     returnInterval = setInterval(() => {
       this.getExchange();
@@ -97,7 +96,6 @@ class UserPortal extends Component {
           isSearching: false,
         });
       }
-
       return returnInterval;
     }, 2000);
     this.setState({
@@ -229,7 +227,7 @@ class UserPortal extends Component {
   };
 
   handleClose = (e) => {
-    console.log(e.target.textContent)
+    console.log(e.target.textContent);
     this.clearFields();
     this.setState({
       setShow: false,
@@ -238,7 +236,7 @@ class UserPortal extends Component {
       isBuy: false,
       price: 0,
       company: "",
-      errorMessage: ""
+      errorMessage: "",
     });
   };
 
@@ -384,7 +382,6 @@ class UserPortal extends Component {
   };
 
   confirmRedirect = (e) => {
-    console.log("Click")
     if (
       this.state.wallet <
       parseFloat(this.state.price) * this.state.dynamicQuantity
@@ -401,7 +398,7 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.setAlertShow)
+    console.log(this.state.setAlertShow);
     const { loading } = this.state;
 
     return (
@@ -467,7 +464,7 @@ class UserPortal extends Component {
               isClose={this.state.isClose}
               setAlertShow={this.state.setAlertShow}
               errorMessage={this.state.errorMessage}
-              confirmRediect={this.confirmRedirect}
+              confirmRedirect={this.confirmRedirect}
             />
             <div className="col-12">
               <h6 className="font-weight-normal d-inline-block mb-1 titles-text">

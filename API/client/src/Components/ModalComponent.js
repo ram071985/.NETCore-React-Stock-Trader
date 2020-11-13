@@ -75,11 +75,12 @@ class ModalComponent extends Component {
     if (this.props.setAlertShow) {
       return (
         <ReviewAlert
-          handleClose={(e) => this.handleAlertClose(e)}
+          handleClose={this.handleAlertClose}
           wallet={this.props.wallet}
           price={this.props.price}
           errorMessage={this.props.errorMessage}
           setAlertShow={this.props.setAlertShow}
+         
         />
       );
     }
