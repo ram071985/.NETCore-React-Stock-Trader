@@ -114,8 +114,11 @@ class ConfirmOrder extends Component {
         quantity: this.props.location.state.quantity,
         exchange: this.props.location.state.symbol,
       })
-      .catch((err) => {});
+      .then((res) => {
+        this.addStockRecord();
+      })
 
+      .catch((err) => {});
   };
 
   addStockRecord = () => {
@@ -161,6 +164,7 @@ class ConfirmOrder extends Component {
   };
 
   render() {
+    console.log(!this.state.isError);
     const formatter = new Intl.NumberFormat("en-US", {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -229,7 +233,7 @@ class ConfirmOrder extends Component {
           variant="secondary"
           onClick={
             this.props.location.state.action === "Buy"
-              ? this.postNewWithdrawalTransaction 
+              ? this.postNewWithdrawalTransaction
               : this.postNewDepositTransaction
           }
         >

@@ -11,7 +11,6 @@ class BuyQuantity extends Component {
   }
 
   render() {
-    console.log(this.state.quantity);
     return (
       <div>
         <Form>

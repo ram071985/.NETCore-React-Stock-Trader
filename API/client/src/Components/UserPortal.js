@@ -47,7 +47,7 @@ class UserPortal extends Component {
       company: "",
       showError: "",
       setAlertShow: false,
-      isConfirm: false
+      isConfirm: false,
     };
   }
 
@@ -57,25 +57,35 @@ class UserPortal extends Component {
   }
 
   getExchange = () => {
-    axios
-      .get("/api/stocks/exchanges/" + this.state.symbol, {})
-      .then((res) => {
-        this.setState({
-          exchange: res.data,
-          company: res.data.companyName,
-          price: parseInt(res.data.latestPrice),
+    if (this.state.symbol !== "") {
+      axios
+        .get("/api/stocks/exchanges/" + this.state.symbol, {})
+        .then((res) => {
+          this.setState({
+            exchange: res.data,
+            company: res.data.companyName,
+            price: parseInt(res.data.latestPrice),
+          });
+          if (res.data === "Unknown symbol") {
+            this.setState({
+              isSymbol: "Unknown symbol",
+            });
+          } else {
+            this.setState({
+              isSymbol: "Known symbol",
+            });
+          }
+        })
+        .catch((err) => {
+          if (err.response.status === 404) {
+            this.clearFields();
+            this.setState({
+              isSymbol: "Unknown symbol",
+              price: 0,
+            });
+          }
         });
-        if (res.data === "Unknown symbol") {
-          this.setState({
-            isSymbol: "Unknown symbol",
-          });
-        } else {
-          this.setState({
-            isSymbol: "Known symbol",
-          });
-        }
-      })
-      .catch((err) => {});
+    }
   };
 
   handleQueryChange = (event) => {
@@ -85,11 +95,10 @@ class UserPortal extends Component {
     });
     let returnInterval;
     const { name, value } = event.target;
-    console.log(value)
+    console.log(value);
     this.setState({
       [name]: value,
       errorMessage: "",
- 
     });
     returnInterval = setInterval(() => {
       this.getExchange();
@@ -103,7 +112,6 @@ class UserPortal extends Component {
     }, 2000);
     this.setState({
       isSearching: false,
-      dynamicQuanity: 1
     });
   };
 
@@ -150,10 +158,10 @@ class UserPortal extends Component {
   };
 
   handleBuyQuantity = (event) => {
-    console.log(event.target.value)
     const { name, value } = event.target;
     this.setState({
       dynamicQuantity: parseInt(value),
+      errorMessage: "",
     });
   };
 
@@ -182,7 +190,6 @@ class UserPortal extends Component {
       dynamicQuantity: 0,
       isSymbol: "",
       isSearching: false,
-      dynamicQuantity: 0
     });
   };
 
@@ -404,7 +411,7 @@ class UserPortal extends Component {
   };
 
   render() {
- console.log(this.state.dynamicQuantity)
+    console.log(this.state.symbol);
     const { loading } = this.state;
 
     return (
@@ -472,6 +479,7 @@ class UserPortal extends Component {
               errorMessage={this.state.errorMessage}
               confirmRedirect={this.confirmRedirect}
               isConfirm={this.state.isConfirm}
+              buyQuantity={this.state.buyQuantity}
             />
             <div className="col-12">
               <h6 className="font-weight-normal d-inline-block mb-1 titles-text">

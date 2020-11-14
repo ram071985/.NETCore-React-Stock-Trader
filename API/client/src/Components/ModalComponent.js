@@ -186,7 +186,7 @@ class ModalComponent extends Component {
                   <Form.Control
                     type="input"
                     name="symbol"
-                    className="w-75 modal-input"
+                    className="text-uppercase w-75 modal-input"
                     onChange={this.props.handleQueryChange}
                   />
                   <CheckCircle
@@ -203,7 +203,7 @@ class ModalComponent extends Component {
                     style={{
                       display:
                         !this.props.isSearching &&
-                        this.props.isSymbol === "Unknown symbol"
+                        this.props.isSymbol === "Unknown symbol" 
                           ? "block"
                           : "none",
                     }}
@@ -239,6 +239,7 @@ class ModalComponent extends Component {
               <BuyQuantity
                 onChange={this.props.handleBuyQuantity}
                 quantity={this.props.quantity}
+                symbol={this.props.symbol}
               />
             ) : (
               <SellQuantity
@@ -257,8 +258,8 @@ class ModalComponent extends Component {
                 type="text"
                 name="price"
                 value={
-                  undefined
-                    ? "$" + 0.0
+                  this.props.isSymbol === "Unknown symbol"
+                    ? "$" + this.props.formatter().format(0)
                     : "$" +
                       this.props
                         .formatter()
