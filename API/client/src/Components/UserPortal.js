@@ -85,10 +85,11 @@ class UserPortal extends Component {
     });
     let returnInterval;
     const { name, value } = event.target;
+    console.log(value)
     this.setState({
       [name]: value,
       errorMessage: "",
-      dynamicQuantity: 0
+ 
     });
     returnInterval = setInterval(() => {
       this.getExchange();
@@ -102,6 +103,7 @@ class UserPortal extends Component {
     }, 2000);
     this.setState({
       isSearching: false,
+      dynamicQuanity: 1
     });
   };
 
@@ -148,6 +150,7 @@ class UserPortal extends Component {
   };
 
   handleBuyQuantity = (event) => {
+    console.log(event.target.value)
     const { name, value } = event.target;
     this.setState({
       dynamicQuantity: parseInt(value),
@@ -179,6 +182,7 @@ class UserPortal extends Component {
       dynamicQuantity: 0,
       isSymbol: "",
       isSearching: false,
+      dynamicQuantity: 0
     });
   };
 
@@ -400,7 +404,7 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.setAlertShow);
+ console.log(this.state.dynamicQuantity)
     const { loading } = this.state;
 
     return (
