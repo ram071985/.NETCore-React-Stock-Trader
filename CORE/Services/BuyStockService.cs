@@ -75,7 +75,6 @@ namespace CORE.Services
 
         public Stock CreatePurchaseRecord(int userId, string company, string symbol, int quantity)
         {
-
             using (var session = _dbSessionService.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
