@@ -61,10 +61,11 @@ class UserPortal extends Component {
       axios
         .get("/api/stocks/exchanges/" + this.state.symbol, {})
         .then((res) => {
+          console.log(res.data.latestPrice)
           this.setState({
             exchange: res.data,
             company: res.data.companyName,
-            price: parseInt(res.data.latestPrice),
+            price: res.data.latestPrice,
           });
           if (res.data === "Unknown symbol") {
             this.setState({
@@ -240,7 +241,6 @@ class UserPortal extends Component {
   };
 
   handleClose = (e) => {
-    console.log(e.target.textContent);
     this.clearFields();
     this.setState({
       setShow: false,
@@ -397,11 +397,11 @@ class UserPortal extends Component {
   confirmRedirect = (e) => {
     if (
       this.state.wallet <
-      parseFloat(this.state.price) * this.state.dynamicQuantity
+      parseFloat(this.state.price) * this.state.dynamicQuantity  && !this.state.isSell
     ) {
       this.setState({
         setAlertShow: true,
-        errorMessage: "Insufficient funds. please try another selection.",
+        errorMessage: "Insufficient funds. Sell holdings or choose smaller share amount.",
       });
     } else {
       this.setState({
