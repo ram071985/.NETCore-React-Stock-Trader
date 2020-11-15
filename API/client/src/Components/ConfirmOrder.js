@@ -93,6 +93,9 @@ class ConfirmOrder extends Component {
   };
 
   postNewDepositTransaction = () => {
+    this.setState({
+      loading: true
+    })
     this.putStockTransaction();
     let parseUserId = parseInt(localStorage.getItem("user_id"));
     axios
@@ -107,15 +110,9 @@ class ConfirmOrder extends Component {
         console.log(res)
         if (res.status === 200) {
           this.setState({
-            loading: true
+            loading: false,
+            redirect: true
           })
-          return (
-            <Redirect
-              to={{
-                pathname: "/user-portal",
-              }}
-            />
-          );         
         }
       })
       .catch((err) => {});
