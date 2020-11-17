@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/WalletQueryService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/BuyStockServiceTest.cs">
     <Files>
       <File FileName="API/Controllers/UpdatePortalController.cs" Line="31" Column="17" />
       <File FileName="API/Controllers/StocksController.cs" />
@@ -10,7 +10,7 @@
       <File FileName="API/Startup.cs" />
       <File FileName="CORE/Services/CreateWalletService.cs" />
       <File FileName="CORE/Entities/Wallet.cs" />
-      <File FileName="Tests/BuyStockServiceTest.cs" Line="55" Column="46" />
+      <File FileName="Tests/BuyStockServiceTest.cs" Line="73" Column="42" />
       <File FileName="API/TransactionModel.cs" Line="6" Column="1" NotebookId="1" />
       <File FileName="CORE/Entities/Transaction.cs" NotebookId="1" />
       <File FileName="CORE/Mapping/Transaction.hbm.xml" NotebookId="1" />
@@ -20,11 +20,11 @@
       <File FileName="CORE/Services/GetUserInfoService.cs" NotebookId="1" />
       <File FileName="CORE/Services/DbSessionService.cs" NotebookId="1" />
       <File FileName="CORE/Services/CreateSessionService.cs" NotebookId="1" />
-      <File FileName="CORE/Services/BuyStockService.cs" Line="47" Column="38" NotebookId="1" />
+      <File FileName="CORE/Services/BuyStockService.cs" NotebookId="1" />
       <File FileName="CORE/Services/AuthorizeUserService.cs" NotebookId="1" />
       <File FileName="API/Controllers/AuthorzationController.cs" NotebookId="1" />
       <File FileName="API/Controllers/TransactionController.cs" NotebookId="1" />
-      <File FileName="CORE/Services/WalletQueryService.cs" Line="23" Column="6" NotebookId="1" />
+      <File FileName="CORE/Services/WalletQueryService.cs" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -34,12 +34,11 @@
               <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="CORE" expanded="True">
-              <Node name="Services" expanded="True">
-                <Node name="WalletQueryService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
             <Node name="Tests" expanded="True">
               <Node name="Dependencies" expanded="True" />
+              <Node name="BuyStockServiceTest.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -47,13 +46,13 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.API PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.ItemProperties.Tests FirstBuild="True" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/AuthorizeUserService.cs" relfile="CORE/Services/AuthorizeUserService.cs" line="51" column="1" />
       <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/AuthorizeUserService.cs" relfile="CORE/Services/AuthorizeUserService.cs" line="30" column="1" />
+      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/BuyStockService.cs" relfile="CORE/Services/BuyStockService.cs" line="33" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

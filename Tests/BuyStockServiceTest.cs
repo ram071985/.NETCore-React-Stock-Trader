@@ -76,8 +76,6 @@ namespace Tests
              });
              
             Assert.Throws(Is.TypeOf<Exception>().And.Message.EqualTo("insufficient balance"), () => _sut.UpdateWalletPurchase(userId, balance));
-
-
         }
     }
 }
