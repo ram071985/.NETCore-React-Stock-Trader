@@ -14,10 +14,12 @@ namespace CORE.Services
     public class BuyStockService : IBuyStockService
     {
         private readonly IDbSessionService _dbSessionService;
+        private readonly IWalletQueryService _walletQueryService;
 
-        public BuyStockService(IDbSessionService dbSessionService)
+        public BuyStockService(IDbSessionService dbSessionService, IWalletQueryService walletQueryService)
         {
-            _dbSessionService = dbSessionService;        
+            _dbSessionService = dbSessionService;
+            _walletQueryService = walletQueryService;
         }
 
         public Wallet UpdateWalletPurchase(int userId, decimal balance)
@@ -26,9 +28,7 @@ namespace CORE.Services
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var result = session.QueryOver<Wallet>()
-                        .Where(w => w.UserId == userId)
-                        .List<Wallet>();
+                    var result = _walletQueryService.QueryWallets(session, userId);
 
                     var resultArray = result[0];
 

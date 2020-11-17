@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using CORE.Entities;
 using CORE.Services;
 using NHibernate;
 using NSubstitute;
@@ -7,21 +9,20 @@ using NUnit.Framework;
 namespace Tests
 {
     [TestFixture]
-    public class BuyStockTest
+    public class BuyStockServiceTest
     {
-
-        private readonly Random _random = new Random();
-
         private IDbSessionService _dbSessionService;
-        private IBuyStockService _buyStockService;
-        private ISellStockService _sellStockService;
+        private IWalletQueryService _walletQueryService;
+
+        private BuyStockService _sut;
 
         [SetUp]
         public void Setup()
         {
             _dbSessionService = Substitute.For<IDbSessionService>();
-            _buyStockService = Substitute.For<IBuyStockService>();
-            _sellStockService = Substitute.For<ISellStockService>();
+            _walletQueryService = Substitute.For<IWalletQueryService>();
+
+            _sut = new BuyStockService(_dbSessionService, _walletQueryService);
         }
 
         [Test]
@@ -30,13 +31,28 @@ namespace Tests
             Random rnd = new Random();
 
             var userId = rnd.Next();
+
             var balance = 15679.90m;
 
-            _buyStockService.UpdateWalletPurchase(userId, balance);
+            var session = Substitute.For<ISession>();
+            _dbSessionService.OpenSession().Returns(session);
 
-            _buyStockService.Received(1).UpdateWalletPurchase(
-                Arg.Any<ISession.BeginTransaction()>,
+            _walletQueryService.QueryWallets(Arg.Any<ISession>(), Arg.Any<int>())
+                .Returns(new List<Wallet>
+                {
+                    new Wallet
+                    {
+                        UserId = userId,
+                        Balance = 15979.90m,
+                        Holdings = 100
+                    }
+                });
 
+            var transaction = Substitute.For<ITransaction>();
+
+            var result = _sut.UpdateWalletPurchase(userId, balance);
+
+            // test result came back expected
              
         }
     }
