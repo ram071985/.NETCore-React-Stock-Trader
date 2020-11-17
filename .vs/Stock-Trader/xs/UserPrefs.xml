@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/DbSessionService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/WalletQueryService.cs">
     <Files>
       <File FileName="API/Controllers/UpdatePortalController.cs" Line="31" Column="17" />
       <File FileName="API/Controllers/StocksController.cs" />
@@ -10,7 +10,8 @@
       <File FileName="API/Startup.cs" />
       <File FileName="CORE/Services/CreateWalletService.cs" />
       <File FileName="CORE/Entities/Wallet.cs" />
-      <File FileName="Tests/BuyStockTest.cs" Line="41" Column="6" />
+      <File FileName="Tests/BuyStockTest.cs" Line="45" Column="35" />
+      <File FileName="CORE/Services/WalletQueryService.cs" Line="6" Column="6" />
       <File FileName="API/TransactionModel.cs" Line="6" Column="1" NotebookId="1" />
       <File FileName="CORE/Entities/Transaction.cs" NotebookId="1" />
       <File FileName="CORE/Mapping/Transaction.hbm.xml" NotebookId="1" />
@@ -18,9 +19,9 @@
       <File FileName="CORE/Entities/Stock.cs" NotebookId="1" />
       <File FileName="CORE/Services/SellStockService.cs" NotebookId="1" />
       <File FileName="CORE/Services/GetUserInfoService.cs" NotebookId="1" />
-      <File FileName="CORE/Services/DbSessionService.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="CORE/Services/DbSessionService.cs" NotebookId="1" />
       <File FileName="CORE/Services/CreateSessionService.cs" NotebookId="1" />
-      <File FileName="CORE/Services/BuyStockService.cs" NotebookId="1" />
+      <File FileName="CORE/Services/BuyStockService.cs" Line="32" Column="1" NotebookId="1" />
       <File FileName="CORE/Services/AuthorizeUserService.cs" NotebookId="1" />
       <File FileName="API/Controllers/AuthorzationController.cs" NotebookId="1" />
       <File FileName="API/Controllers/TransactionController.cs" NotebookId="1" />
@@ -34,7 +35,7 @@
             </Node>
             <Node name="CORE" expanded="True">
               <Node name="Services" expanded="True">
-                <Node name="DbSessionService.cs" selected="True" />
+                <Node name="WalletQueryService.cs" selected="True" />
               </Node>
             </Node>
             <Node name="Tests" expanded="True">
