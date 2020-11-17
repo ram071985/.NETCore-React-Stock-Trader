@@ -49,12 +49,35 @@ namespace Tests
                     }
                 });      
 
-            _sut.UpdateWalletPurchase(userId, balance);
+            _sut.UpdateWalletPurchase(userId, balance);             
+        }
 
+        [Test]
+        public void should_throw_exception_when_balance_is_insufficient()
+        {
+            Random rnd = new Random();
 
+            var userId = rnd.Next();
 
-            // test result came back expected
+            var balance = 100.90m;
+
+            var session = Substitute.For<ISession>();
+            _dbSessionService.OpenSession().Returns(session);
+
+            _walletQueryService.QueryWallets(Arg.Any<ISession>(), Arg.Any<int>())
+             .Returns(new List<Wallet>
+             {
+                    new Wallet
+                    {
+                        UserId = userId,
+                        Balance = 70.80m,
+                        Holdings = 100
+                    }
+             });
              
+            Assert.Throws(Is.TypeOf<Exception>().And.Message.EqualTo("insufficient balance"), () => _sut.UpdateWalletPurchase(userId, balance));
+
+
         }
     }
 }
