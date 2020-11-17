@@ -10,8 +10,7 @@
       <File FileName="API/Startup.cs" />
       <File FileName="CORE/Services/CreateWalletService.cs" />
       <File FileName="CORE/Entities/Wallet.cs" />
-      <File FileName="Tests/BuyStockTest.cs" Line="45" Column="35" />
-      <File FileName="CORE/Services/WalletQueryService.cs" Line="6" Column="6" />
+      <File FileName="Tests/BuyStockServiceTest.cs" Line="55" Column="46" />
       <File FileName="API/TransactionModel.cs" Line="6" Column="1" NotebookId="1" />
       <File FileName="CORE/Entities/Transaction.cs" NotebookId="1" />
       <File FileName="CORE/Mapping/Transaction.hbm.xml" NotebookId="1" />
@@ -21,10 +20,11 @@
       <File FileName="CORE/Services/GetUserInfoService.cs" NotebookId="1" />
       <File FileName="CORE/Services/DbSessionService.cs" NotebookId="1" />
       <File FileName="CORE/Services/CreateSessionService.cs" NotebookId="1" />
-      <File FileName="CORE/Services/BuyStockService.cs" Line="32" Column="1" NotebookId="1" />
+      <File FileName="CORE/Services/BuyStockService.cs" Line="47" Column="38" NotebookId="1" />
       <File FileName="CORE/Services/AuthorizeUserService.cs" NotebookId="1" />
       <File FileName="API/Controllers/AuthorzationController.cs" NotebookId="1" />
       <File FileName="API/Controllers/TransactionController.cs" NotebookId="1" />
+      <File FileName="CORE/Services/WalletQueryService.cs" Line="23" Column="6" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

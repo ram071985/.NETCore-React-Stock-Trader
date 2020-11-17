@@ -32,10 +32,11 @@ namespace Tests
 
             var userId = rnd.Next();
 
-            var balance = 15679.90m;
+            var balance = 100.90m;
 
             var session = Substitute.For<ISession>();
             _dbSessionService.OpenSession().Returns(session);
+
 
             _walletQueryService.QueryWallets(Arg.Any<ISession>(), Arg.Any<int>())
                 .Returns(new List<Wallet>
@@ -46,11 +47,11 @@ namespace Tests
                         Balance = 15979.90m,
                         Holdings = 100
                     }
-                });
+                });      
 
-            var transaction = Substitute.For<ITransaction>();
+            _sut.UpdateWalletPurchase(userId, balance);
 
-            var result = _sut.UpdateWalletPurchase(userId, balance);
+
 
             // test result came back expected
              

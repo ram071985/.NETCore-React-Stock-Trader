@@ -20,6 +20,5 @@ namespace CORE.Services
                         .Where(w => w.UserId == userId)
                         .List<Wallet>();
         }
-
     }
 }
