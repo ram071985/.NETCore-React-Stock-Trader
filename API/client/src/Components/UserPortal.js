@@ -4,13 +4,13 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import ModalComponent from "./ModalComponent";
+import UserInfo from "./UserInfo";
 
 class UserPortal extends Component {
   constructor() {
     super();
     this.state = {
       sampleStock: [],
-      priceResults: [],
       quantity: 0,
       dynamicQuantity: 0,
       price: 0,
@@ -414,8 +414,6 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.stocks);
-    const { loading } = this.state;
 
     return (
       <div className="container-fluid main-container">
@@ -428,124 +426,46 @@ class UserPortal extends Component {
             Log out
           </Button>
         </Form>
-
-        <div className="container-fluid d-block container user-container">
-          <div className="d-block row">
-            <h4 className="d-inline-block ml-3 mr-3 heading-text">
-              User Information
-            </h4>
-            <Button
-              onClick={this.handleShow}
-              className="buy-sell-button"
-              variant="success"
-            >
-              <span className="font-weight-light">Buy/Sell Stocks</span>
-            </Button>{" "}
-            <hr style={{ borderTop: "1px solid #1aac3c", width: "100%" }} />
-            <ModalComponent
-              action={this.state.action}
-              setSell={this.state.setSell}
-              selectValue={this.state.selectValue}
-              setAction={this.state.action}
-              isSell={this.state.isSell}
-              isBuy={this.state.isBuy}
-              show={this.state.setShow}
-              onHide={this.handleClose}
-              stocks={this.state.stocks}
-              stockName={this.state.stockname}
-              quantity={this.state.sellQuantity}
-              handleChange={this.handleBuySellChange}
-              sellSubmit={this.state.sellSubmit}
-              companyList={this.state.companyList}
-              renderHoldings={this.renderHoldings}
-              formatter={this.decimalFormatter}
-              handleHoldings={this.handleHoldings}
-              modalHoldings={this.renderModalHoldings}
-              quantityChange={this.handleQuantityChange}
-              isHoldings={this.state.isHoldings}
-              sellInput={this.state.sellInput}
-              holding={this.state.holding}
-              firstObject={this.state.firstObject}
-              handleBuyQuantity={this.handleBuyQuantity}
-              dynamicQuantity={this.state.dynamicQuantity}
-              handleQueryChange={this.handleQueryChange}
-              company={this.state.company}
-              price={this.state.price}
-              symbol={this.state.symbol}
-              holdings={this.state.holdings}
-              isSearching={this.state.isSearching}
-              isSymbol={this.state.isSymbol}
-              wallet={this.state.wallet}
-              clearFields={this.clearFields}
-              isClose={this.state.isClose}
-              setAlertShow={this.state.setAlertShow}
-              errorMessage={this.state.errorMessage}
-              confirmRedirect={this.confirmRedirect}
-              isConfirm={this.state.isConfirm}
-              buyQuantity={this.state.buyQuantity}
-            />
-            <div className="col-12">
-              <h6 className="font-weight-normal d-inline-block mb-1 titles-text">
-                User{" "}
-              </h6>
-              <h6 className="font-weight-light d-block mb-2 name-text">
-                {loading ? (
-                  <Spinner
-                    className="ml-2"
-                    variant="success"
-                    animation="border"
-                    size="sm"
-                  />
-                ) : (
-                  this.state.username
-                )}
-              </h6>
-              <h6
-                id="holdings"
-                className="font-weight-normal d-inline-block mb-1 titles-text"
-              >
-                Holdings:
-              </h6>
-              <h6
-                id="holding-text"
-                className="font-weight-light d-block mb-2 name-text"
-              >
-                $
-                {loading ? (
-                  <Spinner
-                    className="ml-2"
-                    variant="success"
-                    animation="border"
-                    size="sm"
-                  />
-                ) : (
-                  this.decimalFormatter().format(this.state.holdings)
-                )}
-              </h6>
-            </div>
-            <div className="col-5">
-              <h6
-                id="wallet"
-                className="font-weight-normal d-inline-block mb-1 titles-text"
-              >
-                Wallet
-              </h6>
-              <h6 className="font-weight-light name-text mb-2">
-                $
-                {loading ? (
-                  <Spinner
-                    className="ml-2"
-                    variant="success"
-                    animation="border"
-                    size="sm"
-                  />
-                ) : (
-                  this.decimalFormatter().format(this.state.wallet)
-                )}
-              </h6>
-            </div>
-          </div>
-        </div>
+        <UserInfo
+          wallet={this.state.wallet}
+          holdings={this.state.holdings}
+          username={this.state.username}
+          loading={this.state.loading}
+          formatter={this.decimalFormatter}
+        />
+        <ModalComponent
+          action={this.state.action}
+          setAction={this.state.action}
+          isSell={this.state.isSell}
+          isBuy={this.state.isBuy}
+          show={this.state.setShow}
+          onHide={this.handleClose}
+          stocks={this.state.stocks}
+          stockName={this.state.stockname}
+          quantity={this.state.sellQuantity}
+          handleChange={this.handleBuySellChange}
+          sellSubmit={this.state.sellSubmit}
+          holding={this.state.holding}
+          formatter={this.decimalFormatter}
+          handleHoldings={this.handleHoldings}
+          modalHoldings={this.renderModalHoldings}
+          quantityChange={this.handleQuantityChange}
+          handleBuyQuantity={this.handleBuyQuantity}
+          dynamicQuantity={this.state.dynamicQuantity}
+          handleQueryChange={this.handleQueryChange}
+          company={this.state.company}
+          price={this.state.price}
+          symbol={this.state.symbol}
+          holdings={this.state.holdings}
+          isSearching={this.state.isSearching}
+          isSymbol={this.state.isSymbol}
+          wallet={this.state.wallet}
+          isClose={this.state.isClose}
+          setAlertShow={this.state.setAlertShow}
+          errorMessage={this.state.errorMessage}
+          confirmRedirect={this.confirmRedirect}
+          isConfirm={this.state.isConfirm}
+        />
         <div className="container-fluid d-block holdings-container">
           <h4 className="heading-text">Current Holdings</h4>
           <hr style={{ borderTop: "1px solid #1aac3c", width: "100%" }} />

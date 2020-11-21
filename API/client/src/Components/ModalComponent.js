@@ -3,7 +3,6 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
 import SellQuantity from "./SellQuantity";
 import BuyQuantity from "./BuyQuantity";
 import ReviewAlert from "./ReviewAlert";
@@ -20,14 +19,6 @@ class ModalComponent extends Component {
       setShow: false,
     };
   }
-
-  renderHoldings = (stock, index) => {
-    return (
-      <option key={index} value={stock.company}>
-        {stock.company} ({stock.quantity} shares)
-      </option>
-    );
-  };
 
   renderAlert = () => {
     if (this.props.errorMessage !== "") {
