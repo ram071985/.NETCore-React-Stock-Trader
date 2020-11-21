@@ -16,9 +16,7 @@ class UserPortal extends Component {
       price: 0,
       holding: [],
       firstObject: [],
-      holdingName: "",
       action: "",
-      setSell: false,
       stocks: [],
       sellQuantity: 1,
       stockName: "",
@@ -26,21 +24,12 @@ class UserPortal extends Component {
       wallet: 0,
       balance: 0,
       holdings: 0,
-      exchange: "",
       symbol: "",
-      companyName: "",
-      sharePrice: 0,
-      companyValue: "",
-      userId: 0,
       errorMessage: "",
-      returnedQuery: false,
       setShow: false,
       isSell: false,
       isBuy: false,
       sellSubmit: false,
-      buySubmit: false,
-      sellInput: 1,
-      isHoldings: false,
       loading: false,
       isSearching: false,
       isSymbol: "",
@@ -137,14 +126,6 @@ class UserPortal extends Component {
     return deleteId;
   };
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-      errorMessage: "",
-    });
-  };
-
   handleHoldings = (event, index) => {
     const result = this.state.stocks.filter(
       (name) => name.company === event.target.value
@@ -176,13 +157,6 @@ class UserPortal extends Component {
     });
   };
 
-  handleCompanyList = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  };
-
   clearFields = () => {
     this.setState({
       sellQuantity: 0,
@@ -208,20 +182,6 @@ class UserPortal extends Component {
         company: "",
       });
     }
-  };
-
-  handleBuySellShow = () => {
-    this.setState({
-      setShow: true,
-    });
-  };
-
-  handleSellSubmit = () => {
-    this.setState({
-      action: "Sell",
-      setShow: true,
-      sellSubmit: true,
-    });
   };
 
   handleShow = () => {
@@ -265,11 +225,6 @@ class UserPortal extends Component {
           holdings: res.data.holdings,
         });
       });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.getStock();
   };
 
   getDatabaseStocks = async (index) => {
@@ -414,7 +369,6 @@ class UserPortal extends Component {
   };
 
   render() {
-
     return (
       <div className="container-fluid main-container">
         <Form onSubmit={(event) => this.handleLogOut(event)}>
