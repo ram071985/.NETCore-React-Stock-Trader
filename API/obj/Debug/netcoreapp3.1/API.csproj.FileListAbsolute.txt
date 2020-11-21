@@ -9,7 +9,6 @@
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/client/package-lock.json
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/client/package.json
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/client/public/manifest.json
-/Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/API.deps.json
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/API.runtimeconfig.json
 /Users/reid/Desktop/Projects/Stock-Trader/API/bin/Debug/netcoreapp3.1/API.runtimeconfig.dev.json
@@ -59,3 +58,4 @@
 /Users/reid/Desktop/Projects/Stock-Trader/API/obj/Debug/netcoreapp3.1/API.dll
 /Users/reid/Desktop/Projects/Stock-Trader/API/obj/Debug/netcoreapp3.1/API.pdb
 /Users/reid/Desktop/Projects/Stock-Trader/API/obj/Debug/netcoreapp3.1/API.genruntimeconfig.cache
+/Users/reid/Desktop/Projects/Stock-Trader/API/obj/Debug/netcoreapp3.1/scopedcss/bundle/API.styles.css

@@ -3,7 +3,6 @@
 /Users/reid/Desktop/Projects/Stock-Trader/Tests/bin/Debug/netcoreapp3.1/client/package-lock.json
 /Users/reid/Desktop/Projects/Stock-Trader/Tests/bin/Debug/netcoreapp3.1/client/package.json
 /Users/reid/Desktop/Projects/Stock-Trader/Tests/bin/Debug/netcoreapp3.1/client/public/manifest.json
-/Users/reid/Desktop/Projects/Stock-Trader/Tests/bin/Debug/netcoreapp3.1/Properties/launchSettings.json
 /Users/reid/Desktop/Projects/Stock-Trader/Tests/bin/Debug/netcoreapp3.1/NUnit3.TestAdapter.dll
 /Users/reid/Desktop/Projects/Stock-Trader/Tests/bin/Debug/netcoreapp3.1/NUnit3.TestAdapter.pdb
 /Users/reid/Desktop/Projects/Stock-Trader/Tests/bin/Debug/netcoreapp3.1/nunit.engine.dll
