@@ -15,29 +15,11 @@ class ModalComponent extends Component {
   constructor() {
     super();
     this.state = {
-      stockName: "",
-      stocks: [],
-      holdingSelect: [],
-      action: "",
-      setShow: false,
-      symbol: "",
-      quantity: 0,
-      newQuantity: 0,
-      price: 0,
-      exchange: [],
-      company: "",
       orderHeader: "",
       errorMessage: "",
       setShow: false,
     };
   }
-
-  isBuyTrue = () => {
-    if ((this.state.action = "Buy")) {
-      return true;
-    }
-    return false;
-  };
 
   renderHoldings = (stock, index) => {
     return (
