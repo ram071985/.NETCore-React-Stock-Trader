@@ -32,35 +32,12 @@ class ModalComponent extends Component {
     };
   }
 
-  handleSelectChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-      error: "",
-    });
-  };
-
-  searchStockList = () => {
-    return (
-      <div>
-        <Form.Control
-          type="input"
-          name="symbol"
-          className="w-75 modal-input"
-          onChange={this.handleChange}
-        />
-      </div>
-    );
-  };
-
   isBuyTrue = () => {
     if ((this.state.action = "Buy")) {
       return true;
     }
     return false;
   };
-
-
 
   renderHoldings = (stock, index) => {
     return (
@@ -79,7 +56,6 @@ class ModalComponent extends Component {
           price={this.props.price}
           errorMessage={this.props.errorMessage}
           setAlertShow={this.props.setAlertShow}
-         
         />
       );
     }
@@ -88,7 +64,7 @@ class ModalComponent extends Component {
   handleAlertClose = () => {
     this.setState({
       setShow: false,
-      errorMessage: ""
+      errorMessage: "",
     });
   };
 
@@ -108,7 +84,6 @@ class ModalComponent extends Component {
               isBuy: this.props.isBuy,
               isSell: this.props.isSell,
               holdings: this.props.holdings,
-              isClose: this.state.isClose
             },
           }}
         />
@@ -203,7 +178,7 @@ class ModalComponent extends Component {
                     style={{
                       display:
                         !this.props.isSearching &&
-                        this.props.isSymbol === "Unknown symbol" 
+                        this.props.isSymbol === "Unknown symbol"
                           ? "block"
                           : "none",
                     }}
@@ -245,7 +220,6 @@ class ModalComponent extends Component {
               <SellQuantity
                 onChange={this.props.quantityChange}
                 stocks={this.props.stocks}
-                action={this.state.action}
                 stockName={this.props.stockName}
                 quantity={this.props.quantity}
                 quantityChange={this.props.quantityChange}

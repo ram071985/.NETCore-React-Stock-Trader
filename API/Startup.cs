@@ -36,6 +36,8 @@ namespace API
             services.AddScoped<IGetUserInfoService, GetUserInfoService>();
             services.AddScoped<IBuyStockService, BuyStockService>();
             services.AddScoped<ISellStockService, SellStockService>();
+            services.AddScoped<IWalletQueryService, WalletQueryService>();
+            services.AddScoped<IStockQueryService, StockQueryService>();
 
         }
 

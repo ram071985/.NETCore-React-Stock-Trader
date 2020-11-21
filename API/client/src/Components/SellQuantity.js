@@ -17,7 +17,6 @@ class SellQuantity extends Component {
             <Form.Control
               type="number"
               min="1"
-              defaultValue=""
               max={this.props.quantity}
               className="w-50 ml-5 d-inline-block modal-input"
               name="quantity"
