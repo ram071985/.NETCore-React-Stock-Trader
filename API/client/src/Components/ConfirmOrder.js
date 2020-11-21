@@ -3,8 +3,7 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
-import BarLoader from "react-spinners/BarLoader"
-
+import BarLoader from "react-spinners/BarLoader";
 
 class ConfirmOrder extends Component {
   constructor() {
@@ -14,7 +13,7 @@ class ConfirmOrder extends Component {
       cancel: false,
       setShow: false,
       isError: false,
-      redirect: false
+      redirect: false,
     };
   }
 
@@ -86,8 +85,8 @@ class ConfirmOrder extends Component {
 
   postNewDepositTransaction = () => {
     this.setState({
-      loading: true
-    })
+      loading: true,
+    });
     this.putStockTransaction();
     let parseUserId = parseInt(localStorage.getItem("user_id"));
     axios
@@ -98,12 +97,12 @@ class ConfirmOrder extends Component {
         quantity: this.props.location.state.quantity,
         exchange: this.props.location.state.symbol,
       })
-      .then(res => {
+      .then((res) => {
         if (res.status === 200) {
           this.setState({
             loading: false,
-            redirect: true
-          })
+            redirect: true,
+          });
         }
       })
       .catch((err) => {});
@@ -112,8 +111,8 @@ class ConfirmOrder extends Component {
 
   postNewWithdrawalTransaction = () => {
     this.setState({
-      loading: true
-    })
+      loading: true,
+    });
     this.putStockTransaction();
     let parseUserId = parseInt(localStorage.getItem("user_id"));
     axios
@@ -128,12 +127,12 @@ class ConfirmOrder extends Component {
         if (res.status === 200) {
           this.setState({
             loading: false,
-            redirect: true
-          })
+            redirect: true,
+          });
         }
       })
       .catch((err) => {});
-      this.addStockRecord();
+    this.addStockRecord();
   };
 
   addStockRecord = () => {
@@ -179,11 +178,6 @@ class ConfirmOrder extends Component {
   };
 
   render() {
-    const formatter = new Intl.NumberFormat("en-US", {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-
     if (this.state.cancel || this.state.redirect) {
       return (
         <Redirect
@@ -263,7 +257,16 @@ class ConfirmOrder extends Component {
         </Button>{" "}
         {this.renderAlert()}
         <div className="container-fluid">
-        { loading ? (<div><p className="mt-3 text-center">Processing order... Redirecting to User Portal.</p> <BarLoader /></div>) : (<div></div>)}
+          {loading ? (
+            <div>
+              <p className="mt-3 text-center">
+                Processing order... Redirecting to User Portal.
+              </p>{" "}
+              <BarLoader />
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     );
