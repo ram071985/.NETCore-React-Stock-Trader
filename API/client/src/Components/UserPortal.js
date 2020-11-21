@@ -379,6 +379,7 @@ class UserPortal extends Component {
           </Button>
         </Form>
         <UserInfo
+          handleShow={this.handleShow}
           wallet={this.state.wallet}
           holdings={this.state.holdings}
           username={this.state.username}

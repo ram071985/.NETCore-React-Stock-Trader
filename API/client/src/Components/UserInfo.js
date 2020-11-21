@@ -16,7 +16,7 @@ class UserInfo extends Component {
               User Information
             </h4>
             <Button
-              onClick={this.handleShow}
+              onClick={this.props.handleShow}
               className="buy-sell-button"
               variant="success"
             >

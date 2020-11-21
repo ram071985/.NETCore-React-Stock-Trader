@@ -2,7 +2,6 @@
 
 #root {
   height: 100%;
-  background: linear-gradient(to bottom, #000000 20%, #030e01 50%) !important;
 }
 html,
 body {
@@ -10,7 +9,6 @@ body {
   margin: 0px;
   font-size: 16px;
   font-family: "Roboto", sans-serif !important;
-  background: linear-gradient(to bottom, #000000 20%, #030e01 50%) !important;
 }
 
 .landing-row {
@@ -306,7 +304,7 @@ hr {
 .cancel-button {
   width: 30%;
   border-radius: 0 !important;
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .company-text {

@@ -190,14 +190,14 @@ class ConfirmOrder extends Component {
     const { loading } = this.state;
     return (
       <div>
-        <h2 className="mt-4 ml-5">{}</h2>
+        <h2 className="mt-5 ml-5">{}</h2>
         <h6 className="font-weight-normal text-center ml-5">
           {this.props.location.state.company}
-          <span>(</span>
+          <span>( </span>
           <span className="text-uppercase special-characters">
-            {this.props.location.state.symbol}
+             {this.props.location.state.symbol} 
           </span>
-          <span>)</span>
+          <span> )</span>
         </h6>
         <h6 className="font-weight-normal text-center ml-5">
           Quantity
@@ -218,7 +218,7 @@ class ConfirmOrder extends Component {
           <span className="font-weight-normal text-center confirm-span">
             ${this.props.location.state.price} x{" "}
             {this.props.location.state.quantity} (
-            <span className="special-characters">shares</span>) = $
+            <span className="special-characters"> shares </span>) = $
             {this.decimalFormatter().format(
               this.props.location.state.quantity *
                 this.props.location.state.price
