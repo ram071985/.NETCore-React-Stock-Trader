@@ -1,12 +1,6 @@
 ﻿import React, { Component } from "react";
 import SplashImage from "../images/splashImage.jpeg";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { User } from "react-feather";
 
 class LandingPage extends Component {
@@ -23,15 +17,14 @@ class LandingPage extends Component {
   }
 
   handleClick = (e) => {
-    if(e.target.textContent === "Start an account")
-    this.setState({
-      isSignUp: true,
-    });
-  
+    if (e.target.textContent === "Start an account")
+      this.setState({
+        isSignUp: true,
+      });
+
     this.setState({
       authType: e.target.textContent,
     });
- 
   };
 
   render() {
@@ -97,7 +90,7 @@ class LandingPage extends Component {
               </button>
             </div>
             <div className="col-lg d-block mx-auto right-col">
-              <img className="splash-image d-block mx-auto" src={SplashImage} />
+              <img alt="stock market graph" className="splash-image d-block mx-auto" src={SplashImage} />
             </div>
           </div>
         </div>

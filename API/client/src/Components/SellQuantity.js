@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
-import axios from "axios";
 import Col from "react-bootstrap/Col";
 
 class SellQuantity extends Component {

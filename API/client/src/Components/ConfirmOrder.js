@@ -18,7 +18,6 @@ class ConfirmOrder extends Component {
   }
 
   handleChange = (event) => {
-    let returnInterval;
     const { name, value } = event.target;
     this.setState({
       [name]: value,
@@ -212,7 +211,6 @@ class ConfirmOrder extends Component {
           {this.decimalFormatter().format(this.props.location.state.price)}
         </h6>
         <h2 className="text-center mt-5 ml-5">Order Summary</h2>
-        <h6></h6>
         <h6 className="font-weight-bold text-center mt-2 ml-5">
           Subtotal:
           <span className="font-weight-normal text-center confirm-span">

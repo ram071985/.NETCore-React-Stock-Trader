@@ -61,7 +61,6 @@ class ModalComponent extends Component {
         />
       );
     }
-    const { action } = this.props;
     return (
       <div>
         {" "}

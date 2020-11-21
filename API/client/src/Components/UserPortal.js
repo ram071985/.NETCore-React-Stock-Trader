@@ -138,7 +138,7 @@ class UserPortal extends Component {
   };
 
   handleBuyQuantity = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     this.setState({
       dynamicQuantity: parseInt(value),
       errorMessage: "",
