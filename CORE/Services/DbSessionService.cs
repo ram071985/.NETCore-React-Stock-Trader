@@ -12,7 +12,6 @@ namespace CORE.Services
     }
     public class DbSessionService : IDbSessionService
     {
-
         private readonly ISessionFactory _sessionFactory;
 
         public DbSessionService()

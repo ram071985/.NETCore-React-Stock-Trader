@@ -1,5 +1,4 @@
-﻿using System;
-using CORE.Entities;
+﻿using CORE.Entities;
 using NHibernate;
 using NHibernate.Criterion;
 
@@ -44,10 +43,8 @@ namespace CORE.Services
 
         public Wallet InsertFirstDeposit(int userId, string username)
         {
-
             using (var session = _dbSessionService.OpenSession())
             {
-
                 using (var transaction = session.BeginTransaction())
                 {                 
                     var wallet = new Wallet
@@ -58,8 +55,8 @@ namespace CORE.Services
                         Holdings = 0,
                     };
 
-
                     session.Save(wallet);
+
                     transaction.Commit();
 
                     return wallet;

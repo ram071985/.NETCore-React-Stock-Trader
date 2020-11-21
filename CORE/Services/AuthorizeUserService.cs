@@ -20,10 +20,8 @@ namespace CORE.Services
 
             public User AuthorizeUser(string username, string password)
             {
-
                 using (var session = _dbSessionService.OpenSession())
                 {
-
                     using (var transaction = session.BeginTransaction())
                     {
 
@@ -56,7 +54,6 @@ namespace CORE.Services
                         {
                             throw new Exception("username doesn't exist");
                         }
-
 
                         if (query[0].Password != password)
                         {

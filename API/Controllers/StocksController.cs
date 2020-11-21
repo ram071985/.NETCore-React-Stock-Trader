@@ -13,8 +13,7 @@ namespace API.Controllers
     [Route("api/stocks")]
 
     public class StocksController : ControllerBase
-    {
-       
+    {       
         private string _token;
         private ISellStockService _sellStockService;
 
@@ -50,9 +49,5 @@ namespace API.Controllers
                 Quantity = quantityResult.Quantity
             };
         }
-
-    }
-
-    
-  
+    } 
 }

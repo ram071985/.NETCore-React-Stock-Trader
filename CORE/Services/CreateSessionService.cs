@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Reflection;
 using CORE.Entities;
-using NHibernate.Cfg;
-using NHibernate.Dialect;
+
 
 namespace CORE.Services
 {
@@ -22,7 +20,6 @@ namespace CORE.Services
 
         public Session CreateNewSession(int userId)
         {
-
             using (var session = _dbSessionService.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
@@ -34,14 +31,12 @@ namespace CORE.Services
                     };
 
                     session.Save(sessionData);
+
                     transaction.Commit();
 
                     return sessionData;
                 }
-
             }
         }
     }
-
-
 }

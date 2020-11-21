@@ -1,9 +1,5 @@
 ﻿using System.Collections.Generic;
 using CORE.Entities;
-using NHibernate;
-using NHibernate.Cfg;
-using NHibernate.Dialect;
-using NHibernate.Mapping;
 
 namespace CORE.Services
 {
@@ -44,17 +40,13 @@ namespace CORE.Services
             using (var session = _dbSessionService.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
-                {
-                  
-
+                {                
                     var result = session.QueryOver<Stock>()
                        .Where(w => w.UserId == userId)
                        .List<Stock>();
 
                     transaction.Commit();
-
-            
-
+                    
                     return (List<Stock>)result;
                 }
             }

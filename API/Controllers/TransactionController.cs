@@ -23,7 +23,6 @@ namespace API.Controllers
         [HttpPut("buy")]
         public IActionResult WithdrawalTransaction([FromBody] WalletModel walletModel)
         {
-
             try
             {
                 var update = _buyStockService.UpdateWalletPurchase(walletModel.UserId, walletModel.Balance);
@@ -61,7 +60,6 @@ namespace API.Controllers
         [HttpPost("add-stock")]
         public IActionResult AddNewStock([FromBody] StockModel stockModel)
         {
-
             try
             {
                 var record = _buyStockService.CreatePurchaseRecord(stockModel.UserId, stockModel.Company, stockModel.Symbol, stockModel.Quantity);
@@ -112,7 +110,5 @@ namespace API.Controllers
                 UserId = record.UserId
             };
         }
-
     }
-
 }

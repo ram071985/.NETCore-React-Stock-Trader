@@ -55,7 +55,6 @@ namespace API.Controllers
                 return Problem(e.Message, statusCode: 500, title: "Something went wrong");
             }
         }
-
     }
 
     public class UserAuthInputModel

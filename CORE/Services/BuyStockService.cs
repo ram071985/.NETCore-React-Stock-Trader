@@ -1,6 +1,5 @@
 ﻿using System;
 using CORE.Entities;
-using NHibernate.Criterion;
 
 namespace CORE.Services
 {
