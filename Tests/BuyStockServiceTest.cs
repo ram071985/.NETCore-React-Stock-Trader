@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using CORE.Entities;
 using CORE.Services;
 using NHibernate;
@@ -13,6 +14,7 @@ namespace Tests
     {
         private IDbSessionService _dbSessionService;
         private IWalletQueryService _walletQueryService;
+        private IStockQueryService _stockQueryService;
 
         private BuyStockService _sut;
 
@@ -21,8 +23,9 @@ namespace Tests
         {
             _dbSessionService = Substitute.For<IDbSessionService>();
             _walletQueryService = Substitute.For<IWalletQueryService>();
+            _stockQueryService = Substitute.For<IStockQueryService>();
 
-            _sut = new BuyStockService(_dbSessionService, _walletQueryService);
+            _sut = new BuyStockService(_dbSessionService, _walletQueryService, _stockQueryService);
         }
 
         [Test]
@@ -76,6 +79,87 @@ namespace Tests
              });
              
             Assert.Throws(Is.TypeOf<Exception>().And.Message.EqualTo("insufficient balance"), () => _sut.UpdateWalletPurchase(userId, balance));
+        }
+
+        [Test]
+        public void should_add_withdrawal_record_return()
+        {
+            Random rnd = new Random();
+
+            var userId = rnd.Next();
+
+            var exchange = CredentialRandomUtil.GetRandomString();
+
+            var withdrawal = 800.65m;
+
+            var quantity = 20;
+
+            var session = Substitute.For<ISession>();
+            _dbSessionService.OpenSession().Returns(session);
+
+            _sut.AddWithdrawal(userId, exchange, withdrawal, quantity);
+            
+        }
+
+        [Test]
+        public void should_create_purchase_record_return()
+        {
+            Random rnd = new Random();
+
+            var userId = rnd.Next();
+
+            var company = CredentialRandomUtil.GetRandomString();
+
+            var symbol = CredentialRandomUtil.GetRandomString();
+
+            var quantity = 45;
+
+            var session = Substitute.For<ISession>();
+            _dbSessionService.OpenSession().Returns(session);
+
+            _sut.CreatePurchaseRecord(userId, company, symbol, quantity);
+           
+        }
+
+        [Test]
+        public void should_update_purchase_record_return()
+        {
+            Random rnd = new Random();
+
+            var userId = rnd.Next();
+
+            var company = CredentialRandomUtil.GetRandomString();
+
+            var symbol = CredentialRandomUtil.GetRandomString();
+
+            var quantity = 45;
+
+            var session = Substitute.For<ISession>();
+            _dbSessionService.OpenSession().Returns(session);
+
+            _stockQueryService.QueryStocks(Arg.Any<ISession>(), Arg.Any<int>(), Arg.Any<string>())
+                .Returns(new List<Stock>
+                {
+                    new Stock
+                    {
+                        UserId = userId,
+                        Symbol = symbol,
+                        Quantity = 13
+                    }
+                });
+
+            _sut.CreatePurchaseRecord(userId, company, symbol, quantity);
+        }
+
+        static class CredentialRandomUtil
+        {
+
+            public static string GetRandomString()
+            {
+                string path = Path.GetRandomFileName();
+                path = path.Replace(".", "");
+                return path;
+            }
         }
     }
 }

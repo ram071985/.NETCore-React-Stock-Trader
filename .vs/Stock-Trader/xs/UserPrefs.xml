@@ -6,11 +6,11 @@
       <File FileName="API/Controllers/RegisterController.cs" />
       <File FileName="CORE/Services/CreateNewUserService.cs" />
       <File FileName="CORE/Entities/User.cs" />
-      <File FileName="API/Program.cs" />
+      <File FileName="API/Program.cs" Line="16" Column="1" />
       <File FileName="API/Startup.cs" />
       <File FileName="CORE/Services/CreateWalletService.cs" />
-      <File FileName="CORE/Entities/Wallet.cs" />
-      <File FileName="Tests/BuyStockServiceTest.cs" Line="73" Column="42" />
+      <File FileName="CORE/Entities/Wallet.cs" Line="1" Column="1" />
+      <File FileName="CORE/Services/StockQueryService.cs" Line="6" Column="1" />
       <File FileName="API/TransactionModel.cs" Line="6" Column="1" NotebookId="1" />
       <File FileName="CORE/Entities/Transaction.cs" NotebookId="1" />
       <File FileName="CORE/Mapping/Transaction.hbm.xml" NotebookId="1" />
@@ -20,11 +20,12 @@
       <File FileName="CORE/Services/GetUserInfoService.cs" NotebookId="1" />
       <File FileName="CORE/Services/DbSessionService.cs" NotebookId="1" />
       <File FileName="CORE/Services/CreateSessionService.cs" NotebookId="1" />
-      <File FileName="CORE/Services/BuyStockService.cs" NotebookId="1" />
+      <File FileName="CORE/Services/BuyStockService.cs" Line="95" Column="42" NotebookId="1" />
       <File FileName="CORE/Services/AuthorizeUserService.cs" NotebookId="1" />
       <File FileName="API/Controllers/AuthorzationController.cs" NotebookId="1" />
       <File FileName="API/Controllers/TransactionController.cs" NotebookId="1" />
-      <File FileName="CORE/Services/WalletQueryService.cs" NotebookId="1" />
+      <File FileName="CORE/Services/WalletQueryService.cs" Line="25" Column="1" NotebookId="1" />
+      <File FileName="Tests/BuyStockServiceTest.cs" Line="138" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -34,6 +35,7 @@
               <Node name="Controllers" expanded="True" />
             </Node>
             <Node name="CORE" expanded="True">
+              <Node name="Entities" expanded="True" />
               <Node name="Services" expanded="True" />
             </Node>
             <Node name="Tests" expanded="True">
@@ -41,6 +43,11 @@
               <Node name="BuyStockServiceTest.cs" selected="True" />
             </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Stock-Trader" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
