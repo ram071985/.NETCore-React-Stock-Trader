@@ -61,8 +61,6 @@ class LogIn extends Component {
         });
       })
       .catch((err) => {
-        console.log(err.response.data.detail === "empty username");
-
         if (err.response.data.detail === "empty username and password") {
           this.setState({
             logInErrorMessage: "Please enter a username and password.",
@@ -83,7 +81,7 @@ class LogIn extends Component {
             setShow: true,
           });
         }
-        console.log(this.state.logInErrorMessage);
+
         if (err.response.data.detail === "false username") {
           this.setState({
             logInErrorMessage:

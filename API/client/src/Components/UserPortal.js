@@ -50,7 +50,6 @@ class UserPortal extends Component {
       axios
         .get("/api/stocks/exchanges/" + this.state.symbol, {})
         .then((res) => {
-          console.log(res.data.latestPrice);
           this.setState({
             exchange: res.data,
             company: res.data.companyName,
@@ -85,7 +84,6 @@ class UserPortal extends Component {
     });
     let returnInterval;
     const { name, value } = event.target;
-    console.log(value);
     this.setState({
       [name]: value,
       errorMessage: "",

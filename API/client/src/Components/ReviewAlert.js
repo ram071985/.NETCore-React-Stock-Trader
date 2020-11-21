@@ -8,7 +8,6 @@ class ReviewAlert extends Component {
   }
 
   render() {
-      console.log(this.props.isClose)
     return (
       <div className="d-block container review-container">
         <Alert

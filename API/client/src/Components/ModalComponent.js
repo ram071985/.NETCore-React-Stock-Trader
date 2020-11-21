@@ -42,7 +42,6 @@ class ModalComponent extends Component {
   };
 
   render() {
-    console.log(this.state.setShow);
     if (this.props.isConfirm) {
       return (
         <Redirect

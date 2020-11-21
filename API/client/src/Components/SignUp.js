@@ -67,7 +67,6 @@ class SignUp extends Component {
             setShow: true,
           });
         }
-        console.log(this.state.logInErrorMessage)
         if (err.response.data.detail === "empty username") {
           this.setState({
             logInErrorMessage: "Please choose a username.",

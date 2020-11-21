@@ -23,7 +23,6 @@ class LandingPage extends Component {
   }
 
   handleClick = (e) => {
-    console.log(e.target.textContent);
     if(e.target.textContent === "Start an account")
     this.setState({
       isSignUp: true,

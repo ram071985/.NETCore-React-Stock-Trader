@@ -10,16 +10,10 @@ class ConfirmOrder extends Component {
   constructor() {
     super();
     this.state = {
-      symbol: "",
-      quantity: 0,
-      price: 0,
-      exchange: [],
-      company: "",
       errorMessage: "",
       cancel: false,
       setShow: false,
       isError: false,
-      loading: false,
       redirect: false
     };
   }
@@ -66,7 +60,6 @@ class ConfirmOrder extends Component {
         })
 
         .catch((err) => {
-          console.log(err.response.data.detail);
           if (err.response.data.detail === "insufficient balance") {
             this.setState({
               errorMessage:
@@ -75,7 +68,6 @@ class ConfirmOrder extends Component {
             });
           }
         });
-      console.log(this.state.errorMessage);
     }
     if (
       this.props.location.state.action === "Sell" ||
@@ -107,7 +99,6 @@ class ConfirmOrder extends Component {
         exchange: this.props.location.state.symbol,
       })
       .then(res => {
-        console.log(res)
         if (res.status === 200) {
           this.setState({
             loading: false,
@@ -203,7 +194,6 @@ class ConfirmOrder extends Component {
       );
     }
     const { loading } = this.state;
-    console.log(this.state.isError)
     return (
       <div>
         <h2 className="mt-4 ml-5">{}</h2>
