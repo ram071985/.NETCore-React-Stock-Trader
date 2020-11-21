@@ -414,7 +414,7 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.symbol);
+    console.log(this.state.stocks);
     const { loading } = this.state;
 
     return (

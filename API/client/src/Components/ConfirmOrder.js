@@ -134,7 +134,6 @@ class ConfirmOrder extends Component {
         exchange: this.props.location.state.symbol,
       })
       .then((res) => {
-        this.addStockRecord();
         if (res.status === 200) {
           this.setState({
             loading: false,
@@ -143,6 +142,7 @@ class ConfirmOrder extends Component {
         }
       })
       .catch((err) => {});
+      this.addStockRecord();
   };
 
   addStockRecord = () => {
@@ -203,6 +203,7 @@ class ConfirmOrder extends Component {
       );
     }
     const { loading } = this.state;
+    console.log(this.state.isError)
     return (
       <div>
         <h2 className="mt-4 ml-5">{}</h2>
