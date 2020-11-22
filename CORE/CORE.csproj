@@ -15,22 +15,27 @@
     <PackageReference Include="Json.Net" Version="1.0.23" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
-    <Folder Include="Services\" />
-    <Folder Include="Mapping\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Models\User.hbm.xml" />
     <None Remove="Models\session.hbm.xml" />
     <None Remove="Mapping\Wallet.xml" />
     <None Remove="Mapping\Transaction.hbm.xml" />
     <None Remove="Mapping\Stock.hbm.xml" />
+    <None Remove="Mapping\User.hbm.xml" />
+    <None Remove="Mapping\Transaction.hbm.xml" />
+    <None Remove="Mapping\Wallet.hbm.xml" />
+    <None Remove="Mapping\Session.hbm.xml" />
+    <None Remove="Mapping\Stock.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Mapping\User.hbm.xml" />
+    <EmbeddedResource Remove="Mapping\Session.hbm.xml" />
+    <EmbeddedResource Remove="Mapping\Wallet.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mapping\User.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Session.hbm.xml" />
-    <EmbeddedResource Include="Mapping\Wallet.hbm.xml" />
     <EmbeddedResource Include="Mapping\Transaction.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Wallet.hbm.xml" />
+    <EmbeddedResource Include="Mapping\Session.hbm.xml" />
     <EmbeddedResource Include="Mapping\Stock.hbm.xml" />
   </ItemGroup>
 </Project>
