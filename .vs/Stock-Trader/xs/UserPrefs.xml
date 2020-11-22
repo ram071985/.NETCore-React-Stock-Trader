@@ -1,31 +1,18 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/DbSessionService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/API.csproj">
     <Files>
-      <File FileName="API/API.csproj" Line="10" Column="29" />
+      <File FileName="API/API.csproj" Line="10" Column="1" />
       <File FileName="API/Startup.cs" />
       <File FileName="API/client/package.json" />
       <File FileName="API/appsettings.json" />
       <File FileName="API/appsettings.Development.json" />
-      <File FileName="CORE/Services/DbSessionService.cs" Line="25" Column="46" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Trader" expanded="True">
-            <Node name="API" expanded="True">
-              <Node name="client" expanded="True" />
-            </Node>
-            <Node name="CORE" expanded="True">
-              <Node name="Services" expanded="True">
-                <Node name="DbSessionService.cs" selected="True" />
-              </Node>
-            </Node>
+            <Node name="Tests" selected="True" />
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="Stock-Trader" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
