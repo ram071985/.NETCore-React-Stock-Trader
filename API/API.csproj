@@ -7,10 +7,37 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.8" />
+    <PackageReference Include="NHibernate" Version="5.3.3" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.8" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="client\build\robots.txt" />
+    <None Remove="client\build\favicon.ico" />
+    <None Remove="client\build\index.html" />
+    <None Remove="client\build\android-chrome-192x192.png" />
+    <None Remove="client\build\android-chrome-512x512.png" />
+    <None Remove="client\build\service-worker.js" />
+    <None Remove="client\build\static\css\2.d9ad5f5c.chunk.css" />
+    <None Remove="client\build\static\css\2.d9ad5f5c.chunk.css.map" />
+    <None Remove="client\build\static\media\splashImage.a735ad8c.jpeg" />
+    <None Remove="client\build\static\js\runtime-main.09b85ec0.js.map" />
+    <None Remove="client\build\static\js\runtime-main.09b85ec0.js" />
+    <None Remove="client\build\static\js\2.c3154e59.chunk.js.LICENSE.txt" />
+    <None Remove="client\build\static\js\2.c3154e59.chunk.js.map" />
+    <None Remove="client\build\static\js\2.c3154e59.chunk.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="client\build\asset-manifest.json" />
+    <Content Remove="client\build\manifest.json" />
+    <Content Remove="client\build\manifest.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="client\build\**">
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
-
 </Project>

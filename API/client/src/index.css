@@ -1,8 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+
+#root {
+  height: 100%;
+}
 html,
 body {
   height: 100%;
   margin: 0px;
   font-size: 16px;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.landing-row {
+  margin: 0;
+  background: linear-gradient(to top, #000000 0%, #072002 50%) !important;
+}
+
+.landing-row:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 900px;
+  background: rgb(76, 187, 48);
+  transform: skew(-100deg);
+  transform-origin: bottom;
+}
+
+nav.navbar {
+  background-color: rgb(76, 187, 48) !important;
+  font-family: "Roboto", sans-serif;
 }
 
 .container {
@@ -12,9 +40,357 @@ body {
 }
 
 .left-col {
- background-color: white;
+  margin-top: 15%;
 }
 
 .right-col {
-  background-color: black !important;
- }
+  margin-top: 15%;
+}
+
+/* containers */
+
+.main-container {
+  height: 100%;
+  background: linear-gradient(to bottom, #000000 20%, #030e01 50%) !important;
+  padding: 15px;
+}
+
+.user-container {
+  border-radius: 0.4rem;
+  border: solid 1px #1aac3c;
+  background: rgb(15, 15, 15);
+  height: 28%;
+  width: 90% !important;
+  padding: 10px 8px 20px !important;
+  margin: 20px 0px 0px 40px !important;
+}
+
+.holdings-container {
+  margin: 15px 0px 0px 40px !important;
+  width: 90% !important;
+  border-radius: 0.4rem;
+  background: rgb(15, 15, 15);
+  padding: 10px 8px 20px !important;
+  border: solid 1px #1aac3c;
+}
+
+.browse-container {
+  margin: 40px 0px 0px 40px !important;
+  width: 40% !important;
+  height: 35%;
+  border-radius: 0.4rem;
+  background: rgb(15, 15, 15);
+  padding: 10px;
+}
+
+div.review-container {
+  height: 15% !important;
+}
+
+img.splash-image {
+  width: 500px;
+}
+
+.welcome-text {
+  opacity: 0.9;
+  color: white;
+  font-size: 3rem;
+}
+
+.topia-color {
+  color: rgb(76, 187, 48);
+}
+
+.description-text {
+  padding-right: 100px;
+  color: white;
+}
+
+.second-description-text {
+  color: rgb(76, 187, 48);
+  font-size: 2rem;
+}
+
+.log-in-button-text {
+  color: rgb(228, 228, 228);
+  margin-right: 4px;
+}
+
+.account-button-text {
+  color: rgb(228, 228, 228);
+}
+
+.user-icon {
+  margin: 0px 8px 2px 0px;
+}
+
+.log-in-text {
+  font-family: "Roboto", sans-serif;
+}
+
+.input-col {
+}
+
+.log-in-header {
+  margin-top: 60px;
+}
+
+.key-icon {
+  height: 45px;
+  width: 45px;
+  color: rgb(76, 187, 48);
+}
+
+.form-control.username-input {
+  border-radius: 0rem;
+}
+
+label.label-text {
+}
+
+button {
+}
+
+button.log-in-button {
+  border-radius: 0rem;
+  background-color: rgb(76, 187, 48);
+  border-color: grey;
+  border: 1px solid transparent;
+  padding: 2px 2px;
+}
+
+button.log-in-button:hover {
+  background-color: #1aac3c;
+  border: 1px solid transparent;
+}
+
+.landing-page-buttons {
+  margin-left: 20px !important;
+}
+
+.heading-text {
+  margin-left: 15px;
+  color: rgb(196, 196, 196);
+}
+
+.titles-text {
+  color: rgb(156, 156, 156);
+  margin-left: 0 !important;
+}
+
+.symbols-text {
+  color: rgb(156, 156, 156);
+}
+
+.name-text {
+  color: rgb(233, 233, 233);
+  width: 75px;
+  margin: 0 !important;
+}
+
+#holdings {
+  margin-left: 50%;
+}
+
+#holding-text {
+  margin-left: 33%;
+}
+
+/* Columns */
+
+.left-col {
+}
+
+.company-text {
+  color: white;
+  margin-left: 15px;
+}
+
+.share-text {
+  color: rgb(233, 233, 233);
+  margin-left: 15px;
+}
+
+.buy-sell-button {
+  padding: 4px 12px !important;
+  margin-left: 8px;
+  font-size: 0.9rem !important;
+}
+
+.sell-button {
+  padding: 4px 12px !important;
+  margin-left: 15px;
+  font-size: 0.9rem !important;
+}
+
+.buy-button {
+  padding: 4px 12px !important;
+  margin-left: 8px;
+  font-size: 0.9rem !important;
+}
+
+.log-out-button {
+  padding: 4px 12px !important;
+  font-size: 0.9rem !important;
+}
+
+/* modal elements */
+
+.modal-content {
+  height: 455px;
+  width: 600px !important;
+  margin-top: 300px !important;
+  border-radius: 0.4rem;
+}
+
+.modal-title {
+  color: black;
+}
+
+.modal-body {
+  height: 100%;
+  padding: 0 !important;
+}
+
+.modal-content.button {
+}
+
+.modal-total-text {
+  margin-left: 25% !important;
+}
+
+.share-number-text {
+  margin: 70px 10px 0px 20px !important;
+}
+
+.share-input {
+  width: 50% !important;
+}
+
+svg.plus-square {
+  display: block !important;
+}
+
+svg.minus-square {
+  display: block !important;
+}
+
+.div-inline {
+  display: inline-block;
+}
+
+.transaction-col {
+  width: 20% !important;
+}
+
+hr {
+  width: 500px;
+}
+
+.modal-input {
+  border-radius: 0rem !important;
+}
+
+.review-button {
+  border-radius: 0 !important;
+  margin-top: 10px;
+  width: 30%;
+}
+
+.cancel-button {
+  width: 30%;
+  border-radius: 0 !important;
+  margin-top: 25px;
+}
+
+.company-text {
+  position: relative;
+  right: 10px;
+  color: #1aac3c;
+  padding: 10px;
+}
+
+.result-text {
+  position: relative;
+  bottom: 28px;
+  color: #1aac3c;
+}
+
+.confirm-span {
+  margin-left: 10px;
+}
+
+.confirm-button {
+  width: 30%;
+  border-radius: 0 !important;
+  margin-left: 25% !important;
+  margin-right: 10px;
+}
+
+.shares-current {
+  color: rgb(156, 156, 156);
+  margin-left: 15px;
+}
+
+.current-label {
+  margin-top: 48px;
+  margin-bottom: 0;
+  display: block;
+}
+
+.stocks-select {
+  height: 38px;
+  border-radius: 0;
+  padding: 5px;
+}
+
+.special-characters {
+  color: #1aac3c;
+}
+
+.search-icon {
+  position: relative;
+  left: 180px;
+  bottom: 32px;
+  color: #1aac3c;
+}
+
+.x-icon {
+  position: relative;
+  left: 180px;
+  bottom: 32px;
+  color: #a51e0d;
+}
+
+.search-form {
+  height: 100px;
+}
+
+.alert {
+margin: 15px 234px;
+}
+
+.review-alert {
+  margin: 0px 25px;
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+button.close {
+  padding: 6px 20px !important;
+}
+
+.css-1sxbfa7 {
+  margin-top: 40px;
+  margin-left: 50%;
+  padding: 0;
+}
+
+.authenticate-spinner {
+  margin-top: 10px;
+  margin-left: 45%;
+}
+
+.user-row {
+  width: 99%;
+}
