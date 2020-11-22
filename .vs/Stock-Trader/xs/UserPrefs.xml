@@ -12,11 +12,13 @@
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Trader" expanded="True">
-            <Node name="API" expanded="True" selected="True">
+            <Node name="API" expanded="True">
               <Node name="client" expanded="True" />
             </Node>
             <Node name="CORE" expanded="True">
-              <Node name="Services" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="DbSessionService.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>

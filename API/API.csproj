@@ -22,6 +22,11 @@
     <None Remove="client\build\static\css\2.d9ad5f5c.chunk.css" />
     <None Remove="client\build\static\css\2.d9ad5f5c.chunk.css.map" />
     <None Remove="client\build\static\media\splashImage.a735ad8c.jpeg" />
+    <None Remove="client\build\static\js\runtime-main.09b85ec0.js.map" />
+    <None Remove="client\build\static\js\runtime-main.09b85ec0.js" />
+    <None Remove="client\build\static\js\2.c3154e59.chunk.js.LICENSE.txt" />
+    <None Remove="client\build\static\js\2.c3154e59.chunk.js.map" />
+    <None Remove="client\build\static\js\2.c3154e59.chunk.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="client\build\asset-manifest.json" />
