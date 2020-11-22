@@ -1,18 +1,39 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/API.csproj">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/DbSessionService.cs">
     <Files>
       <File FileName="API/API.csproj" Line="10" Column="1" />
       <File FileName="API/Startup.cs" />
       <File FileName="API/client/package.json" />
       <File FileName="API/appsettings.json" />
-      <File FileName="API/appsettings.Development.json" />
+      <File FileName="API/appsettings.Development.json" Line="1" Column="1" />
+      <File FileName="Tests/BuyStockServiceTest.cs" Line="1" Column="1" />
+      <File FileName="API/client/src/Components/LogIn.js" Line="169" Column="31" />
+      <File FileName="CORE/Services/DbSessionService.cs" Line="29" Column="60" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Trader" expanded="True">
-            <Node name="Tests" selected="True" />
+            <Node name="API" expanded="True">
+              <Node name="client" expanded="True">
+                <Node name="src" expanded="True">
+                  <Node name="Components" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+            <Node name="CORE" expanded="True">
+              <Node name="Services" expanded="True">
+                <Node name="DbSessionService.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="Tests" expanded="True" />
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Stock-Trader" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

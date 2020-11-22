@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="client\build\**">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <PropertyGroup>
