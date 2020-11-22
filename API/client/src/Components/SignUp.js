@@ -4,6 +4,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import AlertComponent from "./AlertComponent";
+import Spinner from "react-bootstrap/Spinner";
 
 class SignUp extends Component {
   constructor() {
@@ -17,6 +18,7 @@ class SignUp extends Component {
       logInErrorMessage: "",
       toUserPortal: false,
       setShow: false,
+      loading: false,
     };
   }
 
@@ -48,35 +50,44 @@ class SignUp extends Component {
   };
 
   postNewUser = () => {
+    this.setState({
+      loading: true,
+    });
     axios
       .post("/api/register", {
         username: this.state.newUsername,
         password: this.state.newPassword,
       })
       .then((res) => {
-        localStorage.setItem("session_id", res.data.id);
-        localStorage.setItem("user_id", res.data.userId);
-        this.setState({
-          toUserPortal: true,
-        });
+        if (res.status === 200) {
+          localStorage.setItem("session_id", res.data.id);
+          localStorage.setItem("user_id", res.data.userId);
+          this.setState({
+            toUserPortal: true,
+            loading: false,
+          });
+        }
       })
       .catch((err) => {
         if (err.response.data.detail === "empty username and password") {
           this.setState({
             logInErrorMessage: "Please enter a username and password.",
             setShow: true,
+            loading: false
           });
         }
         if (err.response.data.detail === "empty username") {
           this.setState({
             logInErrorMessage: "Please choose a username.",
             setShow: true,
+            loading: false
           });
         }
         if (err.response.data.detail === "empty password") {
           this.setState({
             logInErrorMessage: "Please choose a password.",
             setShow: true,
+            loading: false
           });
         }
         if (err.response.data.detail === "redundant username") {
@@ -84,6 +95,7 @@ class SignUp extends Component {
             logInErrorMessage:
               "The username you chose is already taken.  Please try another entry.",
             setShow: true,
+            loading: false
           });
         }
       });
@@ -104,6 +116,7 @@ class SignUp extends Component {
   render() {
     if (this.state.toUserPortal === true) return <Redirect to="/" />;
 
+    const { loading } = this.state;
     return (
       <div className="container-fluid log-in-container">
         <header className="text-center log-in-header">
@@ -144,6 +157,18 @@ class SignUp extends Component {
                 Start trading now!
               </button>
             </Form>
+            <div className="container-fluid">
+              {loading ? (
+                <div>
+                  <p className="mt-5 text-center">
+                    Creating account... Redirecting to User Portal.
+                  </p>{" "}
+                  <Spinner className="authenticate-spinner" animation="border" variant="secondary" />
+                </div>
+              ) : (
+                <div></div>
+              )}
+            </div>
           </div>
           {this.renderAlert()}
         </div>

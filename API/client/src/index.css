@@ -389,3 +389,9 @@ button.close {
   margin-left: 50%;
   padding: 0;
 }
+
+
+.authenticate-spinner {
+  margin-top: 10px;
+  margin-left: 45%;
+}
