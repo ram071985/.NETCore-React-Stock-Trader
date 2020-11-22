@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/appsettings.Development.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CORE/Services/DbSessionService.cs">
     <Files>
       <File FileName="API/API.csproj" Line="10" Column="29" />
       <File FileName="API/Startup.cs" />
-      <File FileName="API/client/package.json" Line="22" Column="34" />
-      <File FileName="API/appsettings.json" Line="1" Column="1" />
-      <File FileName="API/appsettings.Development.json" Line="18" Column="2" />
+      <File FileName="API/client/package.json" />
+      <File FileName="API/appsettings.json" />
+      <File FileName="API/appsettings.Development.json" Line="19" Column="1" />
+      <File FileName="CORE/Services/DbSessionService.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,8 +14,10 @@
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
               <Node name="client" expanded="True" />
-              <Node name="appsettings.json" expanded="True">
-                <Node name="appsettings.Development.json" selected="True" />
+            </Node>
+            <Node name="CORE" expanded="True">
+              <Node name="Services" expanded="True">
+                <Node name="DbSessionService.cs" selected="True" />
               </Node>
             </Node>
           </Node>
