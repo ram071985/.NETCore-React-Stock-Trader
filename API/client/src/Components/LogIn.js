@@ -3,6 +3,7 @@ import { Key } from "react-feather";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
+import Spinner from "react-bootstrap/Spinner";
 
 class LogIn extends Component {
   constructor() {
@@ -16,6 +17,7 @@ class LogIn extends Component {
       logInErrorMessage: "",
       toUserPortal: false,
       setShow: false,
+      loading: false,
     };
   }
 
@@ -48,6 +50,9 @@ class LogIn extends Component {
   };
 
   logInUser = () => {
+    this.setState({
+      loading: true,
+    });
     axios
       .post("/api/authorize", {
         username: this.state.existingUsername,
@@ -58,6 +63,7 @@ class LogIn extends Component {
         localStorage.setItem("user_id", res.data.userId);
         this.setState({
           toUserPortal: true,
+          loading: false,
         });
       })
       .catch((err) => {
@@ -65,6 +71,7 @@ class LogIn extends Component {
           this.setState({
             logInErrorMessage: "Please enter a username and password.",
             setShow: true,
+            loading: false,
           });
         }
 
@@ -72,6 +79,7 @@ class LogIn extends Component {
           this.setState({
             logInErrorMessage: "Please enter a username.",
             setShow: true,
+            loading: false,
           });
         }
 
@@ -79,6 +87,7 @@ class LogIn extends Component {
           this.setState({
             logInErrorMessage: "Please enter a password.",
             setShow: true,
+            loading: false,
           });
         }
 
@@ -87,6 +96,7 @@ class LogIn extends Component {
             logInErrorMessage:
               "The username you chose is already taken. Please try another entry.",
             setShow: true,
+            loading: false,
           });
         }
 
@@ -95,12 +105,14 @@ class LogIn extends Component {
             logInErrorMessage:
               "This username does not exist. Please enter an existing username.",
             setShow: true,
+            loading: false,
           });
         }
         if (err.response.data.detail === "wrong credentials") {
           this.setState({
             logInErrorMessage: "Username or password combination is invalid.",
             setShow: true,
+            loading: false,
           });
         }
       });
@@ -127,6 +139,7 @@ class LogIn extends Component {
   render() {
     if (this.state.toUserPortal === true) return <Redirect to="/" />;
 
+    const { loading } = this.state;
     return (
       <div className="container-fluid log-in-container">
         <header className="text-center log-in-header">
@@ -167,6 +180,22 @@ class LogIn extends Component {
                 Log in
               </button>
             </form>
+            <div className="container-fluid">
+              {loading ? (
+                <div>
+                  <p className="mt-5 text-center">
+                    Logging in... Redirecting to User Portal.
+                  </p>{" "}
+                  <Spinner
+                    className="authenticate-spinner"
+                    animation="border"
+                    variant="secondary"
+                  />
+                </div>
+              ) : (
+                <div></div>
+              )}
+            </div>
           </div>
           {this.renderAlert()}
         </div>

@@ -58,15 +58,13 @@ class SignUp extends Component {
         username: this.state.newUsername,
         password: this.state.newPassword,
       })
-      .then((res) => {
-        if (res.status === 200) {
+      .then((res) => {     
           localStorage.setItem("session_id", res.data.id);
           localStorage.setItem("user_id", res.data.userId);
           this.setState({
             toUserPortal: true,
             loading: false,
           });
-        }
       })
       .catch((err) => {
         if (err.response.data.detail === "empty username and password") {
