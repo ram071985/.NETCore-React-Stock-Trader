@@ -61,7 +61,7 @@ nav.navbar {
   background: rgb(15, 15, 15);
   height: 28%;
   width: 90% !important;
-  padding: 10px;
+  padding: 10px 8px 20px !important;
   margin: 20px 0px 0px 40px !important;
 }
 
@@ -70,7 +70,7 @@ nav.navbar {
   width: 90% !important;
   border-radius: 0.4rem;
   background: rgb(15, 15, 15);
-  padding: 10px 0px 20px !important;
+  padding: 10px 8px 20px !important;
   border: solid 1px #1aac3c;
 }
 
@@ -390,8 +390,11 @@ button.close {
   padding: 0;
 }
 
-
 .authenticate-spinner {
   margin-top: 10px;
   margin-left: 45%;
+}
+
+.user-row {
+  width: 99%;
 }

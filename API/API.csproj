@@ -14,13 +14,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="client\build\robots.txt" />
+    <None Remove="client\build\favicon.ico" />
+    <None Remove="client\build\index.html" />
+    <None Remove="client\build\android-chrome-192x192.png" />
+    <None Remove="client\build\android-chrome-512x512.png" />
+    <None Remove="client\build\service-worker.js" />
+    <None Remove="client\build\static\css\2.d9ad5f5c.chunk.css" />
+    <None Remove="client\build\static\css\2.d9ad5f5c.chunk.css.map" />
+    <None Remove="client\build\static\media\splashImage.a735ad8c.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="client\build\asset-manifest.json" />
+    <Content Remove="client\build\manifest.json" />
+    <Content Remove="client\build\manifest.json" />
   </ItemGroup>
   <ItemGroup>
     <None Update="client\build\**">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <PropertyGroup>

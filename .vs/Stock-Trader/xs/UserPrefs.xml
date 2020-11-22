@@ -5,20 +5,18 @@
       <File FileName="API/Startup.cs" />
       <File FileName="API/client/package.json" />
       <File FileName="API/appsettings.json" />
-      <File FileName="API/appsettings.Development.json" Line="19" Column="1" />
-      <File FileName="CORE/Services/DbSessionService.cs" Line="1" Column="1" />
+      <File FileName="API/appsettings.Development.json" />
+      <File FileName="CORE/Services/DbSessionService.cs" Line="25" Column="46" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Trader" expanded="True">
-            <Node name="API" expanded="True">
+            <Node name="API" expanded="True" selected="True">
               <Node name="client" expanded="True" />
             </Node>
             <Node name="CORE" expanded="True">
-              <Node name="Services" expanded="True">
-                <Node name="DbSessionService.cs" selected="True" />
-              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>
