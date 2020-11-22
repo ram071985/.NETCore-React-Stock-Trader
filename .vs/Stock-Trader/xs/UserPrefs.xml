@@ -1,22 +1,22 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Controllers/UpdatePortalController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/appsettings.Development.json">
     <Files>
-      <File FileName="API/Controllers/AuthorzationController.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/RegisterController.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/StocksController.cs" Line="3" Column="23" />
-      <File FileName="API/Controllers/TransactionController.cs" Line="1" Column="1" />
-      <File FileName="API/Controllers/UpdatePortalController.cs" Line="3" Column="34" />
+      <File FileName="API/API.csproj" Line="10" Column="29" />
+      <File FileName="API/Startup.cs" />
+      <File FileName="API/client/package.json" Line="22" Column="34" />
+      <File FileName="API/appsettings.json" Line="1" Column="1" />
+      <File FileName="API/appsettings.Development.json" Line="18" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Stock-Trader" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="AuthorzationController.cs" selected="True" />
+              <Node name="client" expanded="True" />
+              <Node name="appsettings.json" expanded="True">
+                <Node name="appsettings.Development.json" selected="True" />
               </Node>
             </Node>
-            <Node name="CORE" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -31,9 +31,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/reid/Desktop/Projects/Stock-Trader/CORE/Services/AuthorizeUserService.cs" relfile="CORE/Services/AuthorizeUserService.cs" line="28" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CORE.Services;
 using System.Collections.Generic;
-using CORE.Entities;
-using System.Net.Http;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
 

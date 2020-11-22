@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using CORE.Services;
-using System.Threading.Tasks;
-using RestSharp;
 using System.Net.Http;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Extensions.Configuration;
 
 namespace API.Controllers
