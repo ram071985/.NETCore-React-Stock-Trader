@@ -1,5 +1,8 @@
 ﻿<Properties StartupConfiguration="{B3D4C55E-3AC6-4DB7-9A43-323FA3518AD5}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="API/client/src/index.css">
+    <Files>
+      <File FileName="API/client/src/index.css" Line="44" Column="2" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -7,15 +10,8 @@
             <Node name="API" expanded="True">
               <Node name="client" expanded="True">
                 <Node name="src" expanded="True">
-                  <Node name="Components" expanded="True" />
+                  <Node name="index.css" selected="True" />
                 </Node>
-              </Node>
-              <Node name="appsettings.json" expanded="True" />
-            </Node>
-            <Node name="CORE" expanded="True">
-              <Node name="Entities" expanded="True" />
-              <Node name="Mapping" expanded="True">
-                <Node name="Stock.hbm.xml" selected="True" />
               </Node>
             </Node>
             <Node name="Tests" expanded="True" />
