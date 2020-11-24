@@ -86,6 +86,10 @@ div.review-container {
   height: 15% !important;
 }
 
+.flex-column {
+  padding: 0 !important;
+}
+
 img.splash-image {
   width: 500px;
 }
