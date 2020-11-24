@@ -87,7 +87,7 @@ div.review-container {
 }
 
 .landing-div {
-  padding: 0px;
+  padding: 0px !important;
 }
 
 img.splash-image {
