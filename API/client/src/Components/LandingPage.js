@@ -55,7 +55,7 @@ class LandingPage extends Component {
 
     return (
       <div>
-        <div className="container-fluid min-vh-100 d-flex flex-column">
+        <div className="container-fluid min-vh-100 d-flex flex-column landing-div">
           <div className="row flex-grow-1 landing-row">
             <div className="col-lg d-block mx-auto left-col">
               <h1 className="text-left welcome-text">
