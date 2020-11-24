@@ -8,7 +8,7 @@ This web app is a fun and easy way to practice trading stocks from live companie
 
 Tradetopia uses React.js for client-side operations and a back-end written in C# on the .NET Core framework. Javascript and C# together are a wonderful match because of .NET Core's integration with React and it's comfortable dev environment. All user information is saved to a PostgreSQL database that holds account balances, session, transactions and stock data. I use the ORM NHibernate to map the database queries. It helps save time and code when using an ORM as an alternative to vanilla SQL. 
 
-![](tradetopia.png)
+![](API/client/src/images/tradetopia.png)
 
 See my deployed version on Azure - [Tradetopia](https://investopia.azurewebsites.net)
 
