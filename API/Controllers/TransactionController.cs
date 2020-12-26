@@ -22,59 +22,38 @@ namespace API.Controllers
         }
 
         [HttpPut("buy")]
-        public IActionResult WithdrawalTransaction([FromBody] WalletModel walletModel)
+        public WalletModel WithdrawalTransaction([FromBody] WalletModel walletModel)
         {
-            try
-            {
-                var update = _buyStockService.UpdateWalletPurchase(walletModel.UserId, walletModel.Balance);
+                var wallet = _buyStockService.UpdateWalletPurchase(walletModel.UserId, walletModel.Balance);
 
-                return Ok(new WalletModel
+                return new WalletModel
                 {
-                    UserId = update.UserId,
-                    Balance = update.Balance
-                });
-            }
-            catch (Exception e)
-            {
-                return Problem(e.Message, statusCode: 500, title: "Something went wrong");
-            }
+                    UserId = wallet.UserId,
+                    Balance = wallet.Balance
+                };     
         }
 
         [HttpPost("buy")]
-        public IActionResult AddTransactionRecord([FromBody] TransactionModel transactionModel)
-        {
-            try
-            {
+        public TransactionModel AddTransactionRecord([FromBody] TransactionModel transactionModel)
+        {           
                 var transaction = _buyStockService.AddWithdrawal(transactionModel.UserId, transactionModel.Exchange, transactionModel.Withdrawal, transactionModel.Quantity);
 
-                return Ok(new TransactionModel
+                return new TransactionModel
                 {
                     Withdrawal = transaction.Withdrawal
-                });
-            }
-            catch(Exception e)
-            {
-                return Problem(e.Message, statusCode: 500, title: "Something went wrong");
-            }
+                };
+        
         }
 
         [HttpPost("add-stock")]
-        public IActionResult AddNewStock([FromBody] StockModel stockModel)
-        {
-            try
-            {
+        public StockModel AddNewStock([FromBody] StockModel stockModel)
+        {          
                 var record = _buyStockService.CreatePurchaseRecord(stockModel.UserId, stockModel.Company, stockModel.Symbol, stockModel.Quantity);
 
-                return Ok(new StockModel
+                return new StockModel
                 {
                     UserId = record.UserId
-                });
-            }
-
-            catch(Exception e)
-            {
-                return Problem(e.Message, statusCode: 500, title: "Something went wrong");
-            }
+                };           
         }
 
         [HttpPut("sell")]

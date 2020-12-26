@@ -22,10 +22,8 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public IActionResult AuthorizeUser([FromBody] UserAuthInputModel userAuthInputModel)
+        public SessionModel AuthorizeUser([FromBody] UserAuthInputModel userAuthInputModel)
         {
-            try
-            {
                 var user = _authorizeUserService.AuthorizeUser(
                     userAuthInputModel.Username,
                     userAuthInputModel.Password
@@ -39,22 +37,15 @@ namespace API.Controllers
 
                 if (getUserId == null)
                 {
-                    var wallet = _createWalletService.InsertFirstDeposit(user.Id, user.Username
-
-                      );
+                    var wallet = _createWalletService.InsertFirstDeposit(user.Id, user.Username);
                 }
 
-                return Ok(new SessionModel
+                return new SessionModel
                 {
                     Id = session.Id,
                     UserId = session.UserId,
                     CreatedDate = session.CreatedDate
-                });
-            }
-            catch (Exception e)
-            {
-                return Problem(e.Message, statusCode: 500, title: "Something went wrong");
-            }
+                };               
         }
     }
 

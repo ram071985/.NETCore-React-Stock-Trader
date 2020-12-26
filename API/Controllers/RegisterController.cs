@@ -22,10 +22,9 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostNewUser([FromBody] UserInputModel userInputModel)
+        public SessionModel PostNewUser([FromBody] UserInputModel userInputModel)
         {
-            try
-            {
+           
                 var user = _createNewUserService.CreateNewUser(
                     userInputModel.Username,
                     userInputModel.Password
@@ -41,17 +40,12 @@ namespace API.Controllers
                   );
 
 
-                return Ok(new SessionModel
+                return new SessionModel
                 {
                     Id = session.Id,
                     UserId = session.UserId,
                     CreatedDate = session.CreatedDate
-                });
-            }
-            catch (Exception e)
-            {
-                return Problem(e.Message, statusCode: 500, title: "Something went wrong");
-            }
+                };        
         }
     }
 

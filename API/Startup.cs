@@ -1,3 +1,4 @@
+using API.Middleware;
 using CORE.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -42,10 +43,7 @@ namespace API
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-           
-            app.UseExceptionHandler("/error");
-         
+        {         
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -53,6 +51,8 @@ namespace API
             app.UseAuthorization();
 
             app.UseSpaStaticFiles();
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
