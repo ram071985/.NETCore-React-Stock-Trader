@@ -2,6 +2,7 @@
 using CORE.Services;
 using System.Net.Http;
 using Microsoft.Extensions.Configuration;
+using API.Models;
 
 namespace API.Controllers
 {

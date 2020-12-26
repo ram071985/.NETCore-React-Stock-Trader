@@ -3,6 +3,7 @@ using CORE.Services;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
+using API.Models;
 
 namespace API.Controllers
 {

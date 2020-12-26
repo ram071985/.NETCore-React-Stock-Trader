@@ -40,7 +40,7 @@ class UserInfo extends Component {
           </h6>
           <h6
             id="holdings"
-            className="font-weight-normal d-inline-block mb-1 titles-text"
+            className="font-weight-normal d-inline-block mt-1 mb-1 titles-text"
           >
             Holdings:
           </h6>
@@ -64,7 +64,7 @@ class UserInfo extends Component {
         <div className="col-5">
           <h6
             id="wallet"
-            className="font-weight-normal d-inline-block mb-1 titles-text"
+            className="font-weight-normal d-inline-block mt-1 mb-1 titles-text"
           >
             Wallet
           </h6>
