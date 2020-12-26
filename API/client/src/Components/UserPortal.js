@@ -422,7 +422,11 @@ class UserPortal extends Component {
         <div className="container-fluid d-block holdings-container">
           <h4 className="heading-text">Current Holdings</h4>
           <hr style={{ borderTop: "1px solid #1aac3c", width: "100%" }} />
-          {this.state.stocks.map(this.renderHoldings)}
+          {this.state.stocks.length > 0 ? (
+            this.state.stocks.map(this.renderHoldings)
+          ) : (
+            <p className="text-center no-holdings">No holdings yet!</p>
+          )}
         </div>
       </div>
     );

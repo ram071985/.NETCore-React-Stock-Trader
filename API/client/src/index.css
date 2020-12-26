@@ -398,3 +398,7 @@ button.close {
 .user-row {
   width: 99%;
 }
+
+.no-holdings {
+  color: rgb(233, 233, 233);
+}

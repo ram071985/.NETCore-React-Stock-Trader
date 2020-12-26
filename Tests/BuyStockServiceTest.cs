@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using CORE.Entities;
 using CORE.Services;
 using NHibernate;
@@ -30,10 +29,9 @@ namespace Tests
 
         [Test]
         public void should_update_wallet_withdrawal_return()
-        {
-            Random rnd = new Random();
+        {          
 
-            var userId = rnd.Next();
+            var userId = TestData.GenerateRandomInt();
 
             var balance = 100.90m;
 
@@ -58,9 +56,8 @@ namespace Tests
         [Test]
         public void should_throw_exception_when_balance_is_insufficient()
         {
-            Random rnd = new Random();
 
-            var userId = rnd.Next();
+            var userId = TestData.GenerateRandomInt();
 
             var balance = 100.90m;
 
@@ -84,11 +81,10 @@ namespace Tests
         [Test]
         public void should_add_withdrawal_record_return()
         {
-            Random rnd = new Random();
 
-            var userId = rnd.Next();
+            var userId = TestData.GenerateRandomInt();
 
-            var exchange = CredentialRandomUtil.GetRandomString();
+            var exchange = TestData.GenerateRandomString();
 
             var withdrawal = 800.65m;
 
@@ -104,13 +100,12 @@ namespace Tests
         [Test]
         public void should_create_purchase_record_return()
         {
-            Random rnd = new Random();
 
-            var userId = rnd.Next();
+            var userId = TestData.GenerateRandomInt();
 
-            var company = CredentialRandomUtil.GetRandomString();
+            var company = TestData.GenerateRandomString();
 
-            var symbol = CredentialRandomUtil.GetRandomString();
+            var symbol = TestData.GenerateRandomString();
 
             var quantity = 45;
 
@@ -124,13 +119,12 @@ namespace Tests
         [Test]
         public void should_update_purchase_record_return()
         {
-            Random rnd = new Random();
 
-            var userId = rnd.Next();
+            var userId = TestData.GenerateRandomInt();
 
-            var company = CredentialRandomUtil.GetRandomString();
+            var company = TestData.GenerateRandomString();
 
-            var symbol = CredentialRandomUtil.GetRandomString();
+            var symbol = TestData.GenerateRandomString();
 
             var quantity = 45;
 
@@ -149,17 +143,6 @@ namespace Tests
                 });
 
             _sut.CreatePurchaseRecord(userId, company, symbol, quantity);
-        }
-
-        static class CredentialRandomUtil
-        {
-
-            public static string GetRandomString()
-            {
-                string path = Path.GetRandomFileName();
-                path = path.Replace(".", "");
-                return path;
-            }
         }
     }
 }
