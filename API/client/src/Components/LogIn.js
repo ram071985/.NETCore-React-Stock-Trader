@@ -4,7 +4,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
 import Spinner from "react-bootstrap/Spinner";
-import { Container, Row } from "react-bootstrap";
+import { Container, Row, Form } from "react-bootstrap";
 
 class LogIn extends Component {
   constructor() {
@@ -147,58 +147,60 @@ class LogIn extends Component {
         className="container justify-content-center"
       >
         <Row id="login-title-row" className="justify-content-center">
-        <Key className="mx-auto d-block key-icon" />
+          <Key className="mx-auto d-block key-icon" />
           <h3 className="mt-2 d-block log-in-text">Log in</h3>
-          </Row>
-            <form onSubmit={this.handleSubmit} className="auth-form">
-              <div class="form-group">
-                <label className="label-text" for="">
-                  User Id
-                </label>
-                <input
-                  type="input"
-                  className="form-control username-input"
-                  onChange={this.handleChange}
-                  placeholder=""
-                  name="existingUsername"
-                />
-              </div>
-              <div class="form-group">
-                <label className="label-text" for="exampleFormControlInput1">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="form-control username-input"
-                  onChange={this.handleChange}
-                  placeholder=""
-                  name="existingPassword"
-                />
-              </div>
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
-              >
-                Log in
-              </button>
-            </form>
-            <div className="container-fluid">
-              {loading ? (
-                <div>
-                  <p className="mt-5 text-center">
-                    Logging in... Redirecting to User Portal.
-                  </p>{" "}
-                  <Spinner
-                    className="authenticate-spinner"
-                    animation="border"
-                    variant="secondary"
-                  />
-                </div>
-              ) : (
-                <div></div>
-              )}
+        </Row>
+        <Row className="justify-content-center">
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Group>
+              <Form.Label className="label-text">
+                User Id
+              </Form.Label>
+              <Form.Control
+                type="input"
+                className="form-control username-input"
+                onChange={this.handleChange}
+                placeholder=""
+                name="existingUsername"
+              />
+            </Form.Group>
+            <div class="form-group">
+              <label className="label-text" for="exampleFormControlInput1">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control username-input"
+                onChange={this.handleChange}
+                placeholder=""
+                name="existingPassword"
+              />
             </div>
-          {this.renderAlert()}
+            <button
+              type="submit"
+              className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
+            >
+              Log in
+            </button>
+          </Form>
+        </Row>
+        <div className="container-fluid">
+          {loading ? (
+            <div>
+              <p className="mt-5 text-center">
+                Logging in... Redirecting to User Portal.
+              </p>{" "}
+              <Spinner
+                className="authenticate-spinner"
+                animation="border"
+                variant="secondary"
+              />
+            </div>
+          ) : (
+            <div></div>
+          )}
+        </div>
+        {this.renderAlert()}
       </Container>
     );
   }
