@@ -9,23 +9,16 @@ body {
   margin: 0px;
   font-size: 16px;
   font-family: "Roboto", sans-serif !important;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.85)),
+    url("./images/sigmund-R401qwThw7w-unsplash.jpg") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .landing-row {
   margin: 0;
-  background: linear-gradient(to top, #000000 0%, #072002 50%) !important;
-}
-
-.landing-row:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 900px;
-  background: rgb(76, 187, 48);
-  transform: skew(-100deg);
-  transform-origin: bottom;
+  /*  background: linear-gradient(to top, #000000 0%, #072002 50%) !important;*/
 }
 
 nav.navbar {
@@ -41,6 +34,8 @@ nav.navbar {
 
 .left-col {
   margin-top: 15%;
+  padding-left: 50px !important;
+  padding-bottom: 0;
 }
 
 .right-col {
@@ -83,12 +78,15 @@ nav.navbar {
   padding: 10px;
 }
 
-div.review-container {
-  height: 15% !important;
+.landing-container {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.landing-div {
-  padding: 0px;
+div.review-container {
+  height: 15% !important;
 }
 
 img.splash-image {
@@ -106,7 +104,7 @@ img.splash-image {
 }
 
 .description-text {
-  padding-right: 100px;
+  margin-right: 500px;
   color: white;
 }
 
@@ -130,9 +128,7 @@ img.splash-image {
 
 .log-in-text {
   font-family: "Roboto", sans-serif;
-}
-
-.input-col {
+  color: rgb(228, 228, 228);
 }
 
 .log-in-header {
@@ -150,6 +146,7 @@ img.splash-image {
 }
 
 label.label-text {
+  color: rgb(228, 228, 228);
 }
 
 button {
@@ -161,6 +158,7 @@ button.log-in-button {
   border-color: grey;
   border: 1px solid transparent;
   padding: 2px 2px;
+  color: rgb(228, 228, 228);
 }
 
 button.log-in-button:hover {
@@ -371,7 +369,7 @@ hr {
 }
 
 .alert {
-margin: 15px 234px;
+  margin: 15px 234px;
 }
 
 .review-alert {
@@ -401,4 +399,28 @@ button.close {
 
 .no-holdings {
   color: rgb(233, 233, 233);
+}
+
+@media only screen and (max-width: 772px) {
+  .landing-row {
+  }
+  .welcome-text {
+    font-size: 2.2rem;
+    color: rgb(233, 233, 233);
+  }
+
+  .second-description-text {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+  }
+  .description-text {
+    color: rgb(233, 233, 233);
+    font-size: 1.3rem;
+    margin-right: 50px;
+    margin-bottom: 10px !important;
+  }
+
+  img.splash-image {
+    width: 200px;
+  }
 }

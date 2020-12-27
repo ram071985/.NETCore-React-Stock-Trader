@@ -166,7 +166,7 @@ class LogIn extends Component {
                   Password
                 </label>
                 <input
-                  type="input"
+                  type="password"
                   className="form-control username-input"
                   onChange={this.handleChange}
                   placeholder=""

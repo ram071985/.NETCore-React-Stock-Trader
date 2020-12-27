@@ -54,7 +54,7 @@ class LandingPage extends Component {
     }
 
     return (
-      <div>
+      <div className="landing-container">
         <div className="container-fluid min-vh-100 d-flex flex-column landing-div">
           <div className="row flex-grow-1 landing-row">
             <div className="col-lg d-block mx-auto left-col">
@@ -70,7 +70,7 @@ class LandingPage extends Component {
               </h4>
 
               <button
-                className="d-inline-block btn btn-outline-success my-2 my-sm-0 landing-page-buttons"
+                className="d-inline-block btn btn-success my-2 my-sm-0 landing-page-buttons"
                 onClick={(e) => this.handleClick(e)}
               >
                 <User
@@ -83,14 +83,11 @@ class LandingPage extends Component {
               </button>
 
               <button
-                className="d-inline-block btn btn-outline-success mr-3 my-2 my-sm-0 landing-page-buttons"
+                className="d-inline-block btn btn-success mr-3 my-2 my-sm-0 landing-page-buttons"
                 onClick={(e) => this.handleClick(e)}
               >
                 <span className="account-button-text">Start an account</span>
               </button>
-            </div>
-            <div className="col-lg d-block mx-auto right-col">
-              <img alt="stock market graph" className="splash-image d-block mx-auto" src={SplashImage} />
             </div>
           </div>
         </div>
