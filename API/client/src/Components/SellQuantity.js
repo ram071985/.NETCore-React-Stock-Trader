@@ -9,18 +9,22 @@ class SellQuantity extends Component {
   }
   render() {
     return (
-      <div>
-        <Form>
-          <Form.Group as={Col} controlId="formGridZip" className="quanity-col">
-            <Form.Label className="ml-5 mt-3 mb-0">Share quantity</Form.Label>
-            <Form.Control
-              type="number"
-              min="1"
-              max={this.props.quantity}
-              className="w-50 ml-5 d-inline-block modal-input"
-              name="quantity"
-              onChange={this.props.quantityChange}
-            />
+      <div className="buy-quantity">
+        <Form className="buy-quantity-form">
+          <Form.Group as={Col} controlId="formGridZip" className="quantity-col">
+            <Form.Label className="ml-5 mt-3 mb-0 buy-label">
+              Share quantity
+            </Form.Label>
+            <Col className="quantity-col" lg={12}>
+              <Form.Control
+                type="number"
+                min="1"
+                max={this.props.quantity}
+                className="w-50 ml-5 d-inline-block quantity-modal-input"
+                name="quantity"
+                onChange={this.props.quantityChange}
+              />
+            </Col>
           </Form.Group>
         </Form>
       </div>

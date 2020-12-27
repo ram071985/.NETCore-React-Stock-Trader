@@ -65,7 +65,7 @@ class ModalComponent extends Component {
       <div>
         {" "}
         <Modal
-          classname="purchase-modal"
+          className="purchase-modal"
           show={this.props.show}
           onHide={this.props.onHide}
         >
@@ -123,11 +123,12 @@ class ModalComponent extends Component {
               }}
               as={Col}
               controlId="formGridZip"
+              className="search-col"
             >
               {this.props.setAction === "Buy" ? (
                 <Form className="search-form">
-                  <Form.Label className="mt-5 mb-0">
-                    Search by company symbol
+                  <Form.Label className="mt-5 mb-0 search-label">
+                    Search by symbol
                   </Form.Label>
                   <Form.Control
                     type="input"
@@ -198,7 +199,8 @@ class ModalComponent extends Component {
               />
             )}
             <Form.Group className="mb-0" as={Col} controlId="formGridZip">
-              <Form.Label className="ml-1 mt-3 mb-0">Total</Form.Label>
+              <Form.Label className="ml-3 mt-3 mb-0 total-label">Total</Form.Label>
+              <Col className="total-col" sm={5}>
               <Form.Control
                 type="text"
                 name="price"
@@ -210,9 +212,10 @@ class ModalComponent extends Component {
                         .formatter()
                         .format(this.props.dynamicQuantity * this.props.price)
                 }
-                className="w-50 ml-1 modal-input"
+                className="w-50 ml-1 total-modal-input"
                 readOnly
               />
+              </Col>
             </Form.Group>
             {this.renderAlert()}
           </Form.Row>

@@ -54,21 +54,23 @@ nav.navbar {
 }
 .main-container {
   height: 100%;
-  background: linear-gradient(to bottom, #000000 20%, #030e01 50%) !important;
+
   padding: 15px 15px;
 }
 
 .user-container {
   border-radius: 0.4rem;
   border: solid 1px #1aac3c;
+  opacity: 0.8;
   background: rgb(15, 15, 15);
-  height: 28%;
+  height: 31%;
   width: 90% !important;
   padding: 10px 8px 20px !important;
   margin: 20px 0px 0px 40px !important;
 }
 
 .holdings-container {
+  opacity: 0.8;
   margin: 15px 0px 0px 40px !important;
   width: 90% !important;
   border-radius: 0.4rem;
@@ -165,7 +167,6 @@ textarea.username-input:focus {
   outline: 0px !important;
   box-shadow: none !important;
   width: 10rem !important;
-
 }
 
 label.label-text {
@@ -195,7 +196,6 @@ button.log-in-button:focus {
   box-shadow: none !important;
 }
 
-
 button.log-in-button:hover {
   background-color: rgb(105, 179, 87) !important;
   border: 1px solid transparent;
@@ -209,11 +209,11 @@ button.log-in-button:hover {
 
 .heading-text {
   margin-left: 15px;
-  color: rgb(196, 196, 196);
+  color: white;
 }
 
 .titles-text {
-  color: rgb(156, 156, 156);
+  color: white;
   margin-left: 0 !important;
 }
 
@@ -443,13 +443,43 @@ button.close {
 }
 
 .alert-message {
-  font-size: .9rem;
+  font-size: 0.9rem;
+}
+
+#formGridZip.total-modal-input {
+  width: 80px !important;
+  margin-left: 1.1rem !important;
+  width: 7rem !important;
+  border-radius: 0;
+}
+label.total-label {
+  margin-left: 2rem !important;
+}
+input.quantity-modal-input {
+  margin-left: 1.7rem !important;
+  border-radius: 0;
+  width: 4rem !important;
+}
+
+div.quantity-col {
+  width: 80% !important;
+}
+
+label.buy-label {
+  width: 140px !important;
+  margin-left: 2.4rem !important;
+}
+
+form.buy-quantity-form {
+  width: 70%;
+  margin-right: 0 !important;
+}
+
+div.buy-quantity {
+  width: 45%;
 }
 
 @media only screen and (max-width: 772px) {
-  .landing-row {
-  }
-
   button.landing-page-buttons {
     display: block !important;
     margin-bottom: 12px !important;
@@ -480,5 +510,72 @@ button.close {
     margin-right: 2rem;
   }
 
-  
+  .user-container {
+    margin: auto !important;
+    height: 38%;
+    margin-top: 9px !important;
+    margin-bottom: 9px !important;
+  }
+
+  .holdings-container {
+    margin: auto !important;
+  }
+
+  .log-out-button.btn {
+    margin-left: 20px !important;
+  }
+
+  .modal-content {
+    width: 90% !important;
+    height: 30rem !important;
+    margin: 0 auto;
+    margin-top: 80px !important;
+  }
+
+  .purchase-modal {
+    padding: 0px !important;
+  }
+
+  .review-button {
+    width: 8rem;
+  }
+
+  .cancel-button {
+    width: 8rem;
+  }
+
+  #formGridZip.total-modal-input {
+    width: 80px !important;
+    margin-right: 2rem !important;
+    width: 5rem !important;
+    border-radius: 0;
+  }
+
+  input.quantity-modal-input {
+    margin-left: 1.7rem !important;
+    border-radius: 0;
+    width: 4rem !important;
+  }
+
+  div.quantity-col {
+    width: 80% !important;
+  }
+
+  label.buy-label {
+    width: 140px !important;
+    margin-left: 2.4rem !important;
+  }
+
+  form.buy-quantity-form {
+    width: 70%;
+    margin-right: 0 !important;
+  }
+
+  div.buy-quantity {
+    width: 45%;
+  }
+
+  label.total-label {
+    margin-left: 2rem !important;
+  }
 }

@@ -21,7 +21,7 @@ class UserInfo extends Component {
         >
           <span className="font-weight-light">Buy/Sell Stocks</span>
         </Button>{" "}
-        <hr style={{ borderTop: "1px solid #1aac3c", width: "100%" }} />
+        <hr className="mb-2" style={{ borderTop: "1px solid #1aac3c", width: "100%" }} />
         <div className="col-12">
           <h6 className="font-weight-normal d-inline-block mb-1 titles-text">
             User{" "}
