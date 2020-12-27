@@ -121,11 +121,6 @@ img.splash-image {
   font-size: 2rem;
 }
 
-.log-in-button-text {
-  color: rgb(228, 228, 228);
-  margin-right: 4px;
-}
-
 .account-button-text {
   color: rgb(228, 228, 228);
 }
@@ -144,8 +139,8 @@ img.splash-image {
 }
 
 #login-title-row {
-    padding: 0;
-    display: block;
+  padding: 0;
+  display: block;
 }
 
 .key-icon {
@@ -154,29 +149,57 @@ img.splash-image {
   color: rgb(76, 187, 48);
 }
 
-.form-control.username-input {
-  border-radius: 0rem;
+.username-input {
+  border-radius: 0rem !important;
+  width: 100% !important;
+}
+
+.username-input:focus {
+  border: 1px solid grey !important;
+}
+
+input,
+select,
+textarea.username-input:focus {
+  border-radius: 0;
+  outline: 0px !important;
+  box-shadow: none !important;
+  width: 10rem !important;
+
 }
 
 label.label-text {
   color: rgb(228, 228, 228);
 }
 
-button {
-}
-
 button.log-in-button {
   border-radius: 0rem;
-  background-color: rgb(76, 187, 48);
+  background-color: #1aac3c !important;
   border-color: grey;
-  border: 1px solid transparent;
-  padding: 2px 2px;
+  border: 1px solid transparent !important;
+  padding: 6px 6px;
   color: rgb(228, 228, 228);
+  font-size: 1.2rem;
+  width: 100%;
 }
 
+button.log-in-button:active {
+  background-color: rgb(105, 179, 87) !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+}
+
+button.log-in-button:focus {
+  background-color: rgb(105, 179, 87) !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+}
+
+
 button.log-in-button:hover {
-  background-color: #1aac3c;
+  background-color: rgb(105, 179, 87) !important;
   border: 1px solid transparent;
+  box-shadow: none !important;
 }
 
 .landing-page-buttons {
@@ -383,7 +406,7 @@ hr {
 }
 
 .alert {
-  margin: 15px 234px;
+  margin-top: 1rem;
 }
 
 .review-alert {
@@ -413,6 +436,14 @@ button.close {
 
 .no-holdings {
   color: rgb(233, 233, 233);
+}
+
+.alert-big {
+  font-size: 0.98rem !important;
+}
+
+.alert-message {
+  font-size: .9rem;
 }
 
 @media only screen and (max-width: 772px) {
@@ -445,11 +476,9 @@ button.close {
     width: 200px;
   }
 
-  input.form-control.username-input { 
-    width: 10rem !important;
-    margin-right: 1rem !important;
-  }
   form.auth-form {
     margin-right: 2rem;
   }
+
+  
 }

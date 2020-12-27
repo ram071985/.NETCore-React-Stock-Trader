@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import { BarChart } from "react-feather";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import Form from "react-bootstrap/Form";
 import AlertComponent from "./AlertComponent";
-import Spinner from "react-bootstrap/Spinner";
-
+import { Container, Form, Spinner, Row, Button } from "react-bootstrap";
 class SignUp extends Component {
   constructor() {
     super();
@@ -44,6 +42,11 @@ class SignUp extends Component {
     });
   };
 
+  handleClick = async () => {
+    const { history } = this.props;
+    history.push("/log-in");
+  };
+
   handleNewUserSubmit = (e) => {
     e.preventDefault();
     this.postNewUser();
@@ -58,34 +61,34 @@ class SignUp extends Component {
         username: this.state.newUsername,
         password: this.state.newPassword,
       })
-      .then((res) => {     
-          localStorage.setItem("session_id", res.data.id);
-          localStorage.setItem("user_id", res.data.userId);
-          this.setState({
-            toUserPortal: true,
-            loading: false,
-          });
+      .then((res) => {
+        localStorage.setItem("session_id", res.data.id);
+        localStorage.setItem("user_id", res.data.userId);
+        this.setState({
+          toUserPortal: true,
+          loading: false,
+        });
       })
       .catch((err) => {
         if (err.response.data.detail === "empty username and password") {
           this.setState({
             logInErrorMessage: "Please enter a username and password.",
             setShow: true,
-            loading: false
+            loading: false,
           });
         }
         if (err.response.data.detail === "empty username") {
           this.setState({
             logInErrorMessage: "Please choose a username.",
             setShow: true,
-            loading: false
+            loading: false,
           });
         }
         if (err.response.data.detail === "empty password") {
           this.setState({
             logInErrorMessage: "Please choose a password.",
             setShow: true,
-            loading: false
+            loading: false,
           });
         }
         if (err.response.data.detail === "redundant username") {
@@ -93,7 +96,7 @@ class SignUp extends Component {
             logInErrorMessage:
               "The username you chose is already taken.  Please try another entry.",
             setShow: true,
-            loading: false
+            loading: false,
           });
         }
       });
@@ -116,61 +119,72 @@ class SignUp extends Component {
 
     const { loading } = this.state;
     return (
-      <div className="container-fluid log-in-container">
-        <header className="text-center log-in-header">
+      <Container
+        id="login-container"
+        className="container justify-content-center"
+      >
+        <Row id="login-title-row" className="justify-content-center">
           <BarChart className="mx-auto d-block key-icon" />
-          <h2 className="mt-2 log-in-text">Sign Up</h2>
-        </header>
-        <div className="row justify-content-center">
-          <div className="col-5 input-col">
-            <Form onSubmit={this.handleNewUserSubmit}>
-              <div class="form-group">
-                <label className="label-text" for="">
-                  Choose Username
-                </label>
-                <input
-                  type="input"
-                  className="form-control username-input"
-                  placeholder=""
-                  name="newUsername"
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div class="form-group">
-                <label className="label-text" for="exampleFormControlInput1">
-                  Choose Password
-                </label>
-                <input
-                  type="password"
-                  className="form-control username-input"
-                  placeholder=""
-                  name="newPassword"
-                  onChange={this.handleChange}
-                />
-              </div>{" "}
-              <button
-                type="submit"
-                className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
-              >
-                Start trading now!
-              </button>
-            </Form>
-            <div className="container-fluid">
-              {loading ? (
-                <div>
-                  <p className="mt-5 text-center">
-                    Creating account... Redirecting to User Portal.
-                  </p>{" "}
-                  <Spinner className="authenticate-spinner" animation="border" variant="secondary" />
-                </div>
-              ) : (
-                <div></div>
-              )}
+          <h3 className="mt-2 d-block text-center log-in-text">Sign up</h3>
+        </Row>
+        <Row className="justify-content-center">
+          <Form onSubmit={this.handleNewUserSubmit}>
+            <Form.Group>
+              <Form.Label className="label-text">User Id</Form.Label>
+              <Form.Control
+                type="input"
+                className="username-input"
+                onChange={this.handleChange}
+                placeholder=""
+                name="newUsername"
+                autocomplete="off"
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label className="label-text" for="exampleFormControlInput1">
+                Password
+              </Form.Label>
+              <Form.Control
+                type="password"
+                className="username-input"
+                onChange={this.handleChange}
+                placeholder=""
+                name="newPassword"
+              />
+            </Form.Group>
+            <Button
+              type="submit"
+              className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
+            >
+              Sign up
+            </Button>
+            <Button
+              onClick={this.handleClick}
+              type="button"
+              className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
+            >
+              I have an account
+            </Button>
+          </Form>
+        </Row>
+        <div className="container-fluid">
+          {loading ? (
+            <div>
+              <p className="mt-5 text-center">
+                Creating account... Redirecting to User Portal.
+              </p>{" "}
+              <Spinner
+                className="authenticate-spinner"
+                animation="border"
+                variant="secondary"
+              />
             </div>
-          </div>
-          {this.renderAlert()}
+          ) : (
+            <div></div>
+          )}
         </div>
-      </div>
+        {this.renderAlert()}
+      </Container>
     );
   }
 }

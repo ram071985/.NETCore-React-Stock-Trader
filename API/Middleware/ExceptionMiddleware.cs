@@ -24,7 +24,7 @@ namespace API.Middleware
             {
                 context.Response.StatusCode = 500;
                 context.Response.Headers.Add("content-type", "application/json");
-                var errorMessage = new ErrorMessage { Text = "something went wrong!" };
+                var errorMessage = new ErrorMessage { Text = e.Message };
                 await context.Response.WriteAsync(JsonSerializer.Serialize(errorMessage));
             }              
         }
