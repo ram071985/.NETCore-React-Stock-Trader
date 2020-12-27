@@ -14,6 +14,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: auto;
 }
 
 .landing-row {
@@ -44,6 +45,13 @@ nav.navbar {
 
 /* containers */
 
+#login-container {
+  padding: 0;
+  margin-top: 7em;
+  height: 30em;
+  width: 20em;
+  border: none;
+}
 .main-container {
   height: 100%;
   background: linear-gradient(to bottom, #000000 20%, #030e01 50%) !important;
@@ -135,6 +143,11 @@ img.splash-image {
   margin-top: 60px;
 }
 
+#login-title-row {
+    padding: 0;
+    display: block;
+}
+
 .key-icon {
   height: 45px;
   width: 45px;
@@ -167,6 +180,7 @@ button.log-in-button:hover {
 }
 
 .landing-page-buttons {
+  width: 9.5rem;
   margin-left: 20px !important;
 }
 
@@ -404,6 +418,13 @@ button.close {
 @media only screen and (max-width: 772px) {
   .landing-row {
   }
+
+  button.landing-page-buttons {
+    display: block !important;
+    margin-bottom: 12px !important;
+    font-weight: 500;
+    color: rgb(233, 233, 233);
+  }
   .welcome-text {
     font-size: 2.2rem;
     color: rgb(233, 233, 233);
@@ -413,14 +434,22 @@ button.close {
     margin-right: 1rem;
     font-size: 1.5rem;
   }
-  .description-text {
+  h4.description-text {
     color: rgb(233, 233, 233);
     font-size: 1.3rem;
     margin-right: 50px;
-    margin-bottom: 10px !important;
+    margin-bottom: 20px !important;
   }
 
   img.splash-image {
     width: 200px;
+  }
+
+  input.form-control.username-input { 
+    width: 10rem !important;
+    margin-right: 1rem !important;
+  }
+  form.auth-form {
+    margin-right: 2rem;
   }
 }

@@ -4,6 +4,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
 import Spinner from "react-bootstrap/Spinner";
+import { Container, Row } from "react-bootstrap";
 
 class LogIn extends Component {
   constructor() {
@@ -141,14 +142,15 @@ class LogIn extends Component {
 
     const { loading } = this.state;
     return (
-      <div className="container-fluid log-in-container">
-        <header className="text-center log-in-header">
-          <Key className="mx-auto d-block key-icon" />
-          <h2 className="mt-2 log-in-text">Log in</h2>
-        </header>
-        <div className="row justify-content-center">
-          <div className="col-5 input-col">
-            <form onSubmit={this.handleSubmit}>
+      <Container
+        id="login-container"
+        className="container justify-content-center"
+      >
+        <Row id="login-title-row" className="justify-content-center">
+        <Key className="mx-auto d-block key-icon" />
+          <h3 className="mt-2 d-block log-in-text">Log in</h3>
+          </Row>
+            <form onSubmit={this.handleSubmit} className="auth-form">
               <div class="form-group">
                 <label className="label-text" for="">
                   User Id
@@ -196,10 +198,8 @@ class LogIn extends Component {
                 <div></div>
               )}
             </div>
-          </div>
           {this.renderAlert()}
-        </div>
-      </div>
+      </Container>
     );
   }
 }

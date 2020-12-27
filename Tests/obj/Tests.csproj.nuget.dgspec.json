@@ -14,7 +14,7 @@
         "outputPath": "/Users/reid/Desktop/Projects/Stock-Trader/API/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/reid/.nuget/NuGet/NuGet.Config"
+          "/Users/reid/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -99,7 +99,7 @@
         "outputPath": "/Users/reid/Desktop/Projects/Stock-Trader/CORE/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/reid/.nuget/NuGet/NuGet.Config"
+          "/Users/reid/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -186,7 +186,7 @@
         "outputPath": "/Users/reid/Desktop/Projects/Stock-Trader/Tests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/reid/.nuget/NuGet/NuGet.Config"
+          "/Users/reid/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
