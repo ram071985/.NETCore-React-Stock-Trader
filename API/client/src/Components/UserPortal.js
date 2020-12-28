@@ -302,14 +302,14 @@ class UserPortal extends Component {
           className="sell-button"
           onClick={(e) => this.sellSubmit(index)}
         >
-          <span className="font-weight-light">Sell shares</span>
+          <span id="holdings-button-text" className="font-weight-light">Sell shares</span>
         </Button>
         <Button
           variant="outline-success"
           className="buy-button"
           onClick={(e) => this.buySubmit(index)}
         >
-          <span className="font-weight-light">Buy shares</span>
+          <span id="holdings-button-text" className="font-weight-light">Buy shares</span>
         </Button>
       </div>
     );
