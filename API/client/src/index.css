@@ -52,10 +52,11 @@ nav.navbar {
 
 #login-container {
   padding: 0;
-  margin-top: 7em;
+  margin-top: 7em !important;
   height: 30em;
   width: 20em;
   border: none;
+  margin: 0 auto;
 }
 .main-container {
   height: 100%;
