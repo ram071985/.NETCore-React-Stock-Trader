@@ -167,7 +167,7 @@ class LogIn extends Component {
                 onChange={this.handleChange}
                 placeholder=""
                 name="existingUsername"
-                autocomplete="off"
+                autoComplete="off"
               />
             </Form.Group>
             <Form.Group>
@@ -180,6 +180,7 @@ class LogIn extends Component {
                 onChange={this.handleChange}
                 placeholder=""
                 name="existingPassword"
+                autoComplete="off"
               />
             </Form.Group>
             <Button

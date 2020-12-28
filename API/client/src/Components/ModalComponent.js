@@ -65,7 +65,7 @@ class ModalComponent extends Component {
           className="purchase-modal"
           show={this.props.show}
           onHide={this.props.onHide}
-          backdrop="static"
+       
         >
           <Form.Row>
             <div
