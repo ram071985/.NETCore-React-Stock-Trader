@@ -342,6 +342,14 @@ hr {
   margin-top: 25px;
 }
 
+button.cancel-confirm-button {
+  width: 30%;
+  border-radius: 0 !important;
+  margin-top: 25px;
+  margin-left: 5px !important;
+  max-width: 150px;
+}
+
 .company-text {
   position: relative;
   right: 10px;
@@ -362,8 +370,20 @@ hr {
 .confirm-button {
   width: 30%;
   border-radius: 0 !important;
-  margin-left: 25% !important;
   margin-right: 10px;
+}
+
+button.confirm-order-button {
+  height: 38px !important;
+  width: 30%;
+  border-radius: 0 !important;
+  margin-right: 5px !important;
+  margin-top: 25px;
+  max-width: 150px;
+  border-radius: 0rem;
+  background-color: #1aac3c !important;
+  border-color: grey;
+  border: 1px solid transparent !important;
 }
 
 .shares-current {
@@ -436,6 +456,7 @@ button.close {
 
 .no-holdings {
   color: rgb(233, 233, 233);
+  margin-top: 1rem;
 }
 
 .alert-big {
@@ -547,7 +568,7 @@ div.buy-quantity {
   #formGridZip.total-modal-input {
     width: 80px !important;
     margin-right: 2rem !important;
-    width: 5rem !important;
+    width: 6.9rem !important;
     border-radius: 0;
   }
 
@@ -577,5 +598,13 @@ div.buy-quantity {
 
   label.total-label {
     margin-left: 2rem !important;
+  }
+
+  .search-icon {
+    left: 98px;
+  }
+
+  .result-text {
+    font-size: 0.9rem;
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
+import { Button, Row} from "react-bootstrap";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
@@ -188,17 +188,16 @@ class ConfirmOrder extends Component {
     }
     const { loading } = this.state;
     return (
-      <div>
-        <h2 className="mt-5 ml-5">{}</h2>
-        <h6 className="font-weight-normal text-center ml-5">
+      <div style={{ color: "white", opacity: "0.85" }} className="justify-content-center">
+        <h6 className="font-weight-normal mt-5 text-center">
           {this.props.location.state.company}
           <span>( </span>
           <span className="text-uppercase special-characters">
-             {this.props.location.state.symbol} 
+            {this.props.location.state.symbol}
           </span>
           <span> )</span>
         </h6>
-        <h6 className="font-weight-normal text-center ml-5">
+        <h6 className="font-weight-normal text-center">
           Quantity
           {this.props.location.state.isSell ||
           this.props.location.state.action === "Sell"
@@ -206,12 +205,13 @@ class ConfirmOrder extends Component {
             : ""}
           : {this.props.location.state.quantity}
         </h6>
-        <h6 className="font-weight-normal text-center ml-5">
+        <h6 className="font-weight-normal text-center">
           Price: $
           {this.decimalFormatter().format(this.props.location.state.price)}
         </h6>
-        <h2 className="text-center mt-5 ml-5">Order Summary</h2>
-        <h6 className="font-weight-bold text-center mt-2 ml-5">
+        <hr style={{ borderTop: "1px solid white", width: "75%" }}/>
+        <h2 className="text-center mt-5">Order Summary</h2>
+        <h6 className="font-weight-bold text-center mt-2">
           Subtotal:
           <span className="font-weight-normal text-center confirm-span">
             ${this.props.location.state.price} x{" "}
@@ -224,7 +224,7 @@ class ConfirmOrder extends Component {
           </span>
         </h6>
         <hr></hr>
-        <h5 className="text-center ml-5">
+        <h5 className="text-center">
           Total:
           <span className="font-weight-normal text-center confirm-span">
             $
@@ -234,25 +234,29 @@ class ConfirmOrder extends Component {
             )}
           </span>
         </h5>
-        <Button
-          className="mt-4 confirm-button"
-          variant="secondary"
-          onClick={
-            this.props.location.state.action === "Buy"
-              ? this.postNewWithdrawalTransaction
-              : this.postNewDepositTransaction
-          }
-        >
-          Confirm
-        </Button>{" "}
-        <Button
-          onClick={this.props.onHide}
-          className="d-inline-block mx-auto cancel-button"
-          variant="danger"
-          onClick={(e) => this.handleClose(e)}
-        >
-          Cancel
-        </Button>{" "}
+        <Row className="justify-content-center">
+          {" "}
+          <Button
+            className="mx-auto confirm-order-button"
+            variant="secondary"
+            onClick={
+              this.props.location.state.action === "Buy"
+                ? this.postNewWithdrawalTransaction
+                : this.postNewDepositTransaction
+            }
+          >
+            Confirm
+          </Button>{" "}
+          <Button
+            onClick={this.props.onHide}
+            className="d-inline-block mx-auto cancel-confirm-button"
+            variant="danger"
+            onClick={(e) => this.handleClose(e)}
+          >
+            Cancel
+          </Button>{" "}
+        </Row>
+
         {this.renderAlert()}
         <div className="container-fluid">
           {loading ? (
