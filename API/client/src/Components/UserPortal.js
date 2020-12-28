@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Spinner from "react-bootstrap/Spinner";
+import { Button, Form, Spinner } from "react-bootstrap";
 import ModalComponent from "./ModalComponent";
 import UserInfo from "./UserInfo";
 
@@ -85,6 +83,7 @@ class UserPortal extends Component {
     this.clearFields();
     this.setState({
       isSearching: true,
+      setAlertShow: false
     });
     let returnInterval;
     const { name, value } = event.target;
@@ -153,6 +152,7 @@ class UserPortal extends Component {
     const { name, value } = event.target;
     this.setState({
       [name]: this.state.sellQuantity,
+      setAlertShow: false,
     });
     this.setState({
       dynamicQuantity: parseInt(value),
@@ -302,14 +302,18 @@ class UserPortal extends Component {
           className="sell-button"
           onClick={(e) => this.sellSubmit(index)}
         >
-          <span id="holdings-button-text" className="font-weight-light">Sell shares</span>
+          <span id="holdings-button-text" className="font-weight-light">
+            Sell shares
+          </span>
         </Button>
         <Button
           variant="outline-success"
           className="buy-button"
           onClick={(e) => this.buySubmit(index)}
         >
-          <span id="holdings-button-text" className="font-weight-light">Buy shares</span>
+          <span id="holdings-button-text" className="font-weight-light">
+            Buy shares
+          </span>
         </Button>
       </div>
     );
@@ -353,6 +357,14 @@ class UserPortal extends Component {
 
   confirmRedirect = (e) => {
     if (
+      this.state.symbol === "" ||
+      (this.state.quantity === "" && this.state.action == "Buy")
+    ) {
+      this.setState({
+        setAlertShow: true,
+        errorMessage: "Stock symbol and quantity cannot be empty.",
+      });
+    } else if (
       this.state.wallet <
         parseFloat(this.state.price) * this.state.dynamicQuantity &&
       !this.state.isSell &&
@@ -371,6 +383,7 @@ class UserPortal extends Component {
   };
 
   render() {
+    console.log(this.state.setAlertShow);
     return (
       <div className="container-fluid main-container">
         <Form onSubmit={(event) => this.handleLogOut(event)}>
