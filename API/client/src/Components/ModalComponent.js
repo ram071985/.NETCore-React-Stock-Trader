@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+import { Modal, Form, Col, Button } from "react-bootstrap";
 import SellQuantity from "./SellQuantity";
 import BuyQuantity from "./BuyQuantity";
 import ReviewAlert from "./ReviewAlert";
@@ -68,6 +65,7 @@ class ModalComponent extends Component {
           className="purchase-modal"
           show={this.props.show}
           onHide={this.props.onHide}
+          backdrop="static"
         >
           <Form.Row>
             <div
@@ -77,9 +75,9 @@ class ModalComponent extends Component {
                   this.props.isSell || this.props.isBuy ? "block" : "none",
               }}
             >
-              <h4 className="text-center ml-3">
+              <h4 className="text-center review-company">
                 {!this.props.isBuy ? "Sell" : "Buy"}{" "}
-                {this.props.holding.company} shares
+                {this.props.holding.company}
               </h4>
             </div>
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Row} from "react-bootstrap";
+import { Button, Row, Form } from "react-bootstrap";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
@@ -82,7 +82,8 @@ class ConfirmOrder extends Component {
     }
   };
 
-  postNewDepositTransaction = () => {
+  postNewDepositTransaction = (e) => {
+    e.preventDefault();
     this.setState({
       loading: true,
     });
@@ -108,7 +109,8 @@ class ConfirmOrder extends Component {
     this.deleteStockRecord();
   };
 
-  postNewWithdrawalTransaction = () => {
+  postNewWithdrawalTransaction = (e) => {
+    e.preventDefault();
     this.setState({
       loading: true,
     });
@@ -188,7 +190,10 @@ class ConfirmOrder extends Component {
     }
     const { loading } = this.state;
     return (
-      <div style={{ color: "white", opacity: "0.85" }} className="justify-content-center">
+      <div
+        style={{ color: "white", opacity: "0.85" }}
+        className="justify-content-center"
+      >
         <h6 className="font-weight-normal mt-5 text-center">
           {this.props.location.state.company}
           <span>( </span>
@@ -209,7 +214,7 @@ class ConfirmOrder extends Component {
           Price: $
           {this.decimalFormatter().format(this.props.location.state.price)}
         </h6>
-        <hr style={{ borderTop: "1px solid white", width: "75%" }}/>
+        <hr style={{ borderTop: "1px solid white", width: "75%" }} />
         <h2 className="text-center mt-5">Order Summary</h2>
         <h6 className="font-weight-bold text-center mt-2">
           Subtotal:
@@ -236,25 +241,32 @@ class ConfirmOrder extends Component {
         </h5>
         <Row className="justify-content-center">
           {" "}
-          <Button
-            className="mx-auto confirm-order-button"
-            variant="secondary"
-            onClick={
+          <Form
+          className="justify-content-center"
+            onSubmit={
               this.props.location.state.action === "Buy"
                 ? this.postNewWithdrawalTransaction
                 : this.postNewDepositTransaction
             }
           >
-            Confirm
-          </Button>{" "}
+            <Button
+              className="mx-auto confirm-order-button"
+              variant="secondary"
+              type="submit"
+            >
+              Confirm
+            </Button>{" "}
+         
           <Button
             onClick={this.props.onHide}
             className="d-inline-block mx-auto cancel-confirm-button"
             variant="danger"
             onClick={(e) => this.handleClose(e)}
+            type="button"
           >
             Cancel
           </Button>{" "}
+          </Form>
         </Row>
 
         {this.renderAlert()}

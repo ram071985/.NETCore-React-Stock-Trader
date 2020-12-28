@@ -2,6 +2,7 @@
 
 #root {
   height: 100%;
+  margin-bottom: 15px;
 }
 html,
 body {
@@ -15,6 +16,10 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   overflow: auto;
+}
+
+button {
+  border-radius: 0 !important;
 }
 
 .landing-row {
@@ -54,7 +59,6 @@ nav.navbar {
 }
 .main-container {
   height: 100%;
-
   padding: 15px 15px;
 }
 
@@ -343,10 +347,9 @@ hr {
 }
 
 button.cancel-confirm-button {
-  width: 30%;
+  width: 100%;
   border-radius: 0 !important;
   margin-top: 25px;
-  margin-left: 5px !important;
   max-width: 150px;
 }
 
@@ -375,9 +378,8 @@ button.cancel-confirm-button {
 
 button.confirm-order-button {
   height: 38px !important;
-  width: 30%;
+  width: 100%;
   border-radius: 0 !important;
-  margin-right: 5px !important;
   margin-top: 25px;
   max-width: 150px;
   border-radius: 0rem;
@@ -500,6 +502,10 @@ div.buy-quantity {
   width: 45%;
 }
 
+.review-company {
+  padding: 20px;
+}
+
 @media only screen and (max-width: 772px) {
   button.landing-page-buttons {
     display: block !important;
@@ -539,7 +545,7 @@ div.buy-quantity {
   }
 
   .holdings-container {
-    margin: auto !important;
+    margin: 0 auto !important;
   }
 
   .log-out-button.btn {
@@ -601,6 +607,10 @@ div.buy-quantity {
   }
 
   .search-icon {
+    left: 98px;
+  }
+
+  .x-icon {
     left: 98px;
   }
 

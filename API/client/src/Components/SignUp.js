@@ -70,28 +70,28 @@ class SignUp extends Component {
         });
       })
       .catch((err) => {
-        if (err.response.data.detail === "empty username and password") {
+        if (err.response.data.Text === "empty username and password") {
           this.setState({
             logInErrorMessage: "Please enter a username and password.",
             setShow: true,
             loading: false,
           });
         }
-        if (err.response.data.detail === "empty username") {
+        if (err.response.data.Text === "empty username") {
           this.setState({
             logInErrorMessage: "Please choose a username.",
             setShow: true,
             loading: false,
           });
         }
-        if (err.response.data.detail === "empty password") {
+        if (err.response.data.Text === "empty password") {
           this.setState({
             logInErrorMessage: "Please choose a password.",
             setShow: true,
             loading: false,
           });
         }
-        if (err.response.data.detail === "redundant username") {
+        if (err.response.data.Text === "redundant username") {
           this.setState({
             logInErrorMessage:
               "The username you chose is already taken.  Please try another entry.",
@@ -170,7 +170,7 @@ class SignUp extends Component {
         <div className="container-fluid">
           {loading ? (
             <div>
-              <p className="mt-5 text-center">
+              <p style={{ color: "white" }}className="mt-5 text-center">
                 Creating account... Redirecting to User Portal.
               </p>{" "}
               <Spinner

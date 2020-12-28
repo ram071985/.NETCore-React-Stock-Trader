@@ -55,7 +55,11 @@ class UserPortal extends Component {
             company: res.data.companyName,
             price: res.data.latestPrice,
           });
-          if (res.data === "Unknown symbol") {
+          if (
+            res.data === "Unknown symbol" ||
+            res.data.companyName === "" ||
+            res.data === "Not found"
+          ) {
             this.setState({
               isSymbol: "Unknown symbol",
             });
@@ -421,7 +425,10 @@ class UserPortal extends Component {
         />
         <div className="container-fluid d-block holdings-container">
           <h4 className="heading-text">Current Holdings</h4>
-          <hr className="mb-1" style={{ borderTop: "1px solid #1aac3c", width: "100%" }} />
+          <hr
+            className="mb-1"
+            style={{ borderTop: "1px solid #1aac3c", width: "100%" }}
+          />
           {this.state.stocks.length > 0 ? (
             this.state.stocks.map(this.renderHoldings)
           ) : (
