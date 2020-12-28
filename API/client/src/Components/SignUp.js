@@ -170,7 +170,7 @@ class SignUp extends Component {
         <div className="container-fluid">
           {loading ? (
             <div>
-              <p style={{ color: "white" }}className="mt-5 text-center">
+              <p style={{ color: "white" }} className="mt-5 text-center">
                 Creating account... Redirecting to User Portal.
               </p>{" "}
               <Spinner

@@ -56,7 +56,9 @@ class LogIn extends Component {
   };
 
   logInUser = () => {
-    this.setState({});
+    this.setState({
+      loading: true,
+    });
     axios
       .post("/api/authorize", {
         username: this.state.existingUsername,
@@ -196,7 +198,7 @@ class LogIn extends Component {
           </Form>
           {loading ? (
             <div>
-              <p className="mt-5 text-center">
+              <p style={{ color: "white" }} className="mt-5 text-center">
                 Logging in... Redirecting to User Portal.
               </p>{" "}
               <Spinner

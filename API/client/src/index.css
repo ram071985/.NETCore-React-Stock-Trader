@@ -156,13 +156,14 @@ img.splash-image {
   color: rgb(76, 187, 48);
 }
 
-.username-input {
+input.username-input {
   border-radius: 0rem !important;
   width: 100% !important;
+  border: transparent;
 }
 
-.username-input:focus {
-  border: 1px solid grey !important;
+input.username-input:focus {
+  border: transparent;
 }
 
 input,
@@ -296,9 +297,6 @@ button.log-in-button:hover {
   padding: 0 !important;
 }
 
-.modal-content.button {
-}
-
 .modal-total-text {
   margin-left: 25% !important;
 }
@@ -383,7 +381,6 @@ button.confirm-order-button {
   border-radius: 0 !important;
   margin-top: 25px;
   max-width: 150px;
-  border-radius: 0rem;
   background-color: #1aac3c !important;
   border-color: grey;
   border: 1px solid transparent !important;
