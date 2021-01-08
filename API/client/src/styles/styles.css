@@ -1,3 +1,218 @@
+.landing-container {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.welcome-text {
+  opacity: 0.9;
+  color: white;
+  font-size: 3rem;
+}
+
+.topia-color {
+  color: #4cbb30;
+}
+
+.description-text {
+  margin-right: 500px;
+  color: white;
+}
+
+.account-button-text {
+  color: #e4e4e4;
+}
+
+.landing-page-buttons {
+  width: 9.5rem;
+  margin-left: 20px !important;
+}
+
+.result-text {
+  position: relative;
+  bottom: 28px;
+  color: #1aac3c;
+}
+
+.current-label {
+  margin-top: 48px;
+  margin-bottom: 0;
+  display: block;
+}
+
+.search-icon {
+  position: relative;
+  left: 180px;
+  bottom: 32px;
+  color: #1aac3c;
+}
+
+.x-icon {
+  position: relative;
+  left: 180px;
+  bottom: 32px;
+  color: #a51e0d;
+}
+
+.search-form {
+  height: 100px;
+}
+
+#login-container {
+  padding: 0;
+  margin-top: 7em !important;
+  height: 30em;
+  width: 20em;
+  border: none;
+  margin: 0 auto;
+}
+
+.user-icon {
+  margin: 0px 8px 2px 0px;
+}
+
+.log-in-text {
+  font-family: "Roboto", sans-serif;
+  color: #e4e4e4;
+}
+
+#login-title-row {
+  padding: 0;
+  display: block;
+}
+
+.key-icon {
+  height: 45px;
+  width: 45px;
+  color: #4cbb30;
+}
+
+input.username-input {
+  border-radius: 0rem !important;
+  width: 100% !important;
+  border: transparent;
+}
+
+input.username-input:focus {
+  border: transparent;
+}
+
+input,
+select,
+textarea.username-input:focus {
+  border-radius: 0;
+  outline: 0px !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  width: 10rem !important;
+}
+
+label.label-text {
+  color: #e4e4e4;
+}
+
+button.log-in-button {
+  border-radius: 0rem;
+  background-color: #1aac3c !important;
+  border-color: grey;
+  border: 1px solid transparent !important;
+  padding: 6px 6px;
+  color: #e4e4e4;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+button.log-in-button:active {
+  background-color: #69b357 !important;
+  border: 1px solid transparent !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+button.log-in-button:active:focus {
+  background-color: #69b357 !important;
+  border: 1px solid transparent !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+button.log-in-button:active:focus:hover {
+  background-color: #69b357 !important;
+  border: 1px solid transparent;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+/* containers */
+.main-container {
+  height: 100%;
+  padding: 15px 15px;
+}
+
+.user-container {
+  border-radius: 0.4rem;
+  border: solid 1px #1aac3c;
+  opacity: 0.8;
+  background: #0f0f0f;
+  height: 31%;
+  width: 90% !important;
+  padding: 10px 8px 20px !important;
+  margin: 20px 0px 0px 40px !important;
+}
+
+.holdings-container {
+  opacity: 0.8;
+  margin: 15px 0px 0px 40px !important;
+  width: 90% !important;
+  border-radius: 0.4rem;
+  background: #0f0f0f;
+  padding: 10px 8px 20px !important;
+  border: solid 1px #1aac3c;
+}
+
+/* columns */
+.left-col {
+  margin-top: 15%;
+  padding-left: 50px !important;
+  padding-bottom: 0;
+}
+
+.right-col {
+  margin-top: 15%;
+}
+
+.heading-text {
+  margin-left: 15px;
+  color: white;
+}
+
+.titles-text {
+  color: white;
+  margin-left: 0 !important;
+}
+
+#holdings {
+  margin-left: 50%;
+}
+
+#holding-text {
+  margin-left: 33%;
+}
+
+.company-text {
+  position: relative;
+  right: 10px;
+  color: #1aac3c;
+  padding: 10px;
+  margin-left: 15px;
+}
+
+.shares-current {
+  color: #9c9c9c;
+  margin-left: 15px;
+}
+
 #root {
   height: 100%;
   margin-bottom: 15px;
@@ -34,5 +249,9 @@ nav.navbar {
   height: 100%;
   width: 100%;
   margin: 0 0;
+}
+
+.alert {
+  margin-top: 1rem;
 }
 /*# sourceMappingURL=styles.css.map */

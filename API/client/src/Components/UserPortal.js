@@ -83,7 +83,7 @@ class UserPortal extends Component {
     this.clearFields();
     this.setState({
       isSearching: true,
-      setAlertShow: false
+      setAlertShow: false,
     });
     let returnInterval;
     const { name, value } = event.target;

@@ -1,0 +1,32 @@
+@import "./variables";
+
+.landing-container {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.welcome-text {
+  opacity: 0.9;
+  color: white;
+  font-size: 3rem;
+}
+
+.topia-color {
+  color: $highlightGreen;
+}
+
+.description-text {
+  margin-right: 500px;
+  color: white;
+}
+
+.account-button-text {
+  color: $lpButtonTextColor;
+}
+
+.landing-page-buttons {
+  width: 9.5rem;
+  margin-left: 20px !important;
+}

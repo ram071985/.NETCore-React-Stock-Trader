@@ -1,8 +1,81 @@
 #login-container {
-    padding: 0;
-    margin-top: 7em !important;
-    height: 30em;
-    width: 20em;
-    border: none;
-    margin: 0 auto;
+  padding: 0;
+  margin-top: 7em !important;
+  height: 30em;
+  width: 20em;
+  border: none;
+  margin: 0 auto;
+}
+
+.user-icon {
+  margin: 0px 8px 2px 0px;
+}
+
+.log-in-text {
+  font-family: "Roboto", sans-serif;
+  color: $lpButtonTextColor;
+}
+
+#login-title-row {
+  padding: 0;
+  display: block;
+}
+
+.key-icon {
+  height: 45px;
+  width: 45px;
+  color: $highlightGreen;
+}
+
+input.username-input {
+  border-radius: 0rem !important;
+  width: 100% !important;
+  border: transparent;
+  &:focus {
+    border: transparent;
   }
+}
+
+input,
+select,
+textarea.username-input:focus {
+  border-radius: 0;
+  outline: 0px !important;
+  box-shadow: none !important;
+  width: 10rem !important;
+}
+
+label.label-text {
+  color: $lpButtonTextColor;
+}
+
+button.log-in-button {
+  border-radius: 0rem;
+  background-color: #1aac3c !important;
+  border-color: grey;
+  border: 1px solid transparent !important;
+  padding: 6px 6px;
+  color: rgb(228, 228, 228);
+  font-size: 1.2rem;
+  width: 100%;
+  &:active {
+    background-color: rgb(105, 179, 87) !important;
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+    &:focus {
+      background-color: rgb(105, 179, 87) !important;
+      border: 1px solid transparent !important;
+      box-shadow: none !important;
+      &:hover {
+        background-color: rgb(105, 179, 87) !important;
+        border: 1px solid transparent;
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
+.authenticate-spinner {
+  margin-top: 10px;
+  margin-left: 45%;
+}

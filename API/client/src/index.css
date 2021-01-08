@@ -103,10 +103,6 @@ div.review-container {
   height: 15% !important;
 }
 
-img.splash-image {
-  width: 500px;
-}
-
 .welcome-text {
   opacity: 0.9;
   color: white;
@@ -242,14 +238,6 @@ button.log-in-button:hover {
 
 /* Columns */
 
-.left-col {
-}
-
-.company-text {
-  color: white;
-  margin-left: 15px;
-}
-
 .share-text {
   color: rgb(233, 233, 233);
   margin-left: 15px;
@@ -356,6 +344,7 @@ button.cancel-confirm-button {
   right: 10px;
   color: #1aac3c;
   padding: 10px;
+  margin-left: 15px;
 }
 
 .result-text {
