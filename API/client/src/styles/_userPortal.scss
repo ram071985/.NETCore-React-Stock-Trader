@@ -1,0 +1,37 @@
+/* containers */
+.main-container {
+  height: 100%;
+  padding: 15px 15px;
+}
+
+.user-container {
+  border-radius: 0.4rem;
+  border: solid 1px #1aac3c;
+  opacity: 0.8;
+  background: rgb(15, 15, 15);
+  height: 31%;
+  width: 90% !important;
+  padding: 10px 8px 20px !important;
+  margin: 20px 0px 0px 40px !important;
+}
+
+.holdings-container {
+  opacity: 0.8;
+  margin: 15px 0px 0px 40px !important;
+  width: 90% !important;
+  border-radius: 0.4rem;
+  background: rgb(15, 15, 15);
+  padding: 10px 8px 20px !important;
+  border: solid 1px #1aac3c;
+}
+
+/* columns */
+.left-col {
+  margin-top: 15%;
+  padding-left: 50px !important;
+  padding-bottom: 0;
+}
+
+.right-col {
+  margin-top: 15%;
+}

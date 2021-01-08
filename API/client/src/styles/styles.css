@@ -1,1 +1,38 @@
-/* No CSS *//*# sourceMappingURL=styles.css.map */
+#root {
+  height: 100%;
+  margin-bottom: 15px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.72)), to(rgba(0, 0, 0, 0.85))), url("./images/sigmund-R401qwThw7w-unsplash.jpg") !important;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.85)), url("./images/sigmund-R401qwThw7w-unsplash.jpg") !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: auto;
+}
+
+button {
+  border-radius: 0 !important;
+}
+
+.landing-row {
+  margin: 0;
+}
+
+nav.navbar {
+  background-color: #4cbb30 !important;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  margin: 0 0;
+}
+/*# sourceMappingURL=styles.css.map */

@@ -383,7 +383,6 @@ class UserPortal extends Component {
   };
 
   render() {
-    console.log(this.state.setAlertShow);
     return (
       <div className="container-fluid main-container">
         <Form onSubmit={(event) => this.handleLogOut(event)}>

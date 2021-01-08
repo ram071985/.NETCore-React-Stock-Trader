@@ -1,5 +1,4 @@
 ﻿import React, { Component } from "react";
-import SplashImage from "../images/splashImage.jpeg";
 import { Redirect } from "react-router-dom";
 import { User } from "react-feather";
 
