@@ -1,14 +1,25 @@
 import React, { Component } from "react";
 import { Key } from "react-feather";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, RouteProps } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
 import Spinner from "react-bootstrap/Spinner";
 import { Container, Row, Form, Button } from "react-bootstrap";
+interface TraderState {
+  newUsername: string,
+  newPassword: string,
+  existingUsername: string,
+  existingPassword: string,
+  errorMessage: string,
+  logInErrorMessage: string,
+  toUserPortal: boolean,
+  setShow: boolean,
+  loading: boolean,
+}
 
-class LogIn extends Component {
-  constructor() {
-    super();
+class LogIn extends Component<RouteProps, TraderState, any> {
+  constructor(props: any) {
+    super(props);
     this.state = {
       newUsername: "",
       newPassword: "",
@@ -35,14 +46,13 @@ class LogIn extends Component {
     });
   };
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
+  handleChange = (event: any) => {
+    const { name, value } = event.currentTarget as HTMLInputElement;
     this.setState({
       [name]: value,
       errorMessage: "",
-      logInMessage: "",
       logInErrorMessage: "",
-    });
+    }as any);
   };
 
   handleClick = async () => {
@@ -50,7 +60,7 @@ class LogIn extends Component {
     history.push("/sign-up");
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = (e: React.ChangeEvent<any>):void => {
     e.preventDefault();
     this.logInUser();
   };
@@ -143,7 +153,7 @@ class LogIn extends Component {
     }
   };
 
-  render() {
+  public render() {
     if (this.state.toUserPortal === true) return <Redirect to="/" />;
 
     const { loading } = this.state;
