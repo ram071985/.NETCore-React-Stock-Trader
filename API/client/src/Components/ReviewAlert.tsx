@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import Alert from "react-bootstrap/Alert";
 
-class ReviewAlert extends Component {
-  constructor() {
-    super();
+interface IReviewAlert {
+  errorMessage: string
+  handleClose(): void;
+  setAlertShow: boolean
+}
+
+class ReviewAlert extends Component<IReviewAlert, any> {
+  constructor(props: any) {
+    super(props);
     this.state = {};
   }
 

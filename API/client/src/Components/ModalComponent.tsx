@@ -56,8 +56,6 @@ class ModalComponent extends Component<IModalState & RouteComponentProps, any> {
       return (
         <ReviewAlert
           handleClose={this.handleAlertClose}
-          wallet={this.props.wallet}
-          price={this.props.price}
           errorMessage={this.props.errorMessage}
           setAlertShow={this.props.setAlertShow}
         />
