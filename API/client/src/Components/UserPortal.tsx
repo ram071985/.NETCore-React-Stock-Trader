@@ -6,7 +6,7 @@ import UserInfo from "./UserInfo";
 const lsComponent = require("./ParseLSComponent");
 
 interface IUserPortal {
-  
+  props: any
 }
 
 class UserPortal extends Component<IUserPortal, any> {
@@ -84,13 +84,13 @@ class UserPortal extends Component<IUserPortal, any> {
     }
   };
 
-  handleQueryChange = (event) => {
+  handleQueryChange = (event: React.ChangeEvent<any>) => {
     this.clearFields();
     this.setState({
       isSearching: true,
       setAlertShow: false,
     });
-    let returnInterval;
+    let returnInterval: any;
     const { name, value } = event.target;
     this.setState({
       [name]: value,
@@ -122,14 +122,14 @@ class UserPortal extends Component<IUserPortal, any> {
     }
   };
 
-  handleLogOut = (event) => {
+  handleLogOut = (event?: React.FormEvent<HTMLElement>) => {
     let deleteId = localStorage.clear();
     return deleteId;
   };
 
-  handleHoldings = (event) => {
+  handleHoldings = (event: React.ChangeEvent<HTMLFormElement>) => {
     const result = this.state.stocks.filter(
-      (name) => name.company === event.target.value
+      (name: any) => name.company === event.target.value
     );
     this.setState({
       sellQuantity: result[0].quantity,
@@ -140,7 +140,7 @@ class UserPortal extends Component<IUserPortal, any> {
     });
   };
 
-  handleBuyQuantity = (event) => {
+  handleBuyQuantity = (event: React.ChangeEvent<HTMLFormElement>) => {
     const { value } = event.target;
     this.setState({
       dynamicQuantity: parseInt(value),
@@ -148,7 +148,7 @@ class UserPortal extends Component<IUserPortal, any> {
     });
   };
 
-  handleQuantityChange = (event) => {
+  handleQuantityChange = (event: React.ChangeEvent<HTMLFormElement>) => {
     const { name, value } = event.target;
     this.setState({
       [name]: this.state.sellQuantity,
@@ -170,7 +170,7 @@ class UserPortal extends Component<IUserPortal, any> {
     });
   };
 
-  handleBuySellChange = (event) => {
+  handleBuySellChange = (event: React.ChangeEvent<HTMLFormElement>) => {
     this.clearFields();
     this.setState({
       action: event.target.value,
@@ -202,7 +202,7 @@ class UserPortal extends Component<IUserPortal, any> {
     });
   };
 
-  handleClose = (e) => {
+  handleClose = (e: React.MouseEvent<HTMLFormElement>) => {
     this.clearFields();
     this.setState({
       setShow: false,
@@ -218,7 +218,7 @@ class UserPortal extends Component<IUserPortal, any> {
   getUserInfo = () => {
     axios
       .post("/api/update-portal", {
-        userId: this.parseId(),
+        userId: lsComponent.parseLocalStorage(),
       })
       .then((res) => {
         this.setState({
@@ -229,12 +229,12 @@ class UserPortal extends Component<IUserPortal, any> {
       });
   };
 
-  getDatabaseStocks = async (index) => {
+  getDatabaseStocks = async () => {
     this.setState({
       loading: true,
     });
     const stocksResponse = await axios.post("/api/update-portal/stocks", {
-      userId: this.parseId(),
+      userId: lsComponent.parseLocalStorage,
     });
 
     this.setState({
@@ -246,7 +246,7 @@ class UserPortal extends Component<IUserPortal, any> {
       this.state.sampleStock.push(obj);
     }
 
-    const addPrices = this.state.stocks.map((price, index) => {
+    const addPrices = this.state.stocks.map((price: Array<any>, index: number) => {
       return { ...price, current: this.state.sampleStock[index].current };
     });
     this.setState({
@@ -260,7 +260,7 @@ class UserPortal extends Component<IUserPortal, any> {
 
   getSellQuantity = () => {
     const filter = this.state.stocks.filter(
-      (name) => name.company === this.state.stockName
+      (name: any) => name.company === this.state.stockName
     );
 
     this.setState({
@@ -277,7 +277,7 @@ class UserPortal extends Component<IUserPortal, any> {
     return formatter;
   };
 
-  renderHoldings = (stock, index) => {
+  renderHoldings = (stock: any, index: number) => {
     return (
       <div key={index} className="holdings-render">
         <p className="mb-0 company-text">{stock.company}</p>
@@ -294,8 +294,8 @@ class UserPortal extends Component<IUserPortal, any> {
           {this.state.loading ? (
             <Spinner className="ml-2" variant="success" animation="border" />
           ) : (
-            this.decimalFormatter().format(stock.current * stock.quantity)
-          )}
+              this.decimalFormatter().format(stock.current * stock.quantity)
+            )}
         </h5>
         <Button
           variant="outline-success"
@@ -319,7 +319,7 @@ class UserPortal extends Component<IUserPortal, any> {
     );
   };
 
-  sellSubmit = (index) => {
+  sellSubmit = (index: number) => {
     this.setState({
       holding: this.state.stocks[index],
       isBuy: false,
@@ -333,7 +333,7 @@ class UserPortal extends Component<IUserPortal, any> {
     this.handleSellShow();
   };
 
-  buySubmit = (index) => {
+  buySubmit = (index: number) => {
     this.setState({
       holding: this.state.stocks[index],
       isSell: false,
@@ -347,7 +347,7 @@ class UserPortal extends Component<IUserPortal, any> {
     this.handleShow();
   };
 
-  renderModalHoldings = (stock, index) => {
+  renderModalHoldings = (stock: any, index: number) => {
     return (
       <option key={index} value={stock.company}>
         {stock.company} ({stock.quantity} shares)
@@ -355,7 +355,7 @@ class UserPortal extends Component<IUserPortal, any> {
     );
   };
 
-  confirmRedirect = (e) => {
+  confirmRedirect = (e: React.MouseEvent<HTMLDivElement>) => {
     if (
       this.state.symbol === "" ||
       (this.state.quantity === "" && this.state.action == "Buy")
@@ -366,7 +366,7 @@ class UserPortal extends Component<IUserPortal, any> {
       });
     } else if (
       this.state.wallet <
-        parseFloat(this.state.price) * this.state.dynamicQuantity &&
+      parseFloat(this.state.price) * this.state.dynamicQuantity &&
       !this.state.isSell &&
       this.state.action === "Buy"
     ) {
@@ -403,7 +403,6 @@ class UserPortal extends Component<IUserPortal, any> {
           formatter={this.decimalFormatter}
         />
         <ModalComponent
-          action={this.state.action}
           setAction={this.state.action}
           isSell={this.state.isSell}
           isBuy={this.state.isBuy}
@@ -429,7 +428,6 @@ class UserPortal extends Component<IUserPortal, any> {
           isSearching={this.state.isSearching}
           isSymbol={this.state.isSymbol}
           wallet={this.state.wallet}
-          isClose={this.state.isClose}
           setAlertShow={this.state.setAlertShow}
           errorMessage={this.state.errorMessage}
           confirmRedirect={this.confirmRedirect}
@@ -444,8 +442,8 @@ class UserPortal extends Component<IUserPortal, any> {
           {this.state.stocks.length > 0 ? (
             this.state.stocks.map(this.renderHoldings)
           ) : (
-            <p className="text-center no-holdings">No holdings yet!</p>
-          )}
+              <p className="text-center no-holdings">No holdings yet!</p>
+            )}
         </div>
       </div>
     );

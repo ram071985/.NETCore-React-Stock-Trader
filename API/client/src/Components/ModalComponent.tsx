@@ -3,7 +3,7 @@ import { Modal, Form, Col, Button } from "react-bootstrap";
 import SellQuantity from "./SellQuantity";
 import BuyQuantity from "./BuyQuantity";
 import ReviewAlert from "./ReviewAlert";
-import { Redirect, RouteComponentProps } from "react-router-dom";
+import { Redirect, RouteComponentProps, withRouter } from "react-router-dom";
 import { CheckCircle } from "react-feather";
 import { XCircle } from "react-feather";
 
@@ -32,8 +32,8 @@ interface IModalState {
   isSearching: boolean
   isSymbol: string
   handleHoldings(event: React.ChangeEvent): any;
-  modalHoldings(OptionHTMLAttributes: any): any
-  handleBuyQuantity(): void
+  modalHoldings(stock: any, index: number): any
+  handleBuyQuantity(event: React.ChangeEvent<HTMLFormElement>): void
   quantity: number
   quantityChange(event: React.ChangeEvent): any;
   stockName: string
@@ -41,7 +41,7 @@ interface IModalState {
   formatter(): Intl.NumberFormat
 }
 
-class ModalComponent extends Component<IModalState & RouteComponentProps, any> {
+class ModalComponent extends Component<IModalState & RouteComponentProps<{}>> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -202,8 +202,8 @@ class ModalComponent extends Component<IModalState & RouteComponentProps, any> {
                         name="stockName"
                         as="select"
                       >
-                        {this.props.stocks.map((index) =>
-                          this.props.modalHoldings(index)
+                        {this.props.stocks.map((stock, index) =>
+                          this.props.modalHoldings(stock, index)
                         )}
                       </Form.Control>
                     </Form.Group>
@@ -268,4 +268,4 @@ class ModalComponent extends Component<IModalState & RouteComponentProps, any> {
   }
 }
 
-export default ModalComponent;
+export default ModalComponent as any;
