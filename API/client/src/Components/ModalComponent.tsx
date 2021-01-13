@@ -37,8 +37,8 @@ interface IModalState {
   quantity: number
   quantityChange(event: React.ChangeEvent): any;
   stockName: string
-  formatter(): Intl.NumberFormat
   confirmRedirect(e: React.MouseEvent): void;
+  formatter(): Intl.NumberFormat
 }
 
 class ModalComponent extends Component<IModalState, any> {
