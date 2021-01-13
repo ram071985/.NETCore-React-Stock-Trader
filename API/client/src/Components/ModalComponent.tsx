@@ -33,7 +33,7 @@ interface IModalState {
   isSymbol: string
   handleHoldings(event: React.ChangeEvent): any;
   modalHoldings(OptionHTMLAttributes: any): any
-  handleBuyQuantity: number
+  handleBuyQuantity(): void
   quantity: number
   quantityChange(event: React.ChangeEvent): any;
   stockName: string
@@ -215,8 +215,6 @@ class ModalComponent extends Component<IModalState & RouteComponentProps, any> {
             {this.props.setAction === "Buy" || this.props.isBuy ? (
               <BuyQuantity
                 onChange={this.props.handleBuyQuantity}
-                quantity={this.props.quantity}
-                symbol={this.props.symbol}
               />
             ) : (
                 <SellQuantity 
