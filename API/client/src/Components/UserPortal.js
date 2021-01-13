@@ -127,7 +127,7 @@ class UserPortal extends Component {
     return deleteId;
   };
 
-  handleHoldings = (event, index) => {
+  handleHoldings = (event) => {
     const result = this.state.stocks.filter(
       (name) => name.company === event.target.value
     );
