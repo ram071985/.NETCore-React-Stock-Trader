@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Key } from "react-feather";
 import axios from "axios";
-import { Redirect, RouteProps } from "react-router-dom";
+import { Redirect, RouteComponentProps } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
 import Spinner from "react-bootstrap/Spinner";
 import { Container, Row, Form, Button } from "react-bootstrap";
 
-interface TraderState {
+interface ITraderState {
   newUsername: string,
   newPassword: string,
   existingUsername: string,
@@ -18,7 +18,7 @@ interface TraderState {
   loading: boolean,
 }
 
-class LogIn extends Component<RouteProps, TraderState, any> {
+class LogIn extends Component<ITraderState & RouteComponentProps, any> {
   constructor(props: any) {
     super(props);
     this.state = {
