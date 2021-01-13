@@ -1,12 +1,25 @@
 import React, { Component } from "react";
 import { BarChart } from "react-feather";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, RouteComponentProps} from "react-router-dom";
 import AlertComponent from "./AlertComponent";
 import { Container, Form, Spinner, Row, Button } from "react-bootstrap";
-class SignUp extends Component {
-  constructor() {
-    super();
+
+interface ISignUpState {
+  newUsername: string,
+  newPassword: string,
+  existingUsername: string,
+  existingPassword: string,
+  errorMessage: string,
+  logInErrorMessage: string,
+  toUserPortal: boolean,
+  setShow: boolean,
+  loading: boolean,
+}
+
+class SignUp extends Component<ISignUpState & RouteComponentProps, any> {
+  constructor(props: any) {
+    super(props);
     this.state = {
       newUsername: "",
       newPassword: "",
@@ -33,7 +46,7 @@ class SignUp extends Component {
     }
   };
 
-  handleChange = (event) => {
+  handleChange = (event: React.ChangeEvent<any>) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
@@ -47,7 +60,7 @@ class SignUp extends Component {
     history.push("/log-in");
   };
 
-  handleNewUserSubmit = (e) => {
+  handleNewUserSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     this.postNewUser();
   };
@@ -137,11 +150,11 @@ class SignUp extends Component {
                 onChange={this.handleChange}
                 placeholder=""
                 name="newUsername"
-                autocomplete="off"
+                data-autocomplete="off"
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label className="label-text" for="exampleFormControlInput1">
+              <Form.Label className="label-text" data-for="exampleFormControlInput1">
                 Password
               </Form.Label>
               <Form.Control
