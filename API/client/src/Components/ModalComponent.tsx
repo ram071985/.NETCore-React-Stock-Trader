@@ -3,7 +3,7 @@ import { Modal, Form, Col, Button } from "react-bootstrap";
 import SellQuantity from "./SellQuantity";
 import BuyQuantity from "./BuyQuantity";
 import ReviewAlert from "./ReviewAlert";
-import { Redirect } from "react-router-dom";
+import { Redirect, RouteComponentProps } from "react-router-dom";
 import { CheckCircle } from "react-feather";
 import { XCircle } from "react-feather";
 
@@ -27,7 +27,7 @@ interface IModalState {
   holding: {company: string}
   sellSubmit: boolean
   handleChange(event: React.ChangeEvent): void;
-  stocks: Array<any>
+  stocks: never[]
   handleQueryChange(event: React.ChangeEvent): any;
   isSearching: boolean
   isSymbol: string
@@ -41,7 +41,7 @@ interface IModalState {
   formatter(): Intl.NumberFormat
 }
 
-class ModalComponent extends Component<IModalState, any> {
+class ModalComponent extends Component<IModalState & RouteComponentProps, any> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -221,13 +221,10 @@ class ModalComponent extends Component<IModalState, any> {
                 symbol={this.props.symbol}
               />
             ) : (
-                <SellQuantity
-                  onChange={this.props.quantityChange}
-                  stocks={this.props.stocks}
-                  stockName={this.props.stockName}
+                <SellQuantity 
                   quantity={this.props.quantity}
                   quantityChange={this.props.quantityChange}
-                />
+                  />
               )}
             <Form.Group className="mb-0" as={Col} controlId="formGridZip">
               <Form.Label className="ml-3 mt-3 mb-0 total-label">Total</Form.Label>
