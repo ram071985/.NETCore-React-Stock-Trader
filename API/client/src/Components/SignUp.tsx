@@ -202,4 +202,4 @@ class SignUp extends Component<ISignUpState & RouteComponentProps, any> {
   }
 }
 
-export default SignUp;
+export default SignUp as any;

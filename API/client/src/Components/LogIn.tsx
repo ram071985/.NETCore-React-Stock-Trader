@@ -229,4 +229,4 @@ class LogIn extends Component<ITraderState & RouteComponentProps, any> {
   }
 }
 
-export default LogIn;
+export default LogIn as any;

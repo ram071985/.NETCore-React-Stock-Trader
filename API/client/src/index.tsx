@@ -18,7 +18,7 @@ ReactDOM.render(
       <Route path="/sign-up" render={(props) => <SignUp {...props} />} />
       <Route path="/log-in" render={(props) => <LogIn {...props} />} />
       <Route path="/landing-page" component={LandingPage} />
-      <ProtectedRoute exact={true} path="/" component={UserPortal} />
+      <ProtectedRoute data-exact={true} data-path="/" component={UserPortal} />
       <ProtectedRoute component={UserPortal} />
     </Switch>
   </BrowserRouter>,

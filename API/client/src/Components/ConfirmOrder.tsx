@@ -283,4 +283,4 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
   }
 }
 
-export default ConfirmOrder;
+export default ConfirmOrder as any;
