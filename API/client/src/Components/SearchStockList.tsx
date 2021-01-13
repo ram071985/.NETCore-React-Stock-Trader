@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 
 interface ISearchStockList {
-
+  quantityChange(event: React.ChangeEvent): any
+  company: string
 }
 
 class SearchStockList extends Component<ISearchStockList, any> {
