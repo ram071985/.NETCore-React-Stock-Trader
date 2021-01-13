@@ -3,10 +3,15 @@ import axios from "axios";
 import { Button, Form, Spinner } from "react-bootstrap";
 import ModalComponent from "./ModalComponent";
 import UserInfo from "./UserInfo";
+const lsComponent = require("./ParseLSComponent");
 
-class UserPortal extends Component {
-  constructor() {
-    super();
+interface IUserPortal {
+  
+}
+
+class UserPortal extends Component<IUserPortal, any> {
+  constructor(props: any) {
+    super(props);
     this.state = {
       sampleStock: [],
       quantity: 0,
@@ -115,11 +120,6 @@ class UserPortal extends Component {
         sellQuantity: this.state.firstObject.quantity,
       });
     }
-  };
-
-  parseId = () => {
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
-    return parseUserId;
   };
 
   handleLogOut = (event) => {
