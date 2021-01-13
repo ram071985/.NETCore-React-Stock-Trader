@@ -2,9 +2,18 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 
-class UserInfo extends Component {
-  constructor() {
-    super();
+interface IUserInfoState {
+handleShow(): void
+loading: boolean
+username: string
+formatter(): Intl.NumberFormat
+holdings: number
+wallet: number
+}
+
+class UserInfo extends Component<IUserInfoState, any> {
+  constructor(props: any) {
+    super(props);
     this.state = {};
   }
 
