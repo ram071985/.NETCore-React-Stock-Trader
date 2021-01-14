@@ -29,7 +29,6 @@ namespace CORE.Services
                         .List<Wallet>();                
 
                     transaction.Commit();
-
                     return result[0];
                 }
             }

@@ -4,7 +4,6 @@ import axios from "axios";
 import { Redirect, RouteComponentProps, NavLinkProps } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
 import BarLoader from "react-spinners/BarLoader";
-const lsComponenet = require("./ParseLSComponent");
 
 interface IConfirmOrder {
   localStorage: string
@@ -20,6 +19,11 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
       isError: false,
       redirect: false,
     };
+  }
+
+  parseLocalStorage = async () => {
+    let parseUserId: number = parseInt(localStorage.getItem("user_id") as string);
+    return parseUserId;
   }
 
   handleChange = (event: React.ChangeEvent<any>) => {
@@ -48,7 +52,7 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
     ) {
       axios
         .put("/api/transaction/buy", {
-          userId: lsComponenet.parseLocalStorage(),
+          userId: this.parseLocalStorage(),
           balance:
             this.props.location.state.price *
             this.props.location.state.quantity,
@@ -70,7 +74,7 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
     ) {
       axios
         .put("/api/transaction/sell", {
-          userId: lsComponenet.parseLocalStorage(),
+          userId: this.parseLocalStorage(),
           balance:
             this.props.location.state.price *
             this.props.location.state.quantity,
@@ -87,7 +91,7 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
     this.putStockTransaction();
     axios
       .post("/api/transaction/sell", {
-        userId: lsComponenet.parseLocalStorage(),
+        userId: this.parseLocalStorage(),
         deposit:
           this.props.location.state.price * this.props.location.state.quantity,
         quantity: this.props.location.state.quantity,
@@ -113,7 +117,7 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
     this.putStockTransaction();
     axios
       .post("/api/transaction/buy", {
-        userId: lsComponenet.parseLocalStorage(),
+        userId: this.parseLocalStorage(),
         withdrawal:
           this.props.location.state.price * this.props.location.state.quantity,
         quantity: this.props.location.state.quantity,
@@ -134,7 +138,7 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
   addStockRecord = () => {
     if (!this.state.isError) {
       axios.post("/api/transaction/add-stock", {
-        userId: lsComponenet.parseLocalStorage(),
+        userId: this.parseLocalStorage(),
         company: this.props.location.state.company,
         symbol: this.props.location.state.symbol,
         quantity: this.props.location.state.quantity,
@@ -144,7 +148,7 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
 
   deleteStockRecord = () => {
     axios.post("/api/transaction/delete-stock", {
-      userId: lsComponenet.parseLocalStorage(),
+      userId: this.parseLocalStorage(),
       company: this.props.location.state.company,
       symbol: this.props.location.state.symbol,
       quantity: this.props.location.state.quantity,
@@ -170,10 +174,6 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
       );
     }
   };
-
-  parseLocalStorage = async () => {
-    return lsComponenet.parseLocalStorage();
-  }
 
   render() {
     if (this.state.cancel || this.state.redirect) {

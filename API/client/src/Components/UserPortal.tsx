@@ -3,7 +3,6 @@ import axios from "axios";
 import { Button, Form, Spinner } from "react-bootstrap";
 import ModalComponent from "./ModalComponent";
 import UserInfo from "./UserInfo";
-const lsComponent = require("./ParseLSComponent");
 
 interface IUserPortal {
   props: any
@@ -218,7 +217,7 @@ class UserPortal extends Component<IUserPortal, any> {
   getUserInfo = () => {
     axios
       .post("/api/update-portal", {
-        userId: lsComponent.parseLocalStorage(),
+        userId: this.parseLocalStorage(),
       })
       .then((res) => {
         this.setState({
@@ -234,7 +233,7 @@ class UserPortal extends Component<IUserPortal, any> {
       loading: true,
     });
     const stocksResponse = await axios.post("/api/update-portal/stocks", {
-      userId: lsComponent.parseLocalStorage,
+      userId: this.parseLocalStorage(),
     });
 
     this.setState({
@@ -276,6 +275,11 @@ class UserPortal extends Component<IUserPortal, any> {
     });
     return formatter;
   };
+
+  parseLocalStorage = async () => {
+    let parseUserId: number = parseInt(localStorage.getItem("user_id") as string);
+    return parseUserId;
+  }
 
   renderHoldings = (stock: any, index: number) => {
     return (
