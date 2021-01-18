@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 
-interface IBuyQuantity {
-  onChange(event: React.ChangeEvent): void
-}
-
-class BuyQuantity extends Component<IBuyQuantity, any> {
-  constructor(props: any) {
-    super(props);
+class BuyQuantity extends Component {
+  constructor() {
+    super();
     this.state = {};
   }
 
@@ -36,3 +32,4 @@ class BuyQuantity extends Component<IBuyQuantity, any> {
 }
 
 export default BuyQuantity;
+

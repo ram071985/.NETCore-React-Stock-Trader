@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import { Row, Alert } from "react-bootstrap";
 
-interface IAlertComponent {
-  logInErrorMessage: string
-  setShow: boolean
-  handleClose(): void;
-}
-
-class AlertComponent extends Component<IAlertComponent, any> {
-  constructor(props: any) {
-    super(props);
+class AlertComponent extends Component {
+  constructor() {
+    super();
     this.state = {};
   }
   render() {

@@ -3,47 +3,13 @@ import { Modal, Form, Col, Button } from "react-bootstrap";
 import SellQuantity from "./SellQuantity";
 import BuyQuantity from "./BuyQuantity";
 import ReviewAlert from "./ReviewAlert";
-import { Redirect, RouteComponentProps, withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { CheckCircle } from "react-feather";
 import { XCircle } from "react-feather";
 
-interface IModalState {
-  orderHeader: string,
-  errorMessage: string,
-  setShow: boolean
-  wallet: number,
-  price: number,
-  setAlertShow: boolean
-  isConfirm: boolean
-  company: string
-  dynamicQuantity: number
-  symbol: string
-  setAction: string
-  isBuy: boolean
-  isSell: boolean
-  holdings: number
-  show: boolean
-  onHide(e: React.MouseEvent): void;
-  holding: {company: string}
-  sellSubmit: boolean
-  handleChange(event: React.ChangeEvent): void;
-  stocks: never[]
-  handleQueryChange(event: React.ChangeEvent): any;
-  isSearching: boolean
-  isSymbol: string
-  handleHoldings(event: React.ChangeEvent): any;
-  modalHoldings(stock: any, index: number): any
-  handleBuyQuantity(event: React.ChangeEvent<HTMLFormElement>): void
-  quantity: number
-  quantityChange(event: React.ChangeEvent): any;
-  stockName: string
-  confirmRedirect(e: React.MouseEvent): void;
-  formatter(): Intl.NumberFormat
-}
-
-class ModalComponent extends Component<IModalState & RouteComponentProps<{}>> {
-  constructor(props: any) {
-    super(props);
+class ModalComponent extends Component {
+  constructor() {
+    super();
     this.state = {
       orderHeader: "",
       errorMessage: "",
@@ -56,6 +22,8 @@ class ModalComponent extends Component<IModalState & RouteComponentProps<{}>> {
       return (
         <ReviewAlert
           handleClose={this.handleAlertClose}
+          wallet={this.props.wallet}
+          price={this.props.price}
           errorMessage={this.props.errorMessage}
           setAlertShow={this.props.setAlertShow}
         />
@@ -97,7 +65,7 @@ class ModalComponent extends Component<IModalState & RouteComponentProps<{}>> {
           className="purchase-modal"
           show={this.props.show}
           onHide={this.props.onHide}
-
+       
         >
           <Form.Row>
             <div
@@ -133,17 +101,17 @@ class ModalComponent extends Component<IModalState & RouteComponentProps<{}>> {
                   {this.props.stocks.length === 0 ? (
                     <option disabled>Sell</option>
                   ) : (
-                      <option>Sell</option>
-                    )}
+                    <option>Sell</option>
+                  )}
                 </Form.Control>
               ) : (
-                  <Form.Control
-                    as="select"
-                    className="ml-5 mt-0 modal-input w-50"
-                    name="action"
-                    onChange={this.props.handleChange}
-                  ></Form.Control>
-                )}
+                <Form.Control
+                  as="select"
+                  className="ml-5 mt-0 modal-input w-50"
+                  name="action"
+                  onChange={this.props.handleChange}
+                ></Form.Control>
+              )}
             </Form.Group>
 
             <Form.Group
@@ -170,7 +138,7 @@ class ModalComponent extends Component<IModalState & RouteComponentProps<{}>> {
                     style={{
                       display:
                         !this.props.isSearching &&
-                          this.props.isSymbol === "Known symbol"
+                        this.props.isSymbol === "Known symbol"
                           ? "block"
                           : "none",
                     }}
@@ -180,7 +148,7 @@ class ModalComponent extends Component<IModalState & RouteComponentProps<{}>> {
                     style={{
                       display:
                         !this.props.isSearching &&
-                          this.props.isSymbol === "Unknown symbol"
+                        this.props.isSymbol === "Unknown symbol"
                           ? "block"
                           : "none",
                     }}
@@ -191,54 +159,60 @@ class ModalComponent extends Component<IModalState & RouteComponentProps<{}>> {
                   </h6>{" "}
                 </Form>
               ) : (
-                  <Form>
-                    <Form.Group controlId="exampleForm.ControlSelect1">
-                      <Form.Label className="current-label">
-                        Current Holdings
+                <Form>
+                  <Form.Group controlId="exampleForm.ControlSelect1">
+                    <Form.Label className="current-label">
+                      Current Holdings
                     </Form.Label>
-                      <Form.Control
-                        type="hidden"
-                        onChange={(event) => this.props.handleHoldings(event)}
-                        name="stockName"
-                        as="select"
-                      >
-                        {this.props.stocks.map((stock, index) =>
-                          this.props.modalHoldings(stock, index)
-                        )}
-                      </Form.Control>
-                    </Form.Group>
-                  </Form>
-                )}
+                    <Form.Control
+                      type="hidden"
+                      onChange={(event) => this.props.handleHoldings(event)}
+                      name="stockName"
+                      as="select"
+                    >
+                      {this.props.stocks.map((index) =>
+                        this.props.modalHoldings(index)
+                      )}
+                    </Form.Control>
+                  </Form.Group>
+                </Form>
+              )}
             </Form.Group>
           </Form.Row>
           <Form.Row>
             {this.props.setAction === "Buy" || this.props.isBuy ? (
               <BuyQuantity
                 onChange={this.props.handleBuyQuantity}
+                quantity={this.props.quantity}
+                symbol={this.props.symbol}
               />
             ) : (
-                <SellQuantity 
-                  quantity={this.props.quantity}
-                  quantityChange={this.props.quantityChange}
-                  />
-              )}
+              <SellQuantity
+                onChange={this.props.quantityChange}
+                stocks={this.props.stocks}
+                stockName={this.props.stockName}
+                quantity={this.props.quantity}
+                quantityChange={this.props.quantityChange}
+                sellIncrement={this.props.sellIncrement}
+              />
+            )}
             <Form.Group className="mb-0" as={Col} controlId="formGridZip">
               <Form.Label className="ml-3 mt-3 mb-0 total-label">Total</Form.Label>
               <Col className="total-col" sm={5}>
-                <Form.Control
-                  type="text"
-                  name="price"
-                  value={
-                    this.props.isSymbol === "Unknown symbol"
-                      ? "$" + this.props.formatter().format(0)
-                      : "$" +
+              <Form.Control
+                type="text"
+                name="price"
+                value={
+                  this.props.isSymbol === "Unknown symbol"
+                    ? "$" + this.props.formatter().format(0)
+                    : "$" +
                       this.props
                         .formatter()
                         .format(this.props.dynamicQuantity * this.props.price)
-                  }
-                  className="w-50 ml-1 total-modal-input"
-                  readOnly
-                />
+                }
+                className="w-50 ml-1 total-modal-input"
+                readOnly
+              />
               </Col>
             </Form.Group>
             {this.renderAlert()}
@@ -268,4 +242,4 @@ class ModalComponent extends Component<IModalState & RouteComponentProps<{}>> {
   }
 }
 
-export default ModalComponent as any;
+export default ModalComponent;

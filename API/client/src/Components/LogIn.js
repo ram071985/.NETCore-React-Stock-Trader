@@ -1,26 +1,14 @@
 import React, { Component } from "react";
 import { Key } from "react-feather";
 import axios from "axios";
-import { Redirect, RouteComponentProps } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
 import Spinner from "react-bootstrap/Spinner";
 import { Container, Row, Form, Button } from "react-bootstrap";
 
-interface ITraderState {
-  newUsername: string,
-  newPassword: string,
-  existingUsername: string,
-  existingPassword: string,
-  errorMessage: string,
-  logInErrorMessage: string,
-  toUserPortal: boolean,
-  setShow: boolean,
-  loading: boolean,
-}
-
-class LogIn extends Component<ITraderState & RouteComponentProps, any> {
-  constructor(props: any) {
-    super(props);
+class LogIn extends Component {
+  constructor() {
+    super();
     this.state = {
       newUsername: "",
       newPassword: "",
@@ -47,13 +35,14 @@ class LogIn extends Component<ITraderState & RouteComponentProps, any> {
     });
   };
 
-  handleChange = (event: any) => {
-    const { name, value } = event.currentTarget as HTMLInputElement;
+  handleChange = (event) => {
+    const { name, value } = event.target;
     this.setState({
       [name]: value,
       errorMessage: "",
+      logInMessage: "",
       logInErrorMessage: "",
-    }as any);
+    });
   };
 
   handleClick = async () => {
@@ -61,7 +50,7 @@ class LogIn extends Component<ITraderState & RouteComponentProps, any> {
     history.push("/sign-up");
   };
 
-  handleSubmit = (e: React.ChangeEvent<any>):void => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.logInUser();
   };
@@ -154,7 +143,7 @@ class LogIn extends Component<ITraderState & RouteComponentProps, any> {
     }
   };
 
-  public render() {
+  render() {
     if (this.state.toUserPortal === true) return <Redirect to="/" />;
 
     const { loading } = this.state;
@@ -182,7 +171,7 @@ class LogIn extends Component<ITraderState & RouteComponentProps, any> {
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label className="label-text" data-for="exampleFormControlInput1">
+              <Form.Label className="label-text" for="exampleFormControlInput1">
                 Password
               </Form.Label>
               <Form.Control
@@ -229,4 +218,4 @@ class LogIn extends Component<ITraderState & RouteComponentProps, any> {
   }
 }
 
-export default LogIn as any;
+export default LogIn;

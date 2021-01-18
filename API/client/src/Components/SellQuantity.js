@@ -2,14 +2,9 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 
-interface ISellQuantity {
-  quantity: number
-  quantityChange(event: React.ChangeEvent): void
-}
-
-class SellQuantity extends Component<ISellQuantity, any> {
-  constructor(props: any) {
-    super(props);
+class SellQuantity extends Component {
+  constructor() {
+    super();
     this.state = {};
   }
   render() {
