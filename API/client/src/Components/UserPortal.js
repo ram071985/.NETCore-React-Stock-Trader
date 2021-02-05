@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { Button, Form, Spinner } from "react-bootstrap";
 import ModalComponent from "./ModalComponent";
 import UserInfo from "./UserInfo";
@@ -35,6 +36,7 @@ class UserPortal extends Component {
       showError: "",
       setAlertShow: false,
       isConfirm: false,
+      toHistory: false
     };
   }
 
@@ -278,6 +280,7 @@ class UserPortal extends Component {
   };
 
   renderHoldings = (stock, index) => {
+    const { history } = this.props;
     return (
       <div key={index} className="holdings-render">
         <p className="mb-0 company-text">{stock.company}</p>
@@ -313,6 +316,15 @@ class UserPortal extends Component {
         >
           <span id="holdings-button-text" className="font-weight-light">
             Buy shares
+          </span>
+        </Button>
+        
+        <Button
+          variant="outline-success"
+          className="buy-button"
+        >
+          <span id="holdings-button-text" className="font-weight-light">
+          <Link to="/historical-data">Historical Data</Link>
           </span>
         </Button>
       </div>

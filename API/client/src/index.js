@@ -10,10 +10,17 @@ import SignUp from "./Components/SignUp";
 import UserPortal from "./Components/UserPortal";
 import ConfirmOrder from "./Components/ConfirmOrder";
 import ProtectedRoute from "./Components/ProtectedRoute";
+import HistoricalData from "./Components/HistoricalData";
 
 ReactDOM.render(
+  
   <BrowserRouter>
+  <React.StrictMode>
     <Switch>
+      <Route
+        path="/historical-data"
+        render={(props) => <HistoricalData {...props} />}
+      />
       <Route path="/confirm" render={(props) => <ConfirmOrder {...props} />} />
       <Route path="/sign-up" render={(props) => <SignUp {...props} />} />
       <Route path="/log-in" render={(props) => <LogIn {...props} />} />
@@ -21,6 +28,7 @@ ReactDOM.render(
       <ProtectedRoute exact={true} path="/" component={UserPortal} />
       <ProtectedRoute component={UserPortal} />
     </Switch>
+    </React.StrictMode>
   </BrowserRouter>,
   document.getElementById("root")
 );
