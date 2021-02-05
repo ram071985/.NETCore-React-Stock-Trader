@@ -73,6 +73,16 @@ nav.navbar {
   margin: 20px 0px 0px 40px !important;
 }
 
+.history-container {
+  border-radius: 0.4rem;
+  border: solid 1px #1aac3c;
+  opacity: 0.8;
+  background: rgb(15, 15, 15);
+  width: 90% !important;
+  padding: 10px 8px 20px !important;
+  margin: 20px 0px 0px 40px !important;
+}
+
 .holdings-container {
   opacity: 0.8;
   margin: 15px 0px 0px 40px !important;

@@ -29,7 +29,7 @@ class HistoricalData extends Component {
   }
   render() {
     return (
-      <div className="container-fluid d-block container user-container">
+      <div className="container-fluid history-container">
         <canvas id="myChart" ref={this.chartRef} />
       </div>
     );
