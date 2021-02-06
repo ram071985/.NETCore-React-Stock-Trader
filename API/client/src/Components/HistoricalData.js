@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Chart from "chart.js";
+import moment from "moment";
+Chart.defaults.global.elements.line.tension = 0;
 
 class HistoricalData extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
   chartRef = React.createRef();
 
@@ -14,32 +15,47 @@ class HistoricalData extends Component {
     let closingDates = [];
     for (const item of this.props.location.state.historyData) {
       closingPrice.push(item.close);
-      closingDates.push(item.date);
+      closingDates.push(moment(item.date).format("ll"));
     }
     const myChartRef = this.chartRef.current.getContext("2d");
     new Chart(myChartRef, {
       type: "line",
       data: {
-        //Bring in data
+        fontColor: "white",
         labels: closingDates,
         datasets: [
           {
-            label: "Sales",
+            label: "Daily Closing Price",
             data: closingPrice,
-            backgroundColor: "white",
+            fill: false,
+            borderColor: "#dc3545",
           },
         ],
       },
       options: {
-        //Customize chart options
+        legend: {
+          labels: {
+            fontColor: "white",
+          },
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: 'white',
+            }
+          }],
+          xAxes: [{
+            ticks: {
+              fontColor: 'white',
+            }
+          }],
+        }
       },
     });
-    console.log(closingPrice)
+    console.log(closingPrice);
   }
 
-  sortHistoryArray = () => {
-    
-  };
+  sortHistoryArray = () => {};
   render() {
     return (
       <div className="container-fluid history-container">
