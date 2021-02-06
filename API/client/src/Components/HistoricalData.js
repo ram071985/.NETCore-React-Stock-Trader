@@ -5,24 +5,28 @@ class HistoricalData extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      historyArray: []
     };
   }
   chartRef = React.createRef();
 
   componentDidMount() {
-    this.sortHistoryArray();
+    let closingPrice = [];
+    let closingDates = [];
+    for (const item of this.props.location.state.historyData) {
+      closingPrice.push(item.close);
+      closingDates.push(item.date);
+    }
     const myChartRef = this.chartRef.current.getContext("2d");
     new Chart(myChartRef, {
       type: "line",
       data: {
         //Bring in data
-        labels: ["Jan", "Feb", "March"],
+        labels: closingDates,
         datasets: [
           {
             label: "Sales",
-            data: [86, 67, 91],
-            backgroundColor: 'white'
+            data: closingPrice,
+            backgroundColor: "white",
           },
         ],
       },
@@ -30,15 +34,13 @@ class HistoricalData extends Component {
         //Customize chart options
       },
     });
+    console.log(closingPrice)
   }
 
   sortHistoryArray = () => {
-    this.setState({
-      historyArray: this.props.historyData
-    })
-  }
+    
+  };
   render() {
-    console.log(this.props.location.state.historyData)
     return (
       <div className="container-fluid history-container">
         <canvas id="myChart" ref={this.chartRef} />
