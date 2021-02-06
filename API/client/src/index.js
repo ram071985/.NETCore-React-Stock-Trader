@@ -18,7 +18,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Switch>
       <Route
-        path="/historical-data"
+        exact path="/historical-data"
         render={(props) => <HistoricalData {...props} />}
       />
       <Route path="/confirm" render={(props) => <ConfirmOrder {...props} />} />

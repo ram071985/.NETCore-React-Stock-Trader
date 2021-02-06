@@ -4,11 +4,14 @@ import Chart from "chart.js";
 class HistoricalData extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      historyArray: []
+    };
   }
   chartRef = React.createRef();
 
   componentDidMount() {
+    this.sortHistoryArray();
     const myChartRef = this.chartRef.current.getContext("2d");
     new Chart(myChartRef, {
       type: "line",
@@ -19,6 +22,7 @@ class HistoricalData extends Component {
           {
             label: "Sales",
             data: [86, 67, 91],
+            backgroundColor: 'white'
           },
         ],
       },
@@ -27,7 +31,14 @@ class HistoricalData extends Component {
       },
     });
   }
+
+  sortHistoryArray = () => {
+    this.setState({
+      historyArray: this.props.historyData
+    })
+  }
   render() {
+    console.log(this.props.historyData)
     return (
       <div className="container-fluid history-container">
         <canvas id="myChart" ref={this.chartRef} />

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { Button, Form, Spinner } from "react-bootstrap";
 import ModalComponent from "./ModalComponent";
 import UserInfo from "./UserInfo";
@@ -36,7 +36,8 @@ class UserPortal extends Component {
       showError: "",
       setAlertShow: false,
       isConfirm: false,
-      toHistory: false
+      toHistory: false,
+      historyData: [],
     };
   }
 
@@ -79,6 +80,23 @@ class UserPortal extends Component {
           }
         });
     }
+  };
+
+  getHistoryData = (symbol) => {
+    const { history } = this.props;
+    console.log(symbol);
+    axios
+      .get("/api/stocks/history/" + symbol, {})
+
+      .then((res) => {
+        this.setState({
+          historyData: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      history.push("/historical-data")
   };
 
   handleQueryChange = (event) => {
@@ -318,15 +336,17 @@ class UserPortal extends Component {
             Buy shares
           </span>
         </Button>
-        
-        <Button
-          variant="outline-success"
-          className="buy-button"
-        >
-          <span id="holdings-button-text" className="font-weight-light">
-          <Link to="/historical-data">Historical Data</Link>
-          </span>
-        </Button>
+          <Button
+            variant="outline-success"
+            className="buy-button"
+            onClick={(symbol) =>
+              this.getHistoryData(stock.symbol.toLowerCase())
+            }
+          >
+            <span id="holdings-button-text" className="font-weight-light">
+              Historical Data
+            </span>
+          </Button>
       </div>
     );
   };
@@ -395,6 +415,7 @@ class UserPortal extends Component {
   };
 
   render() {
+    console.log(this.state.historyData);
     return (
       <div className="container-fluid main-container">
         <Form onSubmit={(event) => this.handleLogOut(event)}>

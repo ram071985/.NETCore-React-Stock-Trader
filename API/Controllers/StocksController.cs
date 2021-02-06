@@ -46,5 +46,13 @@ namespace API.Controllers
                 Quantity = quantityResult.Quantity
             };
         }
+
+        [HttpGet("history/{symbol}")]
+        public string GetMonthHistory(string symbol)
+        {
+            HttpClient http = new HttpClient();
+            var data = http.GetAsync("https://cloud.iexapis.com/stable/stock/" + symbol + "/chart/1m" + "?token=" + _token + "&chartCloseOnly=true").Result.Content.ReadAsStringAsync().Result;
+            return data;
+        }
     } 
 }
