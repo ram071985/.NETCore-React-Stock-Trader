@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Button, Form, Spinner } from "react-bootstrap";
 import ModalComponent from "./ModalComponent";
 import UserInfo from "./UserInfo";
@@ -83,20 +83,20 @@ class UserPortal extends Component {
   };
 
   getHistoryData = (symbol) => {
-    const { history } = this.props;
     console.log(symbol);
     axios
       .get("/api/stocks/history/" + symbol, {})
-
       .then((res) => {
         this.setState({
-          historyData: res.data,
-        });
+          historyData: res.data
+        })
+        this.setState({
+          toHistory: true
+        })
       })
       .catch((err) => {
         console.log(err);
       });
-      history.push("/historical-data")
   };
 
   handleQueryChange = (event) => {
@@ -336,17 +336,15 @@ class UserPortal extends Component {
             Buy shares
           </span>
         </Button>
-          <Button
-            variant="outline-success"
-            className="buy-button"
-            onClick={(symbol) =>
-              this.getHistoryData(stock.symbol.toLowerCase())
-            }
-          >
-            <span id="holdings-button-text" className="font-weight-light">
-              Historical Data
-            </span>
-          </Button>
+        <Button
+          variant="outline-success"
+          className="buy-button"
+          onClick={(symbol) => this.getHistoryData(stock.symbol.toLowerCase())}
+        >
+          <span id="holdings-button-text" className="font-weight-light">
+            Historical Data
+          </span>
+        </Button>
       </div>
     );
   };
@@ -415,6 +413,19 @@ class UserPortal extends Component {
   };
 
   render() {
+    if (this.state.toHistory === true) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: "/historical-data",
+            state: {
+              historyData: this.state.historyData,
+            },
+          }}
+        />
+      );
+    }
     console.log(this.state.historyData);
     return (
       <div className="container-fluid main-container">

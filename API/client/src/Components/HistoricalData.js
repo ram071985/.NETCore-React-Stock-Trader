@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Chart from "chart.js";
 
 class HistoricalData extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       historyArray: []
     };
@@ -38,7 +38,7 @@ class HistoricalData extends Component {
     })
   }
   render() {
-    console.log(this.props.historyData)
+    console.log(this.props.location.state.historyData)
     return (
       <div className="container-fluid history-container">
         <canvas id="myChart" ref={this.chartRef} />
