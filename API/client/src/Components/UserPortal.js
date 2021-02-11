@@ -38,6 +38,7 @@ class UserPortal extends Component {
       isConfirm: false,
       toHistory: false,
       historyData: [],
+      companyName: ""
     };
   }
 
@@ -82,13 +83,14 @@ class UserPortal extends Component {
     }
   };
 
-  getHistoryData = (symbol) => {
+  getHistoryData = (symbol, company) => {
     console.log(symbol);
     axios
       .get("/api/stocks/history/" + symbol, {})
       .then((res) => {
         this.setState({
-          historyData: res.data
+          historyData: res.data,
+          companyName: company
         })
         this.setState({
           toHistory: true
@@ -339,7 +341,7 @@ class UserPortal extends Component {
         <Button
           variant="outline-success"
           className="buy-button"
-          onClick={(symbol) => this.getHistoryData(stock.symbol.toLowerCase())}
+          onClick={(symbol, company) => this.getHistoryData(stock.symbol.toLowerCase(),stock.company)}
         >
           <span id="holdings-button-text" className="font-weight-light">
             Historical Data
@@ -420,13 +422,14 @@ class UserPortal extends Component {
           to={{
             pathname: "/historical-data",
             state: {
+              companyName: this.state.companyName,
               historyData: this.state.historyData,
             },
           }}
         />
       );
     }
-    console.log(this.state.historyData);
+console.log(this.state.company)
     return (
       <div className="container-fluid main-container">
         <Form onSubmit={(event) => this.handleLogOut(event)}>
