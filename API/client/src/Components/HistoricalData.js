@@ -46,10 +46,10 @@ class HistoricalData extends Component {
                 fontColor: "white",
               },
               gridLines: {
-              //  display: false,
+                //  display: false,
                 opacity: "0.8",
-                color: "#bbbbbb", 
-              }
+                color: "#bbbbbb",
+              },
             },
           ],
           xAxes: [
@@ -61,8 +61,8 @@ class HistoricalData extends Component {
               gridLines: {
                 drawBorder: true,
                 //display: false,
-                color: "#bbbbbb", 
-              }
+                color: "#bbbbbb",
+              },
             },
           ],
         },
@@ -74,10 +74,16 @@ class HistoricalData extends Component {
   sortHistoryArray = () => {};
   render() {
     return (
-      <div className="container-fluid history-container">
-        <h1 style={{ color: "white" }} className="text-center mt-3">{this.props.location.state.companyName}</h1>
-        <h6 style={{ color: "#dadada" }}className="text-center mb-3">Closing Price Performance Over The Past Month</h6>
-        <canvas id="myChart" ref={this.chartRef} className="mb-5"/>
+      <div>
+        <h1 style={{ color: "white" }} className="text-center mt-3">
+          {this.props.location.state.companyName}
+        </h1>
+        <h6 style={{ color: "#dadada" }} className="text-center mb-3">
+          Closing Price Performance Over The Past Month
+        </h6>
+        <div className="container-fluid history-container">
+          <canvas id="myChart" ref={this.chartRef} className="mb-3" />
+        </div>
       </div>
     );
   }
