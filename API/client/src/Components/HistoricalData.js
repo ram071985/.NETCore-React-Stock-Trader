@@ -15,7 +15,7 @@ class HistoricalData extends Component {
     let closingDates = [];
     for (const item of this.props.location.state.historyData) {
       closingPrice.push(item.close);
-      closingDates.push(moment(item.date).format("MMM Do YY"));
+      closingDates.push(moment(item.date).format("l"));
     }
     const myChartRef = this.chartRef.current.getContext("2d");
     new Chart(myChartRef, {
@@ -46,6 +46,8 @@ class HistoricalData extends Component {
                 fontColor: "white",
               },
               gridLines: {
+              //  display: false,
+                opacity: "0.8",
                 color: "#bbbbbb", 
               }
             },
@@ -53,9 +55,12 @@ class HistoricalData extends Component {
           xAxes: [
             {
               ticks: {
+                fontSize: "10",
                 fontColor: "white",
               },
               gridLines: {
+                drawBorder: true,
+                //display: false,
                 color: "#bbbbbb", 
               }
             },
@@ -70,9 +75,9 @@ class HistoricalData extends Component {
   render() {
     return (
       <div className="container-fluid history-container">
-        <h1 style={{ color: "white" }} className="text-center">{this.props.location.state.companyName}</h1>
-        <h4 style={{ color: "#dadada" }}className="text-center">Closing Price Performance Over The Past Month</h4>
-        <canvas id="myChart" ref={this.chartRef} />
+        <h1 style={{ color: "white" }} className="text-center mt-3">{this.props.location.state.companyName}</h1>
+        <h6 style={{ color: "#dadada" }}className="text-center mb-3">Closing Price Performance Over The Past Month</h6>
+        <canvas id="myChart" ref={this.chartRef} className="mb-5"/>
       </div>
     );
   }

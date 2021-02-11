@@ -75,12 +75,11 @@ nav.navbar {
 
 .history-container {
   border-radius: 0.4rem;
-  border: solid 1px #1aac3c;
   opacity: 0.8;
   background: rgb(15, 15, 15);
-  width: 90% !important;
+  width: 95% !important;
   padding: 10px 8px 20px !important;
-  margin: 20px 0px 0px 40px !important;
+  margin: 0;
 }
 
 .holdings-container {
