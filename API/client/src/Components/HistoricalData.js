@@ -15,7 +15,7 @@ class HistoricalData extends Component {
     let closingDates = [];
     for (const item of this.props.location.state.historyData) {
       closingPrice.push(item.close);
-      closingDates.push(moment(item.date).format("ll"));
+      closingDates.push(moment(item.date).format("MMM Do YY"));
     }
     const myChartRef = this.chartRef.current.getContext("2d");
     new Chart(myChartRef, {
@@ -36,20 +36,31 @@ class HistoricalData extends Component {
         legend: {
           labels: {
             fontColor: "white",
+            color: "white",
           },
         },
         scales: {
-          yAxes: [{
-            ticks: {
-              fontColor: 'white',
-            }
-          }],
-          xAxes: [{
-            ticks: {
-              fontColor: 'white',
-            }
-          }],
-        }
+          yAxes: [
+            {
+              ticks: {
+                fontColor: "white",
+              },
+              gridLines: {
+                color: "#bbbbbb", 
+              }
+            },
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: "white",
+              },
+              gridLines: {
+                color: "#bbbbbb", 
+              }
+            },
+          ],
+        },
       },
     });
     console.log(closingPrice);
@@ -59,6 +70,8 @@ class HistoricalData extends Component {
   render() {
     return (
       <div className="container-fluid history-container">
+        <h1 style={{ color: "white" }} className="text-center">Facebook Inc</h1>
+        <h4 style={{ color: "#dadada" }}className="text-center">Closing Price Performance Over The Past Month</h4>
         <canvas id="myChart" ref={this.chartRef} />
       </div>
     );
