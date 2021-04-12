@@ -1,13 +1,22 @@
 import React, { Component } from "react";
 import { Button, Row, Form } from "react-bootstrap";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, RouteComponentProps, NavLinkProps } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
 import BarLoader from "react-spinners/BarLoader";
 
-class ConfirmOrder extends Component {
-  constructor() {
-    super();
+interface IConfirmOrder {
+  localStorage: string
+  userId?: number
+  balance: number
+  deposit: number
+  quantity: number
+  exchange: string
+}
+
+class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLinkProps<any>, any> {
+  constructor(props: any) {
+    super(props);
     this.state = {
       errorMessage: "",
       cancel: false,
@@ -17,14 +26,12 @@ class ConfirmOrder extends Component {
     };
   }
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  };
+  parseLocalStorage = async () => {
+    let parseUserId: number = parseInt(localStorage.getItem("user_id") as string);
+    return parseUserId;
+  }
 
-  handleQuantityChange = (event) => {
+  handleChange = (event: React.ChangeEvent<any>) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
@@ -37,21 +44,20 @@ class ConfirmOrder extends Component {
     });
   };
 
-  handleClose = (e) => {
+  handleClose = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     this.setState({
       cancel: true,
     });
   };
 
   putStockTransaction = () => {
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
     if (
       this.props.location.state.action === "Buy" ||
       this.props.location.state.isBuy
     ) {
       axios
-        .put("/api/transaction/buy", {
-          userId: parseUserId,
+        .put<IConfirmOrder>("/api/transaction/buy", {
+          userId: this.parseLocalStorage(),
           balance:
             this.props.location.state.price *
             this.props.location.state.quantity,
@@ -72,26 +78,26 @@ class ConfirmOrder extends Component {
       this.props.location.state.isSell
     ) {
       axios
-        .put("/api/transaction/sell", {
-          userId: parseUserId,
+        .put<IConfirmOrder>("/api/transaction/sell", {
+          userId: this.parseLocalStorage(),
           balance:
             this.props.location.state.price *
             this.props.location.state.quantity,
         })
-        .catch((err) => {});
+        .catch((err) => { });
     }
   };
 
-  postNewDepositTransaction = (e) => {
+  postNewDepositTransaction = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     this.setState({
       loading: true,
     });
     this.putStockTransaction();
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
+    
     axios
-      .post("/api/transaction/sell", {
-        userId: parseUserId,
+      .post<IConfirmOrder>("/api/transaction/sell", {
+        userId: this.parseLocalStorage(),
         deposit:
           this.props.location.state.price * this.props.location.state.quantity,
         quantity: this.props.location.state.quantity,
@@ -105,20 +111,19 @@ class ConfirmOrder extends Component {
           });
         }
       })
-      .catch((err) => {});
+      .catch((err) => { });
     this.deleteStockRecord();
   };
 
-  postNewWithdrawalTransaction = (e) => {
+  postNewWithdrawalTransaction = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     this.setState({
       loading: true,
     });
     this.putStockTransaction();
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
     axios
-      .post("/api/transaction/buy", {
-        userId: parseUserId,
+      .post<IConfirmOrder>("/api/transaction/buy", {
+        userId: this.parseLocalStorage(),
         withdrawal:
           this.props.location.state.price * this.props.location.state.quantity,
         quantity: this.props.location.state.quantity,
@@ -132,15 +137,14 @@ class ConfirmOrder extends Component {
           });
         }
       })
-      .catch((err) => {});
+      .catch((err) => { console.log(err)});
     this.addStockRecord();
   };
 
   addStockRecord = () => {
     if (!this.state.isError) {
-      let parseUserId = parseInt(localStorage.getItem("user_id"));
-      axios.post("/api/transaction/add-stock", {
-        userId: parseUserId,
+      axios.post<IConfirmOrder>("/api/transaction/add-stock", {
+        userId: this.parseLocalStorage(),
         company: this.props.location.state.company,
         symbol: this.props.location.state.symbol,
         quantity: this.props.location.state.quantity,
@@ -149,9 +153,8 @@ class ConfirmOrder extends Component {
   };
 
   deleteStockRecord = () => {
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
-    axios.post("/api/transaction/delete-stock", {
-      userId: parseUserId,
+    axios.post<IConfirmOrder>("/api/transaction/delete-stock", {
+      userId: this.parseLocalStorage(),
       company: this.props.location.state.company,
       symbol: this.props.location.state.symbol,
       quantity: this.props.location.state.quantity,
@@ -171,7 +174,7 @@ class ConfirmOrder extends Component {
       return (
         <AlertComponent
           setShow={this.state.setShow}
-          handleClose={(e) => this.handleAlertClose(e)}
+          handleClose={() => this.handleAlertClose()}
           logInErrorMessage={this.state.errorMessage}
         />
       );
@@ -205,7 +208,7 @@ class ConfirmOrder extends Component {
         <h6 className="font-weight-normal text-center">
           Quantity
           {this.props.location.state.isSell ||
-          this.props.location.state.action === "Sell"
+            this.props.location.state.action === "Sell"
             ? " Sold"
             : ""}
           : {this.props.location.state.quantity}
@@ -224,7 +227,7 @@ class ConfirmOrder extends Component {
             <span className="special-characters"> shares </span>) = $
             {this.decimalFormatter().format(
               this.props.location.state.quantity *
-                this.props.location.state.price
+              this.props.location.state.price
             )}
           </span>
         </h6>
@@ -234,9 +237,9 @@ class ConfirmOrder extends Component {
           <span className="font-weight-normal text-center confirm-span">
             $
             {this.decimalFormatter().format(
-              this.props.location.state.quantity *
-                this.props.location.state.price
-            )}
+          this.props.location.state.quantity *
+          this.props.location.state.price
+        )}
           </span>
         </h5>
         <Row className="justify-content-center">
@@ -256,15 +259,15 @@ class ConfirmOrder extends Component {
             >
               Confirm
             </Button>{" "}
+
             <Button
-              onClick={this.props.onHide}
               className="d-inline-block mx-auto cancel-confirm-button"
               variant="danger"
               onClick={(e) => this.handleClose(e)}
               type="button"
             >
               Cancel
-            </Button>{" "}
+          </Button>{" "}
           </Form>
         </Row>
 
@@ -278,12 +281,12 @@ class ConfirmOrder extends Component {
               <BarLoader />
             </div>
           ) : (
-            <div></div>
-          )}
+              <div></div>
+            )}
         </div>
       </div>
     );
   }
 }
 
-export default ConfirmOrder;
+export default ConfirmOrder as any;

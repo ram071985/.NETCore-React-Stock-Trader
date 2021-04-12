@@ -5,9 +5,13 @@ import { Button, Form, Spinner } from "react-bootstrap";
 import ModalComponent from "./ModalComponent";
 import UserInfo from "./UserInfo";
 
-class UserPortal extends Component {
-  constructor() {
-    super();
+interface IUserPortal {
+  props: any
+}
+
+class UserPortal extends Component<IUserPortal, any> {
+  constructor(props: any) {
+    super(props);
     this.state = {
       sampleStock: [],
       quantity: 0,
@@ -83,7 +87,7 @@ class UserPortal extends Component {
     }
   };
 
-  getHistoryData = (symbol, company) => {
+  getHistoryData = (symbol: string, company: string) => {
     console.log(symbol);
     axios
       .get("/api/stocks/history/" + symbol, {})
@@ -101,13 +105,13 @@ class UserPortal extends Component {
       });
   };
 
-  handleQueryChange = (event) => {
+  handleQueryChange = (event: React.ChangeEvent<any>) => {
     this.clearFields();
     this.setState({
       isSearching: true,
       setAlertShow: false,
     });
-    let returnInterval;
+    let returnInterval: any;
     const { name, value } = event.target;
     this.setState({
       [name]: value,
@@ -140,18 +144,18 @@ class UserPortal extends Component {
   };
 
   parseId = () => {
-    let parseUserId = parseInt(localStorage.getItem("user_id"));
+    let parseUserId: number = parseInt(localStorage.getItem("user_id") as string);
     return parseUserId;
   };
 
-  handleLogOut = (event) => {
+  handleLogOut = (event?: React.FormEvent<HTMLElement>) => {
     let deleteId = localStorage.clear();
     return deleteId;
   };
 
-  handleHoldings = (event, index) => {
+  handleHoldings = (event: React.ChangeEvent<HTMLFormElement>) => {
     const result = this.state.stocks.filter(
-      (name) => name.company === event.target.value
+      (name: any) => name.company === event.target.value
     );
     this.setState({
       sellQuantity: result[0].quantity,
@@ -162,7 +166,7 @@ class UserPortal extends Component {
     });
   };
 
-  handleBuyQuantity = (event) => {
+  handleBuyQuantity = (event: React.ChangeEvent<HTMLFormElement>) => {
     const { value } = event.target;
     this.setState({
       dynamicQuantity: parseInt(value),
@@ -170,7 +174,7 @@ class UserPortal extends Component {
     });
   };
 
-  handleQuantityChange = (event) => {
+  handleQuantityChange = (event: React.ChangeEvent<HTMLFormElement>) => {
     const { name, value } = event.target;
     this.setState({
       [name]: this.state.sellQuantity,
@@ -192,7 +196,7 @@ class UserPortal extends Component {
     });
   };
 
-  handleBuySellChange = (event) => {
+  handleBuySellChange = (event: React.ChangeEvent<HTMLFormElement>) => {
     this.clearFields();
     this.setState({
       action: event.target.value,
@@ -224,7 +228,7 @@ class UserPortal extends Component {
     });
   };
 
-  handleClose = (e) => {
+  handleClose = (e: React.MouseEvent<HTMLFormElement>) => {
     this.clearFields();
     this.setState({
       setShow: false,
@@ -251,7 +255,7 @@ class UserPortal extends Component {
       });
   };
 
-  getDatabaseStocks = async (index) => {
+  getDatabaseStocks = async () => {
     this.setState({
       loading: true,
     });
@@ -268,7 +272,7 @@ class UserPortal extends Component {
       this.state.sampleStock.push(obj);
     }
 
-    const addPrices = this.state.stocks.map((price, index) => {
+    const addPrices = this.state.stocks.map((price: object, index: number) => {
       return { ...price, current: this.state.sampleStock[index].current };
     });
     this.setState({
@@ -282,7 +286,7 @@ class UserPortal extends Component {
 
   getSellQuantity = () => {
     const filter = this.state.stocks.filter(
-      (name) => name.company === this.state.stockName
+      (name: any) => name.company === this.state.stockName
     );
 
     this.setState({
@@ -299,8 +303,7 @@ class UserPortal extends Component {
     return formatter;
   };
 
-  renderHoldings = (stock, index) => {
-    const { history } = this.props;
+  renderHoldings = (stock: any, index: number) => {
     return (
       <div key={index} className="holdings-render">
         <p className="mb-0 company-text">{stock.company}</p>
@@ -341,7 +344,7 @@ class UserPortal extends Component {
         <Button
           variant="outline-success"
           className="buy-button"
-          onClick={(symbol, company) => this.getHistoryData(stock.symbol.toLowerCase(),stock.company)}
+          onClick={() => this.getHistoryData(stock.symbol.toLowerCase(),stock.company)}
         >
           <span id="holdings-button-text" className="font-weight-light">
             Historical Data
@@ -351,7 +354,7 @@ class UserPortal extends Component {
     );
   };
 
-  sellSubmit = (index) => {
+  sellSubmit = (index: number) => {
     this.setState({
       holding: this.state.stocks[index],
       isBuy: false,
@@ -365,7 +368,7 @@ class UserPortal extends Component {
     this.handleSellShow();
   };
 
-  buySubmit = (index) => {
+  buySubmit = (index: number) => {
     this.setState({
       holding: this.state.stocks[index],
       isSell: false,
@@ -379,7 +382,7 @@ class UserPortal extends Component {
     this.handleShow();
   };
 
-  renderModalHoldings = (stock, index) => {
+  renderModalHoldings = (stock: any, index: number) => {
     return (
       <option key={index} value={stock.company}>
         {stock.company} ({stock.quantity} shares)
@@ -387,7 +390,7 @@ class UserPortal extends Component {
     );
   };
 
-  confirmRedirect = (e) => {
+  confirmRedirect = (e: React.MouseEvent<HTMLDivElement>) => {
     if (
       this.state.symbol === "" ||
       (this.state.quantity === "" && this.state.action == "Buy")
@@ -429,7 +432,7 @@ class UserPortal extends Component {
         />
       );
     }
-console.log(this.state.company)
+
     return (
       <div className="container-fluid main-container">
         <Form onSubmit={(event) => this.handleLogOut(event)}>
@@ -499,4 +502,4 @@ console.log(this.state.company)
   }
 }
 
-export default UserPortal;
+export default UserPortal as any;

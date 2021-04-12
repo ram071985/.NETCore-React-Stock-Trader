@@ -3,13 +3,48 @@ import { Modal, Form, Col, Button } from "react-bootstrap";
 import SellQuantity from "./SellQuantity";
 import BuyQuantity from "./BuyQuantity";
 import ReviewAlert from "./ReviewAlert";
-import { Redirect } from "react-router-dom";
+import { Redirect, RouteComponentProps, withRouter } from "react-router-dom";
 import { CheckCircle } from "react-feather";
 import { XCircle } from "react-feather";
 
-class ModalComponent extends Component {
-  constructor() {
-    super();
+interface IModalState {
+  orderHeader: string,
+  errorMessage: string,
+  setShow: boolean
+  wallet: number,
+  price: number,
+  setAlertShow: boolean
+  isConfirm: boolean
+  company: string
+  dynamicQuantity: number
+  symbol: string
+  setAction: string
+  isBuy: boolean
+  isSell: boolean
+  holdings: number
+  show: boolean
+  sellIncrement: number
+  onHide(e: React.MouseEvent): void;
+  holding: { company: string }
+  sellSubmit: boolean
+  handleChange(event: React.ChangeEvent): void;
+  stocks: never[]
+  handleQueryChange(event: React.ChangeEvent): any;
+  isSearching: boolean
+  isSymbol: string
+  handleHoldings(event: React.ChangeEvent): any;
+  modalHoldings(stock: any, index: number): any
+  handleBuyQuantity(event: React.ChangeEvent<HTMLFormElement>): void
+  quantity: number
+  quantityChange(event: React.ChangeEvent): any;
+  stockName: string
+  confirmRedirect(e: React.MouseEvent): void;
+  formatter(): Intl.NumberFormat
+}
+
+class ModalComponent extends Component<IModalState & RouteComponentProps<{}>> {
+  constructor(props: any) {
+    super(props);
     this.state = {
       orderHeader: "",
       errorMessage: "",
@@ -65,7 +100,7 @@ class ModalComponent extends Component {
           className="purchase-modal"
           show={this.props.show}
           onHide={this.props.onHide}
-       
+
         >
           <Form.Row>
             <div
@@ -138,7 +173,7 @@ class ModalComponent extends Component {
                     style={{
                       display:
                         !this.props.isSearching &&
-                        this.props.isSymbol === "Known symbol"
+                          this.props.isSymbol === "Known symbol"
                           ? "block"
                           : "none",
                     }}
@@ -148,7 +183,7 @@ class ModalComponent extends Component {
                     style={{
                       display:
                         !this.props.isSearching &&
-                        this.props.isSymbol === "Unknown symbol"
+                          this.props.isSymbol === "Unknown symbol"
                           ? "block"
                           : "none",
                     }}
@@ -170,8 +205,8 @@ class ModalComponent extends Component {
                       name="stockName"
                       as="select"
                     >
-                      {this.props.stocks.map((index) =>
-                        this.props.modalHoldings(index)
+                      {this.props.stocks.map((stock, index) =>
+                        this.props.modalHoldings(stock, index)
                       )}
                     </Form.Control>
                   </Form.Group>
@@ -199,20 +234,20 @@ class ModalComponent extends Component {
             <Form.Group className="mb-0" as={Col} controlId="formGridZip">
               <Form.Label className="ml-3 mt-3 mb-0 total-label">Total</Form.Label>
               <Col className="total-col" sm={5}>
-              <Form.Control
-                type="text"
-                name="price"
-                value={
-                  this.props.isSymbol === "Unknown symbol"
-                    ? "$" + this.props.formatter().format(0)
-                    : "$" +
+                <Form.Control
+                  type="text"
+                  name="price"
+                  value={
+                    this.props.isSymbol === "Unknown symbol"
+                      ? "$" + this.props.formatter().format(0)
+                      : "$" +
                       this.props
                         .formatter()
                         .format(this.props.dynamicQuantity * this.props.price)
-                }
-                className="w-50 ml-1 total-modal-input"
-                readOnly
-              />
+                  }
+                  className="w-50 ml-1 total-modal-input"
+                  readOnly
+                />
               </Col>
             </Form.Group>
             {this.renderAlert()}
@@ -242,4 +277,4 @@ class ModalComponent extends Component {
   }
 }
 
-export default ModalComponent;
+export default ModalComponent as any;

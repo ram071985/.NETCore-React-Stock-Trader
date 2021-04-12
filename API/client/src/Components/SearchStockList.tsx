@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
-class SearchStockList extends Component {
-  constructor() {
-    super();
+
+interface ISearchStockList {
+  quantityChange(event: React.ChangeEvent): any
+  company: string
+}
+
+class SearchStockList extends Component<ISearchStockList, any> {
+  constructor(props: any) {
+    super(props);
     this.state = {};
   }
 
@@ -14,7 +20,7 @@ class SearchStockList extends Component {
           type="input"
           name="symbol"
           className="w-75 modal-input"
-          onChange={this.props.onChange}
+          onChange={this.props.quantityChange}
         />
         <h6 className="ml-1 mt-1 company-text">{this.props.company}</h6>
       </div>

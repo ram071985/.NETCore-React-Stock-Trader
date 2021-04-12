@@ -2,9 +2,18 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 
-class UserInfo extends Component {
-  constructor() {
-    super();
+interface IUserInfoState {
+handleShow(): void
+loading: boolean
+username: string
+formatter(): Intl.NumberFormat
+holdings: number
+wallet: number
+}
+
+class UserInfo extends Component<IUserInfoState, any> {
+  constructor(props: any) {
+    super(props);
     this.state = {};
   }
 
@@ -35,8 +44,8 @@ class UserInfo extends Component {
                 size="sm"
               />
             ) : (
-                this.props.username
-              )}
+              this.props.username
+            )}
           </h6>
           <h6
             id="holdings"
@@ -57,8 +66,8 @@ class UserInfo extends Component {
                 size="sm"
               />
             ) : (
-                this.props.formatter().format(this.props.holdings)
-              )}
+              this.props.formatter().format(this.props.holdings)
+            )}
           </h6>
         </div>
         <div className="col-5">
@@ -78,8 +87,8 @@ class UserInfo extends Component {
                 size="sm"
               />
             ) : (
-                this.props.formatter().format(this.props.wallet)
-              )}
+              this.props.formatter().format(this.props.wallet)
+            )}
           </h6>
         </div>
       </div>

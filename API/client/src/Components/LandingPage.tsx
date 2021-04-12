@@ -1,10 +1,11 @@
 ﻿import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { User } from "react-feather";
+type AppState = {};
 
-class LandingPage extends Component {
-  constructor() {
-    super();
+class LandingPage extends Component<AppState, any> {
+  constructor(props: any) {
+    super(props);
     this.state = {
       toUserPortal: false,
       logInClick: false,
@@ -15,7 +16,7 @@ class LandingPage extends Component {
     };
   }
 
-  handleClick = (e) => {
+  handleClick = (e: React.ChangeEvent<any>): void => {
     if (e.target.textContent === "Start an account")
       this.setState({
         isSignUp: true,

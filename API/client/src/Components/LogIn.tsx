@@ -1,12 +1,27 @@
+
 import React, { Component } from "react";
-import { BarChart } from "react-feather";
+import { Key } from "react-feather";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, RouteComponentProps } from "react-router-dom";
 import AlertComponent from "./AlertComponent";
-import { Container, Form, Spinner, Row, Button } from "react-bootstrap";
-class SignUp extends Component {
-  constructor() {
-    super();
+import Spinner from "react-bootstrap/Spinner";
+import { Container, Row, Form, Button } from "react-bootstrap";
+
+interface ITraderState {
+  newUsername: string,
+  newPassword: string,
+  existingUsername: string,
+  existingPassword: string,
+  errorMessage: string,
+  logInErrorMessage: string,
+  toUserPortal: boolean,
+  setShow: boolean,
+  loading: boolean,
+}
+
+class LogIn extends Component<ITraderState & RouteComponentProps, any> {
+  constructor(props: any) {
+    super(props);
     this.state = {
       newUsername: "",
       newPassword: "",
@@ -20,6 +35,12 @@ class SignUp extends Component {
     };
   }
 
+  handleShow = () => {
+    if (this.state.logInErrorMessage !== "") {
+      this.setState({ setShow: true });
+    }
+  };
+
   handleClose = () => {
     this.setState({
       setShow: false,
@@ -27,39 +48,33 @@ class SignUp extends Component {
     });
   };
 
-  handleShow = () => {
-    if (this.state.logInErrorMessage !== "") {
-      this.setState({ setShow: true });
-    }
-  };
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
+  handleChange = (event: any) => {
+    const { name, value } = event.currentTarget as HTMLInputElement;
     this.setState({
       [name]: value,
       errorMessage: "",
       logInErrorMessage: "",
-    });
+    }as any);
   };
 
   handleClick = async () => {
     const { history } = this.props;
-    history.push("/log-in");
+    history.push("/sign-up");
   };
 
-  handleNewUserSubmit = (e) => {
+  handleSubmit = (e: React.ChangeEvent<any>):void => {
     e.preventDefault();
-    this.postNewUser();
+    this.logInUser();
   };
 
-  postNewUser = () => {
+  logInUser = () => {
     this.setState({
       loading: true,
     });
     axios
-      .post("/api/register", {
-        username: this.state.newUsername,
-        password: this.state.newPassword,
+      .post("/api/authorize", {
+        username: this.state.existingUsername,
+        password: this.state.existingPassword,
       })
       .then((res) => {
         localStorage.setItem("session_id", res.data.id);
@@ -70,6 +85,7 @@ class SignUp extends Component {
         });
       })
       .catch((err) => {
+        console.log(err.response);
         if (err.response.data.Text === "empty username and password") {
           this.setState({
             logInErrorMessage: "Please enter a username and password.",
@@ -77,29 +93,54 @@ class SignUp extends Component {
             loading: false,
           });
         }
+
         if (err.response.data.Text === "empty username") {
           this.setState({
-            logInErrorMessage: "Please choose a username.",
+            logInErrorMessage: "Please enter a username.",
             setShow: true,
             loading: false,
           });
         }
+
         if (err.response.data.Text === "empty password") {
           this.setState({
-            logInErrorMessage: "Please choose a password.",
+            logInErrorMessage: "Please enter a password.",
             setShow: true,
             loading: false,
           });
         }
-        if (err.response.data.Text === "redundant username") {
+
+        if (err.response.data.Text === "false username") {
           this.setState({
             logInErrorMessage:
-              "The username you chose is already taken.  Please try another entry.",
+              "The username you chose is already taken. Please try another entry.",
+            setShow: true,
+            loading: false,
+          });
+        }
+
+        if (err.response.data.Text === "username doesn't exist") {
+          this.setState({
+            logInErrorMessage:
+              "This username does not exist. Please enter an existing username.",
+            setShow: true,
+            loading: false,
+          });
+        }
+        if (err.response.data.Text === "wrong credentials") {
+          this.setState({
+            logInErrorMessage: "Username or password combination is invalid.",
             setShow: true,
             loading: false,
           });
         }
       });
+  };
+
+  logInErrorText = () => {
+    if (this.state.logInErrorMessage === "") {
+      return true;
+    }
   };
 
   renderAlert = () => {
@@ -114,21 +155,22 @@ class SignUp extends Component {
     }
   };
 
-  render() {
+  public render() {
     if (this.state.toUserPortal === true) return <Redirect to="/" />;
 
     const { loading } = this.state;
+    console.log(this.state.logInErrorMessage);
     return (
       <Container
         id="login-container"
         className="container justify-content-center"
       >
         <Row id="login-title-row" className="justify-content-center">
-          <BarChart className="mx-auto d-block key-icon" />
-          <h3 className="mt-2 d-block text-center log-in-text">Sign up</h3>
+          <Key className="mx-auto d-block key-icon" />
+          <h3 className="mt-2 d-block text-center log-in-text">Log in</h3>
         </Row>
         <Row className="justify-content-center">
-          <Form onSubmit={this.handleNewUserSubmit}>
+          <Form onSubmit={this.handleSubmit}>
             <Form.Group>
               <Form.Label className="label-text">User Id</Form.Label>
               <Form.Control
@@ -136,12 +178,12 @@ class SignUp extends Component {
                 className="username-input"
                 onChange={this.handleChange}
                 placeholder=""
-                name="newUsername"
-                autocomplete="off"
+                name="existingUsername"
+                autoComplete="off"
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label className="label-text" for="exampleFormControlInput1">
+              <Form.Label className="label-text" data-for="exampleFormControlInput1">
                 Password
               </Form.Label>
               <Form.Control
@@ -149,29 +191,28 @@ class SignUp extends Component {
                 className="username-input"
                 onChange={this.handleChange}
                 placeholder=""
-                name="newPassword"
+                name="existingPassword"
+                autoComplete="off"
               />
             </Form.Group>
             <Button
               type="submit"
-              className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
+              className="btn btn-lg mt-4 btn-block log-in-button"
             >
-              Sign up
+              Log in
             </Button>
             <Button
               onClick={this.handleClick}
               type="button"
-              className="btn btn-primary btn-lg mt-4 btn-block log-in-button"
+              className="btn btn-lg mt-4 btn-block log-in-button"
             >
-              I have an account
+              I'm not registered
             </Button>
           </Form>
-        </Row>
-        <div className="container-fluid">
           {loading ? (
             <div>
               <p style={{ color: "white" }} className="mt-5 text-center">
-                Creating account... Redirecting to User Portal.
+                Logging in... Redirecting to User Portal.
               </p>{" "}
               <Spinner
                 className="authenticate-spinner"
@@ -182,11 +223,11 @@ class SignUp extends Component {
           ) : (
             <div></div>
           )}
-        </div>
+        </Row>
         {this.renderAlert()}
       </Container>
     );
   }
 }
 
-export default SignUp;
+export default LogIn as any;
