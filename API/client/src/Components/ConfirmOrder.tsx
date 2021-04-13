@@ -26,7 +26,7 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
     };
   }
 
-  parseLocalStorage = async () => {
+  parseLocalStorage = () => {
     let parseUserId: number = parseInt(localStorage.getItem("user_id") as string);
     return parseUserId;
   }
@@ -50,13 +50,14 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
     });
   };
 
-  putStockTransaction = () => {
+  putStockTransaction = async (): Promise<void> => {
+    let url: string = "/api/transaction/buy";
     if (
       this.props.location.state.action === "Buy" ||
       this.props.location.state.isBuy
     ) {
-      axios
-        .put<IConfirmOrder>("/api/transaction/buy", {
+      await axios
+        .put(url, {
           userId: this.parseLocalStorage(),
           balance:
             this.props.location.state.price *
@@ -64,6 +65,7 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
         })
 
         .catch((err) => {
+          console.log(err.response);
           if (err.response.data.detail === "insufficient balance") {
             this.setState({
               errorMessage:
@@ -78,13 +80,15 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
       this.props.location.state.isSell
     ) {
       axios
-        .put<IConfirmOrder>("/api/transaction/sell", {
+        .put<IConfirmOrder[]>("/api/transaction/sell", {
           userId: this.parseLocalStorage(),
           balance:
             this.props.location.state.price *
             this.props.location.state.quantity,
         })
-        .catch((err) => { });
+        .catch((err) => {
+          console.log(err.response);
+         });
     }
   };
 
@@ -96,7 +100,7 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
     this.putStockTransaction();
     
     axios
-      .post<IConfirmOrder>("/api/transaction/sell", {
+      .post<IConfirmOrder[]>("/api/transaction/sell", {
         userId: this.parseLocalStorage(),
         deposit:
           this.props.location.state.price * this.props.location.state.quantity,
@@ -115,14 +119,15 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
     this.deleteStockRecord();
   };
 
-  postNewWithdrawalTransaction = (e: React.FormEvent<HTMLFormElement>): void => {
+  postNewWithdrawalTransaction = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     this.setState({
       loading: true,
     });
     this.putStockTransaction();
-    axios
-      .post<IConfirmOrder>("/api/transaction/buy", {
+    let url: string = "/api/transaction/buy";
+    await axios
+      .post(url, {
         userId: this.parseLocalStorage(),
         withdrawal:
           this.props.location.state.price * this.props.location.state.quantity,
@@ -137,13 +142,14 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
           });
         }
       })
-      .catch((err) => { console.log(err)});
+      .catch((err) => { console.log(err.response)});
     this.addStockRecord();
   };
 
-  addStockRecord = () => {
+  addStockRecord = async () => {
+    let url: string = "/api/transaction/add-stock";
     if (!this.state.isError) {
-      axios.post<IConfirmOrder>("/api/transaction/add-stock", {
+      await axios.post(url, {
         userId: this.parseLocalStorage(),
         company: this.props.location.state.company,
         symbol: this.props.location.state.symbol,
@@ -153,7 +159,7 @@ class ConfirmOrder extends Component<IConfirmOrder & RouteComponentProps & NavLi
   };
 
   deleteStockRecord = () => {
-    axios.post<IConfirmOrder>("/api/transaction/delete-stock", {
+    axios.post<IConfirmOrder[]>("/api/transaction/delete-stock", {
       userId: this.parseLocalStorage(),
       company: this.props.location.state.company,
       symbol: this.props.location.state.symbol,
