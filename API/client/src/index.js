@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+// import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "./Components/LandingPage";
-import LogIn from "./Components/LogIn";
-import SignUp from "./Components/SignUp";
-import UserPortal from "./Components/UserPortal";
-import ConfirmOrder from "./Components/ConfirmOrder";
-import ProtectedRoute from "./Components/ProtectedRoute";
-import HistoricalData from "./Components/HistoricalData";
+import LogIn from "./Components/Auth/LogIn";
+import SignUp from "./Components/Auth/SignUp";
+import UserPortal from "./Components/UserPortal/UserPortal";
+import ConfirmOrder from "./Components/Transaction/ConfirmOrder";
+import ProtectedRoute from "./Components/Auth/ProtectedRoute";
+import HistoricalData from "./Components/Graphs/HistoricalData";
 
 ReactDOM.render(
   <BrowserRouter>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { Button, Form, Spinner } from "react-bootstrap";
-import ModalComponent from "./ModalComponent";
+import ModalComponent from "../Transaction/ModalComponent";
 import UserInfo from "./UserInfo";
 
 class UserPortal extends Component {

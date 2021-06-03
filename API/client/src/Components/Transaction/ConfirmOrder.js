@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Row, Form } from "react-bootstrap";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
-import AlertComponent from "./AlertComponent";
+import AlertComponent from "../Alerts/AlertComponent";
 import BarLoader from "react-spinners/BarLoader";
 
 class ConfirmOrder extends Component {

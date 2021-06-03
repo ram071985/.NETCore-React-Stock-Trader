@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Modal, Form, Col, Button } from "react-bootstrap";
 import SellQuantity from "./SellQuantity";
 import BuyQuantity from "./BuyQuantity";
-import ReviewAlert from "./ReviewAlert";
+import ReviewAlert from "../Alerts/ReviewAlert";
 import { Redirect } from "react-router-dom";
 import { CheckCircle } from "react-feather";
 import { XCircle } from "react-feather";
