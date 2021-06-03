@@ -1,6 +1,7 @@
 ﻿import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { User } from "react-feather";
+import '../styles/_landingPage.scss';
 
 class LandingPage extends Component {
   constructor() {

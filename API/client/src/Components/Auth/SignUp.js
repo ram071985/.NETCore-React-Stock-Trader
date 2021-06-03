@@ -4,6 +4,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import AlertComponent from "../Alerts/AlertComponent";
 import { Container, Form, Spinner, Row, Button } from "react-bootstrap";
+import "../../styles/_auth.scss";
 class SignUp extends Component {
   constructor() {
     super();
